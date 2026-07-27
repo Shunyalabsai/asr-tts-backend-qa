@@ -23,7 +23,7 @@ test('M13-T01: /health returns status ok @smoke', async () => {
 
     expect(result.status).toBe(200);
     const body = result.body as any;
-    expect(body.status || body.service).toBeTruthy();
+    expect(body.ok).toBe(true);
 
     testResults.add({
       testId: 'M13-T01',

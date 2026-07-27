@@ -148,8 +148,19 @@ export interface SpeakerDeleteParams {
 // ─── Health Types ───────────────────────────────────────────────
 
 export interface HealthResponse {
-  status: string;
-  service?: string;
+  ok: boolean;
+  model_tier?: {
+    url: string;
+    reachable: boolean;
+    latency_ms: number;
+    detail: string;
+  };
+  stages?: Record<string, boolean | string[]>;
+  features?: {
+    available: string[];
+    defaults_on: string[];
+    notes: string[];
+  };
 }
 
 // ─── Error Types ────────────────────────────────────────────────
