@@ -1,0 +1,49 @@
+name: Deploy Test Dashboard to GitHub Pages
+on:
+  workflow_dispatch:                       # Manual trigger from GitHub UI
+  schedule:
+    - cron: '30 3 * * 1-5'               # Weekdays ~9:00 AM IST (after scheduled tests)
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    permissions:
+      contents: write                     # To push to gh-pages branch
+      pages: write                        # To deploy to GitHub Pages
+      id-token: write                     # For OIDC
+
+    steps:
+      - uses: actions/checkout@v4
+        with: { lfs: true }
+
+      - uses: actions/setup-node@v4
+        with: { node-version: '22' }
+
+      - run: npm ci
+      - run: npx playwright install chromium
+
+      - name: Run full test suite
+        run: bash scripts/run-all-tests.sh
+        continue-on-error: true           # Deploy report even if some tests fail
+        env:
+          ASR_BASE_URL: ${{ secrets.ASR_BASE_URL }}
+          ASR_API_KEY: ${{ secrets.ASR_API_KEY }}
+
+      - name: Generate report
+        run: npm run report
+        continue-on-error: true
+
+      - name: Prepare deployment directory
+        run: npx ts-node scripts/prepare-dashboard.ts
+        continue-on-error: true
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy
+          publish_branch: gh-pages
+          keep_files: true                # Preserve historical reports
+          user_name: 'asr-test-bot'
+          user_email: 'bot@unitedwecare.com'

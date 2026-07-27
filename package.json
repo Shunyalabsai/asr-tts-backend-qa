@@ -1,0 +1,50 @@
+{
+  "name": "asr-testing-v2",
+  "version": "2.0.0",
+  "description": "ASR API testing framework — v2. Token-based auth, batch/streaming, full reporting",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:all": "bash scripts/run-all-tests.sh",
+    "test:ci": "playwright test --grep '@smoke'",
+    "test:auth": "playwright test src/features/authentication/",
+    "test:transcription": "playwright test src/features/transcription/",
+    "test:language-identification": "playwright test src/features/language-identification/",
+    "test:speaker-diarization": "playwright test src/features/speaker-diarization/",
+    "test:word-boosting": "playwright test src/features/word-boosting/",
+    "test:speech-intelligence": "playwright test src/features/speech-intelligence/",
+    "test:profanity": "playwright test src/features/profanity-keyword-hashing/",
+    "test:schema": "playwright test src/features/schema-validation/",
+    "test:errors": "playwright test src/features/error-handling/",
+    "test:health": "playwright test src/features/health-check/",
+    "test:combinations": "playwright test src/features/combination-scenarios/",
+    "test:security": "playwright test src/features/security/",
+    "test:streaming": "playwright test src/features/streaming/",
+    "test:speaker": "playwright test src/features/speaker-management/",
+    "test:performance": "playwright test src/features/performance/",
+    "test:stress": "npx ts-node src/features/performance/stress.suite.ts",
+    "test:load": "npx ts-node src/features/performance/load.suite.ts",
+    "test:spike": "npx ts-node src/features/performance/spike.suite.ts",
+    "test:endurance": "npx ts-node src/features/performance/endurance.suite.ts",
+    "report": "npx ts-node scripts/generate-report.ts",
+    "report:open": "npm run report && open reports/ASR-Test-Report-*.html",
+    "report:email": "npx ts-node scripts/send-report-email.ts",
+    "dashboard:prepare": "npx ts-node scripts/prepare-dashboard.ts",
+    "dashboard:open": "open deploy/index.html",
+    "init": "npx ts-node scripts/init-project.ts"
+  },
+  "keywords": ["asr", "speech-recognition", "playwright", "api-testing", "automation"],
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.58.0",
+    "@types/node": "^25.1.0",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "googleapis": "^144.0.0",
+    "nodemailer": "^8.0.2",
+    "@types/nodemailer": "^7.0.11",
+    "xlsx": "^0.18.5"
+  }
+}
