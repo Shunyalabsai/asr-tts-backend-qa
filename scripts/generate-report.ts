@@ -181,7 +181,6 @@ function saveRunHistory(summary: any): void {
   fs.writeFileSync(indexPath, JSON.stringify({ runs: existing }, null, 2));
   console.log(`Run index updated: ${existing.length} runs tracked`);
 }
-}
 
 main().catch(err => {
   console.error('Failed:', err);

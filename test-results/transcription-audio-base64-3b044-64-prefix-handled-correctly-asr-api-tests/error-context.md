@@ -12,7 +12,7 @@
 # Error details
 
 ```
-ApiError: API error [400]: file is required
+ApiError: API error [400]: invalid audio_base64
 ```
 
 # Test source
@@ -119,7 +119,7 @@ ApiError: API error [400]: file is required
   247 |     if (!response.ok) {
   248 |       const detail = body?.detail || `HTTP ${response.status}`;
 > 249 |       throw new ApiError(detail, response.status);
-      |             ^ ApiError: API error [400]: file is required
+      |             ^ ApiError: API error [400]: invalid audio_base64
   250 |     }
   251 | 
   252 |     return {

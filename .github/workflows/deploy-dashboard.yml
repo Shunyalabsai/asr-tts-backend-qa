@@ -31,6 +31,17 @@ jobs:
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
 
+      # Step 1b: Run language accuracy tests
+      - name: Run language accuracy tests
+        run: npm run accuracy
+        env:
+          ASR_BASE_URL: ${{ secrets.ASR_BASE_URL }}
+          ASR_API_KEY: ${{ secrets.ASR_API_KEY }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SHEET_ID_INDIC_INPUT: ${{ secrets.GOOGLE_SHEET_ID_INDIC_INPUT }}
+          GOOGLE_SHEET_ID_CODESWITCH_INPUT: ${{ secrets.GOOGLE_SHEET_ID_CODESWITCH_INPUT }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+
       # Step 2: Run prepare-dashboard to copy report + verify runs/
       - name: Prepare deployment assets
         run: npx ts-node scripts/prepare-dashboard.ts

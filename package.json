@@ -31,6 +31,7 @@
     "report:email": "npx ts-node scripts/send-report-email.ts",
     "dashboard:prepare": "npx ts-node scripts/prepare-dashboard.ts",
     "dashboard:open": "open deploy/index.html",
+    "accuracy": "npx ts-node scripts/run-language-accuracy-tests.ts",
     "init": "npx ts-node scripts/init-project.ts"
   },
   "keywords": [
@@ -44,6 +45,7 @@
   "devDependencies": {
     "@playwright/test": "^1.58.0",
     "@types/node": "^25.1.0",
+    "ffmpeg-static": "^5.3.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },

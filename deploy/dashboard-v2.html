@@ -198,6 +198,7 @@
   <div class="nav-tabs">
     <div class="tab active" data-tab="overview">Overview</div>
     <div class="tab" data-tab="runs">Run History</div>
+    <div class="tab" data-tab="accuracy">Lang Accuracy</div>
     <div class="tab" data-tab="failures">Failures</div>
     <div class="tab" data-tab="report">Latest Report</div>
   </div>
@@ -240,6 +241,37 @@
         <span style="color:var(--text-muted);font-size:0.8rem;" id="runCount">0 runs</span>
       </div>
       <div id="runList"><div class="loading">Loading run history</div></div>
+    </div>
+  </div>
+
+  <!-- ════════ LANGUAGE ACCURACY ════════ -->
+  <div class="tab-content" id="tab-accuracy">
+    <div class="container">
+      <div class="kpi-grid" id="accKpiGrid">
+        <div class="kpi"><div class="label">Languages Tested</div><div class="value cyan" id="acc-langs">—</div></div>
+        <div class="kpi"><div class="label">Total Tests</div><div class="value cyan" id="acc-total">—</div></div>
+        <div class="kpi"><div class="label">Passed</div><div class="value green" id="acc-passed">—</div></div>
+        <div class="kpi"><div class="label">Failed</div><div class="value red" id="acc-failed">—</div></div>
+        <div class="kpi"><div class="label">Avg WER</div><div class="value" id="acc-avgwer">—</div></div>
+        <div class="kpi"><div class="label">Run Date</div><div class="value text-sm" id="acc-date" style="font-size:0.75rem;margin-top:0.35rem;">—</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">Per-Language Accuracy</div>
+        <div class="card-body" style="padding:0;overflow-x:auto;">
+          <table>
+            <thead><tr><th>Language</th><th>Tests</th><th>Passed</th><th>Failed</th><th>Avg WER</th><th>Avg CER</th><th>Pass Rate</th></tr></thead>
+            <tbody id="accLangTable"><tr><td colspan="7" class="loading">Loading</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">Latest Failures</div>
+        <div class="card-body" id="accFailures">
+          <div class="loading">Loading</div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -454,8 +486,97 @@
     if (el) el.classList.toggle('open');
   }
 
+  // ═══════════════════════════════════════════════
+  //  Language Accuracy Logic
+  // ═══════════════════════════════════════════════
+
+  const ACC_DIR = 'reports/';
+  let accReports = [];
+
+  async function loadAccuracyReports() {
+    try {
+      const indexResp = await fetch(ACC_DIR + 'index.json');
+      let filenames = [];
+      if (indexResp.ok) {
+        const idx = await indexResp.json();
+        filenames = (idx.runs || []).filter(f => f.startsWith('language-accuracy-') && f.endsWith('.json'));
+      }
+      const reportPromises = filenames.map(async (fn) => {
+        try {
+          const r = await fetch(ACC_DIR + fn);
+          if (r.ok) return await r.json();
+        } catch(e) {}
+        return null;
+      });
+      accReports = (await Promise.all(reportPromises)).filter(Boolean);
+      accReports.sort((a,b) => (b.date || '').localeCompare(a.date || ''));
+      renderAccuracy();
+    } catch(e) {
+      document.querySelectorAll('#tab-accuracy .loading').forEach(el => {
+        el.textContent = 'No accuracy data available. Run language accuracy tests first.';
+        el.className = 'empty';
+      });
+    }
+  }
+
+  function renderAccuracy() {
+    if (accReports.length === 0) return;
+    const latest = accReports[0];
+    const langCount = latest.languages ? latest.languages.length : 0;
+    const total = latest.totalTests || 0;
+    const passed = latest.passed || 0;
+    const failed = latest.failed || 0;
+    const avgWer = latest.avgWer || '—';
+
+    document.getElementById('acc-langs').textContent = langCount;
+    document.getElementById('acc-total').textContent = total;
+    document.getElementById('acc-passed').textContent = passed;
+    document.getElementById('acc-failed').textContent = failed;
+    const werEl = document.getElementById('acc-avgwer');
+    werEl.textContent = avgWer;
+    werEl.className = 'value ' + ((typeof avgWer === 'string' && parseFloat(avgWer) <= 50) ? 'green' : 'yellow');
+    document.getElementById('acc-date').textContent = latest.date || '—';
+
+    // Per-language table
+    const langBody = document.getElementById('accLangTable');
+    if (latest.languages && latest.languages.length > 0) {
+      langBody.innerHTML = latest.languages.map(l => {
+        const passRate = l.total > 0 ? ((l.passed / l.total) * 100).toFixed(1) + '%' : 'N/A';
+        return '<tr>' +
+          '<td>' + (l.language || '') + '</td>' +
+          '<td>' + l.total + '</td>' +
+          '<td class="text-green">' + l.passed + '</td>' +
+          '<td class="text-red">' + (l.total - l.passed) + '</td>' +
+          '<td>' + (l.avgWer >= 0 ? (l.avgWer * 100).toFixed(1) + '%' : '-') + '</td>' +
+          '<td>' + (l.avgCer >= 0 ? (l.avgCer * 100).toFixed(1) + '%' : '-') + '</td>' +
+          '<td>' + passRate + '</td>' +
+          '</tr>';
+      }).join('');
+    } else {
+      langBody.innerHTML = '<tr><td colspan="7" class="empty">No language data</td></tr>';
+    }
+
+    // Failures
+    const failDiv = document.getElementById('accFailures');
+    const failures = latest.results ? latest.results.filter(r => r.status === 'FAIL' || r.status === 'fail') : [];
+    if (failures.length > 0) {
+      failDiv.innerHTML = failures.slice(0, 20).map(f =>
+        '<div class="fail-item">' +
+          '<div class="fail-title">' + (f.testCaseId || f.test_id || '') + ': ' + (f.language || '') + '</div>' +
+          '<div class="fail-reason">WER: ' + (f.wer >= 0 ? f.wer + '%' : '-') + ' — CER: ' + (f.cer >= 0 ? f.cer + '%' : '-') + '</div>' +
+        '</div>'
+      ).join('');
+      if (failures.length > 20) {
+        failDiv.innerHTML += '<div class="fail-summary">… and ' + (failures.length - 20) + ' more failures</div>';
+      }
+    } else {
+      failDiv.innerHTML = '<div class="empty">No accuracy failures! 🎉</div>';
+    }
+  }
+
   // ── Start ──────────────────────────────────────
   loadAllRuns();
+  loadAccuracyReports();
   </script>
 </body>
 </html>

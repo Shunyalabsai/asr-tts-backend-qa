@@ -154,6 +154,42 @@ Test results are automatically deployed to **GitHub Pages** after each scheduled
 3. The report is pushed to the `gh-pages` branch
 4. GitHub Pages serves the report as a live dashboard
 
+## Language Accuracy Testing
+
+Reads test case definitions from Google Sheets (Indic Input sheet with ~234 test cases across ~50 Indian languages), transcribes each audio file via the ASR API, computes WER/CER against ground truth, and outputs CSV + pushes results to Google Sheets.
+
+### Run accuracy tests
+
+```bash
+npm run accuracy
+```
+
+This will:
+1. Fetch test cases from `GOOGLE_SHEET_ID_INDIC_INPUT` (Google Sheets)
+2. For each test case with an existing audio file: transcribe, compare, score
+3. Output:
+   - `reports/language-accuracy-{date}.csv` — detailed per-test-case results
+   - `reports/language-accuracy-summary-{date}.csv` — per-language aggregation
+   - `reports/language-accuracy-{date}.json` — JSON for dashboard consumption
+   - Copies to `deploy/reports/` for dashboard auto-update
+4. Pushes summary + detail tabs to the output Google Sheet (`GOOGLE_SHEET_ID`)
+
+### Required env vars for accuracy tests
+
+- `GOOGLE_SHEET_ID_INDIC_INPUT` — Indic test case definitions
+- `GOOGLE_SHEET_ID_CODESWITCH_INPUT` — CodeSwitch test case definitions
+- `GOOGLE_SHEET_ID` — Output spreadsheet
+- `GOOGLE_SERVICE_ACCOUNT_JSON` — Google service account credentials
+
+### Dashboard
+
+Open [deploy/dashboard-v2.html](deploy/dashboard-v2.html) and click the **Lang Accuracy** tab to see:
+- KPI cards (languages tested, total tests, avg WER)
+- Per-language accuracy table sorted by best WER
+- Latest failures list
+
+The dashboard reads from `deploy/reports/` which is auto-published to GitHub Pages.
+
 ### Manual deployment
 
 ```bash
@@ -162,6 +198,9 @@ npm run test:all
 
 # Generate report
 npm run report
+
+# Run accuracy tests
+npm run accuracy
 
 # Prepare deployment directory
 npm run dashboard:prepare
