@@ -33,18 +33,25 @@
     "dashboard:open": "open deploy/index.html",
     "init": "npx ts-node scripts/init-project.ts"
   },
-  "keywords": ["asr", "speech-recognition", "playwright", "api-testing", "automation"],
+  "keywords": [
+    "asr",
+    "speech-recognition",
+    "playwright",
+    "api-testing",
+    "automation"
+  ],
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.58.0",
     "@types/node": "^25.1.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@types/nodemailer": "^7.0.11",
     "dotenv": "^16.4.5",
     "googleapis": "^144.0.0",
     "nodemailer": "^8.0.2",
-    "@types/nodemailer": "^7.0.11",
     "xlsx": "^0.18.5"
   }
 }

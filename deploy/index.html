@@ -3,1269 +3,192 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ASR Test Report — 2026-07-27</title>
+  <title>ASR API v2 Dashboard</title>
   <style>
+    :root {
+      --bg: #05091A;
+      --bg-card: #0B162A;
+      --bg-card2: #0F1E38;
+      --border: #1A3050;
+      --text: #E2ECF8;
+      --text-muted: #6A8CAE;
+      --cyan: #00D4FF;
+      --purple: #7C3AED;
+      --green: #10B981;
+      --grad: linear-gradient(135deg, #00D4FF 0%, #7C3AED 100%);
+    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; padding: 2rem; }
-    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    h2 { font-size: 1.2rem; margin: 2rem 0 1rem; color: #94a3b8; }
-    .banner { display: flex; align-items: center; gap: 1rem; padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 2rem; }
-    .banner.pass { background: linear-gradient(135deg, #064e3b, #065f46); }
-    .banner.fail { background: linear-gradient(135deg, #7f1d1d, #991b1b); }
-    .banner h2 { margin: 0; color: white; font-size: 1.8rem; }
-    .banner .stats { margin-left: auto; text-align: right; }
-    .banner .stats span { display: inline-block; margin-left: 1.5rem; font-size: 0.9rem; }
-    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
-    .kpi { background: #1e293b; border-radius: 0.75rem; padding: 1.25rem; border: 1px solid #334155; }
-    .kpi .label { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
-    .kpi .value { font-size: 1.5rem; font-weight: 700; margin-top: 0.25rem; }
-    .kpi .value.green { color: #22c55e; }
-    .kpi .value.red { color: #ef4444; }
-    .kpi .value.yellow { color: #eab308; }
-    table { width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 0.75rem; overflow: hidden; }
-    th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #334155; font-size: 0.9rem; }
-    th { background: #334155; color: #94a3b8; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
-    td.pass { color: #22c55e; }
-    td.fail { color: #ef4444; }
-    td.error { color: #f97316; }
-    tr:hover { background: #1e293b; }
-    .module-row { cursor: pointer; }
-    .module-row:hover { background: #334155; }
-    .detail-row { display: none; }
-    .detail-row.open { display: table-row; }
-    .detail-cell { padding: 0 !important; }
-    .detail-inner { padding: 0 1rem 1rem; }
-    .summary-row { font-weight: 600; background: #1e293b; }
-    .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
-    .badge.pass { background: #065f46; color: #22c55e; }
-    .badge.fail { background: #7f1d1d; color: #ef4444; }
-    .badge.skip { background: #713f12; color: #eab308; }
-    .failed-tests { margin-top: 2rem; }
-    .failed-item { background: #1e293b; border-radius: 0.5rem; padding: 1rem; margin-bottom: 0.75rem; border: 1px solid #7f1d1d; }
-    .failed-item .test-id { font-weight: 600; color: #f87171; }
-    .failed-item .reason { margin-top: 0.5rem; color: #94a3b8; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .header {
+      background: linear-gradient(135deg, #05091A 0%, #0D1B38 40%, #120840 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+    }
+    .header h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    .header p { color: var(--text-muted); font-size: 0.9rem; }
+    .container { flex: 1; max-width: 700px; margin: 0 auto; padding: 2rem; width: 100%; }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .card:hover { border-color: var(--cyan); background: var(--bg-card2); transform: translateY(-1px); }
+    .card a {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .card .icon { font-size: 2rem; width: 3rem; text-align: center; }
+    .card .title { font-weight: 600; font-size: 1.05rem; margin-bottom: 0.2rem; }
+    .card .desc { color: var(--text-muted); font-size: 0.8rem; }
+    .card .arrow { margin-left: auto; color: var(--text-muted); font-size: 1.25rem; }
+    .badge {
+      display: inline-block;
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+    .footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      border-top: 1px solid var(--border);
+    }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 2rem; }
+    .grid .card { margin-bottom: 0; }
+    .grid .card .icon { font-size: 1.5rem; }
+    .status-dot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      margin-right: 0.4rem;
+    }
+    .status-dot.green { background: var(--green); }
+    .status-dot.yellow { background: #F59E0B; }
+    .status-dot.cyan { background: var(--cyan); }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+      .header { padding: 1.25rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="banner fail">
-    <h2>FAIL</h2>
-    <div class="stats">
-      <span>2026-07-27</span>
-      <span>114 tests</span>
-      <span>643.0s</span>
+  <div class="header">
+    <h1>🎤 ASR API v2 Dashboard</h1>
+    <p>Automated testing · Shunyalabs Speech-to-Text API</p>
+  </div>
+  <div class="container">
+
+    <!-- Main dashboard entry -->
+    <div class="card" onclick="location.href='dashboard-v2.html'">
+      <a href="dashboard-v2.html">
+        <div class="icon">📊</div>
+        <div>
+          <div class="title">v2 Dashboard</div>
+          <div class="desc">KPI cards, per-module breakdown, run history, all failures</div>
+        </div>
+        <div class="arrow">→</div>
+      </a>
     </div>
+
+    <!-- Secondary links -->
+    <div class="grid">
+      <div class="card" onclick="location.href='dashboard-v2.html#tab-runs'">
+        <a href="dashboard-v2.html#tab-runs">
+          <div class="icon">🗂️</div>
+          <div>
+            <div class="title">Run History</div>
+            <div class="desc">
+              <span class="status-dot green" id="runDot"></span>
+              <span id="runCount">Loading...</span>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div class="card" onclick="location.href='dashboard-v2.html#tab-failures'">
+        <a href="dashboard-v2.html#tab-failures">
+          <div class="icon">⚠️</div>
+          <div>
+            <div class="title">Failures</div>
+            <div class="desc">
+              <span class="status-dot yellow" id="failDot"></span>
+              <span id="failCount">Loading...</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- Old dashboard (legacy) -->
+    <div class="card" onclick="location.href='index_old.html'" style="opacity:0.6;">
+      <a href="index_old.html">
+        <div class="icon">🔙</div>
+        <div>
+          <div class="title">Legacy Dashboard</div>
+          <div class="desc">Original Shunyalabs ASR QC Dashboard (v1 data)</div>
+        </div>
+        <div class="arrow">↗</div>
+      </a>
+    </div>
+
+  </div>
+  <div class="footer">
+    <span id="statusLine">● Loading...</span>
   </div>
 
-  <div class="kpi-grid">
-    <div class="kpi">
-      <div class="label">Pass Rate</div>
-      <div class="value red">76.3%</div>
-    </div>
-    <div class="kpi">
-      <div class="label">Passed / Total</div>
-      <div class="value">87 / 114</div>
-    </div>
-    <div class="kpi">
-      <div class="label">Failed</div>
-      <div class="value red">27</div>
-    </div>
-    <div class="kpi">
-      <div class="label">Skipped</div>
-      <div class="value yellow">0</div>
-    </div>
-  </div>
+  <script>
+    fetch('runs/index.json')
+      .then(r => r.json())
+      .then(idx => {
+        const runs = idx.runs || [];
+        document.getElementById('runCount').textContent = runs.length + ' runs';
+        document.getElementById('runDot').className = 'status-dot ' + (runs.length > 0 ? 'green' : 'yellow');
 
-  <h2>Per-Module Summary</h2>
-  <table>
-    <thead>
-      <tr><th>Module</th><th>Total</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Avg Latency</th><th>P50</th><th>P95</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Health</strong></td>
-        <td>2</td>
-        <td class="pass">2</td>
-        <td class="fail">0</td>
-        <td>0</td>
-        <td>0ms</td>
-        <td>0ms</td>
-        <td>0ms</td>
-      </tr><tr>
-        <td><strong>Authentication</strong></td>
-        <td>8</td>
-        <td class="pass">8</td>
-        <td class="fail">0</td>
-        <td>0</td>
-        <td>1ms</td>
-        <td>1ms</td>
-        <td>1ms</td>
-      </tr><tr>
-        <td><strong>AudioInput-File</strong></td>
-        <td>24</td>
-        <td class="pass">18</td>
-        <td class="fail">6</td>
-        <td>0</td>
-        <td>6ms</td>
-        <td>6ms</td>
-        <td>9ms</td>
-      </tr><tr>
-        <td><strong>LanguageCode</strong></td>
-        <td>8</td>
-        <td class="pass">8</td>
-        <td class="fail">0</td>
-        <td>0</td>
-        <td>4ms</td>
-        <td>3ms</td>
-        <td>7ms</td>
-      </tr><tr>
-        <td><strong>SpeakerDiarization</strong></td>
-        <td>6</td>
-        <td class="pass">5</td>
-        <td class="fail">1</td>
-        <td>0</td>
-        <td>7ms</td>
-        <td>7ms</td>
-        <td>9ms</td>
-      </tr><tr>
-        <td><strong>WordBoosting</strong></td>
-        <td>7</td>
-        <td class="pass">7</td>
-        <td class="fail">0</td>
-        <td>0</td>
-        <td>7ms</td>
-        <td>7ms</td>
-        <td>8ms</td>
-      </tr><tr>
-        <td><strong>ProfanityMasking</strong></td>
-        <td>5</td>
-        <td class="pass">5</td>
-        <td class="fail">0</td>
-        <td>0</td>
-        <td>7ms</td>
-        <td>7ms</td>
-        <td>8ms</td>
-      </tr><tr>
-        <td><strong>ResponseSchema</strong></td>
-        <td>8</td>
-        <td class="pass">8</td>
-        <td class="fail">0</td>
-        <td>0</td>
-        <td>7ms</td>
-        <td>7ms</td>
-        <td>13ms</td>
-      </tr><tr>
-        <td><strong>SpeechIntelligence</strong></td>
-        <td>11</td>
-        <td class="pass">11</td>
-        <td class="fail">0</td>
-        <td>0</td>
-        <td>2ms</td>
-        <td>2ms</td>
-        <td>3ms</td>
-      </tr><tr>
-        <td><strong>CombinationScenarios</strong></td>
-        <td>6</td>
-        <td class="pass">5</td>
-        <td class="fail">1</td>
-        <td>0</td>
-        <td>4ms</td>
-        <td>1ms</td>
-        <td>8ms</td>
-      </tr><tr>
-        <td><strong>ErrorHandling</strong></td>
-        <td>8</td>
-        <td class="pass">7</td>
-        <td class="fail">1</td>
-        <td>0</td>
-        <td>6ms</td>
-        <td>1ms</td>
-        <td>11ms</td>
-      </tr><tr>
-        <td><strong>Security-Misc</strong></td>
-        <td>5</td>
-        <td class="pass">1</td>
-        <td class="fail">4</td>
-        <td>0</td>
-        <td>10ms</td>
-        <td>11ms</td>
-        <td>11ms</td>
-      </tr><tr>
-        <td><strong>SpeakerManagement</strong></td>
-        <td>6</td>
-        <td class="pass">2</td>
-        <td class="fail">4</td>
-        <td>0</td>
-        <td>11ms</td>
-        <td>11ms</td>
-        <td>11ms</td>
-      </tr><tr>
-        <td><strong>Streaming</strong></td>
-        <td>10</td>
-        <td class="pass">0</td>
-        <td class="fail">10</td>
-        <td>0</td>
-        <td>11ms</td>
-        <td>11ms</td>
-        <td>11ms</td>
-      </tr>
-      <tr class="summary-row">
-        <td><strong>TOTAL</strong></td>
-        <td>114</td>
-        <td class="pass">87</td>
-        <td class="fail">27</td>
-        <td>0</td>
-        <td colspan="3"></td>
-      </tr>
-    </tbody>
-  </table>
-
-  <h2>Failed Tests</h2><div class="failed-tests">
-    <div class="failed-item">
-      <div class="test-id">M03-T01 — M03-T01: Valid base64-encoded audio returns transcription</div>
-      <div class="reason">ApiError: API error [400]: file is required</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: AudioInput-File | Latency: 1ms | 2026-07-27T14:59:14.720Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M03-T02 — M03-T02: data:audio/wav;base64 prefix handled correctly</div>
-      <div class="reason">ApiError: API error [400]: file is required</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: AudioInput-File | Latency: 1ms | 2026-07-27T14:59:14.720Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M03-T04 — M03-T04: Near-limit base64 audio processed</div>
-      <div class="reason">ApiError: API error [400]: file is required</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: AudioInput-File | Latency: 1ms | 2026-07-27T14:59:14.720Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M03-T05 — M03-T05: Oversized base64 returns 413</div>
-      <div class="reason">Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
-
-Expected: [32m413[39m
-Received: [31m400[39m</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: AudioInput-File | Latency: 2ms | 2026-07-27T14:59:14.720Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M02-T09 — M02-T09: Corrupted audio file returns 400</div>
-      <div class="reason">Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
-
-Expected: [32m400[39m
-Received: [31m415[39m</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: AudioInput-File | Latency: 1ms | 2026-07-27T14:59:14.720Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M02-T13 — M02-T13: Audio URL input returns transcription</div>
-      <div class="reason">ApiError: API error [400]: file is required</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: AudioInput-File | Latency: 0ms | 2026-07-27T14:59:14.720Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M06-T05 — M06-T05: diarize=true with response_format=json returns text</div>
-      <div class="reason">Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBeUndefined[2m()[22m
-
-Received: [31m[{"confidence": 0.9748, "end": 8.64, "speaker": "SPEAKER_00", "start": 0.238, "text": "राजनीतिज्ञों ने कहा कि उन्होंने निर्णायक मत को अनावश्यक रूप से निर्धारित करने के लिए अफगान संविधान में काफी स्पष्टता पाई थी"}][39m</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: SpeakerDiarization | Latency: 7ms | 2026-07-27T15:00:25.999Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M14-T06 — M14-T06: Base64 audio + all parameters</div>
-      <div class="reason">ApiError: API error [400]: file is required</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: CombinationScenarios | Latency: 0ms | 2026-07-27T15:03:21.351Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M11-T02 — M11-T02: Invalid/expired token returns 401</div>
-      <div class="reason">Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
-
-Expected: [32m401[39m
-Received: [31m400[39m</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: ErrorHandling | Latency: 0ms | 2026-07-27T15:03:45.394Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M15-T02 — M15-T02: Wrong HTTP method (GET on POST endpoint) returns 405</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: Security-Misc | Latency: 10ms | 2026-07-27T15:04:34.676Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M15-T03 — M15-T03: Unknown route returns 404</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: Security-Misc | Latency: 11ms | 2026-07-27T15:04:34.676Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M15-T04 — M15-T04: Injection attempt (SQL injection in language_code)</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: Security-Misc | Latency: 11ms | 2026-07-27T15:04:34.676Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M15-T05 — M15-T05: Swagger/docs endpoint accessible</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: Security-Misc | Latency: 11ms | 2026-07-27T15:04:34.676Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M18-T01 — M18-T01: Register speaker with name and audio file returns success</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: SpeakerManagement | Latency: 11ms | 2026-07-27T15:05:39.912Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M18-T02 — M18-T02: Register with project parameter</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: SpeakerManagement | Latency: 11ms | 2026-07-27T15:05:39.912Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M18-T03 — M18-T03: Delete existing speaker</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: SpeakerManagement | Latency: 11ms | 2026-07-27T15:05:39.912Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M18-T06 — M18-T06: Missing name parameter returns 400</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: SpeakerManagement | Latency: 11ms | 2026-07-27T15:05:39.912Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M16-T01 — M16-T01: Connect with valid token, receive ready event</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: Streaming | Latency: 11ms | 2026-07-27T15:07:29.478Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M16-T02 — M16-T02: Send PCM audio frames, receive partial events</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: Streaming | Latency: 11ms | 2026-07-27T15:07:29.478Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M16-T03 — M16-T03: Send PCM, receive final event after end message</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: Streaming | Latency: 11ms | 2026-07-27T15:07:29.478Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M16-T04 — M16-T04: Verify speaker field on final when diarize=true</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: Streaming | Latency: 11ms | 2026-07-27T15:07:29.478Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M16-T05 — M16-T05: Wrong token returns error event and socket closes</div>
-      <div class="reason">Error: WebSocket connection failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: Streaming | Latency: 11ms | 2026-07-27T15:07:29.478Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M16-T06 — M16-T06: Missing language field returns error</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: Streaming | Latency: 11ms | 2026-07-27T15:07:29.478Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M16-T07 — M16-T07: Connect to both /v1/realtime and /ws (same behavior)</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: Streaming | Latency: 11ms | 2026-07-27T15:07:29.478Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M16-T08 — M16-T08: Token in query parameter works</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: Streaming | Latency: 11ms | 2026-07-27T15:07:29.478Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M16-T09 — M16-T09: Token in first JSON message works</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: Streaming | Latency: 11ms | 2026-07-27T15:07:29.478Z</div>
-    </div><div class="failed-item">
-      <div class="test-id">M16-T10 — M16-T10: Sample rate 8kHz vs 16kHz produces good transcription</div>
-      <div class="reason">TypeError: fetch failed</div>
-      <div style="color:#64748b;font-size:0.8rem;margin-top:0.25rem">Module: Streaming | Latency: 11ms | 2026-07-27T15:07:29.478Z</div>
-    </div>
-  </div>
-
-  <h2 style="margin-top: 2rem;">All Test Results</h2>
-  <table>
-    <thead>
-      <tr><th>ID</th><th>Module</th><th>Description</th><th>Status</th><th>Latency</th><th>WER</th><th>CER</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>M13-T01</td>
-        <td>Health</td>
-        <td>M13-T01: /health returns status ok @smoke</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M13-T02</td>
-        <td>Health</td>
-        <td>M13-T02: /health responds in under 2 seconds @smoke</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M01-T01</td>
-        <td>Authentication</td>
-        <td>M01-T01: Valid API key returns token with expires_at and expires_in @smoke</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M01-T02</td>
-        <td>Authentication</td>
-        <td>M01-T02: Missing Authorization header returns 400</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M01-T03</td>
-        <td>Authentication</td>
-        <td>M01-T03: Invalid/random API key returns 401</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M01-T04</td>
-        <td>Authentication</td>
-        <td>M01-T04: Empty Bearer value returns 401</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M01-T05</td>
-        <td>Authentication</td>
-        <td>M01-T05: AuthClient caching and refresh works</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M01-T06</td>
-        <td>Authentication</td>
-        <td>M01-T06: API key is not echoed in the response body</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M01-T07</td>
-        <td>Authentication</td>
-        <td>M01-T07: Health endpoint works without auth @smoke</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M01-T08</td>
-        <td>Authentication</td>
-        <td>M01-T08: Auth token expires_in is within expected range (~900s)</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M03-T01</td>
-        <td>AudioInput-File</td>
-        <td>M03-T01: Valid base64-encoded audio returns transcription</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M03-T02</td>
-        <td>AudioInput-File</td>
-        <td>M03-T02: data:audio/wav;base64 prefix handled correctly</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M03-T03</td>
-        <td>AudioInput-File</td>
-        <td>M03-T03: Malformed base64 returns 400</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M03-T04</td>
-        <td>AudioInput-File</td>
-        <td>M03-T04: Near-limit base64 audio processed</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M03-T05</td>
-        <td>AudioInput-File</td>
-        <td>M03-T05: Oversized base64 returns 413</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>2ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M03-T06</td>
-        <td>AudioInput-File</td>
-        <td>M03-T06: Empty base64 string returns 400</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M02-T01</td>
-        <td>AudioInput-File</td>
-        <td>M02-T01: WAV upload returns valid transcription @smoke</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M02-T02</td>
-        <td>AudioInput-File</td>
-        <td>M02-T02: FLAC upload returns valid transcription</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M02-T03</td>
-        <td>AudioInput-File</td>
-        <td>M02-T03: OGG/Opus upload returns valid transcription</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>24ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M02-T04</td>
-        <td>AudioInput-File</td>
-        <td>M02-T04: MP3 at 8kHz sample rate</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M02-T05</td>
-        <td>AudioInput-File</td>
-        <td>M02-T05: MP3 at 16kHz sample rate</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M02-T06</td>
-        <td>AudioInput-File</td>
-        <td>M02-T06: Stereo audio file accepted and processed</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M02-T07</td>
-        <td>AudioInput-File</td>
-        <td>M02-T07: File ~25MB (moderate size)</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>8ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M02-T08</td>
-        <td>AudioInput-File</td>
-        <td>M02-T08: File ~70MB (near limit, expect 200 or 413)</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>8ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M02-T09</td>
-        <td>AudioInput-File</td>
-        <td>M02-T09: Corrupted audio file returns 400</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M02-T10</td>
-        <td>AudioInput-File</td>
-        <td>M02-T10: Empty audio file returns 400</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>6ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M02-T11</td>
-        <td>AudioInput-File</td>
-        <td>M02-T11: Silent audio returns empty transcription</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>6ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M02-T12</td>
-        <td>AudioInput-File</td>
-        <td>M02-T12: Very short audio (<1s) processed</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>6ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M02-T13</td>
-        <td>AudioInput-File</td>
-        <td>M02-T13: Audio URL input returns transcription</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M02-T14</td>
-        <td>AudioInput-File</td>
-        <td>M02-T14: Long audio (max-length) processed</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>9ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M05-T01</td>
-        <td>AudioInput-File</td>
-        <td>M05-T01: Default response_format returns json with only text field @smoke</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M05-T02</td>
-        <td>AudioInput-File</td>
-        <td>M05-T02: Explicit response_format=json returns only text</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>6ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M05-T03</td>
-        <td>AudioInput-File</td>
-        <td>M05-T03: response_format=verbose_json returns full schema</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>6ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M05-T04</td>
-        <td>AudioInput-File</td>
-        <td>M05-T04: Invalid response_format value returns 400</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M04-T01</td>
-        <td>LanguageCode</td>
-        <td>M04-T01: Default language_code (omitted) uses auto detection @smoke</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M04-T02</td>
-        <td>LanguageCode</td>
-        <td>M04-T02: Explicit language_code=en returns English text</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M04-T03</td>
-        <td>LanguageCode</td>
-        <td>M04-T03: Explicit language_code=hi returns Hindi text</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M04-T04</td>
-        <td>LanguageCode</td>
-        <td>M04-T04: Invalid language code returns 400</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M04-T05</td>
-        <td>LanguageCode</td>
-        <td>M04-T05: Non-English audio with auto-detect works</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>6ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M04-T06</td>
-        <td>LanguageCode</td>
-        <td>M04-T06: Case-insensitive language_code (EN vs en)</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M04-T07</td>
-        <td>LanguageCode</td>
-        <td>M04-T07: Empty language_code string returns 400</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M04-T08</td>
-        <td>LanguageCode</td>
-        <td>M04-T08: Multiple language codes each produce valid transcripts</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>3ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M06-T01</td>
-        <td>SpeakerDiarization</td>
-        <td>M06-T01: diarize=true with num_speakers=1 returns single speaker</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>9ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M06-T02</td>
-        <td>SpeakerDiarization</td>
-        <td>M06-T02: diarize=true with num_speakers=2 returns two speakers</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M06-T03</td>
-        <td>SpeakerDiarization</td>
-        <td>M06-T03: diarize=true with omitted num_speakers (auto-detect)</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>6ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M06-T04</td>
-        <td>SpeakerDiarization</td>
-        <td>M06-T04: num_speakers=0 or negative returns 400</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M06-T05</td>
-        <td>SpeakerDiarization</td>
-        <td>M06-T05: diarize=true with response_format=json returns text</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M06-T06</td>
-        <td>SpeakerDiarization</td>
-        <td>M06-T06: diarize=false (default) does not include speaker info</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M07-T01</td>
-        <td>WordBoosting</td>
-        <td>M07-T01: Single phrase boosting affects output</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M07-T02</td>
-        <td>WordBoosting</td>
-        <td>M07-T02: Multiple pipe-separated phrases</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>8ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M07-T03</td>
-        <td>WordBoosting</td>
-        <td>M07-T03: Case-insensitive phrase matching</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M07-T04</td>
-        <td>WordBoosting</td>
-        <td>M07-T04: Default weight behavior</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>6ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M07-T05</td>
-        <td>WordBoosting</td>
-        <td>M07-T05: Higher weight vs default weight</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>6ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M07-T06</td>
-        <td>WordBoosting</td>
-        <td>M07-T06: Weight parameter without phrases</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M07-T07</td>
-        <td>WordBoosting</td>
-        <td>M07-T07: Malformed separator handling</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M09-T01</td>
-        <td>ProfanityMasking</td>
-        <td>M09-T01: Profanity filter on profane audio masks offensive words</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>8ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M09-T02</td>
-        <td>ProfanityMasking</td>
-        <td>M09-T02: profanity_filter=false on profane audio without masking</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M09-T03</td>
-        <td>ProfanityMasking</td>
-        <td>M09-T03: Profanity filter on clean audio (no change expected)</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M09-T04</td>
-        <td>ProfanityMasking</td>
-        <td>M09-T04: Profanity filter with verbose_json response</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>8ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M09-T05</td>
-        <td>ProfanityMasking</td>
-        <td>M09-T05: Multiple profane words in one utterance</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M10-T01</td>
-        <td>ResponseSchema</td>
-        <td>M10-T01: segments[].start and .end are numbers in ascending order</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M10-T02</td>
-        <td>ResponseSchema</td>
-        <td>M10-T02: words[] array present with word, start, end</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M10-T03</td>
-        <td>ResponseSchema</td>
-        <td>M10-T03: audio_duration is a positive float</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M10-T04</td>
-        <td>ResponseSchema</td>
-        <td>M10-T04: inference_time_ms is a positive number</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M10-T05</td>
-        <td>ResponseSchema</td>
-        <td>M10-T05: request_id is a non-empty string, unique per call</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>13ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M10-T06</td>
-        <td>ResponseSchema</td>
-        <td>M10-T06: No unexpected extra fields beyond the schema</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M10-T07</td>
-        <td>ResponseSchema</td>
-        <td>M10-T07: Response Content-Type is application/json</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M10-T08</td>
-        <td>ResponseSchema</td>
-        <td>M10-T08: Hindi transcription in verbose_json has correct structure</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M17-T01</td>
-        <td>SpeechIntelligence</td>
-        <td>M17-T01: Intent detection returns valid intent label</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M17-T02</td>
-        <td>SpeechIntelligence</td>
-        <td>M17-T02: Summarization returns condensed text</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>3ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M17-T03</td>
-        <td>SpeechIntelligence</td>
-        <td>M17-T03: Sentiment analysis returns label and score</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M17-T04</td>
-        <td>SpeechIntelligence</td>
-        <td>M17-T04: All three flags simultaneously</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M17-T05</td>
-        <td>SpeechIntelligence</td>
-        <td>M17-T05: Empty text returns 400</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M17-T06</td>
-        <td>SpeechIntelligence</td>
-        <td>M17-T06: Very long text with summarization</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>3ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M17-T07</td>
-        <td>SpeechIntelligence</td>
-        <td>M17-T07: Missing auth returns 401</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M08-T01</td>
-        <td>SpeechIntelligence</td>
-        <td>M08-T01: enable_intent_detection=true returns intent analysis</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M08-T02</td>
-        <td>SpeechIntelligence</td>
-        <td>M08-T02: All analysis flags omitted (default behavior)</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M08-T03</td>
-        <td>SpeechIntelligence</td>
-        <td>M08-T03: enable_sentiment_analysis=true returns sentiment</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M08-T04</td>
-        <td>SpeechIntelligence</td>
-        <td>M08-T04: Empty text returns 400</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M14-T01</td>
-        <td>CombinationScenarios</td>
-        <td>M14-T01: All params simultaneously (diarize + num_speakers + verbose_json + language)</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M14-T02</td>
-        <td>CombinationScenarios</td>
-        <td>M14-T02: num_speakers + response_format=json (diarize without verbose_json)</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>8ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M14-T03</td>
-        <td>CombinationScenarios</td>
-        <td>M14-T03: Non-English + diarization + word boosting</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M14-T04</td>
-        <td>CombinationScenarios</td>
-        <td>M14-T04: Profanity filter + verbose_json response</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>7ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M14-T05</td>
-        <td>CombinationScenarios</td>
-        <td>M14-T05: Invalid param value among valid params</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M14-T06</td>
-        <td>CombinationScenarios</td>
-        <td>M14-T06: Base64 audio + all parameters</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M11-T01</td>
-        <td>ErrorHandling</td>
-        <td>M11-T01: Malformed request (missing file) returns 400</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M11-T02</td>
-        <td>ErrorHandling</td>
-        <td>M11-T02: Invalid/expired token returns 401</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M11-T03</td>
-        <td>ErrorHandling</td>
-        <td>M11-T03: Unsupported audio format returns 415</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M11-T04</td>
-        <td>ErrorHandling</td>
-        <td>M11-T04: Consistent error shape: all errors have detail field</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M11-T05</td>
-        <td>ErrorHandling</td>
-        <td>M11-T05: Unknown route returns 404</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M11-T06</td>
-        <td>ErrorHandling</td>
-        <td>M11-T06: Wrong HTTP method returns 405</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M11-T07</td>
-        <td>ErrorHandling</td>
-        <td>M11-T07: Rate limiting: rapid requests eventually return 429</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>10ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M11-T08</td>
-        <td>ErrorHandling</td>
-        <td>M11-T08: Oversized file (500MB+) returns 413</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M15-T01</td>
-        <td>Security-Misc</td>
-        <td>M15-T01: HTTPS enforced (HTTP redirected or rejected)</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>5ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M15-T02</td>
-        <td>Security-Misc</td>
-        <td>M15-T02: Wrong HTTP method (GET on POST endpoint) returns 405</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>10ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M15-T03</td>
-        <td>Security-Misc</td>
-        <td>M15-T03: Unknown route returns 404</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M15-T04</td>
-        <td>Security-Misc</td>
-        <td>M15-T04: Injection attempt (SQL injection in language_code)</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M15-T05</td>
-        <td>Security-Misc</td>
-        <td>M15-T05: Swagger/docs endpoint accessible</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M18-T01</td>
-        <td>SpeakerManagement</td>
-        <td>M18-T01: Register speaker with name and audio file returns success</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M18-T02</td>
-        <td>SpeakerManagement</td>
-        <td>M18-T02: Register with project parameter</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M18-T03</td>
-        <td>SpeakerManagement</td>
-        <td>M18-T03: Delete existing speaker</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M18-T04</td>
-        <td>SpeakerManagement</td>
-        <td>M18-T04: Delete non-existent speaker returns success or 404</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M18-T05</td>
-        <td>SpeakerManagement</td>
-        <td>M18-T05: Register duplicate speaker name</td>
-        <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>10ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M18-T06</td>
-        <td>SpeakerManagement</td>
-        <td>M18-T06: Missing name parameter returns 400</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M16-T01</td>
-        <td>Streaming</td>
-        <td>M16-T01: Connect with valid token, receive ready event</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M16-T02</td>
-        <td>Streaming</td>
-        <td>M16-T02: Send PCM audio frames, receive partial events</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M16-T03</td>
-        <td>Streaming</td>
-        <td>M16-T03: Send PCM, receive final event after end message</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M16-T04</td>
-        <td>Streaming</td>
-        <td>M16-T04: Verify speaker field on final when diarize=true</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M16-T05</td>
-        <td>Streaming</td>
-        <td>M16-T05: Wrong token returns error event and socket closes</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M16-T06</td>
-        <td>Streaming</td>
-        <td>M16-T06: Missing language field returns error</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M16-T07</td>
-        <td>Streaming</td>
-        <td>M16-T07: Connect to both /v1/realtime and /ws (same behavior)</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M16-T08</td>
-        <td>Streaming</td>
-        <td>M16-T08: Token in query parameter works</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M16-T09</td>
-        <td>Streaming</td>
-        <td>M16-T09: Token in first JSON message works</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr><tr>
-        <td>M16-T10</td>
-        <td>Streaming</td>
-        <td>M16-T10: Sample rate 8kHz vs 16kHz produces good transcription</td>
-        <td class="fail"><span class="badge fail">FAIL</span></td>
-        <td>11ms</td>
-        <td>-</td>
-        <td>-</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div style="text-align:center;margin-top:2rem;color:#64748b;font-size:0.8rem;">
-    Generated on 2026-07-27T15:07:29.481Z by ASR Testing Framework v2
-  </div>
+        // Count total failures across all runs
+        let totalFail = 0;
+        Promise.all(runs.map(fn =>
+          fetch('runs/' + fn).then(r => r.json()).then(d => {
+            totalFail += d.failures ? d.failures.length : 0;
+          }).catch(() => {})
+        )).then(() => {
+          document.getElementById('failCount').textContent = totalFail + ' failures';
+          document.getElementById('failDot').className = 'status-dot ' + (totalFail > 0 ? 'yellow' : 'green');
+          document.getElementById('statusLine').textContent =
+            '● ' + runs.length + ' runs · ' + totalFail + ' total failures · ' + new Date().toISOString().split('T')[0];
+        });
+      })
+      .catch(() => {
+        document.getElementById('runCount').textContent = 'No runs yet';
+        document.getElementById('statusLine').textContent = '● No data — run tests first';
+      });
+  </script>
 </body>
 </html>

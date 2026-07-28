@@ -1,8 +1,6 @@
-name: Deploy Test Dashboard to GitHub Pages
+name: Deploy Dashboard to GitHub Pages
 on:
-  workflow_dispatch:                       # Manual trigger from GitHub UI
-  schedule:
-    - cron: '30 3 * * 1-5'               # Weekdays ~9:00 AM IST (after scheduled tests)
+  workflow_dispatch:                       # Manual trigger only
 
 jobs:
   test-and-deploy:
@@ -22,19 +20,19 @@ jobs:
 
       - run: npm ci
       - run: npx playwright install chromium
+      - run: npx playwright install-deps chromium
 
-      - name: Run full test suite
-        run: bash scripts/run-all-tests.sh
-        continue-on-error: true           # Deploy report even if some tests fail
+      # Step 1: Run ALL tests module-by-module + generate reports + push to Google Sheets + save run history
+      - name: Run tests & generate reports
+        run: npm run report
         env:
           ASR_BASE_URL: ${{ secrets.ASR_BASE_URL }}
           ASR_API_KEY: ${{ secrets.ASR_API_KEY }}
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
 
-      - name: Generate report
-        run: npm run report
-        continue-on-error: true
-
-      - name: Prepare deployment directory
+      # Step 2: Run prepare-dashboard to copy report + verify runs/
+      - name: Prepare deployment assets
         run: npx ts-node scripts/prepare-dashboard.ts
         continue-on-error: true
 
@@ -44,6 +42,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./deploy
           publish_branch: gh-pages
-          keep_files: true                # Preserve historical reports
+          keep_files: true                # Don't wipe old runs
           user_name: 'asr-test-bot'
           user_email: 'bot@unitedwecare.com'

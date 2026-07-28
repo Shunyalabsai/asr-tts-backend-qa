@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASR v2 Test Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --bg:        #05091A;
+      --bg-card:   #0B162A;
+      --bg-card2:  #0F1E38;
+      --bg-hover:  #162340;
+      --border:    #1A3050;
+      --border2:   #264060;
+      --text:      #E2ECF8;
+      --text-muted:#6A8CAE;
+      --text-sub:  #94A8C0;
+      --cyan:      #00D4FF;
+      --purple:    #7C3AED;
+      --blue:      #2563EB;
+      --green:     #10B981;
+      --red:       #EF4444;
+      --amber:     #F59E0B;
+      --grad:      linear-gradient(135deg, #00D4FF 0%, #7C3AED 100%);
+      --font:      'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      font-size: 13.5px;
+      line-height: 1.55;
+    }
+    .header {
+      background: linear-gradient(135deg, #05091A 0%, #0D1B38 40%, #120840 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 1.75rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .header h1 { font-size: 1.2rem; font-weight: 700; color: #fff; }
+    .header .subtitle { color: var(--text-muted); font-size: 0.8rem; margin-left: auto; }
+    .nav-tabs {
+      display: flex;
+      gap: 0;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border);
+      padding: 0 1.75rem;
+    }
+    .nav-tabs .tab {
+      padding: 0.75rem 1.25rem;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .nav-tabs .tab:hover { color: var(--text); background: var(--bg-hover); }
+    .nav-tabs .tab.active { color: var(--cyan); border-bottom-color: var(--cyan); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .container { padding: 1.25rem 1.75rem; max-width: 1400px; margin: 0 auto; }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+    .kpi {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      text-align: center;
+    }
+    .kpi .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); }
+    .kpi .value { font-size: 1.5rem; font-weight: 700; margin-top: 0.25rem; }
+    .kpi .value.green { color: var(--green); }
+    .kpi .value.red { color: var(--red); }
+    .kpi .value.yellow { color: var(--amber); }
+    .kpi .value.cyan { color: var(--cyan); }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      background: var(--bg-card2);
+      border-bottom: 1px solid var(--border);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .card-body { padding: 0.75rem 1rem; }
+
+    table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+    th { text-align: left; padding: 0.5rem 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
+    td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border2); }
+    tr:hover { background: var(--bg-hover); }
+    .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 600; }
+    .badge.pass { background: #064e3b; color: var(--green); }
+    .badge.fail { background: #7f1d1d; color: var(--red); }
+    .badge.skip { background: #713f12; color: var(--amber); }
+    .text-green { color: var(--green); }
+    .text-red { color: var(--red); }
+    .text-muted { color: var(--text-muted); }
+    .text-sm { font-size: 0.75rem; }
+
+    .run-card {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      margin-bottom: 0.75rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .run-card:hover { border-color: var(--blue); background: var(--bg-hover); }
+    .run-card .run-header { display: flex; align-items: center; gap: 1rem; }
+    .run-card .run-date { font-weight: 600; min-width: 120px; }
+    .run-card .run-bar { flex: 1; height: 8px; border-radius: 4px; background: var(--border); overflow: hidden; display: flex; }
+    .run-card .run-bar .pass-seg { background: var(--green); }
+    .run-card .run-bar .fail-seg { background: var(--red); }
+    .run-detail { display: none; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+    .run-detail.open { display: block; }
+
+    .fail-item {
+      background: rgba(239,68,68,0.05);
+      border: 1px solid rgba(239,68,68,0.2);
+      border-radius: 0.4rem;
+      padding: 0.75rem;
+      margin-bottom: 0.5rem;
+    }
+    .fail-item .fail-title { font-weight: 600; color: var(--red); font-size: 0.8rem; }
+    .fail-item .fail-reason { margin-top: 0.35rem; color: var(--text-sub); font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; }
+    .fail-summary { color: var(--text-muted); font-size: 0.75rem; }
+
+    .empty { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem; }
+
+    .controls {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+    .controls select, .controls input {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.4rem 0.75rem;
+      border-radius: 0.35rem;
+      font-size: 0.8rem;
+    }
+    .controls select:focus, .controls input:focus { outline: none; border-color: var(--blue); }
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: var(--text-muted);
+    }
+    .loading::after { content: '...'; animation: dots 1.5s infinite; }
+    @keyframes dots { 0%,20% { content: '.'; } 40% { content: '..'; } 60%,100% { content: '...'; } }
+
+    .progress-ring { width: 60px; height: 60px; border-radius: 50%; position: relative; margin: 0 auto; }
+    .progress-ring svg { transform: rotate(-90deg); }
+    .progress-ring .bg { fill: none; stroke: var(--border); stroke-width: 4; }
+    .progress-ring .fg { fill: none; stroke: var(--cyan); stroke-width: 4; stroke-linecap: round; transition: stroke-dashoffset 0.5s; }
+    .progress-ring .center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 0.85rem; font-weight: 700; }
+
+    @media (max-width: 768px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .header h1 { font-size: 1rem; }
+      .container { padding: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🎤 ASR API v2 Test Dashboard</h1>
+    <span class="subtitle" id="headerSubtitle">Loading...</span>
+  </div>
+
+  <div class="nav-tabs">
+    <div class="tab active" data-tab="overview">Overview</div>
+    <div class="tab" data-tab="runs">Run History</div>
+    <div class="tab" data-tab="failures">Failures</div>
+    <div class="tab" data-tab="report">Latest Report</div>
+  </div>
+
+  <!-- ════════ OVERVIEW ════════ -->
+  <div class="tab-content active" id="tab-overview">
+    <div class="container">
+      <div class="kpi-grid" id="kpiGrid">
+        <div class="kpi"><div class="label">Total Tests</div><div class="value cyan" id="kpi-total">—</div></div>
+        <div class="kpi"><div class="label">Passed</div><div class="value green" id="kpi-passed">—</div></div>
+        <div class="kpi"><div class="label">Failed</div><div class="value red" id="kpi-failed">—</div></div>
+        <div class="kpi"><div class="label">Pass Rate</div><div class="value" id="kpi-rate">—</div></div>
+        <div class="kpi"><div class="label">Total Runs</div><div class="value cyan" id="kpi-runs">—</div></div>
+        <div class="kpi"><div class="label">Last Run</div><div class="value text-sm" id="kpi-lastrun" style="font-size:0.75rem;margin-top:0.35rem;">—</div></div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">Per-Module Breakdown (Latest Run)</div>
+        <div class="card-body" style="padding:0;overflow-x:auto;">
+          <table>
+            <thead><tr><th>Module</th><th>Total</th><th>Passed</th><th>Failed</th><th>Pass Rate</th><th>Avg Latency</th></tr></thead>
+            <tbody id="moduleTableBody"><tr><td colspan="6" class="loading">Loading</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">Latest Failures</div>
+        <div class="card-body" id="latestFailures">
+          <div class="loading">Loading</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ RUN HISTORY ════════ -->
+  <div class="tab-content" id="tab-runs">
+    <div class="container">
+      <div class="controls">
+        <span style="color:var(--text-muted);font-size:0.8rem;" id="runCount">0 runs</span>
+      </div>
+      <div id="runList"><div class="loading">Loading run history</div></div>
+    </div>
+  </div>
+
+  <!-- ════════ FAILURES ════════ -->
+  <div class="tab-content" id="tab-failures">
+    <div class="container">
+      <div class="controls">
+        <span style="color:var(--text-muted);font-size:0.8rem;" id="failCount">0 failures</span>
+      </div>
+      <div id="failList"><div class="loading">Loading failures</div></div>
+    </div>
+  </div>
+
+  <!-- ════════ REPORT ════════ -->
+  <div class="tab-content" id="tab-report">
+    <div class="container">
+      <div style="text-align:center;padding:2rem;">
+        <p style="color:var(--text-muted);margin-bottom:1rem;">Full HTML report for the latest test run:</p>
+        <a href="v2-report/" class="kpi" style="display:inline-block;padding:1rem 2rem;text-decoration:none;">
+          <div style="font-size:2rem;margin-bottom:0.5rem;">📄</div>
+          <div style="color:var(--text);">Open Latest Report</div>
+        </a>
+        <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-muted);">
+          Or browse <a href="v2-report/" style="color:var(--cyan);">v2-report/</a> directory
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  // ═══════════════════════════════════════════════
+  //  Dashboard JS — load runs JSON + render
+  // ═══════════════════════════════════════════════
+
+  const RUNS_DIR = 'runs/';
+  let allRuns = [];
+
+  // ── Tab switching ──────────────────────────────
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    });
+  });
+
+  // ── Load all run JSON files ────────────────────
+  async function loadAllRuns() {
+    try {
+      // Try to list runs from runs/index.json or auto-discover
+      const indexResp = await fetch(RUNS_DIR + 'index.json');
+      let filenames;
+      if (indexResp.ok) {
+        const idx = await indexResp.json();
+        filenames = idx.runs || [];
+      } else {
+        // Fallback: try common filenames
+        filenames = [];
+      }
+
+      // Load each run
+      const runPromises = filenames.map(async (fn) => {
+        try {
+          const r = await fetch(RUNS_DIR + fn);
+          if (r.ok) return await r.json();
+        } catch(e) {}
+        return null;
+      });
+
+      // Also try to discover from directory listing
+      const runs = (await Promise.all(runPromises)).filter(Boolean);
+      runs.sort((a,b) => (b.date || '').localeCompare(a.date || ''));
+      allRuns = runs;
+      renderAll();
+    } catch(e) {
+      document.querySelectorAll('.loading').forEach(el => {
+        el.textContent = 'No run data available. Run tests first.';
+        el.className = 'empty';
+      });
+      document.getElementById('headerSubtitle').textContent = 'No data';
+    }
+  }
+
+  // ── Render everything ──────────────────────────
+  function renderAll() {
+    if (allRuns.length === 0) return;
+
+    const latest = allRuns[0];
+    document.getElementById('headerSubtitle').textContent =
+      latest.date + ' — ' + latest.passed + '/' + latest.totalTests + ' passed (' + latest.passRate + '%)';
+
+    // KPI cards
+    document.getElementById('kpi-total').textContent = latest.totalTests || '—';
+    document.getElementById('kpi-passed').textContent = latest.passed || '—';
+    document.getElementById('kpi-failed').textContent = latest.failed || '—';
+    const rateEl = document.getElementById('kpi-rate');
+    rateEl.textContent = (latest.passRate || 0) + '%';
+    rateEl.className = 'value ' + ((latest.passRate || 0) >= 80 ? 'green' : 'red');
+    document.getElementById('kpi-runs').textContent = allRuns.length;
+    document.getElementById('kpi-lastrun').textContent = latest.date || '—';
+
+    // Module table
+    const modBody = document.getElementById('moduleTableBody');
+    if (latest.modules && latest.modules.length > 0) {
+      modBody.innerHTML = latest.modules.map(m => {
+        const rate = m.total > 0 ? ((m.passed / m.total) * 100).toFixed(1) + '%' : 'N/A';
+        return '<tr>' +
+          '<td>' + (m.module || m.name) + '</td>' +
+          '<td>' + m.total + '</td>' +
+          '<td class="text-green">' + m.passed + '</td>' +
+          '<td class="text-red">' + m.failed + '</td>' +
+          '<td>' + rate + '</td>' +
+          '<td>' + (m.avgLatencyMs ? Math.round(m.avgLatencyMs) + 'ms' : '-') + '</td>' +
+          '</tr>';
+      }).join('');
+      // Total row
+      modBody.innerHTML += '<tr style="font-weight:600;background:var(--bg-card2);">' +
+        '<td>TOTAL</td><td>' + latest.totalTests + '</td>' +
+        '<td class="text-green">' + latest.passed + '</td>' +
+        '<td class="text-red">' + latest.failed + '</td>' +
+        '<td>' + (latest.passRate || 0) + '%</td><td>-</td></tr>';
+    } else {
+      modBody.innerHTML = '<tr><td colspan="6" class="empty">No module data</td></tr>';
+    }
+
+    // Latest failures
+    const failDiv = document.getElementById('latestFailures');
+    if (latest.failures && latest.failures.length > 0) {
+      failDiv.innerHTML = latest.failures.slice(0, 10).map(f =>
+        '<div class="fail-item">' +
+          '<div class="fail-title">' + (f.testId || f.test_id) + ': ' + (f.description || '') + '</div>' +
+          '<div class="fail-reason">' + (f.failureReason || f.failure_reason || '') + '</div>' +
+        '</div>'
+      ).join('');
+      if (latest.failures.length > 10) {
+        failDiv.innerHTML += '<div class="fail-summary">… and ' + (latest.failures.length - 10) + ' more failures</div>';
+      }
+    } else {
+      failDiv.innerHTML = '<div class="empty">No failures — all tests passed! 🎉</div>';
+    }
+
+    // Run History
+    renderRunHistory();
+    renderFailures();
+  }
+
+  // ── Run History tab ────────────────────────────
+  function renderRunHistory() {
+    const runList = document.getElementById('runList');
+    document.getElementById('runCount').textContent = allRuns.length + ' runs';
+
+    runList.innerHTML = allRuns.map((run, idx) => {
+      const pct = run.totalTests > 0 ? (run.passed / run.totalTests * 100) : 0;
+      const passW = Math.max(2, pct);
+      const failW = Math.max(2, 100 - pct);
+      return '<div class="run-card" onclick="toggleRun(' + idx + ')">' +
+        '<div class="run-header">' +
+          '<div class="run-date">' + (run.date || 'Unknown') + '</div>' +
+          '<div class="run-bar">' +
+            '<div class="pass-seg" style="width:' + passW + '%"></div>' +
+            '<div class="fail-seg" style="width:' + failW + '%"></div>' +
+          '</div>' +
+          '<div><span class="badge pass">' + run.passed + '</span> <span class="badge fail">' + run.failed + '</span></div>' +
+        '</div>' +
+        '<div class="run-detail" id="run-detail-' + idx + '">' +
+          '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0.75rem;margin-bottom:1rem;">' +
+            '<div><div class="text-muted text-sm">Pass Rate</div><div style="font-size:1.1rem;font-weight:700;">' + (run.passRate || pct.toFixed(1)) + '%</div></div>' +
+            '<div><div class="text-muted text-sm">Duration</div><div style="font-size:1.1rem;">' + (run.durationMs ? Math.round(run.durationMs/1000) + 's' : '-') + '</div></div>' +
+          '</div>' +
+          (run.modules && run.modules.length ? '<table><thead><tr><th>Module</th><th>Total</th><th>Passed</th><th>Failed</th><th>Pass Rate</th></tr></thead><tbody>' +
+            run.modules.map(m => '<tr><td>' + (m.module || m.name) + '</td><td>' + m.total + '</td><td class="text-green">' + m.passed + '</td><td class="text-red">' + m.failed + '</td><td>' + (m.total>0? (m.passed/m.total*100).toFixed(1)+'%':'N/A') + '</td></tr>').join('') +
+            '</tbody></table>' : '') +
+          (run.failures && run.failures.length ? '<div style="margin-top:0.75rem;"><div class="text-sm text-muted" style="margin-bottom:0.35rem;">Failures:</div>' +
+            run.failures.map(f => '<div class="fail-item" style="margin-bottom:0.25rem;padding:0.5rem;"><div class="fail-title" style="font-size:0.75rem;">' + (f.testId || f.test_id) + ': ' + (f.description || '') + '</div><div class="fail-reason" style="font-size:0.7rem;">' + (f.failureReason || f.failure_reason || '') + '</div></div>').join('') +
+            '</div>' : '') +
+        '</div>' +
+      '</div>';
+    }).join('');
+  }
+
+  // ── Failures tab ───────────────────────────────
+  function renderFailures() {
+    const failList = document.getElementById('failList');
+    const allFails = [];
+    allRuns.forEach(run => {
+      if (run.failures) {
+        run.failures.forEach(f => allFails.push({ ...f, runDate: run.date }));
+      }
+    });
+    document.getElementById('failCount').textContent = allFails.length + ' failures across ' + allRuns.length + ' runs';
+
+    if (allFails.length === 0) {
+      failList.innerHTML = '<div class="empty">No failures across all runs! 🎉</div>';
+      return;
+    }
+
+    failList.innerHTML = allFails.map(f =>
+      '<div class="fail-item">' +
+        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25rem;">' +
+          '<div class="fail-title">' + (f.testId || f.test_id) + ': ' + (f.description || '') + '</div>' +
+          '<span class="text-muted text-sm">' + (f.runDate || '') + '</span>' +
+        '</div>' +
+        '<div class="fail-reason">' + (f.failureReason || f.failure_reason || 'No error detail') + '</div>' +
+      '</div>'
+    ).join('');
+  }
+
+  // ── Toggle run detail ──────────────────────────
+  function toggleRun(idx) {
+    const el = document.getElementById('run-detail-' + idx);
+    if (el) el.classList.toggle('open');
+  }
+
+  // ── Start ──────────────────────────────────────
+  loadAllRuns();
+  </script>
+</body>
+</html>

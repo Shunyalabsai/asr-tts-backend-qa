@@ -123,7 +123,64 @@ async function main(): Promise<void> {
   await gs.initialize();
   await gs.writeEverything(summary);
 
-  console.log('\n✅ Report generated and pushed to Google Sheets.\n');
+  // ─── Save run history to deploy/runs/ for dashboard ────────────
+  saveRunHistory(summary);
+
+  console.log('\n✅ Reports generated, Google Sheets pushed, run history saved.\n');
+}
+
+/**
+ * Save a run-history JSON file (for the dashboard) and update runs/index.json.
+ */
+function saveRunHistory(summary: any): void {
+  const runDir = path.resolve(process.cwd(), 'deploy', 'runs');
+  if (!fs.existsSync(runDir)) fs.mkdirSync(runDir, { recursive: true });
+
+  const run = {
+    date: summary.date,
+    totalTests: summary.totalTests,
+    passed: summary.passed,
+    failed: summary.failed,
+    skipped: summary.skipped,
+    passRate: (summary.passRate * 100).toFixed(1),
+    durationMs: summary.durationMs || 0,
+    modules: summary.categories.map((c: any) => ({
+      module: c.module,
+      total: c.total,
+      passed: c.passed,
+      failed: c.failed,
+      skipped: c.skipped,
+      avgLatencyMs: c.avgLatencyMs,
+      p50LatencyMs: c.p50LatencyMs,
+      p95LatencyMs: c.p95LatencyMs,
+    })),
+    failures: summary.results.filter((r: any) => r.status === 'FAIL').map((r: any) => ({
+      testId: r.testId,
+      module: r.module,
+      description: r.description,
+      failureReason: r.failureReason,
+      latencyMs: r.latencyMs,
+    })),
+  };
+
+  const runFile = path.join(runDir, `${summary.date}.json`);
+  fs.writeFileSync(runFile, JSON.stringify(run, null, 2));
+  console.log(`Run history saved: ${runFile}`);
+
+  // Update index.json with chronological list of run files
+  const indexPath = path.join(runDir, 'index.json');
+  let existing: string[] = [];
+  try {
+    existing = JSON.parse(fs.readFileSync(indexPath, 'utf-8')).runs || [];
+  } catch { /* fresh start */ }
+  const filename = `${summary.date}.json`;
+  if (!existing.includes(filename)) {
+    existing.push(filename);
+    existing.sort(); // chronological ascending
+  }
+  fs.writeFileSync(indexPath, JSON.stringify({ runs: existing }, null, 2));
+  console.log(`Run index updated: ${existing.length} runs tracked`);
+}
 }
 
 main().catch(err => {
