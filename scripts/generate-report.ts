@@ -47,7 +47,12 @@ const MODULES = [
 /** Parse Playwright JSON output into our TestResult format */
 function parsePlaywrightResults(jsonPath: string, moduleName: string, moduleLabel: string): TestResult[] {
   if (!fs.existsSync(jsonPath)) return [];
-  const raw: PlaywrightSuites = JSON.parse(fs.readFileSync(jsonPath, 'utf-8'));
+  const content = fs.readFileSync(jsonPath, 'utf-8').trim();
+  if (!content) {
+    console.warn(`  ⚠ Empty JSON output for "${moduleLabel}" — no tests ran or runner failed silently`);
+    return [];
+  }
+  const raw: PlaywrightSuites = JSON.parse(content);
   const results: TestResult[] = [];
   for (const suite of raw.suites || []) {
     for (const spec of suite.specs || []) {
