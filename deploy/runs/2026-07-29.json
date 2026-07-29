@@ -1,11 +1,11 @@
 {
   "date": "2026-07-29",
-  "totalTests": 82,
-  "passed": 77,
-  "failed": 5,
+  "totalTests": 114,
+  "passed": 31,
+  "failed": 83,
   "skipped": 0,
-  "passRate": "93.9",
-  "durationMs": 1745415.2704999999,
+  "passRate": "27.2",
+  "durationMs": 739476.969709,
   "modules": [
     {
       "module": "Health",
@@ -13,9 +13,9 @@
       "passed": 2,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1,
-      "p50LatencyMs": 1,
-      "p95LatencyMs": 1
+      "avgLatencyMs": 2,
+      "p50LatencyMs": 2,
+      "p95LatencyMs": 2
     },
     {
       "module": "Authentication",
@@ -28,141 +28,707 @@
       "p95LatencyMs": 1
     },
     {
-      "module": "LanguageCode",
-      "total": 8,
-      "passed": 7,
-      "failed": 1,
+      "module": "AudioInput-File",
+      "total": 24,
+      "passed": 13,
+      "failed": 11,
       "skipped": 0,
-      "avgLatencyMs": 34,
+      "avgLatencyMs": 22.75,
       "p50LatencyMs": 11,
       "p95LatencyMs": 120
     },
     {
+      "module": "LanguageCode",
+      "total": 8,
+      "passed": 0,
+      "failed": 8,
+      "skipped": 0,
+      "avgLatencyMs": 11,
+      "p50LatencyMs": 11,
+      "p95LatencyMs": 11
+    },
+    {
       "module": "SpeakerDiarization",
       "total": 6,
-      "passed": 5,
-      "failed": 1,
+      "passed": 0,
+      "failed": 6,
       "skipped": 0,
-      "avgLatencyMs": 11.166666666666666,
-      "p50LatencyMs": 10,
-      "p95LatencyMs": 17
+      "avgLatencyMs": 11,
+      "p50LatencyMs": 11,
+      "p95LatencyMs": 11
     },
     {
       "module": "WordBoosting",
       "total": 7,
-      "passed": 7,
-      "failed": 0,
+      "passed": 2,
+      "failed": 5,
       "skipped": 0,
-      "avgLatencyMs": 27.142857142857142,
-      "p50LatencyMs": 16,
-      "p95LatencyMs": 62
+      "avgLatencyMs": 0,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 0
     },
     {
       "module": "ProfanityMasking",
       "total": 5,
-      "passed": 5,
-      "failed": 0,
+      "passed": 0,
+      "failed": 5,
       "skipped": 0,
-      "avgLatencyMs": 20,
-      "p50LatencyMs": 22,
-      "p95LatencyMs": 34
+      "avgLatencyMs": 0,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 0
     },
     {
       "module": "ResponseSchema",
       "total": 8,
-      "passed": 8,
-      "failed": 0,
+      "passed": 1,
+      "failed": 7,
       "skipped": 0,
-      "avgLatencyMs": 11.75,
-      "p50LatencyMs": 9,
-      "p95LatencyMs": 20
+      "avgLatencyMs": 0,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 0
     },
     {
       "module": "SpeechIntelligence",
       "total": 11,
-      "passed": 11,
-      "failed": 0,
+      "passed": 0,
+      "failed": 11,
       "skipped": 0,
-      "avgLatencyMs": 2.25,
-      "p50LatencyMs": 2,
-      "p95LatencyMs": 3
+      "avgLatencyMs": 0,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 0
     },
     {
       "module": "CombinationScenarios",
       "total": 6,
-      "passed": 6,
-      "failed": 0,
+      "passed": 0,
+      "failed": 6,
       "skipped": 0,
-      "avgLatencyMs": 22.666666666666668,
-      "p50LatencyMs": 7,
-      "p95LatencyMs": 63
+      "avgLatencyMs": 0,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 0
+    },
+    {
+      "module": "ErrorHandling",
+      "total": 8,
+      "passed": 2,
+      "failed": 6,
+      "skipped": 0,
+      "avgLatencyMs": 0,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 0
     },
     {
       "module": "Security-Misc",
       "total": 5,
-      "passed": 5,
-      "failed": 0,
+      "passed": 1,
+      "failed": 4,
       "skipped": 0,
-      "avgLatencyMs": 3.4,
-      "p50LatencyMs": 3,
-      "p95LatencyMs": 7
+      "avgLatencyMs": 0,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 0
     },
     {
       "module": "SpeakerManagement",
       "total": 6,
-      "passed": 3,
-      "failed": 3,
+      "passed": 2,
+      "failed": 4,
       "skipped": 0,
-      "avgLatencyMs": 29.166666666666668,
-      "p50LatencyMs": 8,
-      "p95LatencyMs": 120
+      "avgLatencyMs": 0,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 0
     },
     {
       "module": "Streaming",
       "total": 10,
-      "passed": 10,
-      "failed": 0,
+      "passed": 0,
+      "failed": 10,
       "skipped": 0,
-      "avgLatencyMs": 5,
-      "p50LatencyMs": 3,
-      "p95LatencyMs": 15
+      "avgLatencyMs": 0,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 0
     }
   ],
   "failures": [
     {
+      "testId": "M03-T02",
+      "module": "AudioInput-File",
+      "description": "M03-T02: data:audio/wav;base64 prefix handled correctly",
+      "failureReason": "ApiError: API error [400]: invalid audio_base64",
+      "latencyMs": 9
+    },
+    {
+      "testId": "M03-T05",
+      "module": "AudioInput-File",
+      "description": "M03-T05: Oversized base64 returns 413",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m413\u001b[39m\nReceived: \u001b[31m400\u001b[39m",
+      "latencyMs": 30
+    },
+    {
+      "testId": "M02-T07",
+      "module": "AudioInput-File",
+      "description": "M02-T07: File ~25MB (moderate size)",
+      "failureReason": "ApiError: API error [408]: Request timed out",
+      "latencyMs": 120
+    },
+    {
+      "testId": "M02-T09",
+      "module": "AudioInput-File",
+      "description": "M02-T09: Corrupted audio file returns 400",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M02-T10",
+      "module": "AudioInput-File",
+      "description": "M02-T10: Empty audio file returns 400",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M02-T13",
+      "module": "AudioInput-File",
+      "description": "M02-T13: Audio URL input returns transcription",
+      "failureReason": "ApiError: API error [400]: could not fetch `url`: HTTPStatusError",
+      "latencyMs": 1
+    },
+    {
+      "testId": "M02-T14",
+      "module": "AudioInput-File",
+      "description": "M02-T14: Long audio (max-length) processed",
+      "failureReason": "ApiError: API error [0]: fetch failed",
+      "latencyMs": 10
+    },
+    {
+      "testId": "M05-T01",
+      "module": "AudioInput-File",
+      "description": "M05-T01: Default response_format returns json with only text field @smoke",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M05-T02",
+      "module": "AudioInput-File",
+      "description": "M05-T02: Explicit response_format=json returns only text",
+      "failureReason": "ApiError: API error [408]: Request timed out",
+      "latencyMs": 127
+    },
+    {
+      "testId": "M05-T03",
+      "module": "AudioInput-File",
+      "description": "M05-T03: response_format=verbose_json returns full schema",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M05-T04",
+      "module": "AudioInput-File",
+      "description": "M05-T04: Invalid response_format value returns 400",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M04-T01",
+      "module": "LanguageCode",
+      "description": "M04-T01: Default language_code (omitted) uses auto detection @smoke",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
       "testId": "M04-T02",
       "module": "LanguageCode",
       "description": "M04-T02: Explicit language_code=en returns English text",
-      "failureReason": "ApiError: API error [408]: Request timed out",
-      "latencyMs": 120
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M04-T03",
+      "module": "LanguageCode",
+      "description": "M04-T03: Explicit language_code=hi returns Hindi text",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M04-T04",
+      "module": "LanguageCode",
+      "description": "M04-T04: Invalid language code returns 400",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M04-T05",
+      "module": "LanguageCode",
+      "description": "M04-T05: Non-English audio with auto-detect works",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M04-T06",
+      "module": "LanguageCode",
+      "description": "M04-T06: Case-insensitive language_code (EN vs en)",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M04-T07",
+      "module": "LanguageCode",
+      "description": "M04-T07: Empty language_code string returns 400",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M04-T08",
+      "module": "LanguageCode",
+      "description": "M04-T08: Multiple language codes each produce valid transcripts",
+      "failureReason": "Error: en: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M06-T01",
+      "module": "SpeakerDiarization",
+      "description": "M06-T01: diarize=true with num_speakers=1 returns single speaker",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M06-T02",
+      "module": "SpeakerDiarization",
+      "description": "M06-T02: diarize=true with num_speakers=2 returns two speakers",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M06-T03",
+      "module": "SpeakerDiarization",
+      "description": "M06-T03: diarize=true with omitted num_speakers (auto-detect)",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M06-T04",
+      "module": "SpeakerDiarization",
+      "description": "M06-T04: num_speakers=0 or negative returns 400",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m",
+      "latencyMs": 0
     },
     {
       "testId": "M06-T05",
       "module": "SpeakerDiarization",
       "description": "M06-T05: diarize=true with response_format=json returns text",
-      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeUndefined\u001b[2m()\u001b[22m\n\nReceived: \u001b[31m[{\"confidence\": 0.9748, \"end\": 8.64, \"speaker\": \"SPEAKER_00\", \"start\": 0.238, \"text\": \"राजनीतिज्ञों ने कहा कि उन्होंने निर्णायक मत को अनावश्यक रूप से निर्धारित करने के लिए अफगान संविधान में काफी स्पष्टता पाई थी\"}]\u001b[39m",
-      "latencyMs": 11
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M06-T06",
+      "module": "SpeakerDiarization",
+      "description": "M06-T06: diarize=false (default) does not include speaker info",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M07-T01",
+      "module": "WordBoosting",
+      "description": "M07-T01: Single phrase boosting affects output",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M07-T02",
+      "module": "WordBoosting",
+      "description": "M07-T02: Multiple pipe-separated phrases",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M07-T03",
+      "module": "WordBoosting",
+      "description": "M07-T03: Case-insensitive phrase matching",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M07-T04",
+      "module": "WordBoosting",
+      "description": "M07-T04: Default weight behavior",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M07-T05",
+      "module": "WordBoosting",
+      "description": "M07-T05: Higher weight vs default weight",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M09-T01",
+      "module": "ProfanityMasking",
+      "description": "M09-T01: Profanity filter on profane audio masks offensive words",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M09-T02",
+      "module": "ProfanityMasking",
+      "description": "M09-T02: profanity_filter=false on profane audio without masking",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M09-T03",
+      "module": "ProfanityMasking",
+      "description": "M09-T03: Profanity filter on clean audio (no change expected)",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M09-T04",
+      "module": "ProfanityMasking",
+      "description": "M09-T04: Profanity filter with verbose_json response",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M09-T05",
+      "module": "ProfanityMasking",
+      "description": "M09-T05: Multiple profane words in one utterance",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M10-T01",
+      "module": "ResponseSchema",
+      "description": "M10-T01: segments[].start and .end are numbers in ascending order",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M10-T02",
+      "module": "ResponseSchema",
+      "description": "M10-T02: words[] array present with word, start, end",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M10-T03",
+      "module": "ResponseSchema",
+      "description": "M10-T03: audio_duration is a positive float",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M10-T04",
+      "module": "ResponseSchema",
+      "description": "M10-T04: inference_time_ms is a positive number",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M10-T05",
+      "module": "ResponseSchema",
+      "description": "M10-T05: request_id is a non-empty string, unique per call",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M10-T06",
+      "module": "ResponseSchema",
+      "description": "M10-T06: No unexpected extra fields beyond the schema",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M10-T08",
+      "module": "ResponseSchema",
+      "description": "M10-T08: Hindi transcription in verbose_json has correct structure",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M17-T01",
+      "module": "SpeechIntelligence",
+      "description": "M17-T01: Intent detection returns valid intent label",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M17-T02",
+      "module": "SpeechIntelligence",
+      "description": "M17-T02: Summarization returns condensed text",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M17-T03",
+      "module": "SpeechIntelligence",
+      "description": "M17-T03: Sentiment analysis returns label and score",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M17-T04",
+      "module": "SpeechIntelligence",
+      "description": "M17-T04: All three flags simultaneously",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M17-T05",
+      "module": "SpeechIntelligence",
+      "description": "M17-T05: Empty text returns 400",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M17-T06",
+      "module": "SpeechIntelligence",
+      "description": "M17-T06: Very long text with summarization",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M17-T07",
+      "module": "SpeechIntelligence",
+      "description": "M17-T07: Missing auth returns 401",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M08-T01",
+      "module": "SpeechIntelligence",
+      "description": "M08-T01: enable_intent_detection=true returns intent analysis",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M08-T02",
+      "module": "SpeechIntelligence",
+      "description": "M08-T02: All analysis flags omitted (default behavior)",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M08-T03",
+      "module": "SpeechIntelligence",
+      "description": "M08-T03: enable_sentiment_analysis=true returns sentiment",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M08-T04",
+      "module": "SpeechIntelligence",
+      "description": "M08-T04: Empty text returns 400",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M14-T01",
+      "module": "CombinationScenarios",
+      "description": "M14-T01: All params simultaneously (diarize + num_speakers + verbose_json + language)",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M14-T02",
+      "module": "CombinationScenarios",
+      "description": "M14-T02: num_speakers + response_format=json (diarize without verbose_json)",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M14-T03",
+      "module": "CombinationScenarios",
+      "description": "M14-T03: Non-English + diarization + word boosting",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M14-T04",
+      "module": "CombinationScenarios",
+      "description": "M14-T04: Profanity filter + verbose_json response",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M14-T05",
+      "module": "CombinationScenarios",
+      "description": "M14-T05: Invalid param value among valid params",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31mundefined\u001b[39m",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M14-T06",
+      "module": "CombinationScenarios",
+      "description": "M14-T06: Base64 audio + all parameters",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M11-T01",
+      "module": "ErrorHandling",
+      "description": "M11-T01: Malformed request (missing file) returns 400",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M11-T02",
+      "module": "ErrorHandling",
+      "description": "M11-T02: Invalid/expired token returns 401",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M11-T03",
+      "module": "ErrorHandling",
+      "description": "M11-T03: Unsupported audio format returns 415",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M11-T04",
+      "module": "ErrorHandling",
+      "description": "M11-T04: Consistent error shape: all errors have detail field",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M11-T05",
+      "module": "ErrorHandling",
+      "description": "M11-T05: Unknown route returns 404",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M11-T06",
+      "module": "ErrorHandling",
+      "description": "M11-T06: Wrong HTTP method returns 405",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M15-T02",
+      "module": "Security-Misc",
+      "description": "M15-T02: Wrong HTTP method (GET on POST endpoint) returns 405",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M15-T03",
+      "module": "Security-Misc",
+      "description": "M15-T03: Unknown route returns 404",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M15-T04",
+      "module": "Security-Misc",
+      "description": "M15-T04: Injection attempt (SQL injection in language_code)",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M15-T05",
+      "module": "Security-Misc",
+      "description": "M15-T05: Swagger/docs endpoint accessible",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M18-T01",
+      "module": "SpeakerManagement",
+      "description": "M18-T01: Register speaker with name and audio file returns success",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
     },
     {
       "testId": "M18-T02",
       "module": "SpeakerManagement",
       "description": "M18-T02: Register with project parameter",
-      "failureReason": "ApiError: API error [408]: Request timed out",
-      "latencyMs": 120
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
     },
     {
       "testId": "M18-T03",
       "module": "SpeakerManagement",
       "description": "M18-T03: Delete existing speaker",
-      "failureReason": "ApiError: API error [422]: [object Object]",
-      "latencyMs": 8
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
     },
     {
       "testId": "M18-T06",
       "module": "SpeakerManagement",
       "description": "M18-T06: Missing name parameter returns 400",
-      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m422\u001b[39m",
-      "latencyMs": 1
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M16-T01",
+      "module": "Streaming",
+      "description": "M16-T01: Connect with valid token, receive ready event",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M16-T02",
+      "module": "Streaming",
+      "description": "M16-T02: Send PCM audio frames, receive partial events",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M16-T03",
+      "module": "Streaming",
+      "description": "M16-T03: Send PCM, receive final event after end message",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M16-T04",
+      "module": "Streaming",
+      "description": "M16-T04: Verify speaker field on final when diarize=true",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M16-T05",
+      "module": "Streaming",
+      "description": "M16-T05: Wrong token returns error event and socket closes",
+      "failureReason": "Error: WebSocket connection failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M16-T06",
+      "module": "Streaming",
+      "description": "M16-T06: Missing language field returns error",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M16-T07",
+      "module": "Streaming",
+      "description": "M16-T07: Connect to both /v1/realtime and /ws (same behavior)",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M16-T08",
+      "module": "Streaming",
+      "description": "M16-T08: Token in query parameter works",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M16-T09",
+      "module": "Streaming",
+      "description": "M16-T09: Token in first JSON message works",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M16-T10",
+      "module": "Streaming",
+      "description": "M16-T10: Sample rate 8kHz vs 16kHz produces good transcription",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 0
     }
   ]
 }

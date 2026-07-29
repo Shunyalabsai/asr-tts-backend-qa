@@ -52,7 +52,13 @@ function parsePlaywrightResults(jsonPath: string, moduleName: string, moduleLabe
     console.warn(`  ⚠ Empty JSON output for "${moduleLabel}" — no tests ran or runner failed silently`);
     return [];
   }
-  const raw: PlaywrightSuites = JSON.parse(content);
+  let raw: PlaywrightSuites;
+  try {
+    raw = JSON.parse(content);
+  } catch {
+    console.warn(`  ⚠ Invalid JSON output for "${moduleLabel}" — file may be truncated (${content.length} bytes)`);
+    return [];
+  }
   const results: TestResult[] = [];
   for (const suite of raw.suites || []) {
     for (const spec of suite.specs || []) {
@@ -88,8 +94,8 @@ async function main(): Promise<void> {
 
     try {
       execSync(
-        `npx playwright test "src/features/${mod.name}/" --reporter=json --workers=1 2>/dev/null > "${jsonPath}"`,
-        { cwd: process.cwd(), timeout: 300000, stdio: ['ignore', 'pipe', 'pipe'] }
+        `npx playwright test "src/features/${mod.name}/" --reporter=json --workers=1 > "${jsonPath}"`,
+        { cwd: process.cwd(), timeout: 600000, stdio: ['ignore', 'pipe', 'pipe'] }
       );
     } catch {
       // exit code 1 is normal (failing tests)
