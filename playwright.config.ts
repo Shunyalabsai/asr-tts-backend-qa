@@ -13,6 +13,7 @@ export default defineConfig({
     ['list'],
     ['json', { outputFile: 'reports/test-results.json' }],
     ['html', { outputFolder: 'reports/html-report' }],
+    ['./src/reporting/PlaywrightDashboardReporter.ts'],
   ],
   use: {
     baseURL: process.env.ASR_BASE_URL || 'https://asrv2prod.shunyalabs.ai',

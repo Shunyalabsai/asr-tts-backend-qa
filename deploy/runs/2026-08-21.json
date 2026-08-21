@@ -5,7 +5,7 @@
   "failed": 0,
   "skipped": 0,
   "passRate": "100.0",
-  "durationMs": 202704.734125,
+  "durationMs": 203230.54541700002,
   "modules": [
     {
       "module": "Health",
@@ -33,7 +33,7 @@
       "passed": 24,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.75,
+      "avgLatencyMs": 1.9411764705882353,
       "p50LatencyMs": 1,
       "p95LatencyMs": 9
     },
@@ -43,7 +43,7 @@
       "passed": 8,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.4,
+      "avgLatencyMs": 1.3333333333333333,
       "p50LatencyMs": 1,
       "p95LatencyMs": 2
     },
@@ -53,7 +53,7 @@
       "passed": 6,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.2,
+      "avgLatencyMs": 1.25,
       "p50LatencyMs": 1,
       "p95LatencyMs": 2
     },
@@ -63,7 +63,7 @@
       "passed": 7,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.1666666666666667,
+      "avgLatencyMs": 1.25,
       "p50LatencyMs": 1,
       "p95LatencyMs": 2
     },
@@ -83,7 +83,7 @@
       "passed": 8,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.2857142857142858,
+      "avgLatencyMs": 1.1428571428571428,
       "p50LatencyMs": 1,
       "p95LatencyMs": 2
     },
@@ -93,7 +93,7 @@
       "passed": 11,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.75,
+      "avgLatencyMs": 2.125,
       "p50LatencyMs": 2,
       "p95LatencyMs": 3
     },
@@ -103,9 +103,9 @@
       "passed": 6,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.25,
+      "avgLatencyMs": 1,
       "p50LatencyMs": 1,
-      "p95LatencyMs": 2
+      "p95LatencyMs": 1
     },
     {
       "module": "ErrorHandling",
@@ -113,9 +113,9 @@
       "passed": 8,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 10.333333333333334,
+      "avgLatencyMs": 9.666666666666666,
       "p50LatencyMs": 1,
-      "p95LatencyMs": 29
+      "p95LatencyMs": 27
     },
     {
       "module": "Security-Misc",
@@ -153,9 +153,9 @@
       "passed": 15,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.7,
+      "avgLatencyMs": 1.8,
       "p50LatencyMs": 1,
-      "p95LatencyMs": 4
+      "p95LatencyMs": 5
     }
   ],
   "failures": []
