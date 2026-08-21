@@ -58,7 +58,7 @@
     <div class="stats">
       <span>2026-08-21</span>
       <span>129 tests</span>
-      <span>203.2s</span>
+      <span>193.2s</span>
     </div>
   </div>
 
@@ -102,9 +102,9 @@
         <td class="pass">8</td>
         <td class="fail">0</td>
         <td>0</td>
-        <td>1ms</td>
-        <td>1ms</td>
-        <td>1ms</td>
+        <td>0ms</td>
+        <td>0ms</td>
+        <td>0ms</td>
       </tr><tr>
         <td><strong>AudioInput-File</strong></td>
         <td>24</td>
@@ -140,7 +140,7 @@
         <td>0</td>
         <td>1ms</td>
         <td>1ms</td>
-        <td>2ms</td>
+        <td>1ms</td>
       </tr><tr>
         <td><strong>ProfanityMasking</strong></td>
         <td>5</td>
@@ -149,7 +149,7 @@
         <td>0</td>
         <td>2ms</td>
         <td>2ms</td>
-        <td>3ms</td>
+        <td>2ms</td>
       </tr><tr>
         <td><strong>ResponseSchema</strong></td>
         <td>8</td>
@@ -167,7 +167,7 @@
         <td>0</td>
         <td>2ms</td>
         <td>2ms</td>
-        <td>3ms</td>
+        <td>2ms</td>
       </tr><tr>
         <td><strong>CombinationScenarios</strong></td>
         <td>6</td>
@@ -221,7 +221,7 @@
         <td>0</td>
         <td>2ms</td>
         <td>1ms</td>
-        <td>5ms</td>
+        <td>4ms</td>
       </tr>
       <tr class="summary-row">
         <td><strong>TOTAL</strong></td>
@@ -263,7 +263,7 @@
         <td>Authentication</td>
         <td>M01-T01: Valid API key returns token with expires_at and expires_in @smoke</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>-</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -327,7 +327,7 @@
         <td>AudioInput-File</td>
         <td>M03-T01: Valid base64-encoded audio returns transcription</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>3ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -383,7 +383,7 @@
         <td>AudioInput-File</td>
         <td>M02-T02: FLAC upload returns valid transcription</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -399,7 +399,7 @@
         <td>AudioInput-File</td>
         <td>M02-T04: MP3 at 8kHz sample rate</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>-</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -407,7 +407,7 @@
         <td>AudioInput-File</td>
         <td>M02-T05: MP3 at 16kHz sample rate</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>-</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -415,7 +415,7 @@
         <td>AudioInput-File</td>
         <td>M02-T06: Stereo audio file accepted and processed</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -431,7 +431,7 @@
         <td>AudioInput-File</td>
         <td>M02-T08: File ~70MB (near limit, expect 200 or 413)</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>3ms</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -495,7 +495,7 @@
         <td>AudioInput-File</td>
         <td>M05-T02: Explicit response_format=json returns only text</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>-</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -511,7 +511,7 @@
         <td>AudioInput-File</td>
         <td>M05-T04: Invalid response_format value returns 400</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>-</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -535,7 +535,7 @@
         <td>LanguageCode</td>
         <td>M04-T03: Explicit language_code=hi returns Hindi text</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -607,7 +607,7 @@
         <td>SpeakerDiarization</td>
         <td>M06-T04: num_speakers=0 or negative returns 400</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>-</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -615,7 +615,7 @@
         <td>SpeakerDiarization</td>
         <td>M06-T05: diarize=true with response_format=json returns text</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -631,7 +631,7 @@
         <td>WordBoosting</td>
         <td>M07-T01: Single phrase boosting affects output</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -647,7 +647,7 @@
         <td>WordBoosting</td>
         <td>M07-T03: Case-insensitive phrase matching</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>-</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -663,7 +663,7 @@
         <td>WordBoosting</td>
         <td>M07-T05: Higher weight vs default weight</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -671,7 +671,7 @@
         <td>WordBoosting</td>
         <td>M07-T06: Weight parameter without phrases</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -679,7 +679,7 @@
         <td>WordBoosting</td>
         <td>M07-T07: Malformed separator handling</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>-</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -687,7 +687,7 @@
         <td>ProfanityMasking</td>
         <td>M09-T01: Profanity filter on profane audio masks offensive words</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>3ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -799,7 +799,7 @@
         <td>SpeechIntelligence</td>
         <td>M17-T02: Summarization returns condensed text</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>3ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -863,7 +863,7 @@
         <td>SpeechIntelligence</td>
         <td>M08-T03: enable_sentiment_analysis=true returns sentiment</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -895,7 +895,7 @@
         <td>CombinationScenarios</td>
         <td>M14-T03: Non-English + diarization + word boosting</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>-</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -1175,7 +1175,7 @@
         <td>TTS</td>
         <td>TTS_LATEX_03: Synthesize Hindi mathematics with LaTeX</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>5ms</td>
+        <td>4ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -1279,7 +1279,7 @@
   </table>
 
   <div style="text-align:center;margin-top:2rem;color:#64748b;font-size:0.8rem;">
-    Generated on 2026-08-21T13:03:09.082Z by ASR Testing Framework v2
+    Generated on 2026-08-21T13:34:13.560Z by ASR Testing Framework v2
   </div>
 </body>
 </html>

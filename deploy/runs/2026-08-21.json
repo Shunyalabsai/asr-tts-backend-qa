@@ -5,7 +5,7 @@
   "failed": 0,
   "skipped": 0,
   "passRate": "100.0",
-  "durationMs": 203230.54541700002,
+  "durationMs": 193184.466709,
   "modules": [
     {
       "module": "Health",
@@ -23,9 +23,9 @@
       "passed": 8,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1,
-      "p50LatencyMs": 1,
-      "p95LatencyMs": 1
+      "avgLatencyMs": 0,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 0
     },
     {
       "module": "AudioInput-File",
@@ -33,7 +33,7 @@
       "passed": 24,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.9411764705882353,
+      "avgLatencyMs": 1.8461538461538463,
       "p50LatencyMs": 1,
       "p95LatencyMs": 9
     },
@@ -43,7 +43,7 @@
       "passed": 8,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.3333333333333333,
+      "avgLatencyMs": 1.25,
       "p50LatencyMs": 1,
       "p95LatencyMs": 2
     },
@@ -63,9 +63,9 @@
       "passed": 7,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.25,
+      "avgLatencyMs": 1,
       "p50LatencyMs": 1,
-      "p95LatencyMs": 2
+      "p95LatencyMs": 1
     },
     {
       "module": "ProfanityMasking",
@@ -73,9 +73,9 @@
       "passed": 5,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 2,
+      "avgLatencyMs": 1.75,
       "p50LatencyMs": 2,
-      "p95LatencyMs": 3
+      "p95LatencyMs": 2
     },
     {
       "module": "ResponseSchema",
@@ -93,9 +93,9 @@
       "passed": 11,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 2.125,
+      "avgLatencyMs": 1.875,
       "p50LatencyMs": 2,
-      "p95LatencyMs": 3
+      "p95LatencyMs": 2
     },
     {
       "module": "CombinationScenarios",
@@ -153,9 +153,9 @@
       "passed": 15,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.8,
+      "avgLatencyMs": 1.7,
       "p50LatencyMs": 1,
-      "p95LatencyMs": 5
+      "p95LatencyMs": 4
     }
   ],
   "failures": []
