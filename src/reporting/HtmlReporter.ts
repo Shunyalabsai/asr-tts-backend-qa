@@ -24,7 +24,7 @@ export class HtmlReporter {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ASR Test Report — ${summary.date}</title>
+  <title>Shunya Labs STT & TTS Test Report — ${summary.date}</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; padding: 2rem; }
@@ -43,6 +43,7 @@ export class HtmlReporter {
     .kpi .value.green { color: #22c55e; }
     .kpi .value.red { color: #ef4444; }
     .kpi .value.yellow { color: #eab308; }
+    .kpi .value.cyan { color: #06b6d4; }
     table { width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 0.75rem; overflow: hidden; }
     th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #334155; font-size: 0.9rem; }
     th { background: #334155; color: #94a3b8; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
@@ -61,6 +62,8 @@ export class HtmlReporter {
     .badge.pass { background: #065f46; color: #22c55e; }
     .badge.fail { background: #7f1d1d; color: #ef4444; }
     .badge.skip { background: #713f12; color: #eab308; }
+    .badge.tts { background: #4338ca; color: #a5b4fc; }
+    .badge.stt { background: #0e7490; color: #67e8f9; }
     .failed-tests { margin-top: 2rem; }
     .failed-item { background: #1e293b; border-radius: 0.5rem; padding: 1rem; margin-bottom: 0.75rem; border: 1px solid #7f1d1d; }
     .failed-item .test-id { font-weight: 600; color: #f87171; }
@@ -69,7 +72,10 @@ export class HtmlReporter {
 </head>
 <body>
   <div class="banner ${overallStatus === 'PASS' ? 'pass' : 'fail'}">
-    <h2>${overallStatus}</h2>
+    <div>
+      <h1 style="font-size: 1.8rem; margin:0;">🎙️ Shunya Labs STT & TTS Test Execution</h1>
+      <div style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.25rem;">Overall Status: <strong>${overallStatus}</strong></div>
+    </div>
     <div class="stats">
       <span>${summary.date}</span>
       <span>${summary.totalTests} tests</span>

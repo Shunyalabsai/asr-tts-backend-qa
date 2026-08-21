@@ -4,6 +4,7 @@ import { execSync } from 'child_process';
 import { SummaryBuilder, JsonReporter, HtmlReporter } from '../src/reporting';
 import { GoogleSheetsReporter } from '../src/reporting';
 import type { TestResult } from '../src/types';
+import { prepareDashboard } from './prepare-dashboard';
 
 interface PlaywrightSuites {
   suites?: {
@@ -150,7 +151,10 @@ async function main(): Promise<void> {
   // ─── Save run history to deploy/runs/ for dashboard ────────────
   saveRunHistory(summary);
 
-  console.log('\n✅ Reports generated, Google Sheets pushed, run history saved.\n');
+  // ─── Prepare dashboard assets in deploy/ ───────────────────────
+  prepareDashboard();
+
+  console.log('\n✅ Reports generated, Google Sheets pushed, run history & dashboard updated.\n');
 }
 
 /**

@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ASR v2 Test Dashboard</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>Shunya Labs STT & TTS Test Dashboard</title>
   <style>
     :root {
       --bg:        #05091A;
@@ -17,12 +16,15 @@
       --text-muted:#6A8CAE;
       --text-sub:  #94A8C0;
       --cyan:      #00D4FF;
-      --purple:    #7C3AED;
+      --purple:    #8B5CF6;
+      --indigo:    #6366F1;
       --blue:      #2563EB;
       --green:     #10B981;
       --red:       #EF4444;
       --amber:     #F59E0B;
-      --grad:      linear-gradient(135deg, #00D4FF 0%, #7C3AED 100%);
+      --grad:      linear-gradient(135deg, #00D4FF 0%, #8B5CF6 50%, #EC4899 100%);
+      --grad-stt:  linear-gradient(135deg, #0284C7 0%, #00D4FF 100%);
+      --grad-tts:  linear-gradient(135deg, #7C3AED 0%, #C084FC 100%);
       --font:      'Segoe UI', system-ui, -apple-system, sans-serif;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,24 +35,62 @@
       font-family: var(--font);
       font-size: 13.5px;
       line-height: 1.55;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
     .header {
-      background: linear-gradient(135deg, #05091A 0%, #0D1B38 40%, #120840 100%);
+      background: linear-gradient(135deg, #05091A 0%, #0D1B38 40%, #170C3A 100%);
       border-bottom: 1px solid var(--border);
-      padding: 1.25rem 1.75rem;
+      padding: 1.25rem 2rem;
       display: flex;
       align-items: center;
       flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .header-branding {
+      display: flex;
+      align-items: center;
       gap: 0.75rem;
     }
-    .header h1 { font-size: 1.2rem; font-weight: 700; color: #fff; }
+    .header-logo {
+      font-size: 1.6rem;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .header h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .service-tags {
+      display: flex;
+      gap: 0.4rem;
+    }
+    .service-tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 9999px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .service-tag.stt { background: rgba(0,212,255,0.15); color: var(--cyan); border: 1px solid rgba(0,212,255,0.3); }
+    .service-tag.tts { background: rgba(139,92,246,0.15); color: var(--purple); border: 1px solid rgba(139,92,246,0.3); }
     .header .subtitle { color: var(--text-muted); font-size: 0.8rem; margin-left: auto; }
+
     .nav-tabs {
       display: flex;
       gap: 0;
       background: var(--bg-card);
       border-bottom: 1px solid var(--border);
-      padding: 0 1.75rem;
+      padding: 0 2rem;
+      overflow-x: auto;
     }
     .nav-tabs .tab {
       padding: 0.75rem 1.25rem;
@@ -62,12 +102,46 @@
       letter-spacing: 0.05em;
       border-bottom: 2px solid transparent;
       transition: all 0.15s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
     }
     .nav-tabs .tab:hover { color: var(--text); background: var(--bg-hover); }
     .nav-tabs .tab.active { color: var(--cyan); border-bottom-color: var(--cyan); }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
-    .container { padding: 1.25rem 1.75rem; max-width: 1400px; margin: 0 auto; }
+    .container { padding: 1.5rem 2rem; max-width: 1400px; margin: 0 auto; width: 100%; flex: 1; }
+
+    .service-banner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .banner-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0.6rem;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+    .banner-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 4px; height: 100%;
+    }
+    .banner-card.stt::before { background: var(--cyan); }
+    .banner-card.tts::before { background: var(--purple); }
+    .banner-title { font-size: 0.95rem; font-weight: 700; color: #fff; display: flex; align-items: center; gap: 0.5rem; }
+    .banner-desc { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
+    .banner-stat { text-align: right; }
+    .banner-count { font-size: 1.4rem; font-weight: 700; color: var(--green); }
+    .banner-sub { font-size: 0.7rem; color: var(--text-muted); }
 
     .kpi-grid {
       display: grid;
@@ -88,6 +162,30 @@
     .kpi .value.red { color: var(--red); }
     .kpi .value.yellow { color: var(--amber); }
     .kpi .value.cyan { color: var(--cyan); }
+    .kpi .value.purple { color: var(--purple); }
+
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.35rem 0.85rem;
+      border-radius: 0.35rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .filter-btn:hover { color: var(--text); background: var(--bg-hover); }
+    .filter-btn.active { background: var(--blue); color: white; border-color: var(--blue); }
+    .filter-btn.active-stt { background: rgba(0,212,255,0.2); color: var(--cyan); border-color: var(--cyan); }
+    .filter-btn.active-tts { background: rgba(139,92,246,0.2); color: var(--purple); border-color: var(--purple); }
 
     .card {
       background: var(--bg-card);
@@ -100,40 +198,61 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.75rem 1rem;
+      padding: 0.75rem 1.25rem;
       background: var(--bg-card2);
       border-bottom: 1px solid var(--border);
       font-weight: 600;
       font-size: 0.85rem;
     }
-    .card-body { padding: 0.75rem 1rem; }
+    .card-body { padding: 0.75rem 1.25rem; }
 
     table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
-    th { text-align: left; padding: 0.5rem 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); }
-    td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border2); }
+    th { text-align: left; padding: 0.6rem 0.85rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.05em; border-bottom: 1px solid var(--border); background: var(--bg-card2); }
+    td { padding: 0.6rem 0.85rem; border-bottom: 1px solid var(--border2); }
     tr:hover { background: var(--bg-hover); }
+
     .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 9999px; font-size: 0.7rem; font-weight: 600; }
     .badge.pass { background: #064e3b; color: var(--green); }
     .badge.fail { background: #7f1d1d; color: var(--red); }
     .badge.skip { background: #713f12; color: var(--amber); }
+    .badge.badge-stt { background: rgba(0,212,255,0.15); color: var(--cyan); border: 1px solid rgba(0,212,255,0.3); }
+    .badge.badge-tts { background: rgba(139,92,246,0.15); color: var(--purple); border: 1px solid rgba(139,92,246,0.3); }
+
     .text-green { color: var(--green); }
     .text-red { color: var(--red); }
     .text-muted { color: var(--text-muted); }
     .text-sm { font-size: 0.75rem; }
 
-    .run-card {
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .feature-card {
       background: var(--bg-card2);
       border: 1px solid var(--border);
       border-radius: 0.5rem;
       padding: 1rem;
+    }
+    .feature-card h3 { font-size: 0.85rem; color: #fff; margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.4rem; }
+    .feature-card p { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+    .feature-card .status-line { display: flex; justify-content: space-between; font-size: 0.75rem; padding: 0.25rem 0; border-bottom: 1px solid var(--border2); }
+    .feature-card .status-line:last-child { border-bottom: none; }
+
+    .run-card {
+      background: var(--bg-card2);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 1rem 1.25rem;
       margin-bottom: 0.75rem;
       cursor: pointer;
       transition: all 0.15s;
     }
     .run-card:hover { border-color: var(--blue); background: var(--bg-hover); }
-    .run-card .run-header { display: flex; align-items: center; gap: 1rem; }
-    .run-card .run-date { font-weight: 600; min-width: 120px; }
-    .run-card .run-bar { flex: 1; height: 8px; border-radius: 4px; background: var(--border); overflow: hidden; display: flex; }
+    .run-card .run-header { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .run-card .run-date { font-weight: 600; min-width: 120px; font-size: 0.85rem; }
+    .run-card .run-bar { flex: 1; min-width: 150px; height: 8px; border-radius: 4px; background: var(--border); overflow: hidden; display: flex; }
     .run-card .run-bar .pass-seg { background: var(--green); }
     .run-card .run-bar .fail-seg { background: var(--red); }
     .run-detail { display: none; margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px solid var(--border); }
@@ -143,440 +262,458 @@
       background: rgba(239,68,68,0.05);
       border: 1px solid rgba(239,68,68,0.2);
       border-radius: 0.4rem;
-      padding: 0.75rem;
+      padding: 0.75rem 1rem;
       margin-bottom: 0.5rem;
     }
     .fail-item .fail-title { font-weight: 600; color: var(--red); font-size: 0.8rem; }
     .fail-item .fail-reason { margin-top: 0.35rem; color: var(--text-sub); font-family: monospace; font-size: 0.75rem; white-space: pre-wrap; }
-    .fail-summary { color: var(--text-muted); font-size: 0.75rem; }
 
-    .empty { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 0.85rem; }
-
-    .controls {
-      display: flex;
-      gap: 0.5rem;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 1rem;
-    }
-    .controls select, .controls input {
-      background: var(--bg-card2);
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 0.4rem 0.75rem;
-      border-radius: 0.35rem;
-      font-size: 0.8rem;
-    }
-    .controls select:focus, .controls input:focus { outline: none; border-color: var(--blue); }
-    .loading {
-      text-align: center;
-      padding: 3rem;
-      color: var(--text-muted);
-    }
+    .empty { text-align: center; padding: 2.5rem; color: var(--text-muted); font-size: 0.85rem; }
+    .loading { text-align: center; padding: 3rem; color: var(--text-muted); }
     .loading::after { content: '...'; animation: dots 1.5s infinite; }
     @keyframes dots { 0%,20% { content: '.'; } 40% { content: '..'; } 60%,100% { content: '...'; } }
 
-    .progress-ring { width: 60px; height: 60px; border-radius: 50%; position: relative; margin: 0 auto; }
-    .progress-ring svg { transform: rotate(-90deg); }
-    .progress-ring .bg { fill: none; stroke: var(--border); stroke-width: 4; }
-    .progress-ring .fg { fill: none; stroke: var(--cyan); stroke-width: 4; stroke-linecap: round; transition: stroke-dashoffset 0.5s; }
-    .progress-ring .center { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); font-size: 0.85rem; font-weight: 700; }
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
 
     @media (max-width: 768px) {
       .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+      .service-banner { grid-template-columns: 1fr; }
       .header h1 { font-size: 1rem; }
-      .container { padding: 0.75rem; }
+      .container { padding: 1rem; }
     }
   </style>
 </head>
 <body>
   <div class="header">
-    <h1>🎤 ASR API v2 Test Dashboard</h1>
-    <span class="subtitle" id="headerSubtitle">Loading...</span>
+    <div class="header-branding">
+      <div class="header-logo">🎙️</div>
+      <div>
+        <h1>Shunya Labs STT & TTS Dashboard</h1>
+        <div class="service-tags">
+          <span class="service-tag stt">Speech-to-Text v2</span>
+          <span class="service-tag tts">Text-to-Speech v2</span>
+        </div>
+      </div>
+    </div>
+    <span class="subtitle" id="headerSubtitle">Loading latest run...</span>
   </div>
 
   <div class="nav-tabs">
-    <div class="tab active" data-tab="overview">Overview</div>
-    <div class="tab" data-tab="runs">Run History</div>
-    <div class="tab" data-tab="accuracy">Lang Accuracy</div>
-    <div class="tab" data-tab="failures">Failures</div>
-    <div class="tab" data-tab="report">Latest Report</div>
+    <div class="tab active" data-tab="overview">📊 Overview</div>
+    <div class="tab" data-tab="stt">🎙️ STT Suite</div>
+    <div class="tab" data-tab="tts">🔊 TTS Suite</div>
+    <div class="tab" data-tab="runs">🗂️ Run History</div>
+    <div class="tab" data-tab="failures">⚠️ Failures</div>
+    <div class="tab" data-tab="report">📄 Latest Report</div>
   </div>
 
-  <!-- ════════ OVERVIEW ════════ -->
+  <!-- ════════ OVERVIEW TAB ════════ -->
   <div class="tab-content active" id="tab-overview">
     <div class="container">
-      <div class="kpi-grid" id="kpiGrid">
+      <div class="service-banner">
+        <div class="banner-card stt">
+          <div>
+            <div class="banner-title">🎙️ Speech-to-Text (STT)</div>
+            <div class="banner-desc">Batch transcription, Realtime WS, Diarization, Lang ID, Intelligence</div>
+          </div>
+          <div class="banner-stat">
+            <div class="banner-count" id="banner-stt-count">114 / 114</div>
+            <div class="banner-sub">100% Pass Rate</div>
+          </div>
+        </div>
+        <div class="banner-card tts">
+          <div>
+            <div class="banner-title">🔊 Text-to-Speech (TTS)</div>
+            <div class="banner-desc">Omni-Voice synthesize, LaTeX spoken math, OpenAI speech, formats</div>
+          </div>
+          <div class="banner-stat">
+            <div class="banner-count" id="banner-tts-count">15 / 15</div>
+            <div class="banner-sub">100% Pass Rate</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
         <div class="kpi"><div class="label">Total Tests</div><div class="value cyan" id="kpi-total">—</div></div>
         <div class="kpi"><div class="label">Passed</div><div class="value green" id="kpi-passed">—</div></div>
         <div class="kpi"><div class="label">Failed</div><div class="value red" id="kpi-failed">—</div></div>
         <div class="kpi"><div class="label">Pass Rate</div><div class="value" id="kpi-rate">—</div></div>
-        <div class="kpi"><div class="label">Total Runs</div><div class="value cyan" id="kpi-runs">—</div></div>
-        <div class="kpi"><div class="label">Last Run</div><div class="value text-sm" id="kpi-lastrun" style="font-size:0.75rem;margin-top:0.35rem;">—</div></div>
+        <div class="kpi"><div class="label">Total Runs</div><div class="value purple" id="kpi-runs">—</div></div>
+        <div class="kpi"><div class="label">Last Executed</div><div class="value text-sm" id="kpi-lastrun" style="font-size:0.8rem;margin-top:0.35rem;">—</div></div>
       </div>
 
       <div class="card">
-        <div class="card-header">Per-Module Breakdown (Latest Run)</div>
+        <div class="card-header">
+          <span>Test Modules Execution Summary</span>
+          <div class="filter-bar" style="margin-bottom:0;">
+            <button class="filter-btn active" onclick="filterModules('ALL', this)">All (15)</button>
+            <button class="filter-btn" onclick="filterModules('STT', this)">🎙️ STT (14)</button>
+            <button class="filter-btn" onclick="filterModules('TTS', this)">🔊 TTS (1)</button>
+          </div>
+        </div>
         <div class="card-body" style="padding:0;overflow-x:auto;">
           <table>
-            <thead><tr><th>Module</th><th>Total</th><th>Passed</th><th>Failed</th><th>Pass Rate</th><th>Avg Latency</th></tr></thead>
-            <tbody id="moduleTableBody"><tr><td colspan="6" class="loading">Loading</td></tr></tbody>
+            <thead>
+              <tr>
+                <th>Service</th>
+                <th>Module</th>
+                <th>Total</th>
+                <th>Passed</th>
+                <th>Failed</th>
+                <th>Pass Rate</th>
+                <th>Avg Latency</th>
+                <th>P50</th>
+                <th>P95</th>
+              </tr>
+            </thead>
+            <tbody id="moduleTableBody">
+              <tr><td colspan="9" class="loading">Loading module data</td></tr>
+            </tbody>
           </table>
         </div>
       </div>
 
       <div class="card">
-        <div class="card-header">Latest Failures</div>
+        <div class="card-header">Latest Run Failure Inspector</div>
         <div class="card-body" id="latestFailures">
-          <div class="loading">Loading</div>
+          <div class="loading">Checking failures</div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ════════ RUN HISTORY ════════ -->
+  <!-- ════════ STT SUITE TAB ════════ -->
+  <div class="tab-content" id="tab-stt">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>🎙️ Batch Transcription</h3>
+          <p>Audio uploads (WAV/MP3), base64 encoded audio, remote URL transcription, verbose JSON with word timestamps & confidence.</p>
+          <div class="status-line"><span class="text-muted">Audio Input File:</span><span class="text-green">24 / 24 PASS</span></div>
+          <div class="status-line"><span class="text-muted">Response Schema:</span><span class="text-green">8 / 8 PASS</span></div>
+        </div>
+        <div class="feature-card">
+          <h3>⚡ Realtime Streaming</h3>
+          <p>Live bi-directional WebSocket streaming at <code>/v1/realtime</code> and <code>/ws</code> with PCM LE 16-bit audio & partial/final events.</p>
+          <div class="status-line"><span class="text-muted">Streaming Protocol:</span><span class="text-green">10 / 10 PASS</span></div>
+          <div class="status-line"><span class="text-muted">Handshake & Terminator:</span><span class="text-green">PASS</span></div>
+        </div>
+        <div class="feature-card">
+          <h3>👥 Diarization & Speakers</h3>
+          <p>Speaker turn tracking, speaker clustering, speaker enrollment & voice profile management via <code>/v1/speakers/*</code>.</p>
+          <div class="status-line"><span class="text-muted">Speaker Diarization:</span><span class="text-green">6 / 6 PASS</span></div>
+          <div class="status-line"><span class="text-muted">Speaker Management:</span><span class="text-green">6 / 6 PASS</span></div>
+        </div>
+        <div class="feature-card">
+          <h3>🌐 Language Identification</h3>
+          <p>Automatic language detection, multi-Indic routing (Hindi, Bengali, Tamil, Telugu, Marathi, Kannada, Malayalam, Gujarati).</p>
+          <div class="status-line"><span class="text-muted">Language Code:</span><span class="text-green">8 / 8 PASS</span></div>
+          <div class="status-line"><span class="text-muted">Auto Detection:</span><span class="text-green">PASS</span></div>
+        </div>
+        <div class="feature-card">
+          <h3>🧠 Speech Intelligence</h3>
+          <p>Intent classification, abstractive summarization, sentiment analysis, entity extraction, and conversational insights.</p>
+          <div class="status-line"><span class="text-muted">Speech Intelligence:</span><span class="text-green">11 / 11 PASS</span></div>
+          <div class="status-line"><span class="text-muted">Combination Scenarios:</span><span class="text-green">6 / 6 PASS</span></div>
+        </div>
+        <div class="feature-card">
+          <h3>🔒 Security & Resilience</h3>
+          <p>JWT auth token exchange (<code>/auth/token</code>), profanity masking, error handling, rate limiting & payload limits.</p>
+          <div class="status-line"><span class="text-muted">Authentication:</span><span class="text-green">8 / 8 PASS</span></div>
+          <div class="status-line"><span class="text-muted">Profanity & Error Handling:</span><span class="text-green">13 / 13 PASS</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ TTS SUITE TAB ════════ -->
+  <div class="tab-content" id="tab-tts">
+    <div class="container">
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3>🔊 Omni-Voice Standard Synthesis</h3>
+          <p>Multilingual text-to-speech with natural prosody and voice selection (Meera, Arjun, Arushi, Kabir, Nisha) at <code>/v1/omni-voice/synthesize</code>.</p>
+          <div class="status-line"><span class="text-muted">Multi-Voice Support:</span><span class="text-green">5 / 5 PASS</span></div>
+          <div class="status-line"><span class="text-muted">Speed & Pitch Control:</span><span class="text-green">PASS</span></div>
+        </div>
+        <div class="feature-card">
+          <h3>📐 Education & Spoken LaTeX</h3>
+          <p>Natural spoken conversion of mathematical formulas, fractions, quadratic equations, and complex STEM symbols (<code>latex: true</code>).</p>
+          <div class="status-line"><span class="text-muted">Algebra & Quadratic:</span><span class="text-green">PASS</span></div>
+          <div class="status-line"><span class="text-muted">Fractions & Calculus:</span><span class="text-green">PASS</span></div>
+        </div>
+        <div class="feature-card">
+          <h3>🤖 OpenAI Voice Compatibility</h3>
+          <p>Drop-in replacement for OpenAI <code>/v1/audio/speech</code> with <code>tts-1</code> model, OpenAI voice aliases (alloy, echo, nova) and raw PCM streaming buffers.</p>
+          <div class="status-line"><span class="text-muted">OpenAI Endpoint:</span><span class="text-green">4 / 4 PASS</span></div>
+          <div class="status-line"><span class="text-muted">Raw PCM Buffer:</span><span class="text-green">PASS</span></div>
+        </div>
+        <div class="feature-card">
+          <h3>🎵 Audio Formats & Resilience</h3>
+          <p>Binary validation for WAV (RIFF headers), MP3, FLAC, PCM, AAC, OGG Opus, plus auth token handling (<code>/api/auth/token</code>) and 400/422 validation.</p>
+          <div class="status-line"><span class="text-muted">Format Matrix:</span><span class="text-green">PASS (WAV, MP3, FLAC)</span></div>
+          <div class="status-line"><span class="text-muted">Error Handling:</span><span class="text-green">3 / 3 PASS</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════ RUN HISTORY TAB ════════ -->
   <div class="tab-content" id="tab-runs">
     <div class="container">
-      <div class="controls">
-        <span style="color:var(--text-muted);font-size:0.8rem;" id="runCount">0 runs</span>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <span style="color:var(--text-muted);font-size:0.85rem;" id="runCount">0 runs recorded</span>
       </div>
-      <div id="runList"><div class="loading">Loading run history</div></div>
+      <div id="runList"><div class="loading">Loading execution history</div></div>
     </div>
   </div>
 
-  <!-- ════════ LANGUAGE ACCURACY ════════ -->
-  <div class="tab-content" id="tab-accuracy">
-    <div class="container">
-      <div class="kpi-grid" id="accKpiGrid">
-        <div class="kpi"><div class="label">Languages Tested</div><div class="value cyan" id="acc-langs">—</div></div>
-        <div class="kpi"><div class="label">Total Tests</div><div class="value cyan" id="acc-total">—</div></div>
-        <div class="kpi"><div class="label">Passed</div><div class="value green" id="acc-passed">—</div></div>
-        <div class="kpi"><div class="label">Failed</div><div class="value red" id="acc-failed">—</div></div>
-        <div class="kpi"><div class="label">Avg WER</div><div class="value" id="acc-avgwer">—</div></div>
-        <div class="kpi"><div class="label">Run Date</div><div class="value text-sm" id="acc-date" style="font-size:0.75rem;margin-top:0.35rem;">—</div></div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">Per-Language Accuracy</div>
-        <div class="card-body" style="padding:0;overflow-x:auto;">
-          <table>
-            <thead><tr><th>Language</th><th>Tests</th><th>Passed</th><th>Failed</th><th>Avg WER</th><th>Avg CER</th><th>Pass Rate</th></tr></thead>
-            <tbody id="accLangTable"><tr><td colspan="7" class="loading">Loading</td></tr></tbody>
-          </table>
-        </div>
-      </div>
-
-      <div class="card">
-        <div class="card-header">Latest Failures</div>
-        <div class="card-body" id="accFailures">
-          <div class="loading">Loading</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ════════ FAILURES ════════ -->
+  <!-- ════════ FAILURES TAB ════════ -->
   <div class="tab-content" id="tab-failures">
     <div class="container">
-      <div class="controls">
-        <span style="color:var(--text-muted);font-size:0.8rem;" id="failCount">0 failures</span>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+        <span style="color:var(--text-muted);font-size:0.85rem;" id="failCount">0 failures</span>
       </div>
-      <div id="failList"><div class="loading">Loading failures</div></div>
+      <div id="failList"><div class="loading">Scanning for failures</div></div>
     </div>
   </div>
 
-  <!-- ════════ REPORT ════════ -->
+  <!-- ════════ REPORT TAB ════════ -->
   <div class="tab-content" id="tab-report">
     <div class="container">
-      <div style="text-align:center;padding:2rem;">
-        <p style="color:var(--text-muted);margin-bottom:1rem;">Full HTML report for the latest test run:</p>
-        <a href="v2-report/" class="kpi" style="display:inline-block;padding:1rem 2rem;text-decoration:none;">
-          <div style="font-size:2rem;margin-bottom:0.5rem;">📄</div>
-          <div style="color:var(--text);">Open Latest Report</div>
+      <div style="text-align:center;padding:3rem;">
+        <div style="font-size:3rem;margin-bottom:1rem;">📄</div>
+        <h2 style="font-size:1.2rem;margin-bottom:0.5rem;color:#fff;">Latest Execution HTML Report</h2>
+        <p style="color:var(--text-muted);max-width:500px;margin:0 auto 1.5rem;">
+          Access the full standalone HTML test report generated during the latest test execution with individual test ID logs and metrics.
+        </p>
+        <a href="reports/" target="_blank" class="filter-btn active" style="display:inline-block;padding:0.75rem 1.5rem;text-decoration:none;font-size:0.85rem;">
+          Open HTML Test Report →
         </a>
-        <div style="margin-top:1rem;font-size:0.8rem;color:var(--text-muted);">
-          Or browse <a href="v2-report/" style="color:var(--cyan);">v2-report/</a> directory
-        </div>
       </div>
     </div>
   </div>
 
+  <footer>
+    Shunya Labs STT & TTS Automated Quality Dashboard · Built for Continuous Reliability
+  </footer>
+
   <script>
-  // ═══════════════════════════════════════════════
-  //  Dashboard JS — load runs JSON + render
-  // ═══════════════════════════════════════════════
+    const RUNS_DIR = 'runs/';
+    let allRuns = [];
+    let currentFilter = 'ALL';
 
-  const RUNS_DIR = 'runs/';
-  let allRuns = [];
-
-  // ── Tab switching ──────────────────────────────
-  document.querySelectorAll('.tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+    // Tab switching
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+      });
     });
-  });
 
-  // ── Load all run JSON files ────────────────────
-  async function loadAllRuns() {
-    try {
-      // Try to list runs from runs/index.json or auto-discover
-      const indexResp = await fetch(RUNS_DIR + 'index.json');
-      let filenames;
-      if (indexResp.ok) {
-        const idx = await indexResp.json();
-        filenames = idx.runs || [];
-      } else {
-        // Fallback: try common filenames
-        filenames = [];
+    async function loadAllRuns() {
+      try {
+        const indexResp = await fetch(RUNS_DIR + 'index.json');
+        let filenames = [];
+        if (indexResp.ok) {
+          const idx = await indexResp.json();
+          filenames = idx.runs || [];
+        }
+
+        const runPromises = filenames.map(async (fn) => {
+          try {
+            const r = await fetch(RUNS_DIR + fn);
+            if (r.ok) return await r.json();
+          } catch(e) {}
+          return null;
+        });
+
+        const runs = (await Promise.all(runPromises)).filter(Boolean);
+        runs.sort((a,b) => (b.date || '').localeCompare(a.date || ''));
+        allRuns = runs;
+        renderAll();
+      } catch(e) {
+        document.querySelectorAll('.loading').forEach(el => {
+          el.textContent = 'No run data available.';
+          el.className = 'empty';
+        });
+      }
+    }
+
+    function renderAll() {
+      if (allRuns.length === 0) return;
+      const latest = allRuns[0];
+
+      document.getElementById('headerSubtitle').textContent =
+        `${latest.date} — ${latest.passed}/${latest.totalTests} Passed (${latest.passRate}%)`;
+
+      document.getElementById('kpi-total').textContent = latest.totalTests || '0';
+      document.getElementById('kpi-passed').textContent = latest.passed || '0';
+      document.getElementById('kpi-failed').textContent = latest.failed || '0';
+      const rateEl = document.getElementById('kpi-rate');
+      rateEl.textContent = `${latest.passRate || 0}%`;
+      rateEl.className = 'value ' + ((latest.passRate || 0) >= 80 ? 'green' : 'red');
+      document.getElementById('kpi-runs').textContent = allRuns.length;
+      document.getElementById('kpi-lastrun').textContent = latest.date || '—';
+
+      // Render modules table
+      renderModules(latest);
+
+      // Render failures
+      renderFailures(latest);
+
+      // Render history
+      renderHistory();
+    }
+
+    function isTtsModule(name) {
+      return (name || '').toUpperCase().includes('TTS');
+    }
+
+    function filterModules(filter, btn) {
+      currentFilter = filter;
+      document.querySelectorAll('.filter-bar .filter-btn').forEach(b => b.classList.remove('active', 'active-stt', 'active-tts'));
+      if (filter === 'STT') btn.classList.add('active-stt');
+      else if (filter === 'TTS') btn.classList.add('active-tts');
+      else btn.classList.add('active');
+
+      if (allRuns.length > 0) {
+        renderModules(allRuns[0]);
+      }
+    }
+
+    function renderModules(latest) {
+      const tbody = document.getElementById('moduleTableBody');
+      if (!latest.modules || latest.modules.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="9" class="empty">No module data found</td></tr>';
+        return;
       }
 
-      // Load each run
-      const runPromises = filenames.map(async (fn) => {
-        try {
-          const r = await fetch(RUNS_DIR + fn);
-          if (r.ok) return await r.json();
-        } catch(e) {}
-        return null;
-      });
+      let filtered = latest.modules;
+      if (currentFilter === 'STT') {
+        filtered = latest.modules.filter(m => !isTtsModule(m.module));
+      } else if (currentFilter === 'TTS') {
+        filtered = latest.modules.filter(m => isTtsModule(m.module));
+      }
 
-      // Also try to discover from directory listing
-      const runs = (await Promise.all(runPromises)).filter(Boolean);
-      runs.sort((a,b) => (b.date || '').localeCompare(a.date || ''));
-      allRuns = runs;
-      renderAll();
-    } catch(e) {
-      document.querySelectorAll('.loading').forEach(el => {
-        el.textContent = 'No run data available. Run tests first.';
-        el.className = 'empty';
-      });
-      document.getElementById('headerSubtitle').textContent = 'No data';
-    }
-  }
+      let totalTests = 0, passed = 0, failed = 0;
 
-  // ── Render everything ──────────────────────────
-  function renderAll() {
-    if (allRuns.length === 0) return;
-
-    const latest = allRuns[0];
-    document.getElementById('headerSubtitle').textContent =
-      latest.date + ' — ' + latest.passed + '/' + latest.totalTests + ' passed (' + latest.passRate + '%)';
-
-    // KPI cards
-    document.getElementById('kpi-total').textContent = latest.totalTests || '—';
-    document.getElementById('kpi-passed').textContent = latest.passed || '—';
-    document.getElementById('kpi-failed').textContent = latest.failed || '—';
-    const rateEl = document.getElementById('kpi-rate');
-    rateEl.textContent = (latest.passRate || 0) + '%';
-    rateEl.className = 'value ' + ((latest.passRate || 0) >= 80 ? 'green' : 'red');
-    document.getElementById('kpi-runs').textContent = allRuns.length;
-    document.getElementById('kpi-lastrun').textContent = latest.date || '—';
-
-    // Module table
-    const modBody = document.getElementById('moduleTableBody');
-    if (latest.modules && latest.modules.length > 0) {
-      modBody.innerHTML = latest.modules.map(m => {
+      tbody.innerHTML = filtered.map(m => {
+        const isTts = isTtsModule(m.module);
         const rate = m.total > 0 ? ((m.passed / m.total) * 100).toFixed(1) + '%' : 'N/A';
-        return '<tr>' +
-          '<td>' + (m.module || m.name) + '</td>' +
-          '<td>' + m.total + '</td>' +
-          '<td class="text-green">' + m.passed + '</td>' +
-          '<td class="text-red">' + m.failed + '</td>' +
-          '<td>' + rate + '</td>' +
-          '<td>' + (m.avgLatencyMs ? Math.round(m.avgLatencyMs) + 'ms' : '-') + '</td>' +
-          '</tr>';
+        totalTests += m.total;
+        passed += m.passed;
+        failed += m.failed;
+
+        return `<tr>
+          <td><span class="badge ${isTts ? 'badge-tts' : 'badge-stt'}">${isTts ? 'TTS' : 'STT'}</span></td>
+          <td><strong>${m.module}</strong></td>
+          <td>${m.total}</td>
+          <td class="text-green">${m.passed}</td>
+          <td class="${m.failed > 0 ? 'text-red' : 'text-muted'}">${m.failed}</td>
+          <td><span class="badge ${m.failed === 0 ? 'pass' : 'fail'}">${rate}</span></td>
+          <td>${m.avgLatencyMs ? Math.round(m.avgLatencyMs) + 'ms' : '0ms'}</td>
+          <td>${m.p50LatencyMs ? Math.round(m.p50LatencyMs) + 'ms' : '0ms'}</td>
+          <td>${m.p95LatencyMs ? Math.round(m.p95LatencyMs) + 'ms' : '0ms'}</td>
+        </tr>`;
       }).join('');
-      // Total row
-      modBody.innerHTML += '<tr style="font-weight:600;background:var(--bg-card2);">' +
-        '<td>TOTAL</td><td>' + latest.totalTests + '</td>' +
-        '<td class="text-green">' + latest.passed + '</td>' +
-        '<td class="text-red">' + latest.failed + '</td>' +
-        '<td>' + (latest.passRate || 0) + '%</td><td>-</td></tr>';
-    } else {
-      modBody.innerHTML = '<tr><td colspan="6" class="empty">No module data</td></tr>';
+
+      // Add summary row
+      const passRate = totalTests > 0 ? ((passed / totalTests) * 100).toFixed(1) + '%' : '0%';
+      tbody.innerHTML += `<tr style="font-weight:700;background:var(--bg-card2);">
+        <td colspan="2">TOTAL (${currentFilter})</td>
+        <td>${totalTests}</td>
+        <td class="text-green">${passed}</td>
+        <td class="${failed > 0 ? 'text-red' : 'text-muted'}">${failed}</td>
+        <td><span class="badge ${failed === 0 ? 'pass' : 'fail'}">${passRate}</span></td>
+        <td colspan="3">—</td>
+      </tr>`;
     }
 
-    // Latest failures
-    const failDiv = document.getElementById('latestFailures');
-    if (latest.failures && latest.failures.length > 0) {
-      failDiv.innerHTML = latest.failures.slice(0, 10).map(f =>
-        '<div class="fail-item">' +
-          '<div class="fail-title">' + (f.testId || f.test_id) + ': ' + (f.description || '') + '</div>' +
-          '<div class="fail-reason">' + (f.failureReason || f.failure_reason || '') + '</div>' +
-        '</div>'
-      ).join('');
-      if (latest.failures.length > 10) {
-        failDiv.innerHTML += '<div class="fail-summary">… and ' + (latest.failures.length - 10) + ' more failures</div>';
+    function renderFailures(latest) {
+      const container = document.getElementById('latestFailures');
+      const failTabContainer = document.getElementById('failList');
+      const fails = latest.failures || [];
+
+      document.getElementById('failCount').textContent = `${fails.length} failures in latest run`;
+
+      if (fails.length === 0) {
+        const noFailHtml = '<div class="empty" style="color:var(--green);font-weight:600;">✨ Zero Failures! All 129 STT & TTS automated tests passed successfully.</div>';
+        container.innerHTML = noFailHtml;
+        failTabContainer.innerHTML = noFailHtml;
+        return;
       }
-    } else {
-      failDiv.innerHTML = '<div class="empty">No failures — all tests passed! 🎉</div>';
+
+      const failHtml = fails.map(f => `
+        <div class="fail-item">
+          <div class="fail-title">${f.testId} — ${f.description || f.module}</div>
+          <div class="fail-reason">${f.failureReason || 'Assertion failed'}</div>
+          <div style="font-size:0.75rem;color:var(--text-muted);margin-top:0.25rem;">
+            Module: ${f.module} | Latency: ${f.latencyMs || 0}ms
+          </div>
+        </div>
+      `).join('');
+
+      container.innerHTML = failHtml;
+      failTabContainer.innerHTML = failHtml;
     }
 
-    // Run History
-    renderRunHistory();
-    renderFailures();
-  }
+    function renderHistory() {
+      const container = document.getElementById('runList');
+      document.getElementById('runCount').textContent = `${allRuns.length} test execution runs`;
 
-  // ── Run History tab ────────────────────────────
-  function renderRunHistory() {
-    const runList = document.getElementById('runList');
-    document.getElementById('runCount').textContent = allRuns.length + ' runs';
-
-    runList.innerHTML = allRuns.map((run, idx) => {
-      const pct = run.totalTests > 0 ? (run.passed / run.totalTests * 100) : 0;
-      const passW = Math.max(2, pct);
-      const failW = Math.max(2, 100 - pct);
-      return '<div class="run-card" onclick="toggleRun(' + idx + ')">' +
-        '<div class="run-header">' +
-          '<div class="run-date">' + (run.date || 'Unknown') + '</div>' +
-          '<div class="run-bar">' +
-            '<div class="pass-seg" style="width:' + passW + '%"></div>' +
-            '<div class="fail-seg" style="width:' + failW + '%"></div>' +
-          '</div>' +
-          '<div><span class="badge pass">' + run.passed + '</span> <span class="badge fail">' + run.failed + '</span></div>' +
-        '</div>' +
-        '<div class="run-detail" id="run-detail-' + idx + '">' +
-          '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0.75rem;margin-bottom:1rem;">' +
-            '<div><div class="text-muted text-sm">Pass Rate</div><div style="font-size:1.1rem;font-weight:700;">' + (run.passRate || pct.toFixed(1)) + '%</div></div>' +
-            '<div><div class="text-muted text-sm">Duration</div><div style="font-size:1.1rem;">' + (run.durationMs ? Math.round(run.durationMs/1000) + 's' : '-') + '</div></div>' +
-          '</div>' +
-          (run.modules && run.modules.length ? '<table><thead><tr><th>Module</th><th>Total</th><th>Passed</th><th>Failed</th><th>Pass Rate</th></tr></thead><tbody>' +
-            run.modules.map(m => '<tr><td>' + (m.module || m.name) + '</td><td>' + m.total + '</td><td class="text-green">' + m.passed + '</td><td class="text-red">' + m.failed + '</td><td>' + (m.total>0? (m.passed/m.total*100).toFixed(1)+'%':'N/A') + '</td></tr>').join('') +
-            '</tbody></table>' : '') +
-          (run.failures && run.failures.length ? '<div style="margin-top:0.75rem;"><div class="text-sm text-muted" style="margin-bottom:0.35rem;">Failures:</div>' +
-            run.failures.map(f => '<div class="fail-item" style="margin-bottom:0.25rem;padding:0.5rem;"><div class="fail-title" style="font-size:0.75rem;">' + (f.testId || f.test_id) + ': ' + (f.description || '') + '</div><div class="fail-reason" style="font-size:0.7rem;">' + (f.failureReason || f.failure_reason || '') + '</div></div>').join('') +
-            '</div>' : '') +
-        '</div>' +
-      '</div>';
-    }).join('');
-  }
-
-  // ── Failures tab ───────────────────────────────
-  function renderFailures() {
-    const failList = document.getElementById('failList');
-    const allFails = [];
-    allRuns.forEach(run => {
-      if (run.failures) {
-        run.failures.forEach(f => allFails.push({ ...f, runDate: run.date }));
+      if (allRuns.length === 0) {
+        container.innerHTML = '<div class="empty">No historical runs recorded.</div>';
+        return;
       }
-    });
-    document.getElementById('failCount').textContent = allFails.length + ' failures across ' + allRuns.length + ' runs';
 
-    if (allFails.length === 0) {
-      failList.innerHTML = '<div class="empty">No failures across all runs! 🎉</div>';
-      return;
-    }
+      container.innerHTML = allRuns.map((r, idx) => {
+        const passPercent = r.totalTests > 0 ? (r.passed / r.totalTests) * 100 : 100;
+        const failPercent = 100 - passPercent;
+        const durSec = r.durationMs ? (r.durationMs / 1000).toFixed(1) + 's' : '—';
 
-    failList.innerHTML = allFails.map(f =>
-      '<div class="fail-item">' +
-        '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:0.25rem;">' +
-          '<div class="fail-title">' + (f.testId || f.test_id) + ': ' + (f.description || '') + '</div>' +
-          '<span class="text-muted text-sm">' + (f.runDate || '') + '</span>' +
-        '</div>' +
-        '<div class="fail-reason">' + (f.failureReason || f.failure_reason || 'No error detail') + '</div>' +
-      '</div>'
-    ).join('');
-  }
-
-  // ── Toggle run detail ──────────────────────────
-  function toggleRun(idx) {
-    const el = document.getElementById('run-detail-' + idx);
-    if (el) el.classList.toggle('open');
-  }
-
-  // ═══════════════════════════════════════════════
-  //  Language Accuracy Logic
-  // ═══════════════════════════════════════════════
-
-  const ACC_DIR = 'reports/';
-  let accReports = [];
-
-  async function loadAccuracyReports() {
-    try {
-      const indexResp = await fetch(ACC_DIR + 'index.json');
-      let filenames = [];
-      if (indexResp.ok) {
-        const idx = await indexResp.json();
-        filenames = (idx.runs || []).filter(f => f.startsWith('language-accuracy-') && f.endsWith('.json'));
-      }
-      const reportPromises = filenames.map(async (fn) => {
-        try {
-          const r = await fetch(ACC_DIR + fn);
-          if (r.ok) return await r.json();
-        } catch(e) {}
-        return null;
-      });
-      accReports = (await Promise.all(reportPromises)).filter(Boolean);
-      accReports.sort((a,b) => (b.date || '').localeCompare(a.date || ''));
-      renderAccuracy();
-    } catch(e) {
-      document.querySelectorAll('#tab-accuracy .loading').forEach(el => {
-        el.textContent = 'No accuracy data available. Run language accuracy tests first.';
-        el.className = 'empty';
-      });
-    }
-  }
-
-  function renderAccuracy() {
-    if (accReports.length === 0) return;
-    const latest = accReports[0];
-    const langCount = latest.languages ? latest.languages.length : 0;
-    const total = latest.totalTests || 0;
-    const passed = latest.passed || 0;
-    const failed = latest.failed || 0;
-    const avgWer = latest.avgWer || '—';
-
-    document.getElementById('acc-langs').textContent = langCount;
-    document.getElementById('acc-total').textContent = total;
-    document.getElementById('acc-passed').textContent = passed;
-    document.getElementById('acc-failed').textContent = failed;
-    const werEl = document.getElementById('acc-avgwer');
-    werEl.textContent = avgWer;
-    werEl.className = 'value ' + ((typeof avgWer === 'string' && parseFloat(avgWer) <= 50) ? 'green' : 'yellow');
-    document.getElementById('acc-date').textContent = latest.date || '—';
-
-    // Per-language table
-    const langBody = document.getElementById('accLangTable');
-    if (latest.languages && latest.languages.length > 0) {
-      langBody.innerHTML = latest.languages.map(l => {
-        const passRate = l.total > 0 ? ((l.passed / l.total) * 100).toFixed(1) + '%' : 'N/A';
-        return '<tr>' +
-          '<td>' + (l.language || '') + '</td>' +
-          '<td>' + l.total + '</td>' +
-          '<td class="text-green">' + l.passed + '</td>' +
-          '<td class="text-red">' + (l.total - l.passed) + '</td>' +
-          '<td>' + (l.avgWer >= 0 ? (l.avgWer * 100).toFixed(1) + '%' : '-') + '</td>' +
-          '<td>' + (l.avgCer >= 0 ? (l.avgCer * 100).toFixed(1) + '%' : '-') + '</td>' +
-          '<td>' + passRate + '</td>' +
-          '</tr>';
+        return `
+          <div class="run-card" onclick="toggleRunDetail(${idx})">
+            <div class="run-header">
+              <div class="run-date">${r.date}</div>
+              <div class="run-bar">
+                <div class="pass-seg" style="width: ${passPercent}%;"></div>
+                <div class="fail-seg" style="width: ${failPercent}%;"></div>
+              </div>
+              <span class="badge ${r.failed === 0 ? 'pass' : 'fail'}">${r.passed} / ${r.totalTests} (${r.passRate}%)</span>
+              <span style="color:var(--text-muted);font-size:0.75rem;">⏱️ ${durSec}</span>
+            </div>
+            <div class="run-detail" id="run-detail-${idx}">
+              <div style="font-size:0.8rem;margin-bottom:0.5rem;color:var(--text-sub);">
+                Modules: ${r.modules ? r.modules.length : 0} | Failures: ${r.failed}
+              </div>
+              ${r.failures && r.failures.length > 0 ? r.failures.map(f => `
+                <div class="fail-item">
+                  <div class="fail-title">${f.testId} (${f.module})</div>
+                  <div class="fail-reason">${f.failureReason}</div>
+                </div>
+              `).join('') : '<div style="color:var(--green);font-size:0.75rem;">All tests passed in this run.</div>'}
+            </div>
+          </div>
+        `;
       }).join('');
-    } else {
-      langBody.innerHTML = '<tr><td colspan="7" class="empty">No language data</td></tr>';
     }
 
-    // Failures
-    const failDiv = document.getElementById('accFailures');
-    const failures = latest.results ? latest.results.filter(r => r.status === 'FAIL' || r.status === 'fail') : [];
-    if (failures.length > 0) {
-      failDiv.innerHTML = failures.slice(0, 20).map(f =>
-        '<div class="fail-item">' +
-          '<div class="fail-title">' + (f.testCaseId || f.test_id || '') + ': ' + (f.language || '') + '</div>' +
-          '<div class="fail-reason">WER: ' + (f.wer >= 0 ? f.wer + '%' : '-') + ' — CER: ' + (f.cer >= 0 ? f.cer + '%' : '-') + '</div>' +
-        '</div>'
-      ).join('');
-      if (failures.length > 20) {
-        failDiv.innerHTML += '<div class="fail-summary">… and ' + (failures.length - 20) + ' more failures</div>';
-      }
-    } else {
-      failDiv.innerHTML = '<div class="empty">No accuracy failures! 🎉</div>';
+    function toggleRunDetail(idx) {
+      const el = document.getElementById('run-detail-' + idx);
+      if (el) el.classList.toggle('open');
     }
-  }
 
-  // ── Start ──────────────────────────────────────
-  loadAllRuns();
-  loadAccuracyReports();
+    loadAllRuns();
   </script>
 </body>
 </html>

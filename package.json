@@ -33,6 +33,7 @@
     "report:email": "npx ts-node scripts/send-report-email.ts",
     "dashboard:prepare": "npx ts-node scripts/prepare-dashboard.ts",
     "dashboard:open": "open deploy/index.html",
+    "dashboard:deploy": "bash scripts/deploy-dashboard.sh",
     "accuracy": "npx ts-node scripts/run-language-accuracy-tests.ts",
     "init": "npx ts-node scripts/init-project.ts"
   },
