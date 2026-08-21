@@ -75,9 +75,15 @@ echo "⊢ Phase 7: Performance"
 echo "  ⊢ Latency Performance..."
 npx playwright test src/features/performance/latency-performance.spec.ts --reporter=list 2>&1 | tail -3
 
-# ─── Phase 8: Reports ───────────────────────────────────────
+# ─── Phase 8: Text-to-Speech (TTS) ──────────────────────────
+echo "⊢ Phase 8: Text-to-Speech (TTS)"
+
+echo "  ⊢ Standard, Education LaTeX & OpenAI Speech TTS..."
+npx playwright test src/features/tts/ --reporter=list 2>&1 | tail -3
+
+# ─── Phase 9: Reports ───────────────────────────────────────
 echo ""
-echo "⊢ Phase 8: Generating Reports"
+echo "⊢ Phase 9: Generating Reports"
 npx ts-node scripts/generate-report.ts 2>&1 | tail -5
 
 echo ""

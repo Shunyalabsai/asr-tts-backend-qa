@@ -163,6 +163,51 @@ export interface HealthResponse {
   };
 }
 
+// ─── TTS Types ──────────────────────────────────────────────────
+
+export type TtsAudioFormat = 'wav' | 'pcm' | 'mp3' | 'flac' | 'ogg' | 'ogg_opus' | 'mulaw' | 'alaw' | 'aac';
+
+export interface TtsSynthesizeParams {
+  text: string;
+  voice?: string;
+  latex?: boolean;
+  language?: string;
+  response_format?: TtsAudioFormat;
+  speed?: number;
+  rate?: number;
+  sample_rate?: number;
+  silence_padding?: number;
+  ambient_sound?: string;
+}
+
+export interface TtsOpenAiSpeechParams {
+  model?: string;
+  input: string;
+  voice: string;
+  response_format?: 'mp3' | 'opus' | 'aac' | 'flac' | 'wav' | 'pcm';
+  speed?: number;
+}
+
+export interface TtsSynthesizeResponse {
+  audioBuffer: Buffer;
+  contentType: string;
+  sizeBytes: number;
+  latencyMs: number;
+}
+
+export interface TtsTokenResponse {
+  token: string;
+  expires_at: number;
+  expires_in: number;
+  allowed_voices?: string[];
+  features?: Record<string, any>;
+  limits?: {
+    max_file_mb?: number;
+    max_audio_s?: number;
+    max_characters?: number;
+  };
+}
+
 // ─── Error Types ────────────────────────────────────────────────
 
 export interface ApiErrorResponse {

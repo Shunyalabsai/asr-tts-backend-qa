@@ -114,8 +114,6 @@ const TAB_MAPPINGS: TabMapping[] = [
   { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'indicvoices_sample',    outputTab: 'zero-indic',       type: 'model' },
   { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'codeSwitchvoices_sample', outputTab: 'zero-codeswitch',  type: 'model' },
   // ── Model tabs from Datasets_audio sheet ──
-  { inputSheetVar: 'GOOGLE_SHEET_ID_CODESWITCH_INPUT', inputTab: 'indicvoices_sample',     outputTab: 'zero-indic',       type: 'model' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_CODESWITCH_INPUT', inputTab: 'codeSwitchvoices_sample', outputTab: 'zero-codeswitch',  type: 'model' },
   { inputSheetVar: 'GOOGLE_SHEET_ID_CODESWITCH_INPUT', inputTab: 'Zero-Med_sample',         outputTab: 'zero-med',         type: 'model' },
   // ── Feature tabs (TODO: requires feature-specific test logic) ──
   // { inputSheetVar: 'GOOGLE_SHEET_ID_CODESWITCH_INPUT', inputTab: 'Speaker_Diarization_Sample',  outputTab: 'Feat-SpeakerDiarization',  type: 'feature' },

@@ -42,6 +42,7 @@ const MODULES = [
   { name: 'security', label: 'Security-Misc' },
   { name: 'speaker-management', label: 'SpeakerManagement' },
   { name: 'streaming', label: 'Streaming' },
+  { name: 'tts', label: 'TTS' },
 ];
 
 /** Parse Playwright JSON output into our TestResult format */
@@ -52,7 +53,7 @@ function parsePlaywrightResults(jsonPath: string, moduleName: string, moduleLabe
     console.warn(`  ⚠ Empty JSON output for "${moduleLabel}" — no tests ran or runner failed silently`);
     return [];
   }
-  let raw: PlaywrightSuites;
+  let raw: any;
   try {
     raw = JSON.parse(content);
   } catch {
@@ -60,20 +61,32 @@ function parsePlaywrightResults(jsonPath: string, moduleName: string, moduleLabe
     return [];
   }
   const results: TestResult[] = [];
-  for (const suite of raw.suites || []) {
-    for (const spec of suite.specs || []) {
-      const testResult = spec.tests?.[0]?.results?.[0];
-      const passed = spec.ok;
-      results.push({
-        testId: spec.title.match(/^(M\d+-T\d+)/)?.[0] || spec.title,
-        module: moduleLabel,
-        description: spec.title,
-        status: passed ? 'PASS' : 'FAIL',
-        latencyMs: testResult?.duration ? Math.round(testResult.duration / 1000) : 0,
-        failureReason: passed ? undefined : (testResult?.error?.message || 'Unknown error'),
-        timestamp: new Date().toISOString(),
-      });
+
+  function extractSpecs(suite: any) {
+    if (suite.specs) {
+      for (const spec of suite.specs) {
+        const testResult = spec.tests?.[0]?.results?.[0];
+        const passed = spec.ok;
+        results.push({
+          testId: spec.title.match(/^(M\d+-T\d+|TTS_[A-Za-z0-9_]+)/)?.[0] || spec.title,
+          module: moduleLabel,
+          description: spec.title,
+          status: passed ? 'PASS' : 'FAIL',
+          latencyMs: testResult?.duration ? Math.round(testResult.duration / 1000) : 0,
+          failureReason: passed ? undefined : (testResult?.error?.message || 'Unknown error'),
+          timestamp: new Date().toISOString(),
+        });
+      }
     }
+    if (suite.suites) {
+      for (const subSuite of suite.suites) {
+        extractSpecs(subSuite);
+      }
+    }
+  }
+
+  for (const suite of raw.suites || []) {
+    extractSpecs(suite);
   }
   return results;
 }

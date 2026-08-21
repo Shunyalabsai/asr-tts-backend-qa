@@ -6,6 +6,8 @@
   "scripts": {
     "test": "playwright test",
     "test:all": "bash scripts/run-all-tests.sh",
+    "test:tts": "playwright test src/features/tts/",
+    "test:stt": "playwright test --ignore-snapshots src/features/authentication src/features/transcription src/features/language-identification src/features/speaker-diarization src/features/word-boosting src/features/profanity-keyword-hashing src/features/speech-intelligence src/features/streaming src/features/speaker-management src/features/schema-validation src/features/error-handling src/features/health-check src/features/security src/features/combination-scenarios src/features/performance",
     "test:ci": "playwright test --grep '@smoke'",
     "test:auth": "playwright test src/features/authentication/",
     "test:transcription": "playwright test src/features/transcription/",

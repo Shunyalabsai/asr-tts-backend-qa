@@ -1,9 +1,10 @@
-# ASR Testing Framework v2
+# Shunya Labs Speech-to-Text & Text-to-Speech Testing Framework
 
-Greenfield reimplementation of the Shunyalabs ASR API automation testing framework.
+Reimplementation of the Shunya Labs Speech-to-Text (STT) and Text-to-Speech (TTS) API automation testing framework.
 
-**API Reference:** [Shunya Labs Speech-to-Text API v2](Project_doc/Shunya_Labs_Speech_to_Text_API_Reference_with_curl.md)  
-**Test Cases:** [97 Manual Test Cases (Google Sheet)](https://docs.google.com/spreadsheets/d/149Mok2syZ-DygoP6t0ziST97rucN0qYuo2ZfO66tVVA)
+**API References:**
+- [Shunya Labs Speech-to-Text API v2](Project_doc/Shunya_Labs_Speech_to_Text_API_Reference_with_curl.md)
+- [Shunya Labs Text-to-Speech API Guide](Project_doc/ShunyaLabs_TTS_API_Integration_Guide%20(1).pdf)
 
 ---
 
@@ -12,10 +13,11 @@ Greenfield reimplementation of the Shunyalabs ASR API automation testing framewo
 ```
 src/
 ├── config/                    # API endpoints, thresholds, model configs
-├── types/                     # All TypeScript interfaces
+├── types/                     # All TypeScript interfaces (STT & TTS)
+├── services/                  # Shared: AuthClient, ApiClient, TtsClient
 ├── features/                  # Organized by capability — each feature has its own folder
 │   │
-│   ├── authentication/        # API key → JWT token flow
+│   ├── authentication/        # API key → JWT token flow (/auth/token & /api/auth/token)
 │   ├── transcription/         # File upload, base64, URL input, response formats
 │   ├── language-identification/  # language_code param (auto, en, hi, all codes)
 │   ├── speaker-diarization/   # diarize + num_speakers (1, 2, auto-detect)
@@ -30,15 +32,8 @@ src/
 │   ├── security/              # HTTPS, method validation, injection
 │   ├── combination-scenarios/ # Multi-parameter edge cases
 │   ├── performance/           # Latency, stress, load, spike, endurance
-│   │
-│   ├── translation/           # (v1 only — not in v2 API)
-│   ├── transliteration/       # (v1 only — not in v2 API)
-│   ├── speaker-identification/ # (v1 only — not in v2 API)
-│   ├── emotional-diarization/ # (v1 only — not in v2 API)
-│   ├── keyword-normalization/ # (v1 only — not in v2 API)
-│   └── medical-keyword-correction/ # (v1 only — not in v2 API)
+│   └── tts/                   # Standard TTS, LaTeX math TTS, OpenAI-compatible TTS
 │
-├── services/                  # Shared: AuthClient, ApiClient (used by all features)
 ├── utils/                     # Shared: WER/CER, audio helpers, PCM gen, validators
 ├── reporting/                 # Google Sheets, HTML, JSON, Email reporters
 └── tests/helpers/             # Test setup & shared fixtures
@@ -46,9 +41,9 @@ src/
 
 ## Auth Flow
 
-1. POST `/auth/token` with `Authorization: Bearer <API_KEY>` → short-lived access token
-2. Use the access token on all ASR endpoints (`Authorization: Bearer <token>`)
-3. Token auto-refreshes ~2 minutes before expiry; retries once on 401
+1. **STT:** POST `/auth/token` with `Authorization: Bearer <API_KEY>` → short-lived access token
+2. **TTS:** POST `/api/auth/token` with `api-key: <API_KEY>` and `{"expires_in": 86400}` → Bearer access token
+3. Token auto-refreshes before expiry and retries on 401.
 
 ## Setup
 
@@ -61,8 +56,12 @@ cp .env.example .env   # Add your API key and config
 ## Run Tests by Feature
 
 ```bash
-# Full suite (phased execution)
+# Full suite (phased execution including STT & TTS)
 npm run test:all
+
+# STT & TTS standalone suites
+npm run test:stt                # Run all Speech-to-Text tests
+npm run test:tts                # Run all Text-to-Speech tests
 
 # Individual features
 npm run test:health             # Quick sanity check
@@ -95,9 +94,21 @@ npm run report:email             # Send email report
 
 ## API Coverage
 
-| Endpoint | Method | Feature | Tests |
-|---|---|---|---|
-| `/auth/token` | POST | Authentication | 8 |
+| Endpoint | Method | Service | Feature | Tests |
+|---|---|---|---|---|
+| `/auth/token` | POST | STT | Authentication | 8 |
+| `/api/auth/token` | POST | TTS | TTS Authentication | Included |
+| `/v1/audio/transcriptions` | POST | STT | Transcription, Language, Diarization, Word Boost, Profanity, Schema | ~60 |
+| `/v1/realtime` (WS) | WS | STT | Streaming ASR | 10 |
+| `/v1/speechintelligence` | POST | STT | Speech Intelligence | 11 |
+| `/v1/speakers/register` | POST | STT | Speaker Management | 3 |
+| `/v1/speakers/delete` | DELETE | STT | Speaker Management | 3 |
+| `/health` | GET | STT | Health Check | 2 |
+| `/v1/omni-voice/synthesize` | POST | TTS | Standard & LaTeX Speech Synthesis | 8 |
+| `/v1/audio/speech` | POST | TTS | OpenAI-compatible Speech Synthesis (`tts-1`) | 4 |
+| Error handling & negative cases | POST | TTS | 401, 400, 422, validation | 3 |
+
+**Total: ~125 automated tests across STT and TTS feature areas**
 | `/v1/audio/transcriptions` | POST | Transcription, Language, Diarization, Word Boost, Profanity, Schema | ~60 |
 | `/v1/realtime` (WS) | WS | Streaming | 10 |
 | `/v1/speechintelligence` | POST | Speech Intelligence | 11 |
@@ -190,7 +201,7 @@ Open [deploy/dashboard-v2.html](deploy/dashboard-v2.html) and click the **Lang A
 
 The dashboard reads from `deploy/reports/` which is auto-published to GitHub Pages.
 
-### Manual deployment
+### Dashboard Local View
 
 ```bash
 # Run tests
@@ -199,14 +210,8 @@ npm run test:all
 # Generate report
 npm run report
 
-# Run accuracy tests
-npm run accuracy
-
-# Prepare deployment directory
-npm run dashboard:prepare
-
-# View locally before deploying
-npm run dashboard:open
+# Open report locally
+npm run report:open
 ```
 
 Deployed reports include:
@@ -216,23 +221,6 @@ Deployed reports include:
 - **Failed tests detail** with error reasons
 - **Full results table** with WER/CER scores
 
-### GitHub Pages setup required
-
-To enable the dashboard, configure your repo:
-
-1. Go to **Settings → Pages** in your repository
-2. Under "Source", select **"GitHub Actions"**
-3. The `deploy-dashboard.yml` workflow will handle the rest
-
-## CI/CD
-
-| Workflow | Trigger | Scope |
-|---|---|---|
-| `ci.yml` | PR/push | Smoke tests (@smoke tagged) |
-| `scheduled-tests.yml` | Weekdays 9 AM IST | Full suite + reports + email |
-| `hourly-tests.yml` | Every 3 hours | Health + auth + batch smoke |
-| `deploy-dashboard.yml` | Weekdays + manual | Full suite + deploy to GitHub Pages |
-
 ## Coverage Note
 
-The markdown API reference at `Project_doc/Shunya_Labs_Speech_to_Text_API_Reference_with_curl.md` is the **definitive source of truth** for all endpoint specs, parameters, and auth flow. The [Google Sheet](https://docs.google.com/spreadsheets/d/149Mok2syZ-DygoP6t0ziST97rucN0qYuo2ZfO66tVVA) provides test case definitions (scenarios, expected results, priorities).
+The markdown API reference at `Project_doc/Shunya_Labs_Speech_to_Text_API_Reference_with_curl.md` and TTS API guide at `Project_doc/ShunyaLabs_TTS_API_Integration_Guide (1).pdf` are the **definitive sources of truth** for all endpoint specs, parameters, and auth flow. The [Google Sheet](https://docs.google.com/spreadsheets/d/149Mok2syZ-DygoP6t0ziST97rucN0qYuo2ZfO66tVVA) provides test case definitions (scenarios, expected results, priorities).

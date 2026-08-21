@@ -7,6 +7,12 @@ dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 export const ASR_BASE_URL =
   process.env.ASR_BASE_URL || 'https://asrv2prod.shunyalabs.ai';
 
+export const TTS_BASE_URL =
+  process.env.TTS_BASE_URL || 'https://ttsv2.shunyalabs.ai';
+
+export const TTS_AUTH_URL =
+  process.env.TTS_AUTH_URL || 'https://app.shunyalabs.ai';
+
 // ── Endpoints ───────────────────────────────────────────────────
 export const ENDPOINTS = {
   auth: process.env.AUTH_TOKEN_ENDPOINT || '/auth/token',
@@ -20,6 +26,12 @@ export const ENDPOINTS = {
   },
   health: '/health',
   docs: '/docs',
+  tts: {
+    auth: '/api/auth/token',
+    synthesize: '/v1/omni-voice/synthesize',
+    speech: '/v1/audio/speech',
+    realtime: '/v1/realtime',
+  },
 };
 
 // ── Auth Config ─────────────────────────────────────────────────

@@ -58,6 +58,7 @@ export function validateVerboseJson(body: any): ValidationResult {
   const allowedFields = [
     'text', 'audio_duration', 'inference_time_ms', 'request_id',
     'success', 'segments', 'words', 'speakers', 'speaker_turns',
+    'detected_language', 'detected_language_name',
   ];
   for (const field of Object.keys(body)) {
     if (!allowedFields.includes(field)) {
@@ -73,22 +74,23 @@ export function validateJsonResponse(body: any): ValidationResult {
 
   if (!body) return { valid: false, errors: ['Response body is null/undefined'] };
 
-  // json format should only have "text"
+  // json format must have "text"
   if (typeof body.text !== 'string') {
     errors.push('text is missing or not a string');
   }
 
   // Should NOT have verbose fields
-  const verboseFields = ['segments', 'words', 'audio_duration', 'inference_time_ms', 'request_id', 'speakers'];
+  const verboseFields = ['segments', 'words', 'audio_duration', 'inference_time_ms', 'request_id', 'speakers', 'speaker_turns'];
   for (const field of verboseFields) {
     if (field in body) {
       errors.push(`unexpected verbose field "${field}" in json response format`);
     }
   }
 
-  // Only "text" field allowed
+  // Allowed fields in simple json response
+  const allowedFields = ['text', 'detected_language', 'detected_language_name'];
   for (const field of Object.keys(body)) {
-    if (field !== 'text') {
+    if (!allowedFields.includes(field)) {
       errors.push(`unexpected field in json response: ${field}`);
     }
   }

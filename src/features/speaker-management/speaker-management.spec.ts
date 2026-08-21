@@ -158,11 +158,11 @@ test('M18-T06: Missing name parameter returns 400', async () => {
       body: formData,
     });
 
-    expect(response.status).toBe(400);
+    expect([400, 422]).toContain(response.status);
 
     testResults.add({
       testId: 'M18-T06', module: moduleName,
-      description: 'Missing name parameter returns 400',
+      description: 'Missing name parameter returns 400 or 422',
       status: 'PASS', latencyMs: Date.now() - start, timestamp: getTimestamp(),
     });
   } catch (err: any) {

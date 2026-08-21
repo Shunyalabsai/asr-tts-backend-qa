@@ -53,9 +53,14 @@ export class SpeakerClient {
     body: SpeakerDeleteResponse;
     latencyMs: number;
   }> {
-    // DELETE with form body
+    const formData: Record<string, any> = {
+      name: params.name,
+    };
+    if (params.project) formData.project = params.project;
+
     const response = await this.apiClient.delete<SpeakerDeleteResponse>(
-      `${ENDPOINTS.speakers.delete}?name=${encodeURIComponent(params.name)}${params.project ? `&project=${encodeURIComponent(params.project)}` : ''}`
+      ENDPOINTS.speakers.delete,
+      { formData }
     );
 
     return {

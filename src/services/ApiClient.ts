@@ -155,6 +155,7 @@ export class ApiClient {
     path: string,
     options: {
       body?: any;
+      formData?: Record<string, any>;
       headers?: Record<string, string>;
       timeout?: number;
     } = {}
@@ -168,8 +169,20 @@ export class ApiClient {
       'Authorization': `Bearer ${token}`,
     };
 
-    if (options.body) {
+    let fetchBody: any = undefined;
+    if (options.formData) {
+      const fd = new FormData();
+      for (const [key, value] of Object.entries(options.formData)) {
+        if (value instanceof Blob || value instanceof File) {
+          fd.append(key, value);
+        } else {
+          fd.append(key, String(value));
+        }
+      }
+      fetchBody = fd;
+    } else if (options.body) {
       headers['Content-Type'] = 'application/json';
+      fetchBody = JSON.stringify(options.body);
     }
 
     const controller = new AbortController();
@@ -182,7 +195,7 @@ export class ApiClient {
       const response = await fetch(url, {
         method: 'DELETE',
         headers,
-        body: options.body ? JSON.stringify(options.body) : undefined,
+        body: fetchBody,
         signal: controller.signal,
       });
       const latencyMs = Date.now() - start;

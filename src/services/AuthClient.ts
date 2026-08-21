@@ -53,13 +53,22 @@ export class AuthClient {
 
   private async doRefresh(): Promise<string> {
     const url = `${this.baseUrl}${this.authEndpoint}`;
+    const headers: Record<string, string> = {
+      'Authorization': `Bearer ${this.apiKey}`,
+      'api-key': this.apiKey,
+      'Accept': 'application/json',
+    };
+
+    let body: string | undefined = undefined;
+    if (this.authEndpoint.includes('/api/auth/token')) {
+      headers['Content-Type'] = 'application/json';
+      body = JSON.stringify({ expires_in: 86400 });
+    }
 
     const response = await fetch(url, {
       method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${this.apiKey}`,
-        'Accept': 'application/json',
-      },
+      headers,
+      body,
     });
 
     if (!response.ok) {

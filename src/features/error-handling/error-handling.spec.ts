@@ -55,8 +55,10 @@ test('M11-T02: Invalid/expired token returns 401', async () => {
   const start = Date.now();
   try {
     const url = `${process.env.ASR_BASE_URL || 'https://asrv2prod.shunyalabs.ai'}/v1/audio/transcriptions`;
+    const audioData = readAudioFile(audioFixture('wav'));
     const formData = new FormData();
-    formData.append('model', 'zero-indic');
+    const blob = new Blob([audioData], { type: 'audio/wav' });
+    formData.append('file', blob, 'sample.wav');
 
     const response = await fetch(url, {
       method: 'POST',
