@@ -1,97 +1,214 @@
-{
-  "runs": [
-    "2026-08-24.json",
-    "2026-08-22.json",
-    "2026-08-21.json",
-    "2026-07-30.json",
-    "2026-07-29.json",
-    "2026-07-27.json"
-  ],
-  "metadata": [
-    {
-      "file": "2026-08-24.json",
-      "date": "2026-08-24",
-      "totalTests": 129,
-      "passed": 129,
-      "failed": 0,
-      "passRate": "100.0",
-      "datasetTotal": 306,
-      "datasetPassed": 170,
-      "datasetFailed": 136,
-      "datasetPassRate": "55.6%",
-      "hasDatasets": true,
-      "durationMs": 209517.92370800002
+[
+  {
+    "date": "2026-08-25",
+    "totalTests": 624,
+    "passed": 382,
+    "failed": 242,
+    "skipped": 0,
+    "passRate": "61.2%",
+    "avgLatencyMs": 1831,
+    "datasetTabCount": 18,
+    "categories": {
+      "models": {
+        "name": "Speech-to-Text Models",
+        "total": 360,
+        "passed": 122,
+        "failed": 238,
+        "skipped": 0,
+        "passRate": "33.9%",
+        "avgLatencyMs": 0,
+        "tabsCount": 5
+      },
+      "features": {
+        "name": "Speech Intelligence & Audio Features",
+        "total": 40,
+        "passed": 36,
+        "failed": 4,
+        "skipped": 0,
+        "passRate": "90.0%",
+        "avgLatencyMs": 0,
+        "tabsCount": 11
+      },
+      "tts": {
+        "name": "TTS Voice Synthesis",
+        "total": 215,
+        "passed": 215,
+        "failed": 0,
+        "skipped": 0,
+        "passRate": "100.0%",
+        "avgLatencyMs": 0,
+        "tabsCount": 1
+      },
+      "core": {
+        "name": "Core System Health & Routing",
+        "total": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "passRate": "100.0%",
+        "avgLatencyMs": 0,
+        "tabsCount": 1
+      }
     },
-    {
-      "file": "2026-08-22.json",
-      "date": "2026-08-22",
-      "totalTests": 5,
-      "passed": 5,
-      "failed": 0,
-      "passRate": "100.0",
-      "datasetTotal": 0,
-      "datasetPassed": 0,
-      "datasetFailed": 0,
-      "datasetPassRate": "0%",
-      "hasDatasets": false,
-      "durationMs": 2311
+    "reportUrl": "reports/ASR-Test-Report-2026-08-25.html"
+  },
+  {
+    "date": "2026-08-24",
+    "totalTests": 624,
+    "passed": 282,
+    "failed": 342,
+    "skipped": 0,
+    "passRate": "45.2%",
+    "avgLatencyMs": 1842,
+    "datasetTabCount": 18,
+    "categories": {
+      "models": {
+        "name": "Speech-to-Text Models",
+        "total": 360,
+        "passed": 132,
+        "failed": 228,
+        "skipped": 0,
+        "passRate": "36.7%",
+        "avgLatencyMs": 0,
+        "tabsCount": 5
+      },
+      "features": {
+        "name": "Speech Intelligence & Audio Features",
+        "total": 40,
+        "passed": 36,
+        "failed": 4,
+        "skipped": 0,
+        "passRate": "90.0%",
+        "avgLatencyMs": 0,
+        "tabsCount": 11
+      },
+      "tts": {
+        "name": "TTS Voice Synthesis",
+        "total": 215,
+        "passed": 105,
+        "failed": 110,
+        "skipped": 0,
+        "passRate": "48.8%",
+        "avgLatencyMs": 0,
+        "tabsCount": 1
+      },
+      "core": {
+        "name": "Core System Health & Routing",
+        "total": 9,
+        "passed": 9,
+        "failed": 0,
+        "skipped": 0,
+        "passRate": "100.0%",
+        "avgLatencyMs": 0,
+        "tabsCount": 1
+      }
     },
-    {
-      "file": "2026-08-21.json",
-      "date": "2026-08-21",
-      "totalTests": 129,
-      "passed": 129,
-      "failed": 0,
-      "passRate": "100.0",
-      "datasetTotal": 0,
-      "datasetPassed": 0,
-      "datasetFailed": 0,
-      "datasetPassRate": "0%",
-      "hasDatasets": false,
-      "durationMs": 193184.466709
+    "reportUrl": "reports/ASR-Test-Report-2026-08-24.html"
+  },
+  {
+    "date": "2026-07-30",
+    "totalTests": 297,
+    "passed": 139,
+    "failed": 158,
+    "skipped": 0,
+    "passRate": "46.8%",
+    "avgLatencyMs": 18174,
+    "datasetTabCount": 3,
+    "categories": {
+      "models": {
+        "name": "Speech-to-Text Models",
+        "total": 297,
+        "passed": 139,
+        "failed": 158,
+        "skipped": 0,
+        "passRate": "46.8%",
+        "avgLatencyMs": 0,
+        "tabsCount": 3
+      },
+      "features": {
+        "name": "Speech Intelligence & Audio Features",
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "passRate": "0%",
+        "avgLatencyMs": 0,
+        "tabsCount": 0
+      },
+      "tts": {
+        "name": "TTS Voice Synthesis",
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "passRate": "0%",
+        "avgLatencyMs": 0,
+        "tabsCount": 0
+      },
+      "core": {
+        "name": "Core System Health & Routing",
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "passRate": "0%",
+        "avgLatencyMs": 0,
+        "tabsCount": 0
+      }
     },
-    {
-      "file": "2026-07-30.json",
-      "date": "2026-07-30",
-      "totalTests": 114,
-      "passed": 105,
-      "failed": 9,
-      "passRate": "92.1",
-      "datasetTotal": 297,
-      "datasetPassed": 139,
-      "datasetFailed": 158,
-      "datasetPassRate": "46.8%",
-      "hasDatasets": true,
-      "durationMs": 503953.51025000005
+    "reportUrl": "reports/ASR-Test-Report-2026-07-30.html"
+  },
+  {
+    "date": "2026-07-29",
+    "totalTests": 280,
+    "passed": 6,
+    "failed": 274,
+    "skipped": 0,
+    "passRate": "2.1%",
+    "avgLatencyMs": 976,
+    "datasetTabCount": 2,
+    "categories": {
+      "models": {
+        "name": "Speech-to-Text Models",
+        "total": 280,
+        "passed": 6,
+        "failed": 274,
+        "skipped": 0,
+        "passRate": "2.1%",
+        "avgLatencyMs": 0,
+        "tabsCount": 2
+      },
+      "features": {
+        "name": "Speech Intelligence & Audio Features",
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "passRate": "0%",
+        "avgLatencyMs": 0,
+        "tabsCount": 0
+      },
+      "tts": {
+        "name": "TTS Voice Synthesis",
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "passRate": "0%",
+        "avgLatencyMs": 0,
+        "tabsCount": 0
+      },
+      "core": {
+        "name": "Core System Health & Routing",
+        "total": 0,
+        "passed": 0,
+        "failed": 0,
+        "skipped": 0,
+        "passRate": "0%",
+        "avgLatencyMs": 0,
+        "tabsCount": 0
+      }
     },
-    {
-      "file": "2026-07-29.json",
-      "date": "2026-07-29",
-      "totalTests": 114,
-      "passed": 31,
-      "failed": 83,
-      "passRate": "27.2",
-      "datasetTotal": 280,
-      "datasetPassed": 6,
-      "datasetFailed": 274,
-      "datasetPassRate": "2.1%",
-      "hasDatasets": true,
-      "durationMs": 739476.969709
-    },
-    {
-      "file": "2026-07-27.json",
-      "date": "2026-07-27",
-      "totalTests": 114,
-      "passed": 87,
-      "failed": 27,
-      "passRate": "76.3",
-      "datasetTotal": 0,
-      "datasetPassed": 0,
-      "datasetFailed": 0,
-      "datasetPassRate": "0%",
-      "hasDatasets": false,
-      "durationMs": 643038.6604589999
-    }
-  ],
-  "latestDate": "2026-08-24"
-}
+    "reportUrl": "reports/ASR-Test-Report-2026-07-29.html"
+  }
+]

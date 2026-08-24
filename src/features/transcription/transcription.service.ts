@@ -43,7 +43,7 @@ export class BatchTranscriptionClient {
 
     const response = await this.apiClient.post<TranscriptionResponse | VerboseTranscriptionResponse>(
       ENDPOINTS.transcription,
-      { formData }
+      { formData, timeout: 25000 }
     );
 
     return {
@@ -70,7 +70,7 @@ export class BatchTranscriptionClient {
 
     const response = await this.apiClient.post<TranscriptionResponse | VerboseTranscriptionResponse>(
       ENDPOINTS.transcription,
-      { formData }
+      { formData, timeout: 25000 }
     );
 
     return {
@@ -97,7 +97,7 @@ export class BatchTranscriptionClient {
 
     const response = await this.apiClient.post<TranscriptionResponse | VerboseTranscriptionResponse>(
       ENDPOINTS.transcription,
-      { formData }
+      { formData, timeout: 25000 }
     );
 
     return {

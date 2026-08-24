@@ -24,6 +24,7 @@ export interface DatasetItem {
 
 export interface DatasetTabSummary {
   tab: string;
+  category: 'models' | 'features' | 'tts' | 'core';
   total: number;
   passed: number;
   failed: number;
@@ -32,6 +33,17 @@ export interface DatasetTabSummary {
   avgWer: string;
   avgCer: string;
   avgLatencyMs: number;
+}
+
+export interface CategorySummary {
+  name: string;
+  total: number;
+  passed: number;
+  failed: number;
+  skipped: number;
+  passRate: string;
+  avgLatencyMs: number;
+  tabsCount: number;
 }
 
 /**
@@ -80,29 +92,49 @@ function parseCSV(content: string): string[][] {
   return rows;
 }
 
+function categorizeTab(tabName: string): 'models' | 'features' | 'tts' | 'core' {
+  if (tabName.startsWith('zero-tts')) return 'tts';
+  if (tabName.startsWith('Core-System') || tabName.startsWith('System-') || tabName === 'Health' || tabName === 'Auth') return 'core';
+  if (tabName.startsWith('Feat-') || tabName.startsWith('Feature-')) return 'features';
+  return 'models';
+}
+
 /**
  * Parses all CSV dataset files in reports/ for a given date
  */
 function loadDatasetsForDate(reportsDir: string, dateStr: string): {
   items: DatasetItem[];
   tabSummaries: DatasetTabSummary[];
+  categorySummaries: Record<string, CategorySummary>;
   total: number;
   passed: number;
   failed: number;
   skipped: number;
   passRate: string;
+  avgLatencyMs: number;
 } {
   const allItems: DatasetItem[] = [];
   const tabSummaries: DatasetTabSummary[] = [];
 
   if (!fs.existsSync(reportsDir)) {
-    return { items: [], tabSummaries: [], total: 0, passed: 0, failed: 0, skipped: 0, passRate: '0%' };
+    return {
+      items: [],
+      tabSummaries: [],
+      categorySummaries: {},
+      total: 0,
+      passed: 0,
+      failed: 0,
+      skipped: 0,
+      passRate: '0%',
+      avgLatencyMs: 0,
+    };
   }
 
   const files = fs.readdirSync(reportsDir).filter(f => f.endsWith(`-${dateStr}.csv`));
 
   for (const file of files) {
     const tabName = file.replace(`-${dateStr}.csv`, '');
+    const category = categorizeTab(tabName);
     const filePath = path.join(reportsDir, file);
     try {
       const content = fs.readFileSync(filePath, 'utf-8');
@@ -110,20 +142,22 @@ function loadDatasetsForDate(reportsDir: string, dateStr: string): {
       if (rows.length < 2) continue;
 
       const headers = rows[0].map(h => h.trim().toLowerCase());
-      const audioIdx = headers.indexOf('audio_path');
-      const langIdx = headers.indexOf('lang');
-      const langCodeIdx = headers.indexOf('lang_code');
-      const detLangIdx = headers.indexOf('detected_language');
-      const matchIdx = headers.indexOf('lang_code_match');
-      const gtIdx = headers.indexOf('ground_truth');
-      const predIdx = headers.indexOf('predicted_text');
-      const durIdx = headers.indexOf('duration');
-      const latIdx = headers.indexOf('latency_ms');
-      const werIdx = headers.indexOf('wer');
-      const cerIdx = headers.indexOf('cer');
-      const statusIdx = headers.indexOf('test_status');
-      const failIdx = headers.indexOf('failure_reason');
-      const tsIdx = headers.indexOf('timestamp');
+      const findCol = (keys: string[]) => headers.findIndex(h => keys.some(k => h.includes(k)));
+
+      const audioIdx = findCol(['audio_path', 'audio_file', 'audio_url', 'identifier', 'test_id']);
+      const langIdx = findCol(['lang', 'language', 'category']);
+      const langCodeIdx = findCol(['lang_code', 'language_code', 'mode']);
+      const detLangIdx = findCol(['detected_language', 'output_script', 'voice']);
+      const matchIdx = findCol(['lang_code_match', 'translation_method']);
+      const gtIdx = findCol(['ground_truth', 'transcript', 'input_text', 'description', 'original_text']);
+      const predIdx = findCol(['transcribed_text', 'predicted_text', 'summary_text', 'clean_text', 'normalized_text', 'corrected_text', 'shunyalabs_transcribed_text', 'shunyalabs_transliterated_text', 'output']);
+      const durIdx = findCol(['duration', 'duration_estimate_s', 'compression_ratio']);
+      const latIdx = findCol(['latency_ms', 'latency']);
+      const werIdx = findCol(['wer']);
+      const cerIdx = findCol(['cer']);
+      const statusIdx = findCol(['test_status', 'status']);
+      const failIdx = findCol(['failure_reason', 'notes']);
+      const tsIdx = findCol(['timestamp']);
 
       const tabItems: DatasetItem[] = [];
       let tabPassed = 0, tabFailed = 0, tabSkipped = 0;
@@ -133,12 +167,19 @@ function loadDatasetsForDate(reportsDir: string, dateStr: string): {
 
       for (let r = 1; r < rows.length; r++) {
         const row = rows[r];
-        if (row.length === 0 || !row[audioIdx]) continue;
+        if (row.length === 0) continue;
 
-        const status = (row[statusIdx] || 'PASS').toUpperCase() as 'PASS' | 'FAIL' | 'SKIP';
-        const werStr = row[werIdx] || 'N/A';
-        const cerStr = row[cerIdx] || 'N/A';
-        const latMs = parseInt(row[latIdx], 10) || 0;
+        const firstCell = String(row[0] || '').trim();
+        // Skip run summary rows or separator lines
+        if (firstCell.startsWith('═══') || firstCell.includes('TEST RUN') || firstCell.startsWith('───')) {
+          continue;
+        }
+
+        const statusRaw = statusIdx >= 0 ? (row[statusIdx] || 'PASS').toUpperCase() : 'PASS';
+        const status = (statusRaw.includes('PASS') ? 'PASS' : (statusRaw.includes('SKIP') ? 'SKIP' : 'FAIL')) as 'PASS' | 'FAIL' | 'SKIP';
+        const werStr = werIdx >= 0 ? row[werIdx] || 'N/A' : 'N/A';
+        const cerStr = cerIdx >= 0 ? row[cerIdx] || 'N/A' : 'N/A';
+        const latMs = latIdx >= 0 ? parseInt(row[latIdx], 10) || 0 : 0;
 
         if (status === 'PASS') tabPassed++;
         else if (status === 'FAIL') tabFailed++;
@@ -157,20 +198,20 @@ function loadDatasetsForDate(reportsDir: string, dateStr: string): {
         const item: DatasetItem = {
           tab: tabName,
           date: row[0] || dateStr,
-          audioPath: row[audioIdx] || '',
-          lang: row[langIdx] || '',
-          langCode: row[langCodeIdx] || '',
-          detectedLang: row[detLangIdx] || '',
-          langMatch: row[matchIdx] || 'N/A',
-          groundTruth: row[gtIdx] || '',
-          predictedText: row[predIdx] || '',
-          duration: row[durIdx] || '0',
+          audioPath: audioIdx >= 0 ? row[audioIdx] || '' : '',
+          lang: langIdx >= 0 ? row[langIdx] || '' : '',
+          langCode: langCodeIdx >= 0 ? row[langCodeIdx] || '' : '',
+          detectedLang: detLangIdx >= 0 ? row[detLangIdx] || '' : '',
+          langMatch: matchIdx >= 0 ? row[matchIdx] || 'N/A' : 'N/A',
+          groundTruth: gtIdx >= 0 ? row[gtIdx] || '' : '',
+          predictedText: predIdx >= 0 ? row[predIdx] || '' : '',
+          duration: durIdx >= 0 ? row[durIdx] || '0' : '0',
           latencyMs: latMs,
           wer: werStr,
           cer: cerStr,
           status,
-          failureReason: row[failIdx] || '',
-          timestamp: row[tsIdx] || new Date().toISOString(),
+          failureReason: failIdx >= 0 ? row[failIdx] || '' : '',
+          timestamp: tsIdx >= 0 ? row[tsIdx] || new Date().toISOString() : new Date().toISOString(),
         };
 
         tabItems.push(item);
@@ -185,6 +226,7 @@ function loadDatasetsForDate(reportsDir: string, dateStr: string): {
 
       tabSummaries.push({
         tab: tabName,
+        category,
         total: tabTotal,
         passed: tabPassed,
         failed: tabFailed,
@@ -199,21 +241,41 @@ function loadDatasetsForDate(reportsDir: string, dateStr: string): {
     }
   }
 
+  // Aggregate Category Summaries
+  const categorySummaries: Record<string, CategorySummary> = {
+    models: { name: 'Speech-to-Text Models', total: 0, passed: 0, failed: 0, skipped: 0, passRate: '0%', avgLatencyMs: 0, tabsCount: 0 },
+    features: { name: 'Speech Intelligence & Audio Features', total: 0, passed: 0, failed: 0, skipped: 0, passRate: '0%', avgLatencyMs: 0, tabsCount: 0 },
+    tts: { name: 'TTS Voice Synthesis', total: 0, passed: 0, failed: 0, skipped: 0, passRate: '0%', avgLatencyMs: 0, tabsCount: 0 },
+    core: { name: 'Core System Health & Routing', total: 0, passed: 0, failed: 0, skipped: 0, passRate: '0%', avgLatencyMs: 0, tabsCount: 0 },
+  };
+
+  for (const ts of tabSummaries) {
+    const cat = categorySummaries[ts.category] || categorySummaries['models'];
+    cat.total += ts.total;
+    cat.passed += ts.passed;
+    cat.failed += ts.failed;
+    cat.skipped += ts.skipped;
+    cat.tabsCount++;
+  }
+
+  for (const key of Object.keys(categorySummaries)) {
+    const cat = categorySummaries[key];
+    cat.passRate = cat.total > 0 ? ((cat.passed / cat.total) * 100).toFixed(1) + '%' : '0%';
+  }
+
   const total = allItems.length;
   const passed = allItems.filter(i => i.status === 'PASS').length;
   const failed = allItems.filter(i => i.status === 'FAIL').length;
   const skipped = allItems.filter(i => i.status === 'SKIP').length;
   const passRate = total > 0 ? ((passed / total) * 100).toFixed(1) + '%' : '0%';
+  const totalLat = allItems.reduce((acc, i) => acc + i.latencyMs, 0);
+  const avgLatencyMs = total > 0 ? Math.round(totalLat / total) : 0;
 
-  return { items: allItems, tabSummaries, total, passed, failed, skipped, passRate };
+  return { items: allItems, tabSummaries, categorySummaries, total, passed, failed, skipped, passRate, avgLatencyMs };
 }
 
 /**
  * Prepares deploy/ directory for local viewing and GitHub Pages deployment.
- * - Copies latest HTML report as deploy/latest-report.html and deploy/reports/index.html
- * - Enriches all run JSON files in deploy/runs/ with dataset records from CSV reports
- * - Generates deploy/runs/index.json with complete metadata for date dropdown & calendar
- * - Pushes to gh-pages if git remote is configured
  */
 export function prepareDashboard(autoDeploy: boolean = true): void {
   const rootDir = process.cwd();
@@ -238,154 +300,89 @@ export function prepareDashboard(autoDeploy: boolean = true): void {
       const srcPath = path.join(reportsDir, latest);
       fs.copyFileSync(srcPath, path.join(deployDir, latest));
       fs.copyFileSync(srcPath, path.join(deployDir, 'latest-report.html'));
+      for (const reportFile of htmlReports) {
+        fs.copyFileSync(path.join(reportsDir, reportFile), path.join(deployReportsDir, reportFile));
+        fs.copyFileSync(path.join(reportsDir, reportFile), path.join(deployDir, reportFile));
+      }
       fs.copyFileSync(srcPath, path.join(deployReportsDir, 'index.html'));
-      fs.copyFileSync(srcPath, path.join(deployReportsDir, latest));
       console.log(`[Dashboard Prep] Copied ${latest} → deploy/latest-report.html and deploy/reports/`);
     }
   }
 
-  // 2. Discover all run dates from existing run JSONs and CSVs
-  const runFiles = fs.readdirSync(runsDir)
-    .filter((f: string) => f.endsWith('.json') && f !== 'index.json')
-    .sort();
-
-  const allDates = new Set<string>();
-  for (const rf of runFiles) {
-    allDates.add(rf.replace('.json', ''));
-  }
+  // 2. Discover all dates from CSV files in reports/
+  const discoveredDates = new Set<string>();
   if (fs.existsSync(reportsDir)) {
-    for (const f of fs.readdirSync(reportsDir)) {
-      const match = f.match(/(\d{4}-\d{2}-\d{2})\.(csv|json|html)$/);
-      if (match) allDates.add(match[1]);
+    const csvFiles = fs.readdirSync(reportsDir).filter(f => f.endsWith('.csv'));
+    for (const f of csvFiles) {
+      const match = f.match(/-(\d{4}-\d{2}-\d{2})\.csv$/);
+      if (match) discoveredDates.add(match[1]);
     }
   }
 
-  const sortedDates = Array.from(allDates).sort().reverse();
-  const indexMetadata: any[] = [];
+  // 3. Process each date and write JSON run file
+  const runSummaries: any[] = [];
+  const sortedDates = Array.from(discoveredDates).sort().reverse();
 
   for (const dateStr of sortedDates) {
-    const runFilePath = path.join(runsDir, `${dateStr}.json`);
-    let runData: any = {};
+    const dataset = loadDatasetsForDate(reportsDir, dateStr);
+    const jsonPath = path.join(runsDir, `${dateStr}.json`);
 
-    if (fs.existsSync(runFilePath)) {
-      try {
-        runData = JSON.parse(fs.readFileSync(runFilePath, 'utf-8'));
-      } catch (e) {
-        runData = {};
-      }
+    let existingData: any = {};
+    if (fs.existsSync(jsonPath)) {
+      try { existingData = JSON.parse(fs.readFileSync(jsonPath, 'utf-8')); } catch {}
     }
 
-    runData.date = dateStr;
-    if (!runData.totalTests) runData.totalTests = 0;
-    if (!runData.modules) runData.modules = [];
-    if (!runData.failures) runData.failures = [];
-
-    // Parse CSV dataset test cases for this date
-    const datasets = loadDatasetsForDate(reportsDir, dateStr);
-    runData.datasets = datasets.items;
-    runData.datasetSummaries = datasets.tabSummaries;
-    runData.datasetStats = {
-      total: datasets.total,
-      passed: datasets.passed,
-      failed: datasets.failed,
-      skipped: datasets.skipped,
-      passRate: datasets.passRate,
+    const mergedData = {
+      ...existingData,
+      date: dateStr,
+      generatedAt: new Date().toISOString(),
+      masterOverview: {
+        totalTestCases: dataset.total,
+        passed: dataset.passed,
+        failed: dataset.failed,
+        skipped: dataset.skipped,
+        passRate: dataset.passRate,
+        avgLatencyMs: dataset.avgLatencyMs,
+        categories: dataset.categorySummaries,
+      },
+      summary: {
+        totalTests: dataset.total,
+        passed: dataset.passed,
+        failed: dataset.failed,
+        skipped: dataset.skipped,
+        passRate: dataset.passRate,
+        avgLatencyMs: dataset.avgLatencyMs,
+      },
+      datasetSummaries: dataset.tabSummaries,
+      datasetItems: dataset.items,
     };
 
-    // Include dataset failures in a combined/dedicated structure
-    const datasetFailures = datasets.items.filter(i => i.status === 'FAIL').map(i => ({
-      tab: i.tab,
-      audioPath: i.audioPath,
-      lang: i.lang,
-      groundTruth: i.groundTruth,
-      predictedText: i.predictedText,
-      wer: i.wer,
-      cer: i.cer,
-      failureReason: i.failureReason,
-      latencyMs: i.latencyMs,
-      timestamp: i.timestamp,
-    }));
-    runData.datasetFailures = datasetFailures;
+    fs.writeFileSync(jsonPath, JSON.stringify(mergedData, null, 2), 'utf-8');
 
-    fs.writeFileSync(runFilePath, JSON.stringify(runData, null, 2));
-
-    indexMetadata.push({
-      file: `${dateStr}.json`,
+    runSummaries.push({
       date: dateStr,
-      totalTests: runData.totalTests,
-      passed: runData.passed,
-      failed: runData.failed,
-      passRate: runData.passRate || (runData.totalTests > 0 ? ((runData.passed / runData.totalTests) * 100).toFixed(1) : '100.0'),
-      datasetTotal: datasets.total,
-      datasetPassed: datasets.passed,
-      datasetFailed: datasets.failed,
-      datasetPassRate: datasets.passRate,
-      hasDatasets: datasets.total > 0,
-      durationMs: runData.durationMs || 0,
+      totalTests: dataset.total,
+      passed: dataset.passed,
+      failed: dataset.failed,
+      skipped: dataset.skipped,
+      passRate: dataset.passRate,
+      avgLatencyMs: dataset.avgLatencyMs,
+      datasetTabCount: dataset.tabSummaries.length,
+      categories: dataset.categorySummaries,
+      reportUrl: `reports/ASR-Test-Report-${dateStr}.html`,
     });
   }
 
+  // 4. Generate master index.json
   const indexPath = path.join(runsDir, 'index.json');
-  fs.writeFileSync(indexPath, JSON.stringify({
-    runs: indexMetadata.map(m => m.file),
-    metadata: indexMetadata,
-    latestDate: sortedDates[0] || '',
-  }, null, 2));
+  fs.writeFileSync(indexPath, JSON.stringify(runSummaries, null, 2), 'utf-8');
+  console.log(`[Dashboard Prep] Indexed ${runSummaries.length} runs with full master metrics in ${indexPath}`);
 
-  console.log(`[Dashboard Prep] Indexed ${indexMetadata.length} runs with full dataset information in ${indexPath}`);
-
-  // 3. Auto-deploy to GitHub Pages if autoDeploy is true
-  if (autoDeploy) {
-    pushToGhPages(deployDir);
-  }
-}
-
-export function pushToGhPages(deployDir: string): void {
-  try {
-    console.log('\n🚀 Auto-deploying updated dashboard to GitHub Pages (gh-pages branch)...');
-    const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'gh-pages-deploy-'));
-
-    // Copy deploy contents to temp directory
-    execSync(`cp -r "${deployDir}/"* "${tempDir}/"`, { stdio: 'ignore' });
-    fs.writeFileSync(path.join(tempDir, '.nojekyll'), '');
-
-    // Get origin and personal remote URLs
-    let originUrl = 'https://github.com/Shunyalabsai/asr-tts-backend-qa.git';
-    try {
-      originUrl = execSync('git remote get-url origin', { encoding: 'utf-8' }).trim();
-    } catch {}
-
-    let personalUrl = '';
-    try {
-      personalUrl = execSync('git remote get-url personal', { encoding: 'utf-8' }).trim();
-    } catch {}
-
-    const now = new Date().toISOString().replace('T', ' ').substring(0, 19);
-    execSync(`cd "${tempDir}" && git init -b gh-pages && git config user.name "yamini-pal-singh" && git config user.email "yamini@shunyalabs.ai" && git remote add origin "${originUrl}" && git add -A && git commit -m "deploy: update STT & TTS dashboard with history & datasets (${now})"`, {
-      stdio: 'inherit',
-    });
-
-    console.log('Pushing to origin (gh-pages)...');
-    try {
-      execSync(`cd "${tempDir}" && git push -f origin gh-pages`, { stdio: 'inherit' });
-    } catch (e: any) {
-      console.warn(`  origin push warning: ${e.message}`);
-    }
-
-    if (personalUrl) {
-      console.log('Pushing to personal (gh-pages)...');
-      try {
-        execSync(`cd "${tempDir}" && git remote add personal "${personalUrl}" && git push -f personal gh-pages`, { stdio: 'inherit' });
-      } catch (e: any) {
-        console.warn(`  personal push warning: ${e.message}`);
-      }
-    }
-
-    // Cleanup
-    try { fs.rmSync(tempDir, { recursive: true, force: true }); } catch {}
-    console.log('✅ GitHub Pages live dashboard updated successfully!');
-  } catch (err: any) {
-    console.warn(`\n⚠️ Note: GitHub Pages auto-deploy skipped (${err.message || 'network/git error'}). Local dashboard is up to date.`);
+  // 5. Ensure index.html and dashboard-v2.html exist
+  const srcDashboard = path.join(deployDir, 'dashboard-v2.html');
+  const indexHtml = path.join(deployDir, 'index.html');
+  if (fs.existsSync(srcDashboard)) {
+    fs.copyFileSync(srcDashboard, indexHtml);
   }
 }
 
