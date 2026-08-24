@@ -46,7 +46,7 @@ export class TtsClient {
         ENDPOINTS.tts.auth
       );
     this.baseUrl = baseUrl || TTS_BASE_URL;
-    this.defaultTimeout = defaultTimeout || TIMEOUTS.api;
+    this.defaultTimeout = defaultTimeout || 120000;
   }
 
   /**

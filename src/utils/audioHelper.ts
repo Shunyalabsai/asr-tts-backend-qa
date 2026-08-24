@@ -42,3 +42,31 @@ export function fileSizeInMB(filePath: string): number {
   const stats = fs.statSync(resolved);
   return stats.size / (1024 * 1024);
 }
+
+/**
+ * Fast estimation/calculation of audio duration in seconds from file header or size
+ */
+export function getAudioDurationSeconds(filePath: string): number {
+  const resolved = resolveAudioPath(filePath);
+  if (!fs.existsSync(resolved)) return 0;
+  try {
+    const buffer = fs.readFileSync(resolved);
+    // WAV Header parsing
+    if (buffer.length > 44 && buffer.toString('ascii', 0, 4) === 'RIFF' && buffer.toString('ascii', 8, 12) === 'WAVE') {
+      const numChannels = buffer.readUInt16LE(22);
+      const sampleRate = buffer.readUInt32LE(24);
+      const bitsPerSample = buffer.readUInt16LE(34);
+      if (numChannels > 0 && sampleRate > 0 && bitsPerSample > 0) {
+        const bytesPerSec = sampleRate * numChannels * (bitsPerSample / 8);
+        const dataLength = buffer.length - 44;
+        return parseFloat((dataLength / bytesPerSec).toFixed(2));
+      }
+    }
+    // MP3/OGG/MPEG general estimate based on average bitrate (128kbps = 16000 bytes/sec)
+    const stats = fs.statSync(resolved);
+    const estimatedSec = stats.size / 16000;
+    return parseFloat(estimatedSec.toFixed(2));
+  } catch {
+    return 0;
+  }
+}

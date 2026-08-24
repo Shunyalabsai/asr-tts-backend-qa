@@ -1,31 +1,31 @@
 [
   {
     "date": "2026-08-25",
-    "totalTests": 624,
-    "passed": 382,
-    "failed": 242,
-    "skipped": 0,
-    "passRate": "61.2%",
-    "avgLatencyMs": 1831,
-    "datasetTabCount": 18,
+    "totalTests": 657,
+    "passed": 439,
+    "failed": 192,
+    "skipped": 26,
+    "passRate": "66.8%",
+    "avgLatencyMs": 1073,
+    "datasetTabCount": 20,
     "categories": {
       "models": {
         "name": "Speech-to-Text Models",
-        "total": 360,
-        "passed": 122,
-        "failed": 238,
-        "skipped": 0,
-        "passRate": "33.9%",
+        "total": 393,
+        "passed": 182,
+        "failed": 186,
+        "skipped": 25,
+        "passRate": "46.3%",
         "avgLatencyMs": 0,
-        "tabsCount": 5
+        "tabsCount": 7
       },
       "features": {
         "name": "Speech Intelligence & Audio Features",
         "total": 40,
-        "passed": 36,
-        "failed": 4,
-        "skipped": 0,
-        "passRate": "90.0%",
+        "passed": 33,
+        "failed": 6,
+        "skipped": 1,
+        "passRate": "82.5%",
         "avgLatencyMs": 0,
         "tabsCount": 11
       },
