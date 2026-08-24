@@ -1,6 +1,5 @@
 import type { ExecutionSummary } from '../types';
 import { EMAIL_CONFIG } from '../config';
-import * as path from 'path';
 
 export class EmailReporter {
   async sendDailyReport(
@@ -24,8 +23,8 @@ export class EmailReporter {
 <body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8fafc;padding:20px;">
   <div style="max-width:600px;margin:0 auto;background:white;border-radius:12px;overflow:hidden;border:1px solid #e2e8f0;">
     <div style="padding:24px;background:${summary.passRate >= 0.8 ? '#065f46' : '#991b1b'};color:white;text-align:center;">
-      <h1 style="margin:0;font-size:24px;">${overallStatus}</h1>
-      <p style="margin:8px 0 0;opacity:0.9;">ASR Test Report — ${summary.date}</p>
+      <h1 style="margin:0;font-size:24px;">🎙️ Shunya Labs STT & TTS — ${overallStatus}</h1>
+      <p style="margin:8px 0 0;opacity:0.9;">Execution Report — ${summary.date}</p>
     </div>
     <div style="padding:24px;">
       <div style="display:flex;gap:16px;margin-bottom:24px;">
@@ -95,9 +94,9 @@ export class EmailReporter {
       });
 
       await transporter.sendMail({
-        from: `"ASR Test Report" <${from}>`,
+        from: `"Shunya Labs Quality Report" <${from}>`,
         to,
-        subject: `[ASR Tests] ${overallStatus} — ${passRate}% pass rate (${summary.date})`,
+        subject: `[Shunya Labs STT & TTS] ${overallStatus} — ${passRate}% pass rate (${summary.date})`,
         html: htmlContent,
       });
 

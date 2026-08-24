@@ -73,8 +73,7 @@ function checkDirs(): void {
   console.log('\n=== Checking Directory Structure ===\n');
   const dirs = [
     'src/config', 'src/services', 'src/utils', 'src/types',
-    'src/tests/suites', 'src/tests/helpers', 'src/performance',
-    'src/reporting', 'scripts', 'input/audio', 'reports', 'logs',
+    'src/features', 'src/reporting', 'scripts', 'input/audio', 'reports', 'deploy',
   ];
 
   for (const dir of dirs) {

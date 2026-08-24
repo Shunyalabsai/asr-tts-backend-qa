@@ -13,14 +13,20 @@ export class AuthError extends Error {
   }
 }
 
+interface CachedToken {
+  token: string;
+  expiresAt: number;
+}
+
 export class AuthClient {
-  private currentToken: string | null = null;
-  private expiresAt: number = 0;
+  private static tokenCache: Map<string, CachedToken> = new Map();
+  private static refreshPromises: Map<string, Promise<string>> = new Map();
+
   private refreshBuffer: number;
-  private refreshPromise: Promise<string> | null = null;
   private apiKey: string;
   private baseUrl: string;
   private authEndpoint: string;
+  private cacheKey: string;
 
   constructor(
     apiKey?: string,
@@ -32,23 +38,29 @@ export class AuthClient {
     this.baseUrl = baseUrl || ASR_BASE_URL;
     this.authEndpoint = authEndpoint || ENDPOINTS.auth;
     this.refreshBuffer = refreshBufferSeconds || AUTH_CONFIG.refreshBufferSeconds;
+    this.cacheKey = `${this.baseUrl}|${this.authEndpoint}|${this.apiKey}`;
   }
 
   async getToken(): Promise<string> {
-    if (this.currentToken && !this.isExpired()) {
-      return this.currentToken;
+    const cached = AuthClient.tokenCache.get(this.cacheKey);
+    if (cached && !this.isTokenExpired(cached)) {
+      return cached.token;
     }
     return this.refreshToken();
   }
 
   private async refreshToken(): Promise<string> {
-    if (this.refreshPromise) {
-      return this.refreshPromise;
+    const existingPromise = AuthClient.refreshPromises.get(this.cacheKey);
+    if (existingPromise) {
+      return existingPromise;
     }
-    this.refreshPromise = this.doRefresh().finally(() => {
-      this.refreshPromise = null;
+
+    const promise = this.doRefresh().finally(() => {
+      AuthClient.refreshPromises.delete(this.cacheKey);
     });
-    return this.refreshPromise;
+
+    AuthClient.refreshPromises.set(this.cacheKey, promise);
+    return promise;
   }
 
   private async doRefresh(): Promise<string> {
@@ -85,23 +97,33 @@ export class AuthClient {
     }
 
     const data = (await response.json()) as TokenResponse;
-    this.currentToken = data.token;
-    this.expiresAt = data.expires_at;
-    return this.currentToken;
+    const expiresAt = data.expires_at || Math.floor(Date.now() / 1000) + (data.expires_in || 3600);
+
+    AuthClient.tokenCache.set(this.cacheKey, {
+      token: data.token,
+      expiresAt,
+    });
+
+    return data.token;
+  }
+
+  private isTokenExpired(cached: CachedToken): boolean {
+    const now = Math.floor(Date.now() / 1000);
+    return (cached.expiresAt - this.refreshBuffer) <= now;
   }
 
   isExpired(): boolean {
-    const now = Math.floor(Date.now() / 1000);
-    return (this.expiresAt - this.refreshBuffer) <= now;
+    const cached = AuthClient.tokenCache.get(this.cacheKey);
+    if (!cached) return true;
+    return this.isTokenExpired(cached);
   }
 
   invalidate(): void {
-    this.currentToken = null;
-    this.expiresAt = 0;
+    AuthClient.tokenCache.delete(this.cacheKey);
   }
 
   async forceRefresh(): Promise<string> {
     this.invalidate();
-    return this.getToken();
+    return this.refreshToken();
   }
 }

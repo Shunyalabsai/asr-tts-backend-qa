@@ -1,0 +1,32 @@
+{
+  "date": "2026-08-22",
+  "totalTests": 5,
+  "passed": 5,
+  "failed": 0,
+  "skipped": 0,
+  "passRate": "100.0",
+  "durationMs": 2311,
+  "modules": [
+    {
+      "module": "Health",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 220,
+      "p50LatencyMs": 94,
+      "p95LatencyMs": 346
+    },
+    {
+      "module": "TTS",
+      "total": 3,
+      "passed": 3,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 437.6666666666667,
+      "p50LatencyMs": 294,
+      "p95LatencyMs": 931
+    }
+  ],
+  "failures": []
+}
