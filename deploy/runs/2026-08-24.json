@@ -5,7 +5,7 @@
   "failed": 0,
   "skipped": 0,
   "passRate": "100.0",
-  "durationMs": 247471.466916,
+  "durationMs": 209517.92370800002,
   "modules": [
     {
       "module": "Health",
@@ -33,7 +33,7 @@
       "passed": 24,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.736842105263158,
+      "avgLatencyMs": 1.9375,
       "p50LatencyMs": 1,
       "p95LatencyMs": 10
     },
@@ -43,9 +43,9 @@
       "passed": 8,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 2.3333333333333335,
-      "p50LatencyMs": 3,
-      "p95LatencyMs": 3
+      "avgLatencyMs": 1.4,
+      "p50LatencyMs": 1,
+      "p95LatencyMs": 2
     },
     {
       "module": "SpeakerDiarization",
@@ -53,7 +53,7 @@
       "passed": 6,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.2,
+      "avgLatencyMs": 1.3333333333333333,
       "p50LatencyMs": 1,
       "p95LatencyMs": 2
     },
@@ -73,8 +73,8 @@
       "passed": 5,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 2.6,
-      "p50LatencyMs": 3,
+      "avgLatencyMs": 2.25,
+      "p50LatencyMs": 2,
       "p95LatencyMs": 3
     },
     {
@@ -83,9 +83,9 @@
       "passed": 8,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1,
+      "avgLatencyMs": 1.3333333333333333,
       "p50LatencyMs": 1,
-      "p95LatencyMs": 1
+      "p95LatencyMs": 2
     },
     {
       "module": "SpeechIntelligence",
@@ -95,7 +95,7 @@
       "skipped": 0,
       "avgLatencyMs": 1.75,
       "p50LatencyMs": 2,
-      "p95LatencyMs": 2
+      "p95LatencyMs": 3
     },
     {
       "module": "CombinationScenarios",
@@ -103,9 +103,9 @@
       "passed": 6,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1.4,
+      "avgLatencyMs": 1,
       "p50LatencyMs": 1,
-      "p95LatencyMs": 2
+      "p95LatencyMs": 1
     },
     {
       "module": "ErrorHandling",
@@ -113,9 +113,9 @@
       "passed": 8,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 23.333333333333332,
+      "avgLatencyMs": 14,
       "p50LatencyMs": 1,
-      "p95LatencyMs": 68
+      "p95LatencyMs": 40
     },
     {
       "module": "Security-Misc",
@@ -123,9 +123,9 @@
       "passed": 5,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1,
+      "avgLatencyMs": 3,
       "p50LatencyMs": 1,
-      "p95LatencyMs": 1
+      "p95LatencyMs": 5
     },
     {
       "module": "SpeakerManagement",
@@ -153,7 +153,7 @@
       "passed": 15,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 2.5,
+      "avgLatencyMs": 2.2857142857142856,
       "p50LatencyMs": 2,
       "p95LatencyMs": 5
     }
