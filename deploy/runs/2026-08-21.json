@@ -158,5 +158,15 @@
       "p95LatencyMs": 4
     }
   ],
-  "failures": []
+  "failures": [],
+  "datasets": [],
+  "datasetSummaries": [],
+  "datasetStats": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "passRate": "0%"
+  },
+  "datasetFailures": []
 }

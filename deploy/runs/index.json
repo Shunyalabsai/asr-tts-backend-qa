@@ -1,10 +1,97 @@
 {
   "runs": [
-    "2026-07-27.json",
-    "2026-07-29.json",
-    "2026-07-30.json",
-    "2026-08-21.json",
+    "2026-08-24.json",
     "2026-08-22.json",
-    "2026-08-24.json"
-  ]
+    "2026-08-21.json",
+    "2026-07-30.json",
+    "2026-07-29.json",
+    "2026-07-27.json"
+  ],
+  "metadata": [
+    {
+      "file": "2026-08-24.json",
+      "date": "2026-08-24",
+      "totalTests": 129,
+      "passed": 129,
+      "failed": 0,
+      "passRate": "100.0",
+      "datasetTotal": 306,
+      "datasetPassed": 170,
+      "datasetFailed": 136,
+      "datasetPassRate": "55.6%",
+      "hasDatasets": true,
+      "durationMs": 209517.92370800002
+    },
+    {
+      "file": "2026-08-22.json",
+      "date": "2026-08-22",
+      "totalTests": 5,
+      "passed": 5,
+      "failed": 0,
+      "passRate": "100.0",
+      "datasetTotal": 0,
+      "datasetPassed": 0,
+      "datasetFailed": 0,
+      "datasetPassRate": "0%",
+      "hasDatasets": false,
+      "durationMs": 2311
+    },
+    {
+      "file": "2026-08-21.json",
+      "date": "2026-08-21",
+      "totalTests": 129,
+      "passed": 129,
+      "failed": 0,
+      "passRate": "100.0",
+      "datasetTotal": 0,
+      "datasetPassed": 0,
+      "datasetFailed": 0,
+      "datasetPassRate": "0%",
+      "hasDatasets": false,
+      "durationMs": 193184.466709
+    },
+    {
+      "file": "2026-07-30.json",
+      "date": "2026-07-30",
+      "totalTests": 114,
+      "passed": 105,
+      "failed": 9,
+      "passRate": "92.1",
+      "datasetTotal": 297,
+      "datasetPassed": 139,
+      "datasetFailed": 158,
+      "datasetPassRate": "46.8%",
+      "hasDatasets": true,
+      "durationMs": 503953.51025000005
+    },
+    {
+      "file": "2026-07-29.json",
+      "date": "2026-07-29",
+      "totalTests": 114,
+      "passed": 31,
+      "failed": 83,
+      "passRate": "27.2",
+      "datasetTotal": 280,
+      "datasetPassed": 6,
+      "datasetFailed": 274,
+      "datasetPassRate": "2.1%",
+      "hasDatasets": true,
+      "durationMs": 739476.969709
+    },
+    {
+      "file": "2026-07-27.json",
+      "date": "2026-07-27",
+      "totalTests": 114,
+      "passed": 87,
+      "failed": 27,
+      "passRate": "76.3",
+      "datasetTotal": 0,
+      "datasetPassed": 0,
+      "datasetFailed": 0,
+      "datasetPassRate": "0%",
+      "hasDatasets": false,
+      "durationMs": 643038.6604589999
+    }
+  ],
+  "latestDate": "2026-08-24"
 }

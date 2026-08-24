@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shunya Labs STT & TTS Dashboard</title>
+  <title>Shunya Labs STT & TTS Quality Dashboard</title>
   <style>
     :root {
       --bg: #05091A;
@@ -11,10 +11,11 @@
       --bg-card2: #0F1E38;
       --border: #1A3050;
       --text: #E2ECF8;
-      --text-muted: #6A8CAE;
+      --text-muted: #7E9BB8;
       --cyan: #00D4FF;
       --purple: #8B5CF6;
       --green: #10B981;
+      --red: #EF4444;
       --grad: linear-gradient(135deg, #00D4FF 0%, #8B5CF6 50%, #EC4899 100%);
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,13 +28,13 @@
       flex-direction: column;
     }
     .header {
-      background: linear-gradient(135deg, #05091A 0%, #0D1B38 40%, #170C3A 100%);
+      background: linear-gradient(135deg, #05091A 0%, #0D1B38 45%, #180D3D 100%);
       border-bottom: 1px solid var(--border);
       padding: 2.5rem 2rem;
       text-align: center;
     }
     .header h1 {
-      font-size: 1.8rem;
+      font-size: 1.85rem;
       font-weight: 700;
       background: var(--grad);
       -webkit-background-clip: text;
@@ -42,7 +43,7 @@
       margin-bottom: 0.5rem;
     }
     .header p { color: var(--text-muted); font-size: 0.95rem; }
-    .container { flex: 1; max-width: 750px; margin: 0 auto; padding: 2rem 1.5rem; width: 100%; }
+    .container { flex: 1; max-width: 850px; margin: 0 auto; padding: 2rem 1.5rem; width: 100%; }
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -62,18 +63,8 @@
     }
     .card .icon { font-size: 2.2rem; width: 3.5rem; text-align: center; }
     .card .title { font-weight: 700; font-size: 1.1rem; margin-bottom: 0.25rem; }
-    .card .desc { color: var(--text-muted); font-size: 0.82rem; }
+    .card .desc { color: var(--text-muted); font-size: 0.85rem; }
     .card .arrow { margin-left: auto; color: var(--cyan); font-size: 1.4rem; }
-    .badge {
-      display: inline-block;
-      background: var(--bg-card2);
-      border: 1px solid var(--border);
-      border-radius: 9999px;
-      padding: 0.2rem 0.75rem;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
     .footer {
       text-align: center;
       padding: 1.5rem;
@@ -83,7 +74,7 @@
     }
     .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1rem; }
     .grid .card { margin-bottom: 0; }
-    .grid .card .icon { font-size: 1.5rem; width: auto; }
+    .grid .card .icon { font-size: 1.6rem; width: auto; }
     .status-dot {
       display: inline-block;
       width: 8px; height: 8px;
@@ -102,8 +93,8 @@
 </head>
 <body>
   <div class="header">
-    <h1>🎙️ Shunya Labs STT & TTS Dashboard</h1>
-    <p>Automated Quality & Resilience Testing for Speech-to-Text & Text-to-Speech APIs</p>
+    <h1>🎙️ Shunya Labs STT & TTS Quality Dashboard</h1>
+    <p>Automated Quality, Accuracy & Resilience Testing for Speech-to-Text & Text-to-Speech APIs</p>
   </div>
   <div class="container">
 
@@ -113,7 +104,7 @@
         <div class="icon">📊</div>
         <div>
           <div class="title">Unified Quality Dashboard</div>
-          <div class="desc">129/129 Passing Tests across STT & TTS, latency percentiles, feature deep dives</div>
+          <div class="desc" id="mainDashboardDesc">129/129 Passing Tests across STT & TTS, date history dropdown, calendar view & output sheet datasets</div>
         </div>
         <div class="arrow">→</div>
       </a>
@@ -121,6 +112,27 @@
 
     <!-- Secondary navigation links -->
     <div class="grid">
+      <div class="card" onclick="location.href='dashboard-v2.html#tab-datasets'">
+        <a href="dashboard-v2.html#tab-datasets">
+          <div class="icon">📑</div>
+          <div>
+            <div class="title">Output Sheet Datasets</div>
+            <div class="desc" id="datasetCardDesc">zero-indic, zero-codeswitch, zero-med test cases</div>
+          </div>
+        </a>
+      </div>
+      <div class="card" onclick="location.href='dashboard-v2.html#tab-calendar'">
+        <a href="dashboard-v2.html#tab-calendar">
+          <div class="icon">🗓️</div>
+          <div>
+            <div class="title">Calendar & History</div>
+            <div class="desc">
+              <span class="status-dot green" id="runDot"></span>
+              <span id="runCount">Loading runs...</span>
+            </div>
+          </div>
+        </a>
+      </div>
       <div class="card" onclick="location.href='dashboard-v2.html#tab-stt'">
         <a href="dashboard-v2.html#tab-stt">
           <div class="icon">🎙️</div>
@@ -135,31 +147,7 @@
           <div class="icon">🔊</div>
           <div>
             <div class="title">Text-to-Speech</div>
-            <div class="desc">15 tests · Omni-Voice, LaTeX Math, OpenAI</div>
-          </div>
-        </a>
-      </div>
-      <div class="card" onclick="location.href='dashboard-v2.html#tab-runs'">
-        <a href="dashboard-v2.html#tab-runs">
-          <div class="icon">🗂️</div>
-          <div>
-            <div class="title">Run History</div>
-            <div class="desc">
-              <span class="status-dot green" id="runDot"></span>
-              <span id="runCount">Loading...</span>
-            </div>
-          </div>
-        </a>
-      </div>
-      <div class="card" onclick="location.href='dashboard-v2.html#tab-failures'">
-        <a href="dashboard-v2.html#tab-failures">
-          <div class="icon">🛡️</div>
-          <div>
-            <div class="title">Failures (0)</div>
-            <div class="desc">
-              <span class="status-dot green" id="failDot"></span>
-              <span id="failCount">0 failures</span>
-            </div>
+            <div class="desc">15 tests · Omni-Voice, Spoken LaTeX, OpenAI Speech</div>
           </div>
         </a>
       </div>
@@ -167,31 +155,36 @@
 
   </div>
   <div class="footer">
-    <span id="statusLine">● Loading...</span>
+    <span id="statusLine">● Initializing test dashboard...</span>
   </div>
 
   <script>
     fetch('runs/index.json')
       .then(r => r.json())
       .then(idx => {
-        const runs = idx.runs || [];
-        document.getElementById('runCount').textContent = runs.length + ' runs tracked';
-        document.getElementById('runDot').className = 'status-dot ' + (runs.length > 0 ? 'green' : 'yellow');
+        const metadata = idx.metadata || [];
+        const latest = metadata[0] || {};
+        const runsCount = metadata.length;
 
-        let totalFail = 0;
-        Promise.all(runs.map(fn =>
-          fetch('runs/' + fn).then(r => r.json()).then(d => {
-            totalFail += d.failures ? d.failures.length : 0;
-          }).catch(() => {})
-        )).then(() => {
-          document.getElementById('failCount').textContent = totalFail + ' failures';
-          document.getElementById('failDot').className = 'status-dot ' + (totalFail > 0 ? 'yellow' : 'green');
+        document.getElementById('runCount').textContent = `${runsCount} historical runs`;
+        document.getElementById('runDot').className = 'status-dot ' + (runsCount > 0 ? 'green' : 'yellow');
+
+        if (latest.date) {
+          const dsText = latest.hasDatasets ? ` · 📑 ${latest.datasetTotal} dataset cases` : '';
+          document.getElementById('mainDashboardDesc').textContent =
+            `Latest Run (${latest.date}): ${latest.passed}/${latest.totalTests} Passed (${latest.passRate}%)${dsText}`;
+
+          if (latest.hasDatasets) {
+            document.getElementById('datasetCardDesc').textContent =
+              `${latest.datasetTotal} test cases · ${latest.datasetPassRate} accuracy pass rate`;
+          }
+
           document.getElementById('statusLine').textContent =
-            '● ' + runs.length + ' runs · 100% Pass Rate · ' + new Date().toISOString().split('T')[0];
-        });
+            `● Latest Run: ${latest.date} · ${latest.passed}/${latest.totalTests} Passed (${latest.passRate}%) · ${runsCount} runs recorded`;
+        }
       })
       .catch(() => {
-        document.getElementById('runCount').textContent = 'No runs yet';
+        document.getElementById('runCount').textContent = 'Ready for runs';
         document.getElementById('statusLine').textContent = '● Ready for test runs';
       });
   </script>
