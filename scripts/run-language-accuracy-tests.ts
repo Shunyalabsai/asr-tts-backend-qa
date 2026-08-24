@@ -167,6 +167,7 @@ function writeCSV(filePath: string, headers: string[], rows: string[][]): void {
 }
 
 function resolveAudioPath(audioUrl: string): string {
+  if (!audioUrl) return '';
   // Try the path as-is
   if (fs.existsSync(audioUrl)) return audioUrl;
 
@@ -180,6 +181,15 @@ function resolveAudioPath(audioUrl: string): string {
   const inputRelative = relative.replace(/^input\//, '');
   const altPath = path.resolve(process.cwd(), 'input', inputRelative);
   if (fs.existsSync(altPath)) return altPath;
+
+  // Try under Long_Medical_files
+  const fileName = path.basename(audioUrl);
+  const longMedPath = path.resolve(process.cwd(), 'input/indicvoices_data/audio/Long_Medical_files', fileName);
+  if (fs.existsSync(longMedPath)) return longMedPath;
+
+  // Try under audio reference
+  const refPath = path.resolve(process.cwd(), 'input/audio/reference', fileName);
+  if (fs.existsSync(refPath)) return refPath;
 
   return audioUrl;
 }
@@ -233,15 +243,15 @@ async function fetchTabCases(sheetId: string, tabName: string): Promise<{ testCa
   console.log(`  ${tabName}: Headers found: [${rows[0].join(' | ')}]`);
 
   const idx = (name: string) => headers.findIndex(h => h.includes(name.toLowerCase()));
-  const idIdx = idx('test_case_id') ?? idx('test case id');
-  const audioIdx = idx('audio url');
-  const gtIdx = idx('ground_truth_text') ?? idx('ground truth');
-  const langIdx = idx('language');
-  const detectIdx = idx('detect_language_code') ?? idx('detect language code');
-  const expectIdx = idx('expected_language_code') ?? idx('expected language code');
+  const idIdx = idx('test case id') >= 0 ? idx('test case id') : idx('test_case_id');
+  const audioIdx = idx('audio file') >= 0 ? idx('audio file') : (idx('audio url') >= 0 ? idx('audio url') : idx('audio_url'));
+  const gtIdx = idx('expected text') >= 0 ? idx('expected text') : (idx('ground_truth') >= 0 ? idx('ground_truth') : (idx('ground truth') >= 0 ? idx('ground truth') : idx('reference')));
+  const langIdx = idx('expected language') >= 0 ? idx('expected language') : idx('language');
+  const detectIdx = idx('detect_language_code') >= 0 ? idx('detect_language_code') : idx('detect language code');
+  const expectIdx = idx('expected_language_code') >= 0 ? idx('expected_language_code') : idx('expected language code');
 
   if (idIdx < 0 || audioIdx < 0) {
-    console.warn(`  ${tabName}: Cannot find required columns (test_case_id, audio_url) — skipping`);
+    console.warn(`  ${tabName}: Cannot find required columns (test case id, audio file/url) — skipping`);
     return [];
   }
 
@@ -447,15 +457,28 @@ async function runSingleTest(tc: TestCase): Promise<TestResult> {
     const cerOk = cer < 0 || cer <= ACCURACY_CONFIG.cerThreshold;
     const testStatus = (werOk && cerOk) ? 'PASS' : 'FAIL';
 
+    let failureReason = '';
+    if (testStatus === 'FAIL') {
+      if (!predictedText && groundTruth) {
+        failureReason = `Empty transcription returned by API (WER: 100%, CER: 100%)`;
+      } else if (!werOk && !cerOk) {
+        failureReason = `WER ${(wer * 100).toFixed(1)}% (max ${(ACCURACY_CONFIG.werThreshold * 100)}%) and CER ${(cer * 100).toFixed(1)}% (max ${(ACCURACY_CONFIG.cerThreshold * 100)}%) exceeded`;
+      } else if (!werOk) {
+        failureReason = `WER ${(wer * 100).toFixed(1)}% exceeded threshold (max ${(ACCURACY_CONFIG.werThreshold * 100)}%)`;
+      } else if (!cerOk) {
+        failureReason = `CER ${(cer * 100).toFixed(1)}% exceeded threshold (max ${(ACCURACY_CONFIG.cerThreshold * 100)}%)`;
+      }
+    }
+
     const statusIcon = testStatus === 'PASS' ? '✅' : '❌';
     console.log(`  [${statusIcon}] WER: ${(wer * 100).toFixed(1)}%, CER: ${(cer * 100).toFixed(1)}%, Latency: ${latencyMs}ms`);
 
     return {
       testCaseId: tc.testCaseId,
-        audioUrl: tc.audioUrl,
-        language: tc.language,
-        expectedLangCode: tc.expectedLanguageCode,
-        groundTruth: tc.groundTruth,
+      audioUrl: tc.audioUrl,
+      language: tc.language,
+      expectedLangCode: tc.expectedLanguageCode,
+      groundTruth: tc.groundTruth,
       detectedLangCode,
       langCodeMatch,
       predictedText,
@@ -464,7 +487,7 @@ async function runSingleTest(tc: TestCase): Promise<TestResult> {
       wer,
       cer,
       testStatus,
-      failureReason: testStatus === 'PASS' ? '' : `WER ${(wer * 100).toFixed(1)}% exceeds threshold`,
+      failureReason,
       timestamp,
     };
   } catch (err: any) {

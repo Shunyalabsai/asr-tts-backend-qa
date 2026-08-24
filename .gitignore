@@ -5,3 +5,9 @@ reports/
 logs/
 *.log
 .DS_Store
+*.json.key
+Google_service_account.json
+shunyalabs-qa-automation*.json
+*service_account*.json
+*.xlsx
+temp_*

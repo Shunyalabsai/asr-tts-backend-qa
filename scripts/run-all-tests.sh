@@ -81,9 +81,15 @@ echo "⊢ Phase 8: Text-to-Speech (TTS)"
 echo "  ⊢ Standard, Education LaTeX & OpenAI Speech TTS..."
 npx playwright test src/features/tts/ --reporter=list 2>&1 | tail -3
 
-# ─── Phase 9: Reports ───────────────────────────────────────
+# ─── Phase 9: Google Input Sheet Test Cases ─────────────────
+echo "⊢ Phase 9: Google Input Sheet Dataset Execution"
+
+echo "  ⊢ Running all test cases from Google Input Sheet..."
+npx ts-node scripts/run-language-accuracy-tests.ts
+
+# ─── Phase 10: Reports & Dashboard ──────────────────────────
 echo ""
-echo "⊢ Phase 9: Generating Reports"
+echo "⊢ Phase 10: Generating Reports & Updating Live Dashboard"
 npx ts-node scripts/generate-report.ts 2>&1 | tail -5
 
 echo ""

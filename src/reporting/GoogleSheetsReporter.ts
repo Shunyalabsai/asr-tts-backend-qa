@@ -291,7 +291,10 @@ export class GoogleSheetsReporter {
   }
 
   async writeEverything(summary: ExecutionSummary): Promise<void> {
+    const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+
     await this.writeSummary(summary);
+    await sleep(350);
 
     // Write each module's sheet
     const byModule = new Map<string, TestResult[]>();
@@ -303,6 +306,7 @@ export class GoogleSheetsReporter {
     for (const [module, results] of byModule) {
       const sheetName = MODULE_NAMES[module] || module.replace(/[\/\\*\[\]:?]/g, '_');
       await this.writeModuleSheet(sheetName, results);
+      await sleep(350);
     }
 
     // Write all-failures sheet
@@ -313,21 +317,41 @@ export class GoogleSheetsReporter {
 
   private async getAuth() {
     const { google } = await import('googleapis');
-    const credsJson = process.env.GOOGLE_SERVICE_ACCOUNT_JSON;
+    const credsJson = process.env.GOOGLE_SERVICE_ACCOUNT_JSON || 'Google_service_account.json';
     if (!credsJson) throw new Error('GOOGLE_SERVICE_ACCOUNT_JSON not configured');
 
     let credentials: any;
-    try {
-      const fs = await import('fs');
-      const path = await import('path');
-      const resolvedPath = path.resolve(process.cwd(), credsJson);
-      if (fs.existsSync(resolvedPath)) {
-        credentials = JSON.parse(fs.readFileSync(resolvedPath, 'utf-8'));
-      } else {
-        credentials = JSON.parse(credsJson);
+    const fs = await import('fs');
+    const path = await import('path');
+
+    // Check multiple potential path locations
+    const candidatePaths = [
+      path.resolve(process.cwd(), credsJson),
+      path.resolve(__dirname, '../../', credsJson),
+      path.resolve(__dirname, '../', credsJson),
+      path.resolve('/Users/unitedwecare/repos/asr-testing-v2', credsJson),
+    ];
+
+    let foundPath: string | null = null;
+    for (const p of candidatePaths) {
+      if (fs.existsSync(p)) {
+        foundPath = p;
+        break;
       }
-    } catch {
+    }
+
+    if (foundPath) {
+      credentials = JSON.parse(fs.readFileSync(foundPath, 'utf-8'));
+    } else if (credsJson.trim().startsWith('{')) {
       credentials = JSON.parse(credsJson);
+    } else {
+      // Try base64 decoding
+      try {
+        const decoded = Buffer.from(credsJson, 'base64').toString('utf-8');
+        credentials = JSON.parse(decoded);
+      } catch {
+        throw new Error(`Could not load Google Service Account from file or JSON: ${credsJson}`);
+      }
     }
 
     return new google.auth.GoogleAuth({
