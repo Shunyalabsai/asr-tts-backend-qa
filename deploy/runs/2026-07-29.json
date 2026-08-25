@@ -43,7 +43,7 @@
       "tabsCount": 0
     },
     "core": {
-      "name": "Core System Health & Routing",
+      "name": "Core System (Health, Auth, Audio Formats, Language)",
       "total": 0,
       "passed": 0,
       "failed": 0,
