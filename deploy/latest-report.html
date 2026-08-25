@@ -58,7 +58,7 @@
     <div class="stats">
       <span>2026-08-25</span>
       <span>129 tests</span>
-      <span>192.6s</span>
+      <span>197.4s</span>
     </div>
   </div>
 
@@ -102,9 +102,9 @@
         <td class="pass">8</td>
         <td class="fail">0</td>
         <td>0</td>
-        <td>0ms</td>
-        <td>0ms</td>
-        <td>0ms</td>
+        <td>1ms</td>
+        <td>1ms</td>
+        <td>1ms</td>
       </tr><tr>
         <td><strong>AudioInput-File</strong></td>
         <td>24</td>
@@ -113,7 +113,7 @@
         <td>0</td>
         <td>2ms</td>
         <td>1ms</td>
-        <td>10ms</td>
+        <td>9ms</td>
       </tr><tr>
         <td><strong>LanguageCode</strong></td>
         <td>8</td>
@@ -121,8 +121,8 @@
         <td class="fail">0</td>
         <td>0</td>
         <td>2ms</td>
-        <td>2ms</td>
-        <td>2ms</td>
+        <td>1ms</td>
+        <td>3ms</td>
       </tr><tr>
         <td><strong>SpeakerDiarization</strong></td>
         <td>6</td>
@@ -140,7 +140,7 @@
         <td>0</td>
         <td>1ms</td>
         <td>1ms</td>
-        <td>1ms</td>
+        <td>2ms</td>
       </tr><tr>
         <td><strong>ProfanityMasking</strong></td>
         <td>5</td>
@@ -166,8 +166,8 @@
         <td class="fail">0</td>
         <td>0</td>
         <td>2ms</td>
-        <td>1ms</td>
         <td>2ms</td>
+        <td>3ms</td>
       </tr><tr>
         <td><strong>CombinationScenarios</strong></td>
         <td>6</td>
@@ -176,16 +176,16 @@
         <td>0</td>
         <td>1ms</td>
         <td>1ms</td>
-        <td>1ms</td>
+        <td>2ms</td>
       </tr><tr>
         <td><strong>ErrorHandling</strong></td>
         <td>8</td>
         <td class="pass">8</td>
         <td class="fail">0</td>
         <td>0</td>
-        <td>11ms</td>
+        <td>10ms</td>
         <td>1ms</td>
-        <td>30ms</td>
+        <td>27ms</td>
       </tr><tr>
         <td><strong>Security-Misc</strong></td>
         <td>5</td>
@@ -263,7 +263,7 @@
         <td>Authentication</td>
         <td>M01-T01: Valid API key returns token with expires_at and expires_in @smoke</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -383,7 +383,7 @@
         <td>AudioInput-File</td>
         <td>M02-T02: FLAC upload returns valid transcription</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -391,7 +391,7 @@
         <td>AudioInput-File</td>
         <td>M02-T03: OGG/Opus upload returns valid transcription</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -431,7 +431,7 @@
         <td>AudioInput-File</td>
         <td>M02-T08: File ~70MB (near limit, expect 200 or 413)</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -439,7 +439,7 @@
         <td>AudioInput-File</td>
         <td>M02-T09: Corrupted audio file returns 400</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -455,7 +455,7 @@
         <td>AudioInput-File</td>
         <td>M02-T11: Silent audio returns empty transcription</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>10ms</td>
+        <td>9ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -535,7 +535,7 @@
         <td>LanguageCode</td>
         <td>M04-T03: Explicit language_code=hi returns Hindi text</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -551,7 +551,7 @@
         <td>LanguageCode</td>
         <td>M04-T05: Non-English audio with auto-detect works</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -567,7 +567,7 @@
         <td>LanguageCode</td>
         <td>M04-T07: Empty language_code string returns 400</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -575,7 +575,7 @@
         <td>LanguageCode</td>
         <td>M04-T08: Multiple language codes each produce valid transcripts</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
+        <td>3ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -615,7 +615,7 @@
         <td>SpeakerDiarization</td>
         <td>M06-T05: diarize=true with response_format=json returns text</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -631,7 +631,7 @@
         <td>WordBoosting</td>
         <td>M07-T01: Single phrase boosting affects output</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -655,7 +655,7 @@
         <td>WordBoosting</td>
         <td>M07-T04: Default weight behavior</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -703,7 +703,7 @@
         <td>ProfanityMasking</td>
         <td>M09-T03: Profanity filter on clean audio (no change expected)</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>-</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -711,7 +711,7 @@
         <td>ProfanityMasking</td>
         <td>M09-T04: Profanity filter with verbose_json response</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -719,7 +719,7 @@
         <td>ProfanityMasking</td>
         <td>M09-T05: Multiple profane words in one utterance</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -735,7 +735,7 @@
         <td>ResponseSchema</td>
         <td>M10-T02: words[] array present with word, start, end</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -759,7 +759,7 @@
         <td>ResponseSchema</td>
         <td>M10-T05: request_id is a non-empty string, unique per call</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -783,7 +783,7 @@
         <td>ResponseSchema</td>
         <td>M10-T08: Hindi transcription in verbose_json has correct structure</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -799,7 +799,7 @@
         <td>SpeechIntelligence</td>
         <td>M17-T02: Summarization returns condensed text</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
+        <td>3ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -815,7 +815,7 @@
         <td>SpeechIntelligence</td>
         <td>M17-T04: All three flags simultaneously</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -879,7 +879,7 @@
         <td>CombinationScenarios</td>
         <td>M14-T01: All params simultaneously (diarize + num_speakers + verbose_json + language)</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -895,7 +895,7 @@
         <td>CombinationScenarios</td>
         <td>M14-T03: Non-English + diarization + word boosting</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -983,7 +983,7 @@
         <td>ErrorHandling</td>
         <td>M11-T08: Oversized file (500MB+) returns 413</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>30ms</td>
+        <td>27ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -1231,7 +1231,7 @@
         <td>TTS</td>
         <td>TTS_OPENAI_04: Synthesize with speed parameter variations</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -1279,7 +1279,7 @@
   </table>
 
   <div style="text-align:center;margin-top:2rem;color:#64748b;font-size:0.8rem;">
-    Generated on 2026-08-24T21:11:15.305Z by ASR Testing Framework v2
+    Generated on 2026-08-25T03:05:17.649Z by ASR Testing Framework v2
   </div>
 </body>
 </html>
