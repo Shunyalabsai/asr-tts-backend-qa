@@ -2103,6 +2103,16 @@ async function main(): Promise<void> {
   console.log(`  Pass Rate:        ${accuracyRate}%`);
   console.log('═════════════════════════════════════════════════════════════\n');
   console.log('✅ All 20 output sheet tabs and Master-Dashboard tab successfully created and populated.\n');
+
+  // Automatically update and deploy GitHub Pages dashboard
+  console.log('▶ Automatically updating and deploying dashboard to GitHub Pages...');
+  try {
+    const { execSync } = await import('child_process');
+    execSync('bash scripts/deploy-dashboard.sh', { stdio: 'inherit', cwd: process.cwd() });
+    console.log('✅ Live dashboard updated automatically on GitHub Pages (origin & personal remotes).\n');
+  } catch (deployErr: any) {
+    console.warn(`  ⚠ Automatic dashboard deploy notice: ${deployErr.message}\n`);
+  }
 }
 
 if (require.main === module) {

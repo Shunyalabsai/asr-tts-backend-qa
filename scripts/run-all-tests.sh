@@ -91,9 +91,11 @@ npx ts-node scripts/run-language-accuracy-tests.ts
 echo ""
 echo "⊢ Phase 10: Generating Reports & Updating Live Dashboard"
 npx ts-node scripts/generate-report.ts 2>&1 | tail -5
+bash scripts/deploy-dashboard.sh
 
 echo ""
 echo "=========================================="
 echo "  Suite run complete!"
 echo "  Reports saved to $REPORT_DIR/"
+echo "  Live Dashboard: https://shunyalabsai.github.io/asr-tts-backend-qa/"
 echo "=========================================="
