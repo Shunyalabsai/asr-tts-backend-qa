@@ -1,0 +1,52 @@
+{
+  "date": "2026-09-01",
+  "totalTests": 7,
+  "passed": 7,
+  "failed": 0,
+  "skipped": 0,
+  "passRate": "100.0",
+  "durationMs": 5946,
+  "modules": [
+    {
+      "module": "Authentication",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 403,
+      "p50LatencyMs": 95,
+      "p95LatencyMs": 711
+    },
+    {
+      "module": "Health",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 94.5,
+      "p50LatencyMs": 93,
+      "p95LatencyMs": 96
+    },
+    {
+      "module": "LanguageCode",
+      "total": 1,
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 1785,
+      "p50LatencyMs": 1785,
+      "p95LatencyMs": 1785
+    },
+    {
+      "module": "AudioInput-File",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 1337,
+      "p50LatencyMs": 1089,
+      "p95LatencyMs": 1585
+    }
+  ],
+  "failures": []
+}

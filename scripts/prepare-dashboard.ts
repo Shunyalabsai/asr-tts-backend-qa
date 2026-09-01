@@ -651,6 +651,7 @@ table.data-table th{background:#11121d;padding:12px 16px;color:var(--muted);font
 table.data-table td{padding:12px 16px;border-bottom:1px solid rgba(38,40,58,.6);vertical-align:middle}
 table.data-table tr:hover td{background:rgba(139,92,246,.05)}
 .badge-id{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:#c4b5fd;background:rgba(139,92,246,.18);padding:3px 8px;border-radius:5px;font-size:11px;white-space:nowrap;font-weight:700}
+.badge-smoke{font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px;font-family:monospace;background:rgba(239,68,68,.25);color:#fca5a5;border:1px solid rgba(239,68,68,.4);letter-spacing:.4px;display:inline-flex;align-items:center;gap:3px}
 .badge-p{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;font-family:monospace}
 .badge-p.p0{background:rgba(239,68,68,.2);color:#fca5a5}
 .badge-p.p1{background:rgba(245,158,11,.2);color:#fde68a}
@@ -811,6 +812,10 @@ table.data-table tr:hover td{background:rgba(139,92,246,.05)}
   <div class="feature-matrix-section">
     <h3>Live Verified Feature Matrix & Processing Modules</h3>
     <div class="feature-chips-grid">
+      <div class="feature-chip" style="border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.08)" onclick="jumpToSmokeFilter()">
+        <div class="fc-title"><span style="color:#fca5a5">🔥 Smoke Tests (P0 Gateway)</span><span class="fc-badge" style="background:rgba(239,68,68,.25);color:#fca5a5">P0 SMOKE</span></div>
+        <div class="fc-desc">P0 gateway health, auth token lifecycle, audio format & routing sanity</div>
+      </div>
       <div class="feature-chip" onclick="jumpToFeatureFilter('Health')">
         <div class="fc-title"><span>🏥 System Health Check</span><span class="fc-badge">100% PASS</span></div>
         <div class="fc-desc">GET /health gateway & upstream service ping</div>
@@ -934,6 +939,7 @@ table.data-table tr:hover td{background:rgba(139,92,246,.05)}
     <!-- Granular Filter Pills -->
     <div class="pill-filter-group" id="pillFilterContainer">
       <button class="filter-btn active" onclick="setTcCategory('all', this)">All (${latestRun.summary.total})</button>
+      <button class="filter-btn" style="border-color:rgba(239,68,68,.5);color:#fca5a5" onclick="setTcCategory('Smoke Tests', this)">🔥 Smoke Tests (P0 / Critical)</button>
       <button class="filter-btn" onclick="setTcCategory('Core System', this)">Core (Health, Auth, Audio, Lang)</button>
       <button class="filter-btn" onclick="setTcCategory('Speech Models', this)">STT Models</button>
       <button class="filter-btn" onclick="setTcCategory('Diarization', this)">Speaker Diarization</button>
@@ -1197,9 +1203,13 @@ function renderAllTestCasesTable(tests) {
 
   tests.forEach(t => {
     const pClass = (t.priority || 'P1').toLowerCase();
+    const isSmoke = t.priority === 'P0' || t.suite === 'Core System' || t.module === 'Core-System-Tests';
     const tr = document.createElement('tr');
     tr.innerHTML = \`
-      <td><span class="badge-id">\${t.id}</span></td>
+      <td>
+        <span class="badge-id">\${t.id}</span>
+        \${isSmoke ? '<span class="badge-smoke" title="P0 Critical Smoke Test" style="margin-left:4px">🔥 SMOKE</span>' : ''}
+      </td>
       <td style="font-weight:600;font-size:12px;color:var(--muted)">\${t.suite}</td>
       <td style="font-weight:600">\${t.module}</td>
       <td style="color:#c4b5fd;font-weight:500">\${t.feature}</td>
@@ -1231,6 +1241,16 @@ function setTcCategory(cat, btn) {
   filterTestCasesTable();
 }
 
+function jumpToSmokeFilter() {
+  switchTab('testcases', document.querySelectorAll('.tab')[1]);
+  const smokeBtn = Array.from(document.querySelectorAll('.filter-btn')).find(b => b.textContent && b.textContent.includes('Smoke Tests'));
+  if (smokeBtn) {
+    setTcCategory('Smoke Tests', smokeBtn);
+  } else {
+    setTcCategory('Smoke Tests', null);
+  }
+}
+
 function jumpToFeatureFilter(featureKeyword) {
   switchTab('testcases', document.querySelectorAll('.tab')[1]);
   const searchInput = document.getElementById('testCaseSearch');
@@ -1246,6 +1266,7 @@ function filterTestCasesTable() {
   const status = document.getElementById('statusFilter')?.value || 'all';
 
   const filtered = latestData.tests.filter(t => {
+    const isSmoke = t.priority === 'P0' || t.suite === 'Core System' || t.module === 'Core-System-Tests';
     const matchesQuery =
       t.id.toLowerCase().includes(query) ||
       t.title.toLowerCase().includes(query) ||
@@ -1255,11 +1276,14 @@ function filterTestCasesTable() {
       t.language.toLowerCase().includes(query) ||
       t.audioPath.toLowerCase().includes(query) ||
       t.groundTruth.toLowerCase().includes(query) ||
-      t.predictedText.toLowerCase().includes(query);
+      t.predictedText.toLowerCase().includes(query) ||
+      (query.includes('smoke') && isSmoke);
 
     let matchesCat = true;
     if (tcCategoryFilter !== 'all') {
-      if (tcCategoryFilter === 'Core System') {
+      if (tcCategoryFilter === 'Smoke Tests') {
+        matchesCat = isSmoke;
+      } else if (tcCategoryFilter === 'Core System') {
         matchesCat = t.suite === 'Core System' || t.module === 'Core-System-Tests';
       } else if (tcCategoryFilter === 'Diarization') {
         matchesCat = t.module.includes('Diarization') || t.feature.includes('Diarization') || t.feature.includes('Speaker');
@@ -1293,11 +1317,14 @@ function openTestModalDirectly(testId) {
   const t = testsPool.find(item => item.id === testId) || latestData.tests.find(item => item.id === testId);
   if (!t) return;
 
+  const isSmoke = t.priority === 'P0' || t.suite === 'Core System' || t.module === 'Core-System-Tests';
   const body = \`
     <div style="display:flex;flex-direction:column;gap:14px">
       <div>
         <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Test Identifier & Subsystem</div>
-        <span class="badge-id">\${t.id}</span> &middot; <strong style="color:#fff">\${t.moduleLabel}</strong> &middot; <span style="color:#c4b5fd">\${t.feature}</span>
+        <span class="badge-id">\${t.id}</span>
+        \${isSmoke ? '<span class="badge-smoke" title="P0 Smoke Test" style="margin-left:4px">🔥 SMOKE</span>' : ''}
+        &middot; <strong style="color:#fff">\${t.moduleLabel}</strong> &middot; <span style="color:#c4b5fd">\${t.feature}</span>
       </div>
       <div>
         <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Scenario & Objective</div>
@@ -1416,7 +1443,9 @@ function renderModalTestsHTML(tests, filter) {
 
   if (!filtered || !filtered.length) return '<p style="color:var(--muted);padding:14px">No tests match this filter.</p>';
 
-  return filtered.map(t => \`
+  return filtered.map(t => {
+    const isSmoke = t.priority === 'P0' || t.suite === 'Core System' || t.module === 'Core-System-Tests';
+    return \`
     <div class="modal-test" onclick="openTestModalDirectly('\${t.id}')">
       <div class="mt-head">
         <div class="mt-title">\${esc(t.title)}</div>
@@ -1424,6 +1453,7 @@ function renderModalTestsHTML(tests, filter) {
       </div>
       <div class="mt-meta">
         <span class="badge-id">\${t.id}</span>
+        \${isSmoke ? '<span class="badge-smoke" title="P0 Smoke Test">🔥 SMOKE</span>' : ''}
         <span class="mt-tag">\${t.moduleLabel || t.module}</span>
         <span class="mt-tag" style="color:#c4b5fd">\${t.feature}</span>
         <span>&middot;</span>
@@ -1432,7 +1462,7 @@ function renderModalTestsHTML(tests, filter) {
         <span>\${t.language}</span>
       </div>
     </div>
-  \`).join('');
+  \`}).join('');
 }
 
 function filterModalTests(filter, btn) {
