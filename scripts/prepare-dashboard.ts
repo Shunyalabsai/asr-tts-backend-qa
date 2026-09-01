@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import { execSync } from 'child_process';
 
 export interface TestCaseRecord {
   id: string;
@@ -2001,24 +2002,34 @@ export function prepareDashboard(autoDeploy: boolean = true): void {
     }
   }
 
-  // 3. Load all JSON files in deploy/runs/ for any dates not already loaded
+  // 3. Load all JSON files in deploy/runs/
   if (fs.existsSync(runsDir)) {
     const jsonFiles = fs.readdirSync(runsDir).filter(f => f.endsWith('.json') && f !== 'index.json' && f !== 'history-registry.json');
     for (const f of jsonFiles) {
-      const dateStr = f.replace('.json', '');
-      if (runMap.has(dateStr)) continue; // CSV version with full tests takes precedence
+      const fileKey = f.replace('.json', '');
 
       const p = path.join(runsDir, f);
       try {
         const raw = JSON.parse(fs.readFileSync(p, 'utf-8'));
-        const normalized = normalizeRunJSON(raw, dateStr);
-        runMap.set(dateStr, normalized);
+        const normalized = normalizeRunJSON(raw, fileKey.slice(0, 10));
+
+        // Use unique run ID or fileKey to preserve distinct intra-day runs
+        const uniqueKey = raw.id || fileKey;
+        runMap.set(uniqueKey, normalized);
       } catch {}
     }
   }
 
   // 4. Sort runs strictly by date/startedAt descending (latest first)
-  let allRuns = Array.from(runMap.values()).sort((a, b) => (b.startedAt || '').localeCompare(a.startedAt || ''));
+  // Deduplicate by unique ID and startedAt
+  const uniqueRunsMap = new Map<string, RunData>();
+  for (const r of runMap.values()) {
+    const dedupeKey = `${r.id}_${r.startedAt}`;
+    if (!uniqueRunsMap.has(dedupeKey)) {
+      uniqueRunsMap.set(dedupeKey, r);
+    }
+  }
+  let allRuns = Array.from(uniqueRunsMap.values()).sort((a, b) => (b.startedAt || '').localeCompare(a.startedAt || ''));
 
   // 4b. Extract Master Test Catalog and merge with partial/smoke runs
   const masterCatalog = buildMasterTestCatalog(allRuns, reportsDir);
@@ -2049,6 +2060,58 @@ export function prepareDashboard(autoDeploy: boolean = true): void {
   fs.writeFileSync(indexHtmlPath, dashboardHTML, 'utf-8');
   fs.writeFileSync(dashboardV2Path, dashboardHTML, 'utf-8');
   console.log(`[Dashboard Prep] Wrote master dashboard to ${indexHtmlPath} and ${dashboardV2Path}`);
+
+  // 6. Auto-commit and auto-deploy to GitHub Pages if requested
+  if (autoDeploy) {
+    autoCommitAndDeploy(rootDir);
+  }
+}
+
+/**
+ * Automatically commits updated test reports, run data, and dashboard artifacts
+ * and deploys them to GitHub Pages across all remotes.
+ */
+function autoCommitAndDeploy(rootDir: string): void {
+  try {
+    console.log('[Auto-Deploy] Committing updated reports, run history, and dashboard...');
+    const nowStr = new Date().toISOString().replace('T', ' ').slice(0, 19);
+
+    // Stage reports, runs, and deploy assets
+    try {
+      execSync('git add reports/ deploy/', { cwd: rootDir, stdio: 'pipe' });
+    } catch {}
+
+    // Check if there are staged changes to commit
+    const diffCheck = execSync('git status --porcelain', { cwd: rootDir, encoding: 'utf-8' });
+    if (diffCheck.trim().length > 0) {
+      const commitMsg = `test: auto-record test execution results and sync live dashboard (${nowStr}) [skip ci]`;
+      try {
+        execSync(`git commit -m "${commitMsg}"`, { cwd: rootDir, stdio: 'pipe' });
+        console.log(`[Auto-Deploy] Committed changes: "${commitMsg}"`);
+
+        // Push main branch to origin and personal
+        try {
+          execSync('git push origin main', { cwd: rootDir, stdio: 'pipe' });
+        } catch (e: any) {
+          console.warn(`[Auto-Deploy] Notice: git push origin main: ${e.message}`);
+        }
+        try {
+          execSync('git push personal main', { cwd: rootDir, stdio: 'pipe' });
+        } catch {}
+      } catch (e: any) {
+        console.warn(`[Auto-Deploy] Commit notice: ${e.message}`);
+      }
+    }
+
+    // Deploy to gh-pages branch
+    const deployScript = path.join(rootDir, 'scripts', 'deploy-dashboard.sh');
+    if (fs.existsSync(deployScript)) {
+      console.log('[Auto-Deploy] Syncing live GitHub Pages deployment...');
+      execSync(`bash "${deployScript}"`, { cwd: rootDir, stdio: 'inherit' });
+    }
+  } catch (err: any) {
+    console.warn(`[Auto-Deploy] Warning: Auto-commit/deploy encountered an issue: ${err.message}`);
+  }
 }
 
 if (require.main === module) {

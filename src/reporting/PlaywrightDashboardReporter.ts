@@ -67,17 +67,18 @@ export default class PlaywrightDashboardReporter implements Reporter {
     const runDir = path.resolve(process.cwd(), 'deploy', 'runs');
     if (!fs.existsSync(runDir)) fs.mkdirSync(runDir, { recursive: true });
 
-    const runFile = path.join(runDir, `${summary.date}.json`);
-    let existingRun: any = {};
-    try {
-      if (fs.existsSync(runFile)) {
-        existingRun = JSON.parse(fs.readFileSync(runFile, 'utf-8'));
-      }
-    } catch {}
+    // Format unique run ID with timestamp: RUN-YYYYMMDD-HHMMSS
+    const now = new Date();
+    const timeTag = now.toTimeString().slice(0, 8).replace(/:/g, '');
+    const dateTag = summary.date.replace(/-/g, '');
+    const runId = `RUN-${dateTag}-${timeTag}`;
+    const isoTimestamp = now.toISOString();
 
-    // Merge or save run
     const run = {
+      id: runId,
       date: summary.date,
+      startedAt: isoTimestamp,
+      completedAt: new Date(now.getTime() + (summary.durationMs || 0)).toISOString(),
       totalTests: summary.totalTests,
       passed: summary.passed,
       failed: summary.failed,
@@ -101,9 +102,36 @@ export default class PlaywrightDashboardReporter implements Reporter {
         failureReason: r.failureReason,
         latencyMs: r.latencyMs,
       })),
+      tests: summary.results.map((r: any) => ({
+        id: r.testId,
+        suite: r.module === 'TTS' ? 'TTS Synthesis' : (['Health', 'Authentication', 'AudioInput-File', 'LanguageCode'].includes(r.module) ? 'Core System' : (['SpeakerDiarization', 'WordBoosting', 'ProfanityMasking', 'SpeechIntelligence'].includes(r.module) ? 'Audio Intelligence' : 'Speech Models')),
+        module: r.module,
+        moduleLabel: r.module,
+        feature: r.module,
+        title: r.description,
+        description: r.description,
+        audioPath: 'Direct API Payload / Fixture',
+        language: 'Auto / Multilingual',
+        groundTruth: r.description,
+        predictedText: r.status === 'PASS' ? 'Execution passed' : (r.failureReason || 'Failed'),
+        duration: `${(r.latencyMs / 1000).toFixed(2)}s`,
+        durationMs: r.latencyMs,
+        wer: 'N/A',
+        cer: 'N/A',
+        accuracy: r.status === 'PASS' ? '100%' : '0%',
+        status: r.status === 'PASS' ? 'passed' : (r.status === 'SKIP' ? 'skipped' : 'failed'),
+        failureReason: r.failureReason || '',
+        priority: 'P0',
+        timestamp: isoTimestamp,
+      })),
     };
 
-    fs.writeFileSync(runFile, JSON.stringify(run, null, 2));
+    // Save timestamped run file: 2026-09-01-125315.json and update latest 2026-09-01.json
+    const timestampedRunFile = path.join(runDir, `${summary.date}-${timeTag}.json`);
+    fs.writeFileSync(timestampedRunFile, JSON.stringify(run, null, 2));
+
+    const latestDateFile = path.join(runDir, `${summary.date}.json`);
+    fs.writeFileSync(latestDateFile, JSON.stringify(run, null, 2));
 
     // Update index.json
     const indexPath = path.join(runDir, 'index.json');
@@ -111,7 +139,7 @@ export default class PlaywrightDashboardReporter implements Reporter {
     try {
       existing = JSON.parse(fs.readFileSync(indexPath, 'utf-8')).runs || [];
     } catch {}
-    const filename = `${summary.date}.json`;
+    const filename = `${summary.date}-${timeTag}.json`;
     if (!existing.includes(filename)) {
       existing.push(filename);
       existing.sort();
