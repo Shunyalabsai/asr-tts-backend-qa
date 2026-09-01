@@ -222,9 +222,9 @@ function loadRunDataFromCSVs(reportsDir: string, dateStr: string): RunData | nul
       const idIdx = findCol(['test_case_id', 'test_id', 'test case id', 'identifier']);
       const audioIdx = findCol(['audio_path', 'audio_file', 'audio_url', 'audio']);
       const langIdx = findCol(['lang', 'language', 'category']);
-      const detLangIdx = findCol(['detected_language', 'output_script', 'voice']);
-      const gtIdx = findCol(['transcript', 'ground_truth', 'ground truth', 'expected text', 'input_text', 'original_text', 'description', 'reference']);
-      const predIdx = findCol(['transcribed_text', 'predicted_text', 'summary_text', 'clean_text', 'normalized_text', 'corrected_text', 'shunyalabs_transcribed_text', 'shunyalabs_transliterated_text', 'output', 'emotions_detected']);
+      const detLangIdx = findCol(['detected_language', 'output_script', 'voice', 'detected_sentiment', 'detected_intent']);
+      const gtIdx = findCol(['transcript', 'ground_truth', 'ground truth', 'expected text', 'input_text', 'original_text', 'description', 'reference', 'transcribed_text', 'summary_text', 'test_name']);
+      const predIdx = findCol(['transcribed_text', 'predicted_text', 'summary_text', 'clean_text', 'normalized_text', 'corrected_text', 'shunyalabs_transcribed_text', 'shunyalabs_transliterated_text', 'output', 'emotions_detected', 'actual_pass_rate', 'measured_avg_latency']);
       const durIdx = findCol(['duration', 'duration_estimate_s', 'compression_ratio', 'total_elapsed_ms']);
       const latIdx = findCol(['latency_ms', 'latency', 'measured_avg_latency']);
       const werIdx = findCol(['wer']);
