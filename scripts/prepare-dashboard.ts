@@ -496,14 +496,203 @@ function normalizeRunJSON(jsonObj: any, fallbackDate: string): RunData {
     passRate: passRateNum,
     summary: {
       total: total || tests.length,
-      passed: passed || tests.filter(t => t.status === 'passed').length,
-      failed: failed || tests.filter(t => t.status === 'failed').length,
-      skipped: skipped || tests.filter(t => t.status === 'skipped').length,
-      timedOut: jsonObj.timedOut || tests.filter(t => t.failureReason.toLowerCase().includes('time')).length,
+      passed: passed !== undefined ? passed : tests.filter(t => t.status === 'passed').length,
+      failed: failed !== undefined ? failed : tests.filter(t => t.status === 'failed').length,
+      skipped: skipped !== undefined ? skipped : tests.filter(t => t.status === 'skipped').length,
+      timedOut: jsonObj.timedOut || tests.filter(t => t.failureReason && t.failureReason.toLowerCase().includes('time')).length,
     },
     categories,
     modules: normalizedModules,
     tests,
+  };
+}
+
+/**
+ * Builds a Master Test Catalog from historical runs or CSVs with full test suites (653 tests).
+ * When a smoke run or partial run is executed (e.g. 7 smoke tests), this catalog is used
+ * to merge and backfill all unexecuted tests as SKIPPED with a descriptive failure reason.
+ */
+function buildMasterTestCatalog(runs: RunData[], reportsDir: string): TestCaseRecord[] {
+  // First check if any run in `runs` already has full test cases (> 200)
+  for (const r of runs) {
+    if (r.tests && r.tests.length >= 200) {
+      console.log(`[Master Catalog] Extracted master catalog of ${r.tests.length} test definitions from run ${r.id}`);
+      return r.tests.map(t => ({ ...t }));
+    }
+  }
+
+  // Next check historical runs on disk in deploy/runs
+  const rootDir = process.cwd();
+  const runsDir = path.resolve(rootDir, 'deploy', 'runs');
+  if (fs.existsSync(runsDir)) {
+    const historicalFiles = ['2026-08-26.json', '2026-08-25.json', '2026-08-24.json', '2026-07-30.json'];
+    for (const hFile of historicalFiles) {
+      const p = path.join(runsDir, hFile);
+      if (fs.existsSync(p)) {
+        try {
+          const raw = JSON.parse(fs.readFileSync(p, 'utf-8'));
+          if (Array.isArray(raw.tests) && raw.tests.length >= 200) {
+            console.log(`[Master Catalog] Extracted master catalog of ${raw.tests.length} test definitions from ${hFile}`);
+            return raw.tests.map((t: TestCaseRecord) => ({ ...t }));
+          }
+        } catch {}
+      }
+    }
+  }
+
+  // Fallback: try loading 2026-08-26 CSVs
+  const csvRun = loadRunDataFromCSVs(reportsDir, '2026-08-26');
+  if (csvRun && csvRun.tests.length >= 200) {
+    console.log(`[Master Catalog] Extracted master catalog of ${csvRun.tests.length} test definitions from 2026-08-26 CSVs`);
+    return csvRun.tests.map(t => ({ ...t }));
+  }
+
+  return [];
+}
+
+/**
+ * Merges a partial or smoke run with the Master Test Catalog (653+ test cases).
+ * Executed tests retain their pass/fail results, latencies, and timestamps.
+ * Unexecuted tests are included with status: 'skipped' and failureReason: 'Not executed in this run (Smoke test execution only)'.
+ */
+function mergeWithMasterCatalog(run: RunData, masterCatalog: TestCaseRecord[]): RunData {
+  if (!masterCatalog || masterCatalog.length === 0) return run;
+
+  // If this run already contains the full test suite, return as is
+  if (run.tests && run.tests.length >= masterCatalog.length) return run;
+
+  console.log(`[Master Catalog Merge] Merging partial run ${run.id} (${run.tests ? run.tests.length : 0} executed tests) with master catalog (${masterCatalog.length} tests)...`);
+
+  const executedTestsMap = new Map<string, TestCaseRecord>();
+  if (run.tests && Array.isArray(run.tests)) {
+    for (const t of run.tests) {
+      executedTestsMap.set(t.id, t);
+      // Also map by title/feature if id format differs
+      if (t.title) executedTestsMap.set(t.title, t);
+    }
+  }
+
+  const mergedTests: TestCaseRecord[] = [];
+  const modulesSummary: Record<string, { label: string; total: number; passed: number; failed: number; skipped: number; passRate: string }> = {};
+
+  const categorySummaries: Record<string, CategorySummary> = {
+    models: { name: 'Speech-to-Text Models', total: 0, passed: 0, failed: 0, skipped: 0, passRate: '0%', avgLatencyMs: 0, tabsCount: 0 },
+    features: { name: 'Speech Intelligence & Audio Features', total: 0, passed: 0, failed: 0, skipped: 0, passRate: '0%', avgLatencyMs: 0, tabsCount: 0 },
+    tts: { name: 'TTS Voice Synthesis', total: 0, passed: 0, failed: 0, skipped: 0, passRate: '0%', avgLatencyMs: 0, tabsCount: 0 },
+    core: { name: 'Core System (Health, Auth, Audio Formats, Language)', total: 0, passed: 0, failed: 0, skipped: 0, passRate: '0%', avgLatencyMs: 0, tabsCount: 0 },
+  };
+
+  const processedMasterIds = new Set<string>();
+
+  // Process all master tests in catalog order
+  for (const masterTest of masterCatalog) {
+    processedMasterIds.add(masterTest.id);
+    const executed = executedTestsMap.get(masterTest.id) || (masterTest.title ? executedTestsMap.get(masterTest.title) : undefined);
+
+    let testRecord: TestCaseRecord;
+    if (executed) {
+      testRecord = { ...executed };
+    } else {
+      // Mark as SKIPPED with reason
+      testRecord = {
+        ...masterTest,
+        status: 'skipped',
+        failureReason: 'Not executed in this run (Smoke test execution only)',
+        predictedText: 'Skipped in this execution run',
+        timestamp: run.startedAt ? run.startedAt.replace('T', ' ').slice(0, 19) : masterTest.timestamp,
+      };
+    }
+
+    mergedTests.push(testRecord);
+
+    // Module tracking
+    const modKey = testRecord.module || 'Core-System-Tests';
+    if (!modulesSummary[modKey]) {
+      modulesSummary[modKey] = {
+        label: testRecord.moduleLabel || getTabModuleLabel(modKey),
+        total: 0,
+        passed: 0,
+        failed: 0,
+        skipped: 0,
+        passRate: '0%',
+      };
+    }
+    modulesSummary[modKey].total++;
+    if (testRecord.status === 'passed') modulesSummary[modKey].passed++;
+    else if (testRecord.status === 'failed') modulesSummary[modKey].failed++;
+    else modulesSummary[modKey].skipped++;
+
+    // Category tracking
+    const cat = getTabCategory(modKey);
+    const catSum = categorySummaries[cat];
+    catSum.total++;
+    if (testRecord.status === 'passed') catSum.passed++;
+    else if (testRecord.status === 'failed') catSum.failed++;
+    else catSum.skipped++;
+  }
+
+  // Also include any extra executed tests that were not in the master catalog
+  if (run.tests) {
+    for (const t of run.tests) {
+      if (!processedMasterIds.has(t.id)) {
+        mergedTests.push(t);
+        const modKey = t.module || 'Core-System-Tests';
+        if (!modulesSummary[modKey]) {
+          modulesSummary[modKey] = {
+            label: t.moduleLabel || getTabModuleLabel(modKey),
+            total: 0,
+            passed: 0,
+            failed: 0,
+            skipped: 0,
+            passRate: '0%',
+          };
+        }
+        modulesSummary[modKey].total++;
+        if (t.status === 'passed') modulesSummary[modKey].passed++;
+        else if (t.status === 'failed') modulesSummary[modKey].failed++;
+        else modulesSummary[modKey].skipped++;
+
+        const cat = getTabCategory(modKey);
+        const catSum = categorySummaries[cat];
+        catSum.total++;
+        if (t.status === 'passed') catSum.passed++;
+        else if (t.status === 'failed') catSum.failed++;
+        else catSum.skipped++;
+      }
+    }
+  }
+
+  // Calculate pass rates
+  for (const m of Object.values(modulesSummary)) {
+    const executedInMod = m.passed + m.failed;
+    m.passRate = executedInMod > 0 ? `${((m.passed / executedInMod) * 100).toFixed(1)}%` : (m.passed > 0 ? '100.0%' : '0.0%');
+  }
+
+  for (const cat of Object.values(categorySummaries)) {
+    const executedInCat = cat.passed + cat.failed;
+    cat.passRate = executedInCat > 0 ? `${((cat.passed / executedInCat) * 100).toFixed(1)}%` : (cat.passed > 0 ? '100.0%' : '0.0%');
+  }
+
+  const total = mergedTests.length;
+  const passed = mergedTests.filter(t => t.status === 'passed').length;
+  const failed = mergedTests.filter(t => t.status === 'failed').length;
+  const skipped = mergedTests.filter(t => t.status === 'skipped').length;
+  const executedCount = passed + failed;
+  const passRateNum = executedCount > 0 ? Math.round((passed / executedCount) * 1000) / 10 : (passed > 0 ? 100 : 0);
+
+  return {
+    ...run,
+    passRate: passRateNum,
+    summary: {
+      total,
+      passed,
+      failed,
+      skipped,
+      timedOut: run.summary?.timedOut || mergedTests.filter(t => t.failureReason && t.failureReason.toLowerCase().includes('time')).length,
+    },
+    categories: categorySummaries,
+    modules: modulesSummary,
+    tests: mergedTests,
   };
 }
 
@@ -1829,7 +2018,20 @@ export function prepareDashboard(autoDeploy: boolean = true): void {
   }
 
   // 4. Sort runs strictly by date/startedAt descending (latest first)
-  const allRuns = Array.from(runMap.values()).sort((a, b) => (b.startedAt || '').localeCompare(a.startedAt || ''));
+  let allRuns = Array.from(runMap.values()).sort((a, b) => (b.startedAt || '').localeCompare(a.startedAt || ''));
+
+  // 4b. Extract Master Test Catalog and merge with partial/smoke runs
+  const masterCatalog = buildMasterTestCatalog(allRuns, reportsDir);
+  if (masterCatalog.length > 0) {
+    allRuns = allRuns.map(r => {
+      // If a run has significantly fewer tests than the master catalog (e.g. smoke run or partial run),
+      // merge it with the master catalog so all 653+ test cases are displayed in the matrix.
+      if (!r.tests || r.tests.length < masterCatalog.length) {
+        return mergeWithMasterCatalog(r, masterCatalog);
+      }
+      return r;
+    });
+  }
 
   // Save the complete history registry and index.json
   fs.writeFileSync(registryPath, JSON.stringify(allRuns, null, 2), 'utf-8');
