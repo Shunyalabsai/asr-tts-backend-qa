@@ -406,6 +406,9 @@ table.data-table tr:hover td{background:rgba(139,92,246,.05)}
         <span class="icon">🔍</span>
         <input type="text" id="testCaseSearch" placeholder="Search by Test ID, Feature (Diarization, Profanity, Boosting, Health, Auth), Title, Audio Fixture, Ground Truth, or Language..." onkeyup="filterTestCasesTable()">
       </div>
+      <select id="runSelectFilter" class="select-ctl" onchange="onRunSelectChange()">
+        <!-- Populated dynamically with all historical runs -->
+      </select>
       <select id="priorityFilter" class="select-ctl" onchange="filterTestCasesTable()">
         <option value="all">All Priorities</option>
         <option value="P0">P0 — Critical / Gateway</option>
@@ -414,9 +417,9 @@ table.data-table tr:hover td{background:rgba(139,92,246,.05)}
       </select>
       <select id="statusFilter" class="select-ctl" onchange="filterTestCasesTable()">
         <option value="all">All Statuses</option>
-        <option value="passed">Passed (7)</option>
-        <option value="failed">Failed (0)</option>
-        <option value="skipped">Skipped (0)</option>
+        <option value="passed">Passed</option>
+        <option value="failed">Failed</option>
+        <option value="skipped">Skipped</option>
       </select>
     </div>
 
@@ -492,6 +495,7 @@ let trendChartInst = null;
 let moduleChartInst = null;
 let tcCategoryFilter = 'all';
 let currentModalRun = latestData;
+let currentSelectedMatrixRun = latestData;
 
 document.addEventListener('DOMContentLoaded', () => {
   // Update Header with accurate local time
@@ -500,12 +504,40 @@ document.addEventListener('DOMContentLoaded', () => {
     headerLabel.textContent = `${formatDate(latestData.startedAt)} • ${formatTime(latestData.startedAt)}`;
   }
 
+  populateRunSelector();
   renderCharts(latestData);
   renderModules(latestData);
   renderAllTestCasesTable(latestData.tests);
   renderHistory(historyData);
   renderCalendar(historyData);
 });
+
+function populateRunSelector() {
+  const sel = document.getElementById('runSelectFilter');
+  if (!sel) return;
+  sel.innerHTML = historyData.map((r, idx) => {
+    const isLatest = idx === 0;
+    const dateLabel = formatDate(r.startedAt);
+    const timeLabel = formatTime(r.startedAt);
+    const label = `${isLatest ? '★ Latest: ' : ''}${dateLabel} (${timeLabel}) — ${r.summary ? r.summary.total : (r.tests ? r.tests.length : 0)} Tests [${r.passRate}%]`;
+    return `<option value="${r.id}" ${isLatest ? 'selected' : ''}>${label}</option>`;
+  }).join('');
+}
+
+function onRunSelectChange() {
+  const sel = document.getElementById('runSelectFilter');
+  if (!sel) return;
+  const runId = sel.value;
+  const targetRun = historyData.find(r => r.id === runId) || latestData;
+  currentSelectedMatrixRun = targetRun;
+
+  const allPill = document.querySelector('#pillFilterContainer .filter-btn');
+  if (allPill && targetRun.summary) {
+    allPill.textContent = `All (${targetRun.summary.total || (targetRun.tests ? targetRun.tests.length : 0)})`;
+  }
+
+  filterTestCasesTable();
+}
 
 /* ══════════════════════════════════════════════════════════
    TIME & DATE FORMATTERS (12h AM/PM & Local Time)
@@ -714,7 +746,8 @@ function renderAllTestCasesTable(tests) {
 
   const countBadge = document.getElementById('tcCountBadge');
   if (countBadge) {
-    countBadge.textContent = `Showing ${tests.length} of ${latestData.tests.length}`;
+    const totalPool = (currentSelectedMatrixRun && currentSelectedMatrixRun.tests) ? currentSelectedMatrixRun.tests.length : latestData.tests.length;
+    countBadge.textContent = `Showing ${tests.length} of ${totalPool}`;
   }
 }
 
@@ -749,7 +782,11 @@ function filterTestCasesTable() {
   const priority = document.getElementById('priorityFilter')?.value || 'all';
   const status = document.getElementById('statusFilter')?.value || 'all';
 
-  const filtered = latestData.tests.filter(t => {
+  const currentPool = (currentSelectedMatrixRun && currentSelectedMatrixRun.tests && currentSelectedMatrixRun.tests.length > 0)
+    ? currentSelectedMatrixRun.tests
+    : latestData.tests;
+
+  const filtered = currentPool.filter(t => {
     const isSmoke = t.priority === 'P0' || t.suite === 'Core System' || t.module === 'Core-System-Tests';
     const matchesQuery =
       t.id.toLowerCase().includes(query) ||
@@ -797,7 +834,11 @@ function filterTestCasesTable() {
    INSPECT SINGLE TEST MODAL
    ══════════════════════════════════════════════════════════ */
 function openTestModalDirectly(testId) {
-  const testsPool = (currentModalRun && currentModalRun.tests && currentModalRun.tests.length > 0) ? currentModalRun.tests : latestData.tests;
+  const testsPool = (currentModalRun && currentModalRun.tests && currentModalRun.tests.length > 0)
+    ? currentModalRun.tests
+    : ((currentSelectedMatrixRun && currentSelectedMatrixRun.tests && currentSelectedMatrixRun.tests.length > 0)
+      ? currentSelectedMatrixRun.tests
+      : latestData.tests);
   const t = testsPool.find(item => item.id === testId) || latestData.tests.find(item => item.id === testId);
   if (!t) return;
 
