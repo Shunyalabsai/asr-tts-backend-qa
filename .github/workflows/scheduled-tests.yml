@@ -1,0 +1,56 @@
+name: Scheduled STT & TTS Automated Test Suite
+
+on:
+  schedule:
+    # 4:00 AM UTC (adjust or keep for cloud automated runs) & 5:00 PM UTC
+    # 4:00 AM IST is 22:30 UTC previous day, 5:00 PM IST is 11:30 UTC
+    - cron: '30 22 * * *' # 4:00 AM IST
+    - cron: '30 11 * * *' # 5:00 PM IST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Install Playwright Browsers & OS Dependencies
+        run: npx playwright install --with-deps
+
+      - name: Run Complete Test Suite
+        env:
+          SHUNYA_API_KEY: ${{ secrets.SHUNYA_API_KEY }}
+          ASR_BASE_URL: ${{ secrets.ASR_BASE_URL || 'https://asrv2prod.shunyalabs.ai' }}
+        run: |
+          npm test || true
+
+      - name: Build & Compile Live Dashboard Assets
+        run: |
+          npm run dashboard:prepare
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./deploy
+          publish_branch: gh-pages
+          force_orphan: false
