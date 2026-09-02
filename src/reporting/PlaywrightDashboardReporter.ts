@@ -19,16 +19,16 @@ export default class PlaywrightDashboardReporter implements Reporter {
     // Extract module name from file path, e.g. "src/features/tts/tts-standard.spec.ts" -> "TTS"
     const filePath = test.location?.file || '';
     const moduleLabel = this.getModuleLabel(filePath, test.title);
-    const passed = result.status === 'passed';
-    const testId = test.title.match(/^(M\d+-T\d+|TTS_[A-Za-z0-9_]+)/)?.[0] || test.title;
+    const isPassed = result.status === 'passed';
+    const isSkipped = result.status === 'skipped';
 
     this.results.push({
       testId,
       module: moduleLabel,
       description: test.title,
-      status: passed ? 'PASS' : (result.status === 'skipped' ? 'SKIP' : 'FAIL'),
+      status: isPassed ? 'PASS' : (isSkipped ? 'SKIP' : 'FAIL'),
       latencyMs: Math.round(result.duration),
-      failureReason: passed ? undefined : (result.error?.message || result.errors?.map(e => e.message).join('; ') || 'Test failed'),
+      failureReason: (isPassed || isSkipped) ? undefined : (result.error?.message || result.errors?.map(e => e.message).join('; ') || 'Test failed'),
       timestamp: new Date().toISOString(),
     });
   }

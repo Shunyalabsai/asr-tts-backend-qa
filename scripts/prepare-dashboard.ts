@@ -594,12 +594,12 @@ function mergeWithMasterCatalog(run: RunData, masterCatalog: TestCaseRecord[]): 
     if (executed) {
       testRecord = { ...executed };
     } else {
-      // Mark as SKIPPED with reason
+      // Mark as SKIPPED with reason (not a failure)
       testRecord = {
         ...masterTest,
         status: 'skipped',
-        failureReason: 'Not executed in this run (Smoke test execution only)',
-        predictedText: 'Skipped in this execution run',
+        failureReason: '',
+        predictedText: 'Skipped (Unexecuted in this run)',
         timestamp: run.startedAt ? run.startedAt.replace('T', ' ').slice(0, 19) : masterTest.timestamp,
       };
     }
@@ -978,22 +978,22 @@ table.data-table tr:hover td{background:rgba(139,92,246,.05)}
     <div class="browser-coverage-grid">
       <div class="browser-coverage-card">
         <div class="bc-name">✓ Core System (Health, Auth, Formats, Lang)</div>
-        <div class="bc-stats"><strong style="color:var(--pass)">${latestRun.categories.core.passed}</strong> passed · <strong style="color:var(--muted)">${latestRun.categories.core.failed}</strong> failed · ${latestRun.categories.core.total} total (${latestRun.categories.core.passRate})</div>
+        <div class="bc-stats"><strong style="color:var(--pass)">${latestRun.categories.core.passed}</strong> passed · <strong style="color:var(--muted)">${latestRun.categories.core.failed}</strong> failed · <strong style="color:var(--warn)">${latestRun.categories.core.skipped}</strong> skipped (${latestRun.categories.core.passRate})</div>
         <div class="bc-bar"><div class="bc-bar-fill" style="width:${latestRun.categories.core.passRate}"></div></div>
       </div>
       <div class="browser-coverage-card">
         <div class="bc-name">✓ Speech-to-Text Models (Indic & Universal)</div>
-        <div class="bc-stats"><strong style="color:var(--pass)">${latestRun.categories.models.passed}</strong> passed · <strong style="color:var(--muted)">${latestRun.categories.models.failed}</strong> failed · ${latestRun.categories.models.total} total (${latestRun.categories.models.passRate})</div>
+        <div class="bc-stats"><strong style="color:var(--pass)">${latestRun.categories.models.passed}</strong> passed · <strong style="color:var(--muted)">${latestRun.categories.models.failed}</strong> failed · <strong style="color:var(--warn)">${latestRun.categories.models.skipped}</strong> skipped (${latestRun.categories.models.passRate})</div>
         <div class="bc-bar"><div class="bc-bar-fill" style="width:${latestRun.categories.models.passRate}"></div></div>
       </div>
       <div class="browser-coverage-card">
         <div class="bc-name">✓ Audio Intelligence & Feature Processing</div>
-        <div class="bc-stats"><strong style="color:var(--pass)">${latestRun.categories.features.passed}</strong> passed · <strong style="color:var(--muted)">${latestRun.categories.features.failed}</strong> failed · ${latestRun.categories.features.total} total (${latestRun.categories.features.passRate})</div>
+        <div class="bc-stats"><strong style="color:var(--pass)">${latestRun.categories.features.passed}</strong> passed · <strong style="color:var(--muted)">${latestRun.categories.features.failed}</strong> failed · <strong style="color:var(--warn)">${latestRun.categories.features.skipped}</strong> skipped (${latestRun.categories.features.passRate})</div>
         <div class="bc-bar"><div class="bc-bar-fill" style="width:${latestRun.categories.features.passRate}"></div></div>
       </div>
       <div class="browser-coverage-card">
         <div class="bc-name">✓ TTS Voice Synthesis (215 Voices)</div>
-        <div class="bc-stats"><strong style="color:var(--pass)">${latestRun.categories.tts.passed}</strong> passed · <strong style="color:var(--muted)">${latestRun.categories.tts.failed}</strong> failed · ${latestRun.categories.tts.total} total (${latestRun.categories.tts.passRate})</div>
+        <div class="bc-stats"><strong style="color:var(--pass)">${latestRun.categories.tts.passed}</strong> passed · <strong style="color:var(--muted)">${latestRun.categories.tts.failed}</strong> failed · <strong style="color:var(--warn)">${latestRun.categories.tts.skipped}</strong> skipped (${latestRun.categories.tts.passRate})</div>
         <div class="bc-bar"><div class="bc-bar-fill" style="width:${latestRun.categories.tts.passRate}"></div></div>
       </div>
     </div>
@@ -1412,6 +1412,7 @@ function renderModules(data) {
   grid.innerHTML = Object.entries(grouped).map(([key, mod]) => {
     const passed = mod.tests.filter(t => t.status === 'passed').length;
     const failed = mod.tests.filter(t => t.status === 'failed').length;
+    const skipped = mod.tests.filter(t => t.status === 'skipped').length;
     const testRows = mod.tests.map(t => \`
       <div class="test-row" onclick="openTestModalDirectly('\${t.id}')">
         <div class="status-dot \${t.status}"></div>
@@ -1435,9 +1436,10 @@ function renderModules(data) {
             <h3>\${mod.label}</h3>
             <span class="test-count-tag">\${mod.tests.length} tests</span>
           </div>
-          <div>
+          <div style="display:flex;gap:6px;align-items:center">
             \${passed > 0 ? \`<span class="pill pill-pass">\${passed} passed</span>\` : ''}
             \${failed > 0 ? \`<span class="pill pill-fail">\${failed} failed</span>\` : ''}
+            \${skipped > 0 ? \`<span class="pill pill-skip">\${skipped} skipped</span>\` : ''}
           </div>
         </div>
         <div class="module-tests">\${testRows}</div>
