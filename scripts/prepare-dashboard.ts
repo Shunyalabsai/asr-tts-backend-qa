@@ -944,26 +944,26 @@ table.data-table tr:hover td{background:rgba(139,92,246,.05)}
 <!-- ────── Tab 1: Current Run ────── -->
 <div class="tab-content active" id="currentTab">
   <!-- Stats -->
-  <div class="grid stats">
+  <div class="grid stats" id="topKpiGrid">
     <div class="card stat-card">
-      <div class="label">Total Tests Executed</div>
-      <div class="value">${latestRun.summary.total}</div>
-      <div class="sub">${(latestRun.durationMs / 1000).toFixed(1)}s total duration</div>
+      <div class="label">Total Catalog Scenarios</div>
+      <div class="value" id="kpiTotal">${latestRun.summary.total}</div>
+      <div class="sub" id="kpiDuration">${(latestRun.durationMs / 1000).toFixed(1)}s total duration</div>
     </div>
     <div class="card stat-card">
       <div class="label">Passed Tests</div>
-      <div class="value" style="color:var(--pass)">${latestRun.summary.passed}</div>
-      <div class="sub">${latestRun.summary.total > 0 ? ((latestRun.summary.passed / latestRun.summary.total) * 100).toFixed(1) : 0}% pass rate</div>
+      <div class="value" id="kpiPassed" style="color:var(--pass)">${latestRun.summary.passed}</div>
+      <div class="sub" id="kpiPassSub">${latestRun.summary.passed + latestRun.summary.failed > 0 ? ((latestRun.summary.passed / (latestRun.summary.passed + latestRun.summary.failed)) * 100).toFixed(1) : 0}% pass rate (executed)</div>
     </div>
     <div class="card stat-card">
       <div class="label">Failed Tests</div>
-      <div class="value" style="color:var(--fail)">${latestRun.summary.failed}</div>
-      <div class="sub">${latestRun.summary.timedOut > 0 ? latestRun.summary.timedOut + ' timed out' : 'Accuracy / Error'}</div>
+      <div class="value" id="kpiFailed" style="color:var(--fail)">${latestRun.summary.failed}</div>
+      <div class="sub" id="kpiFailedSub">${latestRun.summary.timedOut > 0 ? latestRun.summary.timedOut + ' timed out' : (latestRun.summary.failed > 0 ? 'Verification Failure' : '0 Failures')}</div>
     </div>
     <div class="card stat-card">
-      <div class="label">Overall Health & Accuracy</div>
-      <div class="value" style="color:${latestRun.passRate >= 70 ? 'var(--pass)' : 'var(--warn)'}">${latestRun.passRate}%</div>
-      <div class="sub">Verified on live production API</div>
+      <div class="label">Skipped Scenarios</div>
+      <div class="value" id="kpiSkipped" style="color:var(--warn)">${latestRun.summary.skipped || 0}</div>
+      <div class="sub" id="kpiSkippedSub">${latestRun.summary.skipped > 0 ? 'Unexecuted in this specific run' : 'Full suite executed'}</div>
     </div>
   </div>
 
@@ -1132,6 +1132,9 @@ table.data-table tr:hover td{background:rgba(139,92,246,.05)}
     <!-- Granular Filter Pills -->
     <div class="pill-filter-group" id="pillFilterContainer">
       <button class="filter-btn active" onclick="setTcCategory('all', this)">All (${latestRun.summary.total})</button>
+      <button class="filter-btn" style="border-color:rgba(34,197,94,.5);color:#86efac" onclick="setTcCategory('Passed', this)">✓ Passed (${latestRun.summary.passed})</button>
+      <button class="filter-btn" style="border-color:rgba(239,68,68,.5);color:#fca5a5" onclick="setTcCategory('Failed', this)">✗ Failed (${latestRun.summary.failed})</button>
+      <button class="filter-btn" style="border-color:rgba(245,158,11,.5);color:#fde68a" onclick="setTcCategory('Skipped', this)">⏸ Skipped (${latestRun.summary.skipped || 0})</button>
       <button class="filter-btn" style="border-color:rgba(239,68,68,.5);color:#fca5a5" onclick="setTcCategory('Smoke Tests', this)">🔥 Smoke Tests (P0 / Critical)</button>
       <button class="filter-btn" onclick="setTcCategory('Core System', this)">Core (Health, Auth, Audio, Lang)</button>
       <button class="filter-btn" onclick="setTcCategory('Speech Models', this)">STT Models</button>
@@ -1237,19 +1240,40 @@ function onRunSelectChange() {
   const targetRun = historyData.find(r => r.id === runId) || latestData;
   currentSelectedMatrixRun = targetRun;
 
-  const allPill = document.querySelector('#pillFilterContainer .filter-btn');
-  if (allPill && targetRun.summary) {
-    allPill.textContent = \`All (\${targetRun.summary.total || (targetRun.tests ? targetRun.tests.length : 0)})\`;
+  const total = targetRun.summary ? targetRun.summary.total : (targetRun.tests ? targetRun.tests.length : 0);
+  const passed = targetRun.summary ? targetRun.summary.passed : (targetRun.tests ? targetRun.tests.filter(t => t.status === 'passed').length : 0);
+  const failed = targetRun.summary ? targetRun.summary.failed : (targetRun.tests ? targetRun.tests.filter(t => t.status === 'failed').length : 0);
+  const skipped = targetRun.summary ? (targetRun.summary.skipped || 0) : (targetRun.tests ? targetRun.tests.filter(t => t.status === 'skipped').length : 0);
+
+  const pills = document.querySelectorAll('#pillFilterContainer .filter-btn');
+  if (pills && pills.length >= 4) {
+    pills[0].textContent = \`All (\${total})\`;
+    pills[1].textContent = \`✓ Passed (\${passed})\`;
+    pills[2].textContent = \`✗ Failed (\${failed})\`;
+    pills[3].textContent = \`⏸ Skipped (\${skipped})\`;
   }
 
   filterTestCasesTable();
 }
 
 /* ══════════════════════════════════════════════════════════
-   TIME & DATE FORMATTERS (12h AM/PM & Local Time)
+   TIME & DATE FORMATTERS (IST Timezone with AM/PM)
    ══════════════════════════════════════════════════════════ */
 function formatTime(isoStr) {
   if (!isoStr) return '—';
+  try {
+    const d = new Date(isoStr);
+    if (!isNaN(d.getTime())) {
+      return d.toLocaleTimeString('en-US', {
+        timeZone: 'Asia/Kolkata',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      });
+    }
+  } catch (e) {}
+
   const clean = isoStr.replace('T', ' ').replace('.000Z', '').replace('Z', '');
   if (clean.length >= 19) {
     const timePart = clean.slice(11, 19);
@@ -1263,7 +1287,7 @@ function formatTime(isoStr) {
         h = h % 12;
         if (h === 0) h = 12;
         const hDisplay = h < 10 ? '0' + h : '' + h;
-        return \`\${hDisplay}:\${m}:\${s} \${ampm}\`;
+        return \\\`\${hDisplay}:\${m}:\${s} \${ampm}\\\`;
       }
     }
     return timePart;
@@ -1273,6 +1297,12 @@ function formatTime(isoStr) {
 
 function formatDate(isoStr) {
   if (!isoStr) return '—';
+  try {
+    const d = new Date(isoStr);
+    if (!isNaN(d.getTime())) {
+      return d.toLocaleDateString('en-CA', { timeZone: 'Asia/Kolkata' });
+    }
+  } catch (e) {}
   return isoStr.slice(0, 10);
 }
 
@@ -1508,7 +1538,13 @@ function filterTestCasesTable() {
 
     let matchesCat = true;
     if (tcCategoryFilter !== 'all') {
-      if (tcCategoryFilter === 'Smoke Tests') {
+      if (tcCategoryFilter === 'Passed') {
+        matchesCat = t.status === 'passed';
+      } else if (tcCategoryFilter === 'Failed') {
+        matchesCat = t.status === 'failed';
+      } else if (tcCategoryFilter === 'Skipped') {
+        matchesCat = t.status === 'skipped';
+      } else if (tcCategoryFilter === 'Smoke Tests') {
         matchesCat = isSmoke;
       } else if (tcCategoryFilter === 'Core System') {
         matchesCat = t.suite === 'Core System' || t.module === 'Core-System-Tests';
