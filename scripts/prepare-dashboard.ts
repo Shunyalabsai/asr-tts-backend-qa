@@ -841,7 +841,8 @@ table.data-table th{background:#11121d;padding:12px 16px;color:var(--muted);font
 table.data-table td{padding:12px 16px;border-bottom:1px solid rgba(38,40,58,.6);vertical-align:middle}
 table.data-table tr:hover td{background:rgba(139,92,246,.05)}
 .badge-id{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;color:#c4b5fd;background:rgba(139,92,246,.18);padding:3px 8px;border-radius:5px;font-size:11px;white-space:nowrap;font-weight:700}
-.badge-smoke{font-size:10px;font-weight:800;padding:2px 7px;border-radius:4px;font-family:monospace;background:rgba(239,68,68,.25);color:#fca5a5;border:1px solid rgba(239,68,68,.4);letter-spacing:.4px;display:inline-flex;align-items:center;gap:3px}
+.badge-smoke{font-size:10px;font-weight:800;padding:2px 8px;border-radius:6px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:linear-gradient(135deg,rgba(249,115,22,.22),rgba(239,68,68,.18));color:#fdba74;border:1px solid rgba(249,115,22,.45);letter-spacing:.4px;display:inline-flex;align-items:center;gap:4px;box-shadow:0 0 8px rgba(249,115,22,.2)}
+.smoke-flame{filter:drop-shadow(0 0 3px rgba(249,115,22,.8))}
 .badge-p{font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;font-family:monospace}
 .badge-p.p0{background:rgba(239,68,68,.2);color:#fca5a5}
 .badge-p.p1{background:rgba(245,158,11,.2);color:#fde68a}
@@ -946,14 +947,14 @@ table.data-table tr:hover td{background:rgba(139,92,246,.05)}
   <!-- Stats -->
   <div class="grid stats" id="topKpiGrid">
     <div class="card stat-card">
-      <div class="label">Total Catalog Scenarios</div>
+      <div class="label">Total Executed</div>
       <div class="value" id="kpiTotal">${latestRun.summary.total}</div>
       <div class="sub" id="kpiDuration">${(latestRun.durationMs / 1000).toFixed(1)}s total duration</div>
     </div>
     <div class="card stat-card">
       <div class="label">Passed Tests</div>
       <div class="value" id="kpiPassed" style="color:var(--pass)">${latestRun.summary.passed}</div>
-      <div class="sub" id="kpiPassSub">${latestRun.summary.passed + latestRun.summary.failed > 0 ? ((latestRun.summary.passed / (latestRun.summary.passed + latestRun.summary.failed)) * 100).toFixed(1) : 0}% pass rate (executed)</div>
+      <div class="sub" id="kpiPassSub">${latestRun.summary.passed} of ${latestRun.summary.total} passed</div>
     </div>
     <div class="card stat-card">
       <div class="label">Failed Tests</div>
@@ -961,9 +962,9 @@ table.data-table tr:hover td{background:rgba(139,92,246,.05)}
       <div class="sub" id="kpiFailedSub">${latestRun.summary.timedOut > 0 ? latestRun.summary.timedOut + ' timed out' : (latestRun.summary.failed > 0 ? 'Verification Failure' : '0 Failures')}</div>
     </div>
     <div class="card stat-card">
-      <div class="label">Skipped Scenarios</div>
-      <div class="value" id="kpiSkipped" style="color:var(--warn)">${latestRun.summary.skipped || 0}</div>
-      <div class="sub" id="kpiSkippedSub">${latestRun.summary.skipped > 0 ? 'Unexecuted in this specific run' : 'Full suite executed'}</div>
+      <div class="label">Pass Rate</div>
+      <div class="value" id="kpiPassRate" style="color:var(--accent)">${latestRun.passRate}%</div>
+      <div class="sub" id="kpiPassRateSub">${latestRun.passRate}% reliability across suite</div>
     </div>
   </div>
 
@@ -1135,7 +1136,7 @@ table.data-table tr:hover td{background:rgba(139,92,246,.05)}
       <button class="filter-btn" style="border-color:rgba(34,197,94,.5);color:#86efac" onclick="setTcCategory('Passed', this)">✓ Passed (${latestRun.summary.passed})</button>
       <button class="filter-btn" style="border-color:rgba(239,68,68,.5);color:#fca5a5" onclick="setTcCategory('Failed', this)">✗ Failed (${latestRun.summary.failed})</button>
       <button class="filter-btn" style="border-color:rgba(245,158,11,.5);color:#fde68a" onclick="setTcCategory('Skipped', this)">⏸ Skipped (${latestRun.summary.skipped || 0})</button>
-      <button class="filter-btn" style="border-color:rgba(239,68,68,.5);color:#fca5a5" onclick="setTcCategory('Smoke Tests', this)">🔥 Smoke Tests (P0 / Critical)</button>
+      <button class="filter-btn pill-smoke" style="border-color:rgba(249,115,22,.5);color:#fdba74;background:linear-gradient(135deg,rgba(249,115,22,.2),rgba(239,68,68,.15))" onclick="setTcCategory('Smoke Tests', this)"><span class="smoke-flame">🔥</span> Smoke Tests (P0 / Critical)</button>
       <button class="filter-btn" onclick="setTcCategory('Core System', this)">Core (Health, Auth, Audio, Lang)</button>
       <button class="filter-btn" onclick="setTcCategory('Speech Models', this)">STT Models</button>
       <button class="filter-btn" onclick="setTcCategory('Diarization', this)">Speaker Diarization</button>
@@ -1460,7 +1461,7 @@ function renderAllTestCasesTable(tests) {
     tr.innerHTML = \`
       <td>
         <span class="badge-id">\${t.id}</span>
-        \${isSmoke ? '<span class="badge-smoke" title="P0 Critical Smoke Test" style="margin-left:4px">🔥 SMOKE</span>' : ''}
+        \${isSmoke ? '<span class="badge-smoke" title="P0 Critical Smoke Test" style="margin-left:4px"><span class="smoke-flame">🔥</span> SMOKE</span>' : ''}
       </td>
       <td style="font-weight:600;font-size:12px;color:var(--muted)">\${t.suite}</td>
       <td style="font-weight:600">\${t.module}</td>
