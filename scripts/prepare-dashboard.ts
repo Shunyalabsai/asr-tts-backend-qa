@@ -1287,7 +1287,7 @@ function formatTime(isoStr) {
         h = h % 12;
         if (h === 0) h = 12;
         const hDisplay = h < 10 ? '0' + h : '' + h;
-        return \\\`\${hDisplay}:\${m}:\${s} \${ampm}\\\`;
+        return hDisplay + ':' + m + ':' + s + ' ' + ampm;
       }
     }
     return timePart;
