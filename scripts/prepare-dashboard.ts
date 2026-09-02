@@ -2070,19 +2070,6 @@ export function prepareDashboard(autoDeploy: boolean = true): void {
   }
   let allRuns = Array.from(uniqueRunsMap.values()).sort((a, b) => (b.startedAt || '').localeCompare(a.startedAt || ''));
 
-  // 4b. Extract Master Test Catalog and merge with partial/smoke runs
-  const masterCatalog = buildMasterTestCatalog(allRuns, reportsDir);
-  if (masterCatalog.length > 0) {
-    allRuns = allRuns.map(r => {
-      // If a run has significantly fewer tests than the master catalog (e.g. smoke run or partial run),
-      // merge it with the master catalog so all 653+ test cases are displayed in the matrix.
-      if (!r.tests || r.tests.length < masterCatalog.length) {
-        return mergeWithMasterCatalog(r, masterCatalog);
-      }
-      return r;
-    });
-  }
-
   // Save the complete history registry and index.json
   fs.writeFileSync(registryPath, JSON.stringify(allRuns, null, 2), 'utf-8');
   fs.writeFileSync(path.join(runsDir, 'index.json'), JSON.stringify(allRuns, null, 2), 'utf-8');
