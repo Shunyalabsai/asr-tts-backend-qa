@@ -2,10 +2,10 @@ name: Scheduled STT & TTS Automated Test Suite
 
 on:
   schedule:
-    # 4:00 AM UTC (adjust or keep for cloud automated runs) & 5:00 PM UTC
-    # 4:00 AM IST is 22:30 UTC previous day, 5:00 PM IST is 11:30 UTC
     - cron: '30 22 * * *' # 4:00 AM IST
     - cron: '30 11 * * *' # 5:00 PM IST
+  repository_dispatch:
+    types: [scheduled_daily_run, scheduled_test_run]
   workflow_dispatch:
 
 permissions:
