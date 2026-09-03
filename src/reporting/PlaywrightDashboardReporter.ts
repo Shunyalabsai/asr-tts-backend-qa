@@ -21,6 +21,7 @@ export default class PlaywrightDashboardReporter implements Reporter {
     const moduleLabel = this.getModuleLabel(filePath, test.title);
     const isPassed = result.status === 'passed';
     const isSkipped = result.status === 'skipped';
+    const testId = test.title.match(/^(M\d+-T\d+|TTS_[A-Za-z0-9_]+)/)?.[0] || test.title;
 
     this.results.push({
       testId,
