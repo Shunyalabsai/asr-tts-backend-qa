@@ -277,7 +277,14 @@ function loadRunDataFromCSVs(reportsDir: string, dateStr: string): RunData | nul
 
         let timestamp = rawTimestamp;
         if (timestamp && timestamp.length >= 19) {
-          const iso = timestamp.includes('T') ? timestamp : timestamp.replace(' ', 'T') + '.000Z';
+          const cleanTs = timestamp.trim();
+          let iso = '';
+          if (cleanTs.includes('T') && cleanTs.endsWith('Z')) {
+            iso = cleanTs;
+          } else {
+            const parsedIST = new Date(cleanTs.replace(' ', 'T') + '+05:30');
+            iso = !isNaN(parsedIST.getTime()) ? parsedIST.toISOString() : (cleanTs.replace(' ', 'T') + '.000Z');
+          }
           if (!latestTs || iso > latestTs) latestTs = iso;
           if (!earliestTs || iso < earliestTs) earliestTs = iso;
         }
@@ -489,10 +496,22 @@ function normalizeRunJSON(jsonObj: any, fallbackDate: string): RunData {
     }
   }
 
+  let startedAt = jsonObj.startedAt;
+  if (startedAt && !startedAt.endsWith('Z') && !startedAt.includes('+')) {
+    const parsedIST = new Date(startedAt.replace(' ', 'T') + '+05:30');
+    if (!isNaN(parsedIST.getTime())) startedAt = parsedIST.toISOString();
+  }
+
+  let completedAt = jsonObj.completedAt;
+  if (completedAt && !completedAt.endsWith('Z') && !completedAt.includes('+')) {
+    const parsedIST = new Date(completedAt.replace(' ', 'T') + '+05:30');
+    if (!isNaN(parsedIST.getTime())) completedAt = parsedIST.toISOString();
+  }
+
   return {
     id: jsonObj.id || `RUN-${dateStr.replace(/-/g, '')}-01`,
-    startedAt: jsonObj.startedAt || `${dateStr}T12:00:02.000Z`,
-    completedAt: jsonObj.completedAt || `${dateStr}T12:14:35.000Z`,
+    startedAt: startedAt || `${dateStr}T12:00:02.000Z`,
+    completedAt: completedAt || `${dateStr}T12:14:35.000Z`,
     durationMs: jsonObj.durationMs || 45000,
     passRate: passRateNum,
     summary: {
