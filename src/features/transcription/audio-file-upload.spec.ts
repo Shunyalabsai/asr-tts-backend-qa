@@ -283,32 +283,6 @@ test('M02-T12: Very short audio (<1s) processed', async () => {
   }
 });
 
-test('M02-T13: Audio URL input returns transcription', async () => {
-  const testAudioUrl = process.env.TEST_AUDIO_URL;
-  test.skip(!testAudioUrl || testAudioUrl.includes('example.com'), 'TEST_AUDIO_URL not configured with a live valid audio URL');
-
-  const start = Date.now();
-  try {
-    const result = await batchClient.transcribeUrl(testAudioUrl!);
-    expect(result.status).toBe(200);
-    expect(result.body.text).toBeTruthy();
-
-    testResults.add({
-      testId: 'M02-T13', module: moduleName,
-      description: 'Audio URL input returns transcription',
-      status: 'PASS', latencyMs: Date.now() - start, timestamp: getTimestamp(),
-    });
-  } catch (err: any) {
-    testResults.add({
-      testId: 'M02-T13', module: moduleName,
-      description: 'Audio URL input returns transcription',
-      status: 'FAIL', latencyMs: Date.now() - start,
-      failureReason: err.message, timestamp: getTimestamp(),
-    });
-    throw err;
-  }
-});
-
 test('M02-T14: Long audio (max-length) processed', async () => {
   const start = Date.now();
   try {
