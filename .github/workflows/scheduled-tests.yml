@@ -38,7 +38,8 @@ jobs:
 
       - name: Run Complete Test Suite
         env:
-          SHUNYA_API_KEY: ${{ secrets.SHUNYA_API_KEY }}
+          ASR_API_KEY: ${{ secrets.ASR_API_KEY || secrets.SHUNYA_API_KEY }}
+          SHUNYA_API_KEY: ${{ secrets.SHUNYA_API_KEY || secrets.ASR_API_KEY }}
           ASR_BASE_URL: ${{ secrets.ASR_BASE_URL || 'https://asrv2prod.shunyalabs.ai' }}
         run: |
           npm test || true

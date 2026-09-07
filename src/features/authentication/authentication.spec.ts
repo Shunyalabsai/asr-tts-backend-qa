@@ -6,7 +6,7 @@ import { getTimestamp } from '../../utils/audioHelper';
 import type { TokenResponse, ApiErrorResponse } from '../../types';
 
 const moduleName = 'Authentication';
-const realApiKey = process.env.ASR_API_KEY || '';
+const realApiKey = process.env.ASR_API_KEY || process.env.SHUNYA_API_KEY || '';
 
 async function postAuth(apiKey: string): Promise<{ status: number; body: any; latencyMs: number }> {
   const start = Date.now();

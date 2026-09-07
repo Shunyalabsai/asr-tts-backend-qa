@@ -36,7 +36,7 @@ export const ENDPOINTS = {
 
 // ── Auth Config ─────────────────────────────────────────────────
 export const AUTH_CONFIG = {
-  apiKey: process.env.ASR_API_KEY || '',
+  apiKey: process.env.ASR_API_KEY || process.env.SHUNYA_API_KEY || '',
   refreshBufferSeconds: parseInt(process.env.TOKEN_REFRESH_BUFFER_SECONDS || '120', 10),
 };
 
