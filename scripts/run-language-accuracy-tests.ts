@@ -240,11 +240,96 @@ function findAudioForLanguage(language: string, expectedLangCode?: string, testI
 
 // ─── Tab Configuration & Mappings ──────────────────────────────────
 
+// ─── Dialect Root Language Mapping ─────────────────────────────────
+
+const DIALECT_PARENT_LANGUAGES: Record<string, string> = {
+  ahr: 'hi', // Ahirani -> Hindi
+  awa: 'hi', // Awadhi -> Hindi
+  bfy: 'hi', // Bagheli -> Hindi
+  bgq: 'hi', // Bagri -> Hindi
+  bho: 'hi', // Bhojpuri -> Hindi
+  bra: 'hi', // Braj -> Hindi
+  bwq: 'hi', // Banjari -> Hindi
+  bhi: 'hi', // Bhili -> Hindi
+  chg: 'hi', // Chhattisgarhi -> Hindi
+  doi: 'hi', // Dogri -> Hindi
+  gbm: 'hi', // Garhwali -> Hindi
+  gon: 'hi', // Gondi -> Hindi
+  hne: 'hi', // Haryanvi -> Hindi
+  hoj: 'hi', // Harouti -> Hindi
+  kfy: 'hi', // Kumaoni -> Hindi
+  kfr: 'gu', // Kachchhi -> Gujarati
+  kru: 'hi', // Kurukh -> Hindi
+  mag: 'hi', // Magahi -> Hindi
+  mai: 'hi', // Maithili -> Hindi
+  mup: 'hi', // Malvi -> Hindi
+  mwr: 'hi', // Marwari -> Hindi
+  noe: 'hi', // Nimadi -> Hindi
+  raj: 'hi', // Rajasthani -> Hindi
+  xnr: 'hi', // Kangri -> Hindi
+  sck: 'hi', // Sadri -> Hindi
+  sgj: 'hi', // Surgujia -> Hindi
+  spv: 'or', // Sambalpuri -> Odia
+  tcy: 'kn', // Tulu -> Kannada
+};
+
+export function resolveLanguageParam(langCode?: string, languageName?: string): string | undefined {
+  if (!langCode && !languageName) return undefined;
+  const code = (langCode || '').toLowerCase().trim();
+  const name = (languageName || '').toLowerCase().trim();
+
+  if (code && DIALECT_PARENT_LANGUAGES[code]) {
+    return DIALECT_PARENT_LANGUAGES[code];
+  }
+  if (name && DIALECT_PARENT_LANGUAGES[name]) {
+    return DIALECT_PARENT_LANGUAGES[name];
+  }
+  if (code && code !== 'auto') return code;
+  return undefined;
+}
+
+export async function transcribeWithRetry(
+  client: BatchTranscriptionClient,
+  filePath: string,
+  options: any,
+  retries = 2
+): Promise<any> {
+  let lastErr: any;
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      return await client.transcribeFile(filePath, options);
+    } catch (err: any) {
+      lastErr = err;
+      const msg = (err.message || '').toLowerCase();
+      if (
+        attempt < retries &&
+        (msg.includes('408') ||
+          msg.includes('timed out') ||
+          msg.includes('504') ||
+          msg.includes('502') ||
+          msg.includes('503') ||
+          msg.includes('econnreset'))
+      ) {
+        await new Promise((r) => setTimeout(r, 2500 * attempt));
+        continue;
+      }
+      throw err;
+    }
+  }
+  throw lastErr;
+}
+
 interface TabMapping {
   inputSheetVar: string;
   inputTab: string;
   outputTab: string;
-  category: 'Core System Health' | 'STT Models' | 'Performance' | 'Audio Features & Intelligence' | 'TTS Voice Synthesis';
+  category:
+    | 'Core System Health'
+    | 'STT Models'
+    | 'Performance'
+    | 'Audio Features & Intelligence'
+    | 'TTS Voice Synthesis';
+  concurrency?: number;
   type:
     | 'model'
     | 'diarization'
@@ -266,32 +351,32 @@ interface TabMapping {
 
 const TAB_MAPPINGS: TabMapping[] = [
   // ── 1. Consolidated Core System Tab ──
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Core-System-Tests',           outputTab: 'Core-System-Tests',         category: 'Core System Health',              type: 'core' },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Core-System-Tests', outputTab: 'Core-System-Tests', category: 'Core System Health', type: 'core', concurrency: 1 },
 
   // ── 2. Speech-to-Text Model tabs ──
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'indicvoices_sample',         outputTab: 'zero-indic',                category: 'STT Models',                      type: 'model' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'codeSwitchvoices_sample',     outputTab: 'zero-codeswitch',           category: 'STT Models',                      type: 'model' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Zero-Med_sample',             outputTab: 'zero-med',                  category: 'STT Models',                      type: 'model' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'universalvoices_sample',      outputTab: 'zero-stt',                  category: 'STT Models',                      type: 'model' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Long_Audio_Files',            outputTab: 'zero-indic-long-audio',     category: 'STT Models',                      type: 'model' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Concurrent_Audio_Tests',     outputTab: 'zero-indic-concurrent',     category: 'Performance',                     type: 'concurrency' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Sequential_Audio_Tests',     outputTab: 'zero-indic-sequential',     category: 'Performance',                     type: 'sequential' },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'indicvoices_sample', outputTab: 'zero-indic', category: 'STT Models', type: 'model', concurrency: 4 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'codeSwitchvoices_sample', outputTab: 'zero-codeswitch', category: 'STT Models', type: 'model', concurrency: 4 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Zero-Med_sample', outputTab: 'zero-med', category: 'STT Models', type: 'model', concurrency: 1 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'universalvoices_sample', outputTab: 'zero-stt', category: 'STT Models', type: 'model', concurrency: 4 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Long_Audio_Files', outputTab: 'zero-indic-long-audio', category: 'STT Models', type: 'model', concurrency: 1 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Concurrent_Audio_Tests', outputTab: 'zero-indic-concurrent', category: 'Performance', type: 'concurrency', concurrency: 5 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Sequential_Audio_Tests', outputTab: 'zero-indic-sequential', category: 'Performance', type: 'sequential', concurrency: 1 },
 
   // ── 3. Speech Intelligence & Audio Feature tabs ──
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Speaker_Diarization_Sample',  outputTab: 'Feat-SpeakerDiarization',   category: 'Audio Features & Intelligence',   type: 'diarization' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Summarization',       outputTab: 'Feat-Summarization',        category: 'Audio Features & Intelligence',   type: 'summarization' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Intent-Detection',    outputTab: 'Feat-IntentDetection',     category: 'Audio Features & Intelligence',   type: 'intent' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Sentiment-Analysis',   outputTab: 'Feat-SentimentAnalysis',    category: 'Audio Features & Intelligence',   type: 'sentiment' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Emotion-Diarization',  outputTab: 'Feat-EmotionDiarization',   category: 'Audio Features & Intelligence',   type: 'emotion' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Profanity-Hashing',    outputTab: 'Feat-ProfanityHashing',     category: 'Audio Features & Intelligence',   type: 'profanity' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Custom-Keyword-Hashing', outputTab: 'Feat-CustomKeywordHashing', category: 'Audio Features & Intelligence',   type: 'custom_keyword' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Keyword-Normalization',  outputTab: 'Feat-KeywordNormalization', category: 'Audio Features & Intelligence',   type: 'keyword_norm' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Medical-Keyterms',    outputTab: 'Feat-MedicalCorrection',    category: 'Audio Features & Intelligence',   type: 'medical' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Translation',         outputTab: 'Feat-Translation',          category: 'Audio Features & Intelligence',   type: 'translation' },
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Transliteration',     outputTab: 'Feat-Transliteration',      category: 'Audio Features & Intelligence',   type: 'transliteration' },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Speaker_Diarization_Sample', outputTab: 'Feat-SpeakerDiarization', category: 'Audio Features & Intelligence', type: 'diarization', concurrency: 2 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Summarization', outputTab: 'Feat-Summarization', category: 'Audio Features & Intelligence', type: 'summarization', concurrency: 4 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Intent-Detection', outputTab: 'Feat-IntentDetection', category: 'Audio Features & Intelligence', type: 'intent', concurrency: 4 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Sentiment-Analysis', outputTab: 'Feat-SentimentAnalysis', category: 'Audio Features & Intelligence', type: 'sentiment', concurrency: 4 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Emotion-Diarization', outputTab: 'Feat-EmotionDiarization', category: 'Audio Features & Intelligence', type: 'emotion', concurrency: 2 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Profanity-Hashing', outputTab: 'Feat-ProfanityHashing', category: 'Audio Features & Intelligence', type: 'profanity', concurrency: 4 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Custom-Keyword-Hashing', outputTab: 'Feat-CustomKeywordHashing', category: 'Audio Features & Intelligence', type: 'custom_keyword', concurrency: 4 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Keyword-Normalization', outputTab: 'Feat-KeywordNormalization', category: 'Audio Features & Intelligence', type: 'keyword_norm', concurrency: 4 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Medical-Keyterms', outputTab: 'Feat-MedicalCorrection', category: 'Audio Features & Intelligence', type: 'medical', concurrency: 4 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Translation', outputTab: 'Feat-Translation', category: 'Audio Features & Intelligence', type: 'translation', concurrency: 4 },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'Feature-Transliteration', outputTab: 'Feat-Transliteration', category: 'Audio Features & Intelligence', type: 'transliteration', concurrency: 4 },
 
   // ── 4. TTS Voice Synthesis tab ──
-  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'TTS_Voice_Synthesis',         outputTab: 'zero-tts-synthesis',        category: 'TTS Voice Synthesis',             type: 'tts' },
+  { inputSheetVar: 'GOOGLE_SHEET_ID_INDIC_INPUT', inputTab: 'TTS_Voice_Synthesis', outputTab: 'zero-tts-synthesis', category: 'TTS Voice Synthesis', type: 'tts', concurrency: 3 },
 ];
 
 // ─── Clients ───────────────────────────────────────────────────────
@@ -917,7 +1002,7 @@ async function runCoreSystemTab(
     }
     try {
       const start = Date.now();
-      const resp = await batchClient.transcribeFile(resolved, { model: DEFAULT_MODEL, response_format: 'verbose_json' });
+      const resp = await transcribeWithRetry(batchClient, resolved, { model: DEFAULT_MODEL, response_format: 'verbose_json' });
       const lat = Date.now() - start;
       const ok = Boolean((resp.body as any)?.text);
       rows.push([
@@ -959,7 +1044,7 @@ async function runCoreSystemTab(
     }
     try {
       const start = Date.now();
-      const resp = await batchClient.transcribeFile(resolved, {
+      const resp = await transcribeWithRetry(batchClient, resolved, {
         model: DEFAULT_MODEL,
         language_code: lt.lang === 'auto' ? undefined : lt.lang,
         response_format: 'verbose_json',
@@ -1008,8 +1093,9 @@ async function runModelTab(
 
   const validRows = rawRows.slice(1);
   let totalLatency = 0;
+  const tabConcurrency = mapping.concurrency || CONCURRENCY;
 
-  const outputRows = await runWithPool(validRows, CONCURRENCY, async (row, rIdx) => {
+  const outputRows = await runWithPool(validRows, tabConcurrency, async (row, rIdx) => {
     const testId = idIdx >= 0 && row[idIdx] ? String(row[idIdx]).trim() : `TC_${rIdx + 1}`;
     let rawAudio = audioIdx >= 0 ? String(row[audioIdx] || '').trim() : '';
     const groundTruth = gtIdx >= 0 ? String(row[gtIdx] || '').trim() : '';
@@ -1039,26 +1125,27 @@ async function runModelTab(
       ];
     }
 
-    const initialLangParam = detectLangCode || (expectedLangCode && expectedLangCode !== 'auto' ? expectedLangCode : undefined);
+    const rawLangParam = detectLangCode || (expectedLangCode && expectedLangCode !== 'auto' ? expectedLangCode : undefined);
+    const resolvedLangParam = resolveLanguageParam(rawLangParam, language);
     let resp: any;
     let latencyMs = 0;
     let usedAutoFallback = false;
 
     try {
       const start = Date.now();
-      resp = await batchClient.transcribeFile(resolvedPath, {
+      resp = await transcribeWithRetry(batchClient, resolvedPath, {
         model: mapping.outputTab === 'zero-codeswitch' ? 'zero-indic' : DEFAULT_MODEL,
-        language_code: initialLangParam,
+        language_code: resolvedLangParam,
         response_format: 'verbose_json',
       });
       latencyMs = Date.now() - start;
     } catch (err: any) {
-      // If language was not detected or explicit language code threw an error, retry with 'auto' (undefined)
-      if (initialLangParam) {
+      // If explicit/resolved language code threw an error, retry with 'auto' (undefined)
+      if (resolvedLangParam) {
         try {
           usedAutoFallback = true;
           const start = Date.now();
-          resp = await batchClient.transcribeFile(resolvedPath, {
+          resp = await transcribeWithRetry(batchClient, resolvedPath, {
             model: mapping.outputTab === 'zero-codeswitch' ? 'zero-indic' : DEFAULT_MODEL,
             language_code: undefined, // auto detection
             response_format: 'verbose_json',
@@ -1157,8 +1244,9 @@ async function runSpeakerDiarizationTab(
     return true;
   });
   let totalLatency = 0;
+  const tabConcurrency = mapping.concurrency || CONCURRENCY;
 
-  const outputRows = await runWithPool(validRows, CONCURRENCY, async (row, rIdx) => {
+  const outputRows = await runWithPool(validRows, tabConcurrency, async (row, rIdx) => {
     const testId = idIdx >= 0 && row[idIdx] ? String(row[idIdx]).trim() : `SD_${rIdx + 1}`;
     const rawAudio = audioIdx >= 0 ? String(row[audioIdx] || '').trim() : '';
     const expectedSpeakers = numSpkIdx >= 0 ? parseInt(row[numSpkIdx], 10) || 2 : 2;
@@ -1177,7 +1265,7 @@ async function runSpeakerDiarizationTab(
     try {
       const fileDurationSec = getAudioDurationSeconds(resolvedPath);
       const start = Date.now();
-      const resp = await batchClient.transcribeFile(resolvedPath, {
+      const resp = await transcribeWithRetry(batchClient, resolvedPath, {
         model: DEFAULT_MODEL,
         diarize: true,
         num_speakers: expectedSpeakers,
@@ -1629,8 +1717,9 @@ async function runEmotionTab(
 
   const validRows = rawRows.slice(1);
   let totalLatency = 0;
+  const tabConcurrency = mapping.concurrency || CONCURRENCY;
 
-  const outputRows = await runWithPool(validRows, CONCURRENCY, async (row, rIdx) => {
+  const outputRows = await runWithPool(validRows, tabConcurrency, async (row, rIdx) => {
     const testId = idIdx >= 0 && row[idIdx] ? String(row[idIdx]).trim() : `TC_${rIdx + 1}`;
     let rawAudio = audioIdx >= 0 ? String(row[audioIdx] || '').trim() : '';
     const timestamp = getTimestamp();
@@ -1647,7 +1736,7 @@ async function runEmotionTab(
     try {
       const fileDurationSec = getAudioDurationSeconds(resolved);
       const start = Date.now();
-      const resp = await batchClient.transcribeFile(resolved, {
+      const resp = await transcribeWithRetry(batchClient, resolved, {
         model: DEFAULT_MODEL,
         diarize: true,
         response_format: 'verbose_json',

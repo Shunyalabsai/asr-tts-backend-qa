@@ -1,7 +1,7 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import { ApiClient } from '../../services/ApiClient';
-import { ENDPOINTS } from '../../config';
+import { ENDPOINTS, TIMEOUTS } from '../../config';
 import type {
   TranscriptionParams,
   TranscriptionResponse,
@@ -13,7 +13,8 @@ export class BatchTranscriptionClient {
 
   async transcribeFile(
     filePath: string,
-    params?: Omit<TranscriptionParams, 'file' | 'audio_base64' | 'url'>
+    params?: Omit<TranscriptionParams, 'file' | 'audio_base64' | 'url'>,
+    timeoutMs?: number
   ): Promise<{
     status: number;
     body: TranscriptionResponse | VerboseTranscriptionResponse;
@@ -43,7 +44,7 @@ export class BatchTranscriptionClient {
 
     const response = await this.apiClient.post<TranscriptionResponse | VerboseTranscriptionResponse>(
       ENDPOINTS.transcription,
-      { formData, timeout: 25000 }
+      { formData, timeout: timeoutMs || TIMEOUTS.api }
     );
 
     return {
@@ -55,7 +56,8 @@ export class BatchTranscriptionClient {
 
   async transcribeBase64(
     audioBase64: string,
-    params?: Omit<TranscriptionParams, 'file' | 'audio_base64' | 'url'>
+    params?: Omit<TranscriptionParams, 'file' | 'audio_base64' | 'url'>,
+    timeoutMs?: number
   ): Promise<{
     status: number;
     body: TranscriptionResponse | VerboseTranscriptionResponse;
@@ -70,7 +72,7 @@ export class BatchTranscriptionClient {
 
     const response = await this.apiClient.post<TranscriptionResponse | VerboseTranscriptionResponse>(
       ENDPOINTS.transcription,
-      { formData, timeout: 25000 }
+      { formData, timeout: timeoutMs || TIMEOUTS.api }
     );
 
     return {
@@ -82,7 +84,8 @@ export class BatchTranscriptionClient {
 
   async transcribeUrl(
     audioUrl: string,
-    params?: Omit<TranscriptionParams, 'file' | 'audio_base64' | 'url'>
+    params?: Omit<TranscriptionParams, 'file' | 'audio_base64' | 'url'>,
+    timeoutMs?: number
   ): Promise<{
     status: number;
     body: TranscriptionResponse | VerboseTranscriptionResponse;
@@ -97,7 +100,7 @@ export class BatchTranscriptionClient {
 
     const response = await this.apiClient.post<TranscriptionResponse | VerboseTranscriptionResponse>(
       ENDPOINTS.transcription,
-      { formData, timeout: 25000 }
+      { formData, timeout: timeoutMs || TIMEOUTS.api }
     );
 
     return {
