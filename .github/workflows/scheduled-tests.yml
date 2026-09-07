@@ -36,11 +36,25 @@ jobs:
       - name: Install Playwright Browsers & OS Dependencies
         run: npx playwright install --with-deps
 
+      - name: Write .env from secrets
+        run: |
+          cat > .env <<EOF
+          ASR_API_KEY=${{ secrets.ASR_API_KEY || secrets.SHUNYA_API_KEY }}
+          SHUNYA_API_KEY=${{ secrets.SHUNYA_API_KEY || secrets.ASR_API_KEY }}
+          ASR_BASE_URL=${{ secrets.ASR_BASE_URL || 'https://asrv2prod.shunyalabs.ai' }}
+          SMTP_HOST=${{ secrets.SMTP_HOST || 'smtp.gmail.com' }}
+          SMTP_PORT=${{ secrets.SMTP_PORT || '587' }}
+          SMTP_USER=${{ secrets.SMTP_USER }}
+          SMTP_PASS=${{ secrets.SMTP_PASS }}
+          REPORT_EMAIL_FROM=${{ secrets.REPORT_EMAIL_FROM || 'yamini@shunyalabs.ai' }}
+          REPORT_EMAIL_TO=${{ secrets.REPORT_EMAIL_TO }}
+          REPORT_BASE_URL=https://shunyalabsai.github.io/asr-tts-backend-qa/
+          GOOGLE_SHEET_ID=${{ secrets.GOOGLE_SHEET_ID || '1yJPbtXwuKlXLkZtA4r_v5xLPCv2S8zRtf9aJZ-yFS-o' }}
+          GOOGLE_SHEET_ID_INDIC_INPUT=${{ secrets.GOOGLE_SHEET_ID_INDIC_INPUT || '1hWphhqgyjlgQD39TtnlkpHasDm0Vks1ZmfGYWNicN9c' }}
+          GOOGLE_SERVICE_ACCOUNT_JSON=${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON_B64 || secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          EOF
+
       - name: Run Complete Test Suite
-        env:
-          ASR_API_KEY: ${{ secrets.ASR_API_KEY || secrets.SHUNYA_API_KEY }}
-          SHUNYA_API_KEY: ${{ secrets.SHUNYA_API_KEY || secrets.ASR_API_KEY }}
-          ASR_BASE_URL: ${{ secrets.ASR_BASE_URL || 'https://asrv2prod.shunyalabs.ai' }}
         run: |
           npm test || true
 
@@ -55,3 +69,8 @@ jobs:
           publish_dir: ./deploy
           publish_branch: gh-pages
           force_orphan: false
+
+      - name: Clean up sensitive files
+        if: always()
+        run: |
+          rm -f .env
