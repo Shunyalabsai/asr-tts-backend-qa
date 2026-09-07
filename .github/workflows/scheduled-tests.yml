@@ -47,7 +47,7 @@ jobs:
           SMTP_USER=${{ secrets.SMTP_USER }}
           SMTP_PASS=${{ secrets.SMTP_PASS }}
           REPORT_EMAIL_FROM=${{ secrets.REPORT_EMAIL_FROM || 'yamini@shunyalabs.ai' }}
-          REPORT_EMAIL_TO=${{ secrets.REPORT_EMAIL_TO }}
+          REPORT_EMAIL_TO=${{ secrets.REPORT_EMAIL_TO || 'yamini@shunyalabs.ai' }}
           REPORT_BASE_URL=https://shunyalabsai.github.io/asr-tts-backend-qa/
           GOOGLE_SHEET_ID=${{ secrets.GOOGLE_SHEET_ID || '1yJPbtXwuKlXLkZtA4r_v5xLPCv2S8zRtf9aJZ-yFS-o' }}
           GOOGLE_SHEET_ID_INDIC_INPUT=${{ secrets.GOOGLE_SHEET_ID_INDIC_INPUT || '1hWphhqgyjlgQD39TtnlkpHasDm0Vks1ZmfGYWNicN9c' }}
