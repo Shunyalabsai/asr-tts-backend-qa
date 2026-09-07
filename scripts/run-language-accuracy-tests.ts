@@ -351,7 +351,22 @@ async function fetchInputTabRows(sheetId: string, tabName: string): Promise<any[
         spreadsheetId: sheetId,
         range: `${tabName}!A1:Z5000`,
       });
-      return data.data.values || [];
+      const raw = data.data.values || [];
+      if (raw.length <= 1) return raw;
+
+      const header = raw[0];
+      const validRows = [header];
+      for (let i = 1; i < raw.length; i++) {
+        const row = raw[i];
+        if (!row || row.length === 0) continue;
+        const idCol = String(row[0] || '').trim();
+        // Filter out any injected Apps Script status logs
+        if (idCol.match(/^\d{4}-\d{2}-\d{2}/) && String(row[1] || '').includes('Scheduled Daily Run')) {
+          continue;
+        }
+        validRows.push(row);
+      }
+      return validRows;
     });
   } catch (err: any) {
     console.warn(`  ⚠ Could not read "${tabName}" from ${sheetId}: ${err.message}`);

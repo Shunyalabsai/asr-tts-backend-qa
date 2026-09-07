@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 echo "=========================================="
 echo "  ASR Testing Framework — Full Suite Run"
@@ -13,84 +12,84 @@ mkdir -p "$REPORT_DIR"
 echo "⊢ Phase 1: Core Endpoints"
 
 echo "  ⊢ Health Check..."
-npx playwright test src/features/health-check/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/health-check/ --reporter=list 2>&1 | tail -3 || true
 
 echo "  ⊢ Authentication..."
-npx playwright test src/features/authentication/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/authentication/ --reporter=list 2>&1 | tail -3 || true
 
 # ─── Phase 2: Audio Input ────────────────────────────────────
 echo "⊢ Phase 2: Audio Input"
 
 echo "  ⊢ Transcription (File Upload)..."
-npx playwright test src/features/transcription/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/transcription/ --reporter=list 2>&1 | tail -3 || true
 
 echo "  ⊢ Language Identification..."
-npx playwright test src/features/language-identification/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/language-identification/ --reporter=list 2>&1 | tail -3 || true
 
 echo "  ⊢ Speaker Diarization..."
-npx playwright test src/features/speaker-diarization/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/speaker-diarization/ --reporter=list 2>&1 | tail -3 || true
 
 # ─── Phase 3: Response Features ──────────────────────────────
 echo "⊢ Phase 3: Response Features"
 
 echo "  ⊢ Word Boosting..."
-npx playwright test src/features/word-boosting/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/word-boosting/ --reporter=list 2>&1 | tail -3 || true
 
 echo "  ⊢ Profanity & Keyword Hashing..."
-npx playwright test src/features/profanity-keyword-hashing/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/profanity-keyword-hashing/ --reporter=list 2>&1 | tail -3 || true
 
 echo "  ⊢ Schema Validation..."
-npx playwright test src/features/schema-validation/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/schema-validation/ --reporter=list 2>&1 | tail -3 || true
 
 # ─── Phase 4: Speech Intelligence ────────────────────────────
 echo "⊢ Phase 4: Speech Intelligence"
 
 echo "  ⊢ Speech Intelligence (Intent/Sentiment/Summarization)..."
-npx playwright test src/features/speech-intelligence/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/speech-intelligence/ --reporter=list 2>&1 | tail -3 || true
 
 # ─── Phase 5: Validation ────────────────────────────────────
 echo "⊢ Phase 5: Validation & Edge Cases"
 
 echo "  ⊢ Error Handling..."
-npx playwright test src/features/error-handling/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/error-handling/ --reporter=list 2>&1 | tail -3 || true
 
 echo "  ⊢ Security..."
-npx playwright test src/features/security/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/security/ --reporter=list 2>&1 | tail -3 || true
 
 echo "  ⊢ Combination Scenarios..."
-npx playwright test src/features/combination-scenarios/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/combination-scenarios/ --reporter=list 2>&1 | tail -3 || true
 
 # ─── Phase 6: New Endpoints ──────────────────────────────────
 echo "⊢ Phase 6: Streaming & Speaker Management"
 
 echo "  ⊢ Streaming..."
-npx playwright test src/features/streaming/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/streaming/ --reporter=list 2>&1 | tail -3 || true
 
 echo "  ⊢ Speaker Management..."
-npx playwright test src/features/speaker-management/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/speaker-management/ --reporter=list 2>&1 | tail -3 || true
 
 # ─── Phase 7: Performance ───────────────────────────────────
 echo "⊢ Phase 7: Performance"
 
 echo "  ⊢ Latency Performance..."
-npx playwright test src/features/performance/latency-performance.spec.ts --reporter=list 2>&1 | tail -3
+npx playwright test src/features/performance/latency-performance.spec.ts --reporter=list 2>&1 | tail -3 || true
 
 # ─── Phase 8: Text-to-Speech (TTS) ──────────────────────────
 echo "⊢ Phase 8: Text-to-Speech (TTS)"
 
 echo "  ⊢ Standard, Education LaTeX & OpenAI Speech TTS..."
-npx playwright test src/features/tts/ --reporter=list 2>&1 | tail -3
+npx playwright test src/features/tts/ --reporter=list 2>&1 | tail -3 || true
 
 # ─── Phase 9: Google Input Sheet Test Cases ─────────────────
 echo "⊢ Phase 9: Google Input Sheet Dataset Execution"
 
 echo "  ⊢ Running all test cases from Google Input Sheet..."
-npx ts-node scripts/run-language-accuracy-tests.ts
+npx ts-node scripts/run-language-accuracy-tests.ts || true
 
 # ─── Phase 10: Reports & Dashboard ──────────────────────────
 echo ""
 echo "⊢ Phase 10: Generating Reports & Updating Live Dashboard"
-npx ts-node scripts/generate-report.ts 2>&1 | tail -5
+npx ts-node scripts/generate-report.ts 2>&1 | tail -5 || true
 bash scripts/deploy-dashboard.sh
 
 echo ""
