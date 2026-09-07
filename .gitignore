@@ -11,3 +11,4 @@ shunyalabs-qa-automation*.json
 *service_account*.json
 *.xlsx
 temp_*
+test-results/
