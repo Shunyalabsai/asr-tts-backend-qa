@@ -1,15 +1,15 @@
 {
   "id": "RUN-20260908-01",
-  "startedAt": "2026-09-07T18:38:18.000Z",
-  "completedAt": "2026-09-07T18:49:30.000Z",
-  "durationMs": 96273640,
-  "passRate": 76.4,
+  "startedAt": "2026-09-07T18:39:02.000Z",
+  "completedAt": "2026-09-07T19:25:44.000Z",
+  "durationMs": 96298736,
+  "passRate": 76.6,
   "summary": {
     "total": 653,
-    "passed": 499,
-    "failed": 154,
+    "passed": 500,
+    "failed": 153,
     "skipped": 0,
-    "timedOut": 49
+    "timedOut": 48
   },
   "categories": {
     "models": {
@@ -45,10 +45,10 @@
     "core": {
       "name": "Core System (Health, Auth, Audio Formats, Language)",
       "total": 9,
-      "passed": 8,
-      "failed": 1,
+      "passed": 9,
+      "failed": 0,
       "skipped": 0,
-      "passRate": "88.9%",
+      "passRate": "100.0%",
       "avgLatencyMs": 0,
       "tabsCount": 1
     }
@@ -57,10 +57,10 @@
     "Core-System-Tests": {
       "label": "Core System (Health, Auth, Audio Formats, Language)",
       "total": 9,
-      "passed": 8,
-      "failed": 1,
+      "passed": 9,
+      "failed": 0,
       "skipped": 0,
-      "passRate": "88.9%"
+      "passRate": "100.0%"
     },
     "Feat-CustomKeywordHashing": {
       "label": "Word Boosting & Custom Keyword Masking",
@@ -229,14 +229,14 @@
       "groundTruth": "Validates system health endpoint GET /health to ensure underlying speech engine, GPU clusters, inference nodes, and database subsystems are fully operational, responsive under SLA thresholds (<500ms), and returning HTTP 200 with uptime metadata before accepting production traffic.",
       "predictedText": "",
       "duration": "0",
-      "durationMs": 838,
+      "durationMs": 385,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-08 00:08:18"
+      "timestamp": "2026-09-08 00:55:44"
     },
     {
       "id": "SYS_AUTH_01",
@@ -251,14 +251,14 @@
       "groundTruth": "Tests JWT token minting via POST /auth/token using valid API key credentials. Validates that the authentication microservice signs and returns a secure, time-bounded bearer token with valid expiration timestamps, allowing subsequent authorized access to all STT and TTS API endpoints.",
       "predictedText": "",
       "duration": "0",
-      "durationMs": 414,
+      "durationMs": 1470,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-08 00:08:18"
+      "timestamp": "2026-09-08 00:55:44"
     },
     {
       "id": "SYS_AUTH_02",
@@ -273,14 +273,14 @@
       "groundTruth": "Security negative test verifying that POST /auth/token strictly rejects malformed, invalid, or unauthorized API keys with HTTP 401 Unauthorized or HTTP 400 Bad Request, ensuring zero unauthorized access to downstream speech-to-text and voice synthesis compute resources.",
       "predictedText": "",
       "duration": "0",
-      "durationMs": 153,
+      "durationMs": 157,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-08 00:08:18"
+      "timestamp": "2026-09-08 00:55:44"
     },
     {
       "id": "SYS_AUDIO_01",
@@ -295,14 +295,14 @@
       "groundTruth": "Validates 16kHz uncompressed PCM WAV audio decoding and end-to-end transcription pipeline via POST /v1/audio/transcriptions. Asserts non-empty text generation, accurate word timestamp segmentation, correct sample rate parsing, and robust audio header ingestion.",
       "predictedText": "",
       "duration": "0",
-      "durationMs": 916,
+      "durationMs": 1661,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-08 00:08:18"
+      "timestamp": "2026-09-08 00:55:44"
     },
     {
       "id": "SYS_AUDIO_02",
@@ -317,14 +317,14 @@
       "groundTruth": "Tests compressed MPEG Layer-3 (MP3) audio ingestion and decoding across variable bitrates. Asserts that the backend audio pre-processor unpacks MP3 frames accurately, normalizes audio streams, and executes speech-to-text inference without loss of linguistic fidelity.",
       "predictedText": "",
       "duration": "0",
-      "durationMs": 722,
+      "durationMs": 514,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-08 00:08:18"
+      "timestamp": "2026-09-08 00:55:44"
     },
     {
       "id": "SYS_AUDIO_03",
@@ -339,14 +339,14 @@
       "groundTruth": "Tests OGG/Vorbis container decoding and transcription under noisy acoustic conditions. Verifies that the audio decoder handles multi-channel Vorbis streams, resamples audio to 16kHz mono, and delivers accurate transcriptions meeting WER and latency quality targets.",
       "predictedText": "",
       "duration": "0",
-      "durationMs": 7584,
+      "durationMs": 7812,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-08 00:08:18"
+      "timestamp": "2026-09-08 00:55:44"
     },
     {
       "id": "SYS_LANG_01",
@@ -361,14 +361,14 @@
       "groundTruth": "Evaluates automatic language identification (LID) and dynamic model routing without pre-specifying language_code. Tests whether acoustic features are correctly classified into the appropriate Indic/Global language model and transcribed with high phonetic fidelity.",
       "predictedText": "",
       "duration": "0",
-      "durationMs": 1162,
+      "durationMs": 1197,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-08 00:08:18"
+      "timestamp": "2026-09-08 00:55:44"
     },
     {
       "id": "SYS_LANG_02",
@@ -383,14 +383,14 @@
       "groundTruth": "Validates explicit Hindi (hi) language routing via POST /v1/audio/transcriptions with language_code=\"hi\". Asserts that the backend routes inference directly to the specialized Hindi acoustic and language models, optimizing vocabulary recognition and word accuracy.",
       "predictedText": "",
       "duration": "0",
-      "durationMs": 1168,
+      "durationMs": 772,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-08 00:08:18"
+      "timestamp": "2026-09-08 00:55:44"
     },
     {
       "id": "SYS_LANG_03",
@@ -405,14 +405,14 @@
       "groundTruth": "Validates explicit English (en) language routing with language_code=\"en\" on complex conversational and domain-specific audio. Asserts that the system loads the English ASR pipeline, accurately transcribing medical terminology, punctuation, and multi-speaker dialogues.",
       "predictedText": "",
       "duration": "0",
-      "durationMs": 120,
+      "durationMs": 24205,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
-      "status": "failed",
-      "failureReason": "API error [408]: Request timed out",
+      "status": "passed",
+      "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-08 00:08:18"
+      "timestamp": "2026-09-08 00:55:44"
     },
     {
       "id": "TC001",
