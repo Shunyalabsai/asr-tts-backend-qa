@@ -244,7 +244,9 @@ function loadRunDataFromCSVs(reportsDir: string, dateStr: string): RunData | nul
           continue;
         }
 
-        const id = idIdx >= 0 && row[idIdx] ? String(row[idIdx]).trim() : `TC_${r}`;
+        // Make sure ID is uniquely scoped per module to avoid duplicate collision (e.g., Feat-CustomKeywordHashing:TC001 vs zero-indic:TC001)
+        const rawId = idIdx >= 0 && row[idIdx] ? String(row[idIdx]).trim() : `TC_${r}`;
+        const id = `${tabName}:${rawId}`;
         const audioPath = audioIdx >= 0 ? String(row[audioIdx] || '').trim() : '';
         const language = langIdx >= 0 ? String(row[langIdx] || '').trim() : (detLangIdx >= 0 ? String(row[detLangIdx] || '').trim() : '—');
         const groundTruth = gtIdx >= 0 ? String(row[gtIdx] || '').trim() : '';
@@ -1598,12 +1600,12 @@ function filterTestCasesTable() {
    INSPECT SINGLE TEST MODAL
    ══════════════════════════════════════════════════════════ */
 function openTestModalDirectly(testId) {
-  const testsPool = (currentModalRun && currentModalRun.tests && currentModalRun.tests.length > 0)
-    ? currentModalRun.tests
-    : ((currentSelectedMatrixRun && currentSelectedMatrixRun.tests && currentSelectedMatrixRun.tests.length > 0)
-      ? currentSelectedMatrixRun.tests
+  const testsPool = (currentSelectedMatrixRun && currentSelectedMatrixRun.tests && currentSelectedMatrixRun.tests.length > 0)
+    ? currentSelectedMatrixRun.tests
+    : ((currentModalRun && currentModalRun.tests && currentModalRun.tests.length > 0)
+      ? currentModalRun.tests
       : latestData.tests);
-  const t = testsPool.find(item => item.id === testId) || latestData.tests.find(item => item.id === testId);
+  const t = testsPool.find(item => item.id === testId || item.id.endsWith(':' + testId)) || latestData.tests.find(item => item.id === testId || item.id.endsWith(':' + testId));
   if (!t) return;
 
   const isSmoke = t.priority === 'P0' || t.suite === 'Core System' || t.module === 'Core-System-Tests';

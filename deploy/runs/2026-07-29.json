@@ -73,7 +73,7 @@
   },
   "tests": [
     {
-      "id": "TC_1",
+      "id": "zero-codeswitch:TC_1",
       "suite": "Speech Models",
       "module": "zero-codeswitch",
       "moduleLabel": "Code-Switching Models (Hinglish/Mix)",
@@ -95,7 +95,7 @@
       "timestamp": "2026-07-29T07:41:02.102Z"
     },
     {
-      "id": "TC_2",
+      "id": "zero-codeswitch:TC_2",
       "suite": "Speech Models",
       "module": "zero-codeswitch",
       "moduleLabel": "Code-Switching Models (Hinglish/Mix)",
@@ -117,7 +117,7 @@
       "timestamp": "2026-07-29T07:41:02.171Z"
     },
     {
-      "id": "TC_3",
+      "id": "zero-codeswitch:TC_3",
       "suite": "Speech Models",
       "module": "zero-codeswitch",
       "moduleLabel": "Code-Switching Models (Hinglish/Mix)",
@@ -139,7 +139,7 @@
       "timestamp": "2026-07-29T07:41:02.095Z"
     },
     {
-      "id": "TC_4",
+      "id": "zero-codeswitch:TC_4",
       "suite": "Speech Models",
       "module": "zero-codeswitch",
       "moduleLabel": "Code-Switching Models (Hinglish/Mix)",
@@ -161,7 +161,7 @@
       "timestamp": "2026-07-29T07:41:34.202Z"
     },
     {
-      "id": "TC_1",
+      "id": "zero-indic:TC_1",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -183,7 +183,7 @@
       "timestamp": "2026-07-29T07:41:53.272Z"
     },
     {
-      "id": "TC_2",
+      "id": "zero-indic:TC_2",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -205,7 +205,7 @@
       "timestamp": "2026-07-29T07:41:53.172Z"
     },
     {
-      "id": "TC_3",
+      "id": "zero-indic:TC_3",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -227,7 +227,7 @@
       "timestamp": "2026-07-29T07:41:53.227Z"
     },
     {
-      "id": "TC_4",
+      "id": "zero-indic:TC_4",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -249,7 +249,7 @@
       "timestamp": "2026-07-29T07:43:04.642Z"
     },
     {
-      "id": "TC_5",
+      "id": "zero-indic:TC_5",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -271,7 +271,7 @@
       "timestamp": "2026-07-29T07:42:04.466Z"
     },
     {
-      "id": "TC_6",
+      "id": "zero-indic:TC_6",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -293,7 +293,7 @@
       "timestamp": "2026-07-29T07:42:04.410Z"
     },
     {
-      "id": "TC_7",
+      "id": "zero-indic:TC_7",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -315,7 +315,7 @@
       "timestamp": "2026-07-29T07:43:14.832Z"
     },
     {
-      "id": "TC_8",
+      "id": "zero-indic:TC_8",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -337,7 +337,7 @@
       "timestamp": "2026-07-29T07:43:16.054Z"
     },
     {
-      "id": "TC_9",
+      "id": "zero-indic:TC_9",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -359,7 +359,7 @@
       "timestamp": "2026-07-29T07:43:16.483Z"
     },
     {
-      "id": "TC_10",
+      "id": "zero-indic:TC_10",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -381,7 +381,7 @@
       "timestamp": "2026-07-29T07:43:25.331Z"
     },
     {
-      "id": "TC_11",
+      "id": "zero-indic:TC_11",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -403,7 +403,7 @@
       "timestamp": "2026-07-29T07:43:26.332Z"
     },
     {
-      "id": "TC_12",
+      "id": "zero-indic:TC_12",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -425,7 +425,7 @@
       "timestamp": "2026-07-29T07:43:26.831Z"
     },
     {
-      "id": "TC_13",
+      "id": "zero-indic:TC_13",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -447,7 +447,7 @@
       "timestamp": "2026-07-29T07:43:35.831Z"
     },
     {
-      "id": "TC_14",
+      "id": "zero-indic:TC_14",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -469,7 +469,7 @@
       "timestamp": "2026-07-29T07:43:36.831Z"
     },
     {
-      "id": "TC_15",
+      "id": "zero-indic:TC_15",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -491,7 +491,7 @@
       "timestamp": "2026-07-29T07:43:37.331Z"
     },
     {
-      "id": "TC_16",
+      "id": "zero-indic:TC_16",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -513,7 +513,7 @@
       "timestamp": "2026-07-29T07:43:46.334Z"
     },
     {
-      "id": "TC_17",
+      "id": "zero-indic:TC_17",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -535,7 +535,7 @@
       "timestamp": "2026-07-29T07:43:47.334Z"
     },
     {
-      "id": "TC_18",
+      "id": "zero-indic:TC_18",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -557,7 +557,7 @@
       "timestamp": "2026-07-29T07:43:47.834Z"
     },
     {
-      "id": "TC_19",
+      "id": "zero-indic:TC_19",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -579,7 +579,7 @@
       "timestamp": "2026-07-29T07:43:56.836Z"
     },
     {
-      "id": "TC_20",
+      "id": "zero-indic:TC_20",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -601,7 +601,7 @@
       "timestamp": "2026-07-29T07:43:57.836Z"
     },
     {
-      "id": "TC_21",
+      "id": "zero-indic:TC_21",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -623,7 +623,7 @@
       "timestamp": "2026-07-29T07:43:58.336Z"
     },
     {
-      "id": "TC_22",
+      "id": "zero-indic:TC_22",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -645,7 +645,7 @@
       "timestamp": "2026-07-29T07:44:07.335Z"
     },
     {
-      "id": "TC_23",
+      "id": "zero-indic:TC_23",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -667,7 +667,7 @@
       "timestamp": "2026-07-29T07:44:08.336Z"
     },
     {
-      "id": "TC_24",
+      "id": "zero-indic:TC_24",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -689,7 +689,7 @@
       "timestamp": "2026-07-29T07:44:08.836Z"
     },
     {
-      "id": "TC_25",
+      "id": "zero-indic:TC_25",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -711,7 +711,7 @@
       "timestamp": "2026-07-29T07:44:17.837Z"
     },
     {
-      "id": "TC_26",
+      "id": "zero-indic:TC_26",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -733,7 +733,7 @@
       "timestamp": "2026-07-29T07:44:18.836Z"
     },
     {
-      "id": "TC_27",
+      "id": "zero-indic:TC_27",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -755,7 +755,7 @@
       "timestamp": "2026-07-29T07:44:19.337Z"
     },
     {
-      "id": "TC_28",
+      "id": "zero-indic:TC_28",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -777,7 +777,7 @@
       "timestamp": "2026-07-29T07:44:28.337Z"
     },
     {
-      "id": "TC_29",
+      "id": "zero-indic:TC_29",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -799,7 +799,7 @@
       "timestamp": "2026-07-29T07:44:29.338Z"
     },
     {
-      "id": "TC_30",
+      "id": "zero-indic:TC_30",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -821,7 +821,7 @@
       "timestamp": "2026-07-29T07:44:29.837Z"
     },
     {
-      "id": "TC_31",
+      "id": "zero-indic:TC_31",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -843,7 +843,7 @@
       "timestamp": "2026-07-29T07:44:38.839Z"
     },
     {
-      "id": "TC_32",
+      "id": "zero-indic:TC_32",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -865,7 +865,7 @@
       "timestamp": "2026-07-29T07:44:39.839Z"
     },
     {
-      "id": "TC_33",
+      "id": "zero-indic:TC_33",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -887,7 +887,7 @@
       "timestamp": "2026-07-29T07:44:40.339Z"
     },
     {
-      "id": "TC_34",
+      "id": "zero-indic:TC_34",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -909,7 +909,7 @@
       "timestamp": "2026-07-29T07:44:49.338Z"
     },
     {
-      "id": "TC_35",
+      "id": "zero-indic:TC_35",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -931,7 +931,7 @@
       "timestamp": "2026-07-29T07:44:50.338Z"
     },
     {
-      "id": "TC_36",
+      "id": "zero-indic:TC_36",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -953,7 +953,7 @@
       "timestamp": "2026-07-29T07:44:50.838Z"
     },
     {
-      "id": "TC_37",
+      "id": "zero-indic:TC_37",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -975,7 +975,7 @@
       "timestamp": "2026-07-29T07:44:59.841Z"
     },
     {
-      "id": "TC_38",
+      "id": "zero-indic:TC_38",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -997,7 +997,7 @@
       "timestamp": "2026-07-29T07:45:00.840Z"
     },
     {
-      "id": "TC_39",
+      "id": "zero-indic:TC_39",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1019,7 +1019,7 @@
       "timestamp": "2026-07-29T07:45:01.340Z"
     },
     {
-      "id": "TC_40",
+      "id": "zero-indic:TC_40",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1041,7 +1041,7 @@
       "timestamp": "2026-07-29T07:45:10.342Z"
     },
     {
-      "id": "TC_41",
+      "id": "zero-indic:TC_41",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1063,7 +1063,7 @@
       "timestamp": "2026-07-29T07:45:11.342Z"
     },
     {
-      "id": "TC_42",
+      "id": "zero-indic:TC_42",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1085,7 +1085,7 @@
       "timestamp": "2026-07-29T07:45:11.844Z"
     },
     {
-      "id": "TC_43",
+      "id": "zero-indic:TC_43",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1107,7 +1107,7 @@
       "timestamp": "2026-07-29T07:45:20.860Z"
     },
     {
-      "id": "TC_44",
+      "id": "zero-indic:TC_44",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1129,7 +1129,7 @@
       "timestamp": "2026-07-29T07:45:21.860Z"
     },
     {
-      "id": "TC_45",
+      "id": "zero-indic:TC_45",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1151,7 +1151,7 @@
       "timestamp": "2026-07-29T07:45:22.362Z"
     },
     {
-      "id": "TC_46",
+      "id": "zero-indic:TC_46",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1173,7 +1173,7 @@
       "timestamp": "2026-07-29T07:45:31.377Z"
     },
     {
-      "id": "TC_47",
+      "id": "zero-indic:TC_47",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1195,7 +1195,7 @@
       "timestamp": "2026-07-29T07:45:32.379Z"
     },
     {
-      "id": "TC_48",
+      "id": "zero-indic:TC_48",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1217,7 +1217,7 @@
       "timestamp": "2026-07-29T07:45:32.880Z"
     },
     {
-      "id": "TC_49",
+      "id": "zero-indic:TC_49",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1239,7 +1239,7 @@
       "timestamp": "2026-07-29T07:45:41.892Z"
     },
     {
-      "id": "TC_50",
+      "id": "zero-indic:TC_50",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1261,7 +1261,7 @@
       "timestamp": "2026-07-29T07:45:42.892Z"
     },
     {
-      "id": "TC_51",
+      "id": "zero-indic:TC_51",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1283,7 +1283,7 @@
       "timestamp": "2026-07-29T07:45:43.392Z"
     },
     {
-      "id": "TC_52",
+      "id": "zero-indic:TC_52",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1305,7 +1305,7 @@
       "timestamp": "2026-07-29T07:45:52.408Z"
     },
     {
-      "id": "TC_53",
+      "id": "zero-indic:TC_53",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1327,7 +1327,7 @@
       "timestamp": "2026-07-29T07:45:53.410Z"
     },
     {
-      "id": "TC_54",
+      "id": "zero-indic:TC_54",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1349,7 +1349,7 @@
       "timestamp": "2026-07-29T07:45:53.911Z"
     },
     {
-      "id": "TC_55",
+      "id": "zero-indic:TC_55",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1371,7 +1371,7 @@
       "timestamp": "2026-07-29T07:46:02.927Z"
     },
     {
-      "id": "TC_56",
+      "id": "zero-indic:TC_56",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1393,7 +1393,7 @@
       "timestamp": "2026-07-29T07:46:03.930Z"
     },
     {
-      "id": "TC_57",
+      "id": "zero-indic:TC_57",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1415,7 +1415,7 @@
       "timestamp": "2026-07-29T07:46:04.430Z"
     },
     {
-      "id": "TC_58",
+      "id": "zero-indic:TC_58",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1437,7 +1437,7 @@
       "timestamp": "2026-07-29T07:46:13.448Z"
     },
     {
-      "id": "TC_59",
+      "id": "zero-indic:TC_59",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1459,7 +1459,7 @@
       "timestamp": "2026-07-29T07:46:14.450Z"
     },
     {
-      "id": "TC_60",
+      "id": "zero-indic:TC_60",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1481,7 +1481,7 @@
       "timestamp": "2026-07-29T07:46:14.951Z"
     },
     {
-      "id": "TC_61",
+      "id": "zero-indic:TC_61",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1503,7 +1503,7 @@
       "timestamp": "2026-07-29T07:46:23.962Z"
     },
     {
-      "id": "TC_62",
+      "id": "zero-indic:TC_62",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1525,7 +1525,7 @@
       "timestamp": "2026-07-29T07:46:24.962Z"
     },
     {
-      "id": "TC_63",
+      "id": "zero-indic:TC_63",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1547,7 +1547,7 @@
       "timestamp": "2026-07-29T07:46:25.463Z"
     },
     {
-      "id": "TC_64",
+      "id": "zero-indic:TC_64",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1569,7 +1569,7 @@
       "timestamp": "2026-07-29T07:46:34.467Z"
     },
     {
-      "id": "TC_65",
+      "id": "zero-indic:TC_65",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1591,7 +1591,7 @@
       "timestamp": "2026-07-29T07:46:35.466Z"
     },
     {
-      "id": "TC_66",
+      "id": "zero-indic:TC_66",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1613,7 +1613,7 @@
       "timestamp": "2026-07-29T07:46:35.966Z"
     },
     {
-      "id": "TC_67",
+      "id": "zero-indic:TC_67",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1635,7 +1635,7 @@
       "timestamp": "2026-07-29T07:46:44.967Z"
     },
     {
-      "id": "TC_68",
+      "id": "zero-indic:TC_68",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1657,7 +1657,7 @@
       "timestamp": "2026-07-29T07:46:45.968Z"
     },
     {
-      "id": "TC_69",
+      "id": "zero-indic:TC_69",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1679,7 +1679,7 @@
       "timestamp": "2026-07-29T07:46:46.468Z"
     },
     {
-      "id": "TC_70",
+      "id": "zero-indic:TC_70",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1701,7 +1701,7 @@
       "timestamp": "2026-07-29T07:46:55.470Z"
     },
     {
-      "id": "TC_71",
+      "id": "zero-indic:TC_71",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1723,7 +1723,7 @@
       "timestamp": "2026-07-29T07:46:56.470Z"
     },
     {
-      "id": "TC_72",
+      "id": "zero-indic:TC_72",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1745,7 +1745,7 @@
       "timestamp": "2026-07-29T07:46:56.970Z"
     },
     {
-      "id": "TC_73",
+      "id": "zero-indic:TC_73",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1767,7 +1767,7 @@
       "timestamp": "2026-07-29T07:47:05.973Z"
     },
     {
-      "id": "TC_74",
+      "id": "zero-indic:TC_74",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1789,7 +1789,7 @@
       "timestamp": "2026-07-29T07:47:16.475Z"
     },
     {
-      "id": "TC_75",
+      "id": "zero-indic:TC_75",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1811,7 +1811,7 @@
       "timestamp": "2026-07-29T07:47:07.473Z"
     },
     {
-      "id": "TC_76",
+      "id": "zero-indic:TC_76",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1833,7 +1833,7 @@
       "timestamp": "2026-07-29T07:47:33.745Z"
     },
     {
-      "id": "TC_77",
+      "id": "zero-indic:TC_77",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1855,7 +1855,7 @@
       "timestamp": "2026-07-29T07:47:44.012Z"
     },
     {
-      "id": "TC_78",
+      "id": "zero-indic:TC_78",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1877,7 +1877,7 @@
       "timestamp": "2026-07-29T07:47:54.512Z"
     },
     {
-      "id": "TC_79",
+      "id": "zero-indic:TC_79",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1899,7 +1899,7 @@
       "timestamp": "2026-07-29T07:48:05.013Z"
     },
     {
-      "id": "TC_80",
+      "id": "zero-indic:TC_80",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1921,7 +1921,7 @@
       "timestamp": "2026-07-29T07:48:15.515Z"
     },
     {
-      "id": "TC_81",
+      "id": "zero-indic:TC_81",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1943,7 +1943,7 @@
       "timestamp": "2026-07-29T07:47:06.973Z"
     },
     {
-      "id": "TC_82",
+      "id": "zero-indic:TC_82",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1965,7 +1965,7 @@
       "timestamp": "2026-07-29T07:48:26.016Z"
     },
     {
-      "id": "TC_83",
+      "id": "zero-indic:TC_83",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -1987,7 +1987,7 @@
       "timestamp": "2026-07-29T07:47:27.457Z"
     },
     {
-      "id": "TC_84",
+      "id": "zero-indic:TC_84",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2009,7 +2009,7 @@
       "timestamp": "2026-07-29T07:48:32.760Z"
     },
     {
-      "id": "TC_85",
+      "id": "zero-indic:TC_85",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2031,7 +2031,7 @@
       "timestamp": "2026-07-29T07:48:36.538Z"
     },
     {
-      "id": "TC_86",
+      "id": "zero-indic:TC_86",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2053,7 +2053,7 @@
       "timestamp": "2026-07-29T08:06:31.508Z"
     },
     {
-      "id": "TC_87",
+      "id": "zero-indic:TC_87",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2075,7 +2075,7 @@
       "timestamp": "2026-07-29T08:06:31.572Z"
     },
     {
-      "id": "TC_88",
+      "id": "zero-indic:TC_88",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2097,7 +2097,7 @@
       "timestamp": "2026-07-29T08:06:31.620Z"
     },
     {
-      "id": "TC_89",
+      "id": "zero-indic:TC_89",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2119,7 +2119,7 @@
       "timestamp": "2026-07-29T08:06:31.697Z"
     },
     {
-      "id": "TC_90",
+      "id": "zero-indic:TC_90",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2141,7 +2141,7 @@
       "timestamp": "2026-07-29T08:06:31.751Z"
     },
     {
-      "id": "TC_91",
+      "id": "zero-indic:TC_91",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2163,7 +2163,7 @@
       "timestamp": "2026-07-29T08:06:31.839Z"
     },
     {
-      "id": "TC_92",
+      "id": "zero-indic:TC_92",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2185,7 +2185,7 @@
       "timestamp": "2026-07-29T08:06:31.882Z"
     },
     {
-      "id": "TC_93",
+      "id": "zero-indic:TC_93",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2207,7 +2207,7 @@
       "timestamp": "2026-07-29T08:06:31.925Z"
     },
     {
-      "id": "TC_94",
+      "id": "zero-indic:TC_94",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2229,7 +2229,7 @@
       "timestamp": "2026-07-29T08:06:31.966Z"
     },
     {
-      "id": "TC_95",
+      "id": "zero-indic:TC_95",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2251,7 +2251,7 @@
       "timestamp": "2026-07-29T08:06:32.011Z"
     },
     {
-      "id": "TC_96",
+      "id": "zero-indic:TC_96",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2273,7 +2273,7 @@
       "timestamp": "2026-07-29T08:06:32.056Z"
     },
     {
-      "id": "TC_97",
+      "id": "zero-indic:TC_97",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2295,7 +2295,7 @@
       "timestamp": "2026-07-29T08:06:32.101Z"
     },
     {
-      "id": "TC_98",
+      "id": "zero-indic:TC_98",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2317,7 +2317,7 @@
       "timestamp": "2026-07-29T08:06:32.146Z"
     },
     {
-      "id": "TC_99",
+      "id": "zero-indic:TC_99",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2339,7 +2339,7 @@
       "timestamp": "2026-07-29T08:06:32.195Z"
     },
     {
-      "id": "TC_100",
+      "id": "zero-indic:TC_100",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2361,7 +2361,7 @@
       "timestamp": "2026-07-29T08:06:32.241Z"
     },
     {
-      "id": "TC_101",
+      "id": "zero-indic:TC_101",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2383,7 +2383,7 @@
       "timestamp": "2026-07-29T08:06:32.287Z"
     },
     {
-      "id": "TC_102",
+      "id": "zero-indic:TC_102",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2405,7 +2405,7 @@
       "timestamp": "2026-07-29T08:06:32.335Z"
     },
     {
-      "id": "TC_103",
+      "id": "zero-indic:TC_103",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2427,7 +2427,7 @@
       "timestamp": "2026-07-29T08:06:32.381Z"
     },
     {
-      "id": "TC_104",
+      "id": "zero-indic:TC_104",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2449,7 +2449,7 @@
       "timestamp": "2026-07-29T08:06:32.433Z"
     },
     {
-      "id": "TC_105",
+      "id": "zero-indic:TC_105",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2471,7 +2471,7 @@
       "timestamp": "2026-07-29T08:06:32.486Z"
     },
     {
-      "id": "TC_106",
+      "id": "zero-indic:TC_106",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2493,7 +2493,7 @@
       "timestamp": "2026-07-29T08:06:32.536Z"
     },
     {
-      "id": "TC_107",
+      "id": "zero-indic:TC_107",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2515,7 +2515,7 @@
       "timestamp": "2026-07-29T08:06:32.583Z"
     },
     {
-      "id": "TC_108",
+      "id": "zero-indic:TC_108",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2537,7 +2537,7 @@
       "timestamp": "2026-07-29T08:06:32.630Z"
     },
     {
-      "id": "TC_109",
+      "id": "zero-indic:TC_109",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2559,7 +2559,7 @@
       "timestamp": "2026-07-29T08:06:32.676Z"
     },
     {
-      "id": "TC_110",
+      "id": "zero-indic:TC_110",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2581,7 +2581,7 @@
       "timestamp": "2026-07-29T08:06:32.730Z"
     },
     {
-      "id": "TC_111",
+      "id": "zero-indic:TC_111",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2603,7 +2603,7 @@
       "timestamp": "2026-07-29T08:06:32.781Z"
     },
     {
-      "id": "TC_112",
+      "id": "zero-indic:TC_112",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2625,7 +2625,7 @@
       "timestamp": "2026-07-29T08:06:32.825Z"
     },
     {
-      "id": "TC_113",
+      "id": "zero-indic:TC_113",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2647,7 +2647,7 @@
       "timestamp": "2026-07-29T08:06:32.874Z"
     },
     {
-      "id": "TC_114",
+      "id": "zero-indic:TC_114",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2669,7 +2669,7 @@
       "timestamp": "2026-07-29T08:06:32.934Z"
     },
     {
-      "id": "TC_115",
+      "id": "zero-indic:TC_115",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2691,7 +2691,7 @@
       "timestamp": "2026-07-29T08:06:32.978Z"
     },
     {
-      "id": "TC_116",
+      "id": "zero-indic:TC_116",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2713,7 +2713,7 @@
       "timestamp": "2026-07-29T08:06:33.025Z"
     },
     {
-      "id": "TC_117",
+      "id": "zero-indic:TC_117",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2735,7 +2735,7 @@
       "timestamp": "2026-07-29T08:06:33.073Z"
     },
     {
-      "id": "TC_118",
+      "id": "zero-indic:TC_118",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2757,7 +2757,7 @@
       "timestamp": "2026-07-29T08:06:33.116Z"
     },
     {
-      "id": "TC_119",
+      "id": "zero-indic:TC_119",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2779,7 +2779,7 @@
       "timestamp": "2026-07-29T08:06:33.161Z"
     },
     {
-      "id": "TC_120",
+      "id": "zero-indic:TC_120",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2801,7 +2801,7 @@
       "timestamp": "2026-07-29T08:06:33.205Z"
     },
     {
-      "id": "TC_121",
+      "id": "zero-indic:TC_121",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2823,7 +2823,7 @@
       "timestamp": "2026-07-29T08:06:33.250Z"
     },
     {
-      "id": "TC_122",
+      "id": "zero-indic:TC_122",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2845,7 +2845,7 @@
       "timestamp": "2026-07-29T08:06:33.301Z"
     },
     {
-      "id": "TC_123",
+      "id": "zero-indic:TC_123",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2867,7 +2867,7 @@
       "timestamp": "2026-07-29T08:06:33.348Z"
     },
     {
-      "id": "TC_124",
+      "id": "zero-indic:TC_124",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2889,7 +2889,7 @@
       "timestamp": "2026-07-29T08:06:33.403Z"
     },
     {
-      "id": "TC_125",
+      "id": "zero-indic:TC_125",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2911,7 +2911,7 @@
       "timestamp": "2026-07-29T08:06:33.456Z"
     },
     {
-      "id": "TC_126",
+      "id": "zero-indic:TC_126",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2933,7 +2933,7 @@
       "timestamp": "2026-07-29T08:06:33.500Z"
     },
     {
-      "id": "TC_127",
+      "id": "zero-indic:TC_127",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2955,7 +2955,7 @@
       "timestamp": "2026-07-29T08:06:33.542Z"
     },
     {
-      "id": "TC_128",
+      "id": "zero-indic:TC_128",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2977,7 +2977,7 @@
       "timestamp": "2026-07-29T08:06:33.586Z"
     },
     {
-      "id": "TC_129",
+      "id": "zero-indic:TC_129",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -2999,7 +2999,7 @@
       "timestamp": "2026-07-29T08:06:33.632Z"
     },
     {
-      "id": "TC_130",
+      "id": "zero-indic:TC_130",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3021,7 +3021,7 @@
       "timestamp": "2026-07-29T08:06:33.678Z"
     },
     {
-      "id": "TC_131",
+      "id": "zero-indic:TC_131",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3043,7 +3043,7 @@
       "timestamp": "2026-07-29T08:06:33.723Z"
     },
     {
-      "id": "TC_132",
+      "id": "zero-indic:TC_132",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3065,7 +3065,7 @@
       "timestamp": "2026-07-29T08:06:33.726Z"
     },
     {
-      "id": "TC_133",
+      "id": "zero-indic:TC_133",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3087,7 +3087,7 @@
       "timestamp": "2026-07-29T08:06:33.728Z"
     },
     {
-      "id": "TC_134",
+      "id": "zero-indic:TC_134",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3109,7 +3109,7 @@
       "timestamp": "2026-07-29T08:06:33.731Z"
     },
     {
-      "id": "TC_135",
+      "id": "zero-indic:TC_135",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3131,7 +3131,7 @@
       "timestamp": "2026-07-29T08:06:33.733Z"
     },
     {
-      "id": "TC_136",
+      "id": "zero-indic:TC_136",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3153,7 +3153,7 @@
       "timestamp": "2026-07-29T08:06:33.735Z"
     },
     {
-      "id": "TC_137",
+      "id": "zero-indic:TC_137",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3175,7 +3175,7 @@
       "timestamp": "2026-07-29T08:06:33.799Z"
     },
     {
-      "id": "TC_138",
+      "id": "zero-indic:TC_138",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3197,7 +3197,7 @@
       "timestamp": "2026-07-29T08:06:33.853Z"
     },
     {
-      "id": "TC_139",
+      "id": "zero-indic:TC_139",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3219,7 +3219,7 @@
       "timestamp": "2026-07-29T08:06:33.911Z"
     },
     {
-      "id": "TC_140",
+      "id": "zero-indic:TC_140",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3241,7 +3241,7 @@
       "timestamp": "2026-07-29T08:06:33.968Z"
     },
     {
-      "id": "TC_141",
+      "id": "zero-indic:TC_141",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3263,7 +3263,7 @@
       "timestamp": "2026-07-29T08:06:34.025Z"
     },
     {
-      "id": "TC_142",
+      "id": "zero-indic:TC_142",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3285,7 +3285,7 @@
       "timestamp": "2026-07-29T08:06:34.076Z"
     },
     {
-      "id": "TC_143",
+      "id": "zero-indic:TC_143",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3307,7 +3307,7 @@
       "timestamp": "2026-07-29T08:06:34.125Z"
     },
     {
-      "id": "TC_144",
+      "id": "zero-indic:TC_144",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3329,7 +3329,7 @@
       "timestamp": "2026-07-29T08:06:34.170Z"
     },
     {
-      "id": "TC_145",
+      "id": "zero-indic:TC_145",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3351,7 +3351,7 @@
       "timestamp": "2026-07-29T08:06:34.216Z"
     },
     {
-      "id": "TC_146",
+      "id": "zero-indic:TC_146",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3373,7 +3373,7 @@
       "timestamp": "2026-07-29T08:06:34.266Z"
     },
     {
-      "id": "TC_147",
+      "id": "zero-indic:TC_147",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3395,7 +3395,7 @@
       "timestamp": "2026-07-29T08:06:34.307Z"
     },
     {
-      "id": "TC_148",
+      "id": "zero-indic:TC_148",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3417,7 +3417,7 @@
       "timestamp": "2026-07-29T08:06:34.347Z"
     },
     {
-      "id": "TC_149",
+      "id": "zero-indic:TC_149",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3439,7 +3439,7 @@
       "timestamp": "2026-07-29T08:06:34.389Z"
     },
     {
-      "id": "TC_150",
+      "id": "zero-indic:TC_150",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3461,7 +3461,7 @@
       "timestamp": "2026-07-29T08:06:34.431Z"
     },
     {
-      "id": "TC_151",
+      "id": "zero-indic:TC_151",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3483,7 +3483,7 @@
       "timestamp": "2026-07-29T08:06:34.475Z"
     },
     {
-      "id": "TC_152",
+      "id": "zero-indic:TC_152",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3505,7 +3505,7 @@
       "timestamp": "2026-07-29T08:06:34.520Z"
     },
     {
-      "id": "TC_153",
+      "id": "zero-indic:TC_153",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3527,7 +3527,7 @@
       "timestamp": "2026-07-29T08:06:34.565Z"
     },
     {
-      "id": "TC_154",
+      "id": "zero-indic:TC_154",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3549,7 +3549,7 @@
       "timestamp": "2026-07-29T08:06:34.609Z"
     },
     {
-      "id": "TC_155",
+      "id": "zero-indic:TC_155",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3571,7 +3571,7 @@
       "timestamp": "2026-07-29T08:06:34.655Z"
     },
     {
-      "id": "TC_156",
+      "id": "zero-indic:TC_156",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3593,7 +3593,7 @@
       "timestamp": "2026-07-29T08:06:34.700Z"
     },
     {
-      "id": "TC_157",
+      "id": "zero-indic:TC_157",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3615,7 +3615,7 @@
       "timestamp": "2026-07-29T08:06:34.744Z"
     },
     {
-      "id": "TC_158",
+      "id": "zero-indic:TC_158",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3637,7 +3637,7 @@
       "timestamp": "2026-07-29T08:06:34.789Z"
     },
     {
-      "id": "TC_159",
+      "id": "zero-indic:TC_159",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3659,7 +3659,7 @@
       "timestamp": "2026-07-29T08:06:34.833Z"
     },
     {
-      "id": "TC_160",
+      "id": "zero-indic:TC_160",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3681,7 +3681,7 @@
       "timestamp": "2026-07-29T08:06:34.877Z"
     },
     {
-      "id": "TC_161",
+      "id": "zero-indic:TC_161",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3703,7 +3703,7 @@
       "timestamp": "2026-07-29T08:06:34.921Z"
     },
     {
-      "id": "TC_162",
+      "id": "zero-indic:TC_162",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3725,7 +3725,7 @@
       "timestamp": "2026-07-29T08:06:34.966Z"
     },
     {
-      "id": "TC_163",
+      "id": "zero-indic:TC_163",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3747,7 +3747,7 @@
       "timestamp": "2026-07-29T08:06:35.011Z"
     },
     {
-      "id": "TC_164",
+      "id": "zero-indic:TC_164",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3769,7 +3769,7 @@
       "timestamp": "2026-07-29T08:06:35.061Z"
     },
     {
-      "id": "TC_165",
+      "id": "zero-indic:TC_165",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3791,7 +3791,7 @@
       "timestamp": "2026-07-29T08:06:35.108Z"
     },
     {
-      "id": "TC_166",
+      "id": "zero-indic:TC_166",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3813,7 +3813,7 @@
       "timestamp": "2026-07-29T08:06:35.154Z"
     },
     {
-      "id": "TC_167",
+      "id": "zero-indic:TC_167",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3835,7 +3835,7 @@
       "timestamp": "2026-07-29T08:06:35.197Z"
     },
     {
-      "id": "TC_168",
+      "id": "zero-indic:TC_168",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3857,7 +3857,7 @@
       "timestamp": "2026-07-29T08:06:35.239Z"
     },
     {
-      "id": "TC_169",
+      "id": "zero-indic:TC_169",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3879,7 +3879,7 @@
       "timestamp": "2026-07-29T08:06:35.280Z"
     },
     {
-      "id": "TC_170",
+      "id": "zero-indic:TC_170",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3901,7 +3901,7 @@
       "timestamp": "2026-07-29T08:06:35.322Z"
     },
     {
-      "id": "TC_171",
+      "id": "zero-indic:TC_171",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3923,7 +3923,7 @@
       "timestamp": "2026-07-29T08:06:35.365Z"
     },
     {
-      "id": "TC_172",
+      "id": "zero-indic:TC_172",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3945,7 +3945,7 @@
       "timestamp": "2026-07-29T08:06:35.407Z"
     },
     {
-      "id": "TC_173",
+      "id": "zero-indic:TC_173",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3967,7 +3967,7 @@
       "timestamp": "2026-07-29T08:06:35.451Z"
     },
     {
-      "id": "TC_174",
+      "id": "zero-indic:TC_174",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -3989,7 +3989,7 @@
       "timestamp": "2026-07-29T08:06:35.495Z"
     },
     {
-      "id": "TC_175",
+      "id": "zero-indic:TC_175",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4011,7 +4011,7 @@
       "timestamp": "2026-07-29T08:06:35.538Z"
     },
     {
-      "id": "TC_176",
+      "id": "zero-indic:TC_176",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4033,7 +4033,7 @@
       "timestamp": "2026-07-29T08:06:35.583Z"
     },
     {
-      "id": "TC_177",
+      "id": "zero-indic:TC_177",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4055,7 +4055,7 @@
       "timestamp": "2026-07-29T08:06:35.626Z"
     },
     {
-      "id": "TC_178",
+      "id": "zero-indic:TC_178",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4077,7 +4077,7 @@
       "timestamp": "2026-07-29T08:06:35.667Z"
     },
     {
-      "id": "TC_179",
+      "id": "zero-indic:TC_179",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4099,7 +4099,7 @@
       "timestamp": "2026-07-29T08:06:35.711Z"
     },
     {
-      "id": "TC_180",
+      "id": "zero-indic:TC_180",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4121,7 +4121,7 @@
       "timestamp": "2026-07-29T08:06:35.752Z"
     },
     {
-      "id": "TC_181",
+      "id": "zero-indic:TC_181",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4143,7 +4143,7 @@
       "timestamp": "2026-07-29T08:06:35.793Z"
     },
     {
-      "id": "TC_182",
+      "id": "zero-indic:TC_182",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4165,7 +4165,7 @@
       "timestamp": "2026-07-29T08:06:35.839Z"
     },
     {
-      "id": "TC_183",
+      "id": "zero-indic:TC_183",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4187,7 +4187,7 @@
       "timestamp": "2026-07-29T08:06:35.885Z"
     },
     {
-      "id": "TC_184",
+      "id": "zero-indic:TC_184",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4209,7 +4209,7 @@
       "timestamp": "2026-07-29T08:06:35.934Z"
     },
     {
-      "id": "TC_185",
+      "id": "zero-indic:TC_185",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4231,7 +4231,7 @@
       "timestamp": "2026-07-29T08:06:35.981Z"
     },
     {
-      "id": "TC_186",
+      "id": "zero-indic:TC_186",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4253,7 +4253,7 @@
       "timestamp": "2026-07-29T08:06:36.028Z"
     },
     {
-      "id": "TC_187",
+      "id": "zero-indic:TC_187",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4275,7 +4275,7 @@
       "timestamp": "2026-07-29T08:06:36.069Z"
     },
     {
-      "id": "TC_188",
+      "id": "zero-indic:TC_188",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4297,7 +4297,7 @@
       "timestamp": "2026-07-29T08:06:36.114Z"
     },
     {
-      "id": "TC_189",
+      "id": "zero-indic:TC_189",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4319,7 +4319,7 @@
       "timestamp": "2026-07-29T08:06:36.159Z"
     },
     {
-      "id": "TC_190",
+      "id": "zero-indic:TC_190",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4341,7 +4341,7 @@
       "timestamp": "2026-07-29T08:06:36.202Z"
     },
     {
-      "id": "TC_191",
+      "id": "zero-indic:TC_191",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4363,7 +4363,7 @@
       "timestamp": "2026-07-29T08:06:36.247Z"
     },
     {
-      "id": "TC_192",
+      "id": "zero-indic:TC_192",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4385,7 +4385,7 @@
       "timestamp": "2026-07-29T08:22:42.265Z"
     },
     {
-      "id": "TC_193",
+      "id": "zero-indic:TC_193",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4407,7 +4407,7 @@
       "timestamp": "2026-07-29T08:22:42.333Z"
     },
     {
-      "id": "TC_194",
+      "id": "zero-indic:TC_194",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4429,7 +4429,7 @@
       "timestamp": "2026-07-29T08:22:42.393Z"
     },
     {
-      "id": "TC_195",
+      "id": "zero-indic:TC_195",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4451,7 +4451,7 @@
       "timestamp": "2026-07-29T08:22:42.443Z"
     },
     {
-      "id": "TC_196",
+      "id": "zero-indic:TC_196",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4473,7 +4473,7 @@
       "timestamp": "2026-07-29T08:22:42.492Z"
     },
     {
-      "id": "TC_197",
+      "id": "zero-indic:TC_197",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4495,7 +4495,7 @@
       "timestamp": "2026-07-29T08:22:42.549Z"
     },
     {
-      "id": "TC_198",
+      "id": "zero-indic:TC_198",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4517,7 +4517,7 @@
       "timestamp": "2026-07-29T08:22:42.603Z"
     },
     {
-      "id": "TC_199",
+      "id": "zero-indic:TC_199",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4539,7 +4539,7 @@
       "timestamp": "2026-07-29T08:22:42.648Z"
     },
     {
-      "id": "TC_200",
+      "id": "zero-indic:TC_200",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4561,7 +4561,7 @@
       "timestamp": "2026-07-29T08:22:42.691Z"
     },
     {
-      "id": "TC_201",
+      "id": "zero-indic:TC_201",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4583,7 +4583,7 @@
       "timestamp": "2026-07-29T08:22:42.734Z"
     },
     {
-      "id": "TC_202",
+      "id": "zero-indic:TC_202",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4605,7 +4605,7 @@
       "timestamp": "2026-07-29T08:22:42.779Z"
     },
     {
-      "id": "TC_203",
+      "id": "zero-indic:TC_203",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4627,7 +4627,7 @@
       "timestamp": "2026-07-29T08:22:42.825Z"
     },
     {
-      "id": "TC_204",
+      "id": "zero-indic:TC_204",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4649,7 +4649,7 @@
       "timestamp": "2026-07-29T08:22:42.867Z"
     },
     {
-      "id": "TC_205",
+      "id": "zero-indic:TC_205",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4671,7 +4671,7 @@
       "timestamp": "2026-07-29T08:22:42.910Z"
     },
     {
-      "id": "TC_206",
+      "id": "zero-indic:TC_206",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4693,7 +4693,7 @@
       "timestamp": "2026-07-29T08:22:42.956Z"
     },
     {
-      "id": "TC_207",
+      "id": "zero-indic:TC_207",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4715,7 +4715,7 @@
       "timestamp": "2026-07-29T08:22:43.004Z"
     },
     {
-      "id": "TC_208",
+      "id": "zero-indic:TC_208",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4737,7 +4737,7 @@
       "timestamp": "2026-07-29T08:22:43.048Z"
     },
     {
-      "id": "TC_209",
+      "id": "zero-indic:TC_209",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4759,7 +4759,7 @@
       "timestamp": "2026-07-29T08:22:43.093Z"
     },
     {
-      "id": "TC_210",
+      "id": "zero-indic:TC_210",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4781,7 +4781,7 @@
       "timestamp": "2026-07-29T08:22:43.139Z"
     },
     {
-      "id": "TC_211",
+      "id": "zero-indic:TC_211",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4803,7 +4803,7 @@
       "timestamp": "2026-07-29T08:22:43.187Z"
     },
     {
-      "id": "TC_212",
+      "id": "zero-indic:TC_212",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4825,7 +4825,7 @@
       "timestamp": "2026-07-29T08:22:43.231Z"
     },
     {
-      "id": "TC_213",
+      "id": "zero-indic:TC_213",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4847,7 +4847,7 @@
       "timestamp": "2026-07-29T08:22:43.276Z"
     },
     {
-      "id": "TC_214",
+      "id": "zero-indic:TC_214",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4869,7 +4869,7 @@
       "timestamp": "2026-07-29T08:22:43.319Z"
     },
     {
-      "id": "TC_215",
+      "id": "zero-indic:TC_215",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4891,7 +4891,7 @@
       "timestamp": "2026-07-29T08:22:43.364Z"
     },
     {
-      "id": "TC_216",
+      "id": "zero-indic:TC_216",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4913,7 +4913,7 @@
       "timestamp": "2026-07-29T08:22:43.410Z"
     },
     {
-      "id": "TC_217",
+      "id": "zero-indic:TC_217",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4935,7 +4935,7 @@
       "timestamp": "2026-07-29T08:22:43.451Z"
     },
     {
-      "id": "TC_218",
+      "id": "zero-indic:TC_218",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4957,7 +4957,7 @@
       "timestamp": "2026-07-29T08:22:43.495Z"
     },
     {
-      "id": "TC_219",
+      "id": "zero-indic:TC_219",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -4979,7 +4979,7 @@
       "timestamp": "2026-07-29T08:22:43.538Z"
     },
     {
-      "id": "TC_220",
+      "id": "zero-indic:TC_220",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5001,7 +5001,7 @@
       "timestamp": "2026-07-29T08:22:43.579Z"
     },
     {
-      "id": "TC_221",
+      "id": "zero-indic:TC_221",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5023,7 +5023,7 @@
       "timestamp": "2026-07-29T08:22:43.621Z"
     },
     {
-      "id": "TC_222",
+      "id": "zero-indic:TC_222",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5045,7 +5045,7 @@
       "timestamp": "2026-07-29T08:22:43.623Z"
     },
     {
-      "id": "TC_223",
+      "id": "zero-indic:TC_223",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5067,7 +5067,7 @@
       "timestamp": "2026-07-29T08:22:43.623Z"
     },
     {
-      "id": "TC_224",
+      "id": "zero-indic:TC_224",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5089,7 +5089,7 @@
       "timestamp": "2026-07-29T08:22:43.627Z"
     },
     {
-      "id": "TC_225",
+      "id": "zero-indic:TC_225",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5111,7 +5111,7 @@
       "timestamp": "2026-07-29T08:22:43.629Z"
     },
     {
-      "id": "TC_226",
+      "id": "zero-indic:TC_226",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5133,7 +5133,7 @@
       "timestamp": "2026-07-29T08:22:43.630Z"
     },
     {
-      "id": "TC_227",
+      "id": "zero-indic:TC_227",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5155,7 +5155,7 @@
       "timestamp": "2026-07-29T08:22:43.632Z"
     },
     {
-      "id": "TC_228",
+      "id": "zero-indic:TC_228",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5177,7 +5177,7 @@
       "timestamp": "2026-07-29T08:22:43.634Z"
     },
     {
-      "id": "TC_229",
+      "id": "zero-indic:TC_229",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5199,7 +5199,7 @@
       "timestamp": "2026-07-29T08:22:43.635Z"
     },
     {
-      "id": "TC_230",
+      "id": "zero-indic:TC_230",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5221,7 +5221,7 @@
       "timestamp": "2026-07-29T08:22:43.637Z"
     },
     {
-      "id": "TC_231",
+      "id": "zero-indic:TC_231",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5243,7 +5243,7 @@
       "timestamp": "2026-07-29T08:22:43.640Z"
     },
     {
-      "id": "TC_232",
+      "id": "zero-indic:TC_232",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5265,7 +5265,7 @@
       "timestamp": "2026-07-29T08:22:43.642Z"
     },
     {
-      "id": "TC_233",
+      "id": "zero-indic:TC_233",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5287,7 +5287,7 @@
       "timestamp": "2026-07-29T08:22:43.645Z"
     },
     {
-      "id": "TC_234",
+      "id": "zero-indic:TC_234",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5309,7 +5309,7 @@
       "timestamp": "2026-07-29T08:22:43.646Z"
     },
     {
-      "id": "TC_235",
+      "id": "zero-indic:TC_235",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5331,7 +5331,7 @@
       "timestamp": "2026-07-29T08:22:43.648Z"
     },
     {
-      "id": "TC_236",
+      "id": "zero-indic:TC_236",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5353,7 +5353,7 @@
       "timestamp": "2026-07-29T08:22:43.652Z"
     },
     {
-      "id": "TC_237",
+      "id": "zero-indic:TC_237",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5375,7 +5375,7 @@
       "timestamp": "2026-07-29T08:22:43.653Z"
     },
     {
-      "id": "TC_238",
+      "id": "zero-indic:TC_238",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5397,7 +5397,7 @@
       "timestamp": "2026-07-29T08:22:43.654Z"
     },
     {
-      "id": "TC_239",
+      "id": "zero-indic:TC_239",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5419,7 +5419,7 @@
       "timestamp": "2026-07-29T08:22:43.656Z"
     },
     {
-      "id": "TC_240",
+      "id": "zero-indic:TC_240",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5441,7 +5441,7 @@
       "timestamp": "2026-07-29T08:22:43.657Z"
     },
     {
-      "id": "TC_241",
+      "id": "zero-indic:TC_241",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5463,7 +5463,7 @@
       "timestamp": "2026-07-29T08:22:43.658Z"
     },
     {
-      "id": "TC_242",
+      "id": "zero-indic:TC_242",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5485,7 +5485,7 @@
       "timestamp": "2026-07-29T08:22:43.660Z"
     },
     {
-      "id": "TC_243",
+      "id": "zero-indic:TC_243",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5507,7 +5507,7 @@
       "timestamp": "2026-07-29T08:22:43.663Z"
     },
     {
-      "id": "TC_244",
+      "id": "zero-indic:TC_244",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5529,7 +5529,7 @@
       "timestamp": "2026-07-29T08:22:43.664Z"
     },
     {
-      "id": "TC_245",
+      "id": "zero-indic:TC_245",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5551,7 +5551,7 @@
       "timestamp": "2026-07-29T08:22:43.667Z"
     },
     {
-      "id": "TC_246",
+      "id": "zero-indic:TC_246",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5573,7 +5573,7 @@
       "timestamp": "2026-07-29T08:22:43.668Z"
     },
     {
-      "id": "TC_247",
+      "id": "zero-indic:TC_247",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5595,7 +5595,7 @@
       "timestamp": "2026-07-29T08:22:43.669Z"
     },
     {
-      "id": "TC_248",
+      "id": "zero-indic:TC_248",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5617,7 +5617,7 @@
       "timestamp": "2026-07-29T08:22:43.671Z"
     },
     {
-      "id": "TC_249",
+      "id": "zero-indic:TC_249",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5639,7 +5639,7 @@
       "timestamp": "2026-07-29T08:22:43.673Z"
     },
     {
-      "id": "TC_250",
+      "id": "zero-indic:TC_250",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5661,7 +5661,7 @@
       "timestamp": "2026-07-29T08:22:43.674Z"
     },
     {
-      "id": "TC_251",
+      "id": "zero-indic:TC_251",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5683,7 +5683,7 @@
       "timestamp": "2026-07-29T08:22:43.676Z"
     },
     {
-      "id": "TC_252",
+      "id": "zero-indic:TC_252",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5705,7 +5705,7 @@
       "timestamp": "2026-07-29T08:22:43.682Z"
     },
     {
-      "id": "TC_253",
+      "id": "zero-indic:TC_253",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5727,7 +5727,7 @@
       "timestamp": "2026-07-29T08:22:43.683Z"
     },
     {
-      "id": "TC_254",
+      "id": "zero-indic:TC_254",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5749,7 +5749,7 @@
       "timestamp": "2026-07-29T08:22:43.685Z"
     },
     {
-      "id": "TC_255",
+      "id": "zero-indic:TC_255",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5771,7 +5771,7 @@
       "timestamp": "2026-07-29T08:22:43.687Z"
     },
     {
-      "id": "TC_256",
+      "id": "zero-indic:TC_256",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5793,7 +5793,7 @@
       "timestamp": "2026-07-29T08:22:43.688Z"
     },
     {
-      "id": "TC_257",
+      "id": "zero-indic:TC_257",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5815,7 +5815,7 @@
       "timestamp": "2026-07-29T08:22:43.689Z"
     },
     {
-      "id": "TC_258",
+      "id": "zero-indic:TC_258",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5837,7 +5837,7 @@
       "timestamp": "2026-07-29T08:22:43.691Z"
     },
     {
-      "id": "TC_259",
+      "id": "zero-indic:TC_259",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5859,7 +5859,7 @@
       "timestamp": "2026-07-29T08:22:43.692Z"
     },
     {
-      "id": "TC_260",
+      "id": "zero-indic:TC_260",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5881,7 +5881,7 @@
       "timestamp": "2026-07-29T08:22:43.697Z"
     },
     {
-      "id": "TC_261",
+      "id": "zero-indic:TC_261",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5903,7 +5903,7 @@
       "timestamp": "2026-07-29T08:22:43.702Z"
     },
     {
-      "id": "TC_262",
+      "id": "zero-indic:TC_262",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5925,7 +5925,7 @@
       "timestamp": "2026-07-29T08:22:46.909Z"
     },
     {
-      "id": "TC_263",
+      "id": "zero-indic:TC_263",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5947,7 +5947,7 @@
       "timestamp": "2026-07-29T08:37:57.024Z"
     },
     {
-      "id": "TC_264",
+      "id": "zero-indic:TC_264",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5969,7 +5969,7 @@
       "timestamp": "2026-07-29T08:37:58.685Z"
     },
     {
-      "id": "TC_265",
+      "id": "zero-indic:TC_265",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -5991,7 +5991,7 @@
       "timestamp": "2026-07-29T08:38:00.144Z"
     },
     {
-      "id": "TC_266",
+      "id": "zero-indic:TC_266",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -6013,7 +6013,7 @@
       "timestamp": "2026-07-29T08:55:25.966Z"
     },
     {
-      "id": "TC_267",
+      "id": "zero-indic:TC_267",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -6035,7 +6035,7 @@
       "timestamp": "2026-07-29T08:55:27.437Z"
     },
     {
-      "id": "TC_268",
+      "id": "zero-indic:TC_268",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -6057,7 +6057,7 @@
       "timestamp": "2026-07-29T08:55:28.913Z"
     },
     {
-      "id": "TC_269",
+      "id": "zero-indic:TC_269",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -6079,7 +6079,7 @@
       "timestamp": "2026-07-29T08:55:30.570Z"
     },
     {
-      "id": "TC_270",
+      "id": "zero-indic:TC_270",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -6101,7 +6101,7 @@
       "timestamp": "2026-07-29T08:55:31.802Z"
     },
     {
-      "id": "TC_271",
+      "id": "zero-indic:TC_271",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -6123,7 +6123,7 @@
       "timestamp": "2026-07-29T08:55:33.361Z"
     },
     {
-      "id": "TC_272",
+      "id": "zero-indic:TC_272",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -6145,7 +6145,7 @@
       "timestamp": "2026-07-29T09:11:49.128Z"
     },
     {
-      "id": "TC_273",
+      "id": "zero-indic:TC_273",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -6167,7 +6167,7 @@
       "timestamp": "2026-07-29T09:11:50.849Z"
     },
     {
-      "id": "TC_274",
+      "id": "zero-indic:TC_274",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -6189,7 +6189,7 @@
       "timestamp": "2026-07-29T09:11:53.123Z"
     },
     {
-      "id": "TC_275",
+      "id": "zero-indic:TC_275",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
@@ -6211,7 +6211,7 @@
       "timestamp": "2026-07-29T09:29:17.619Z"
     },
     {
-      "id": "TC_276",
+      "id": "zero-indic:TC_276",
       "suite": "Speech Models",
       "module": "zero-indic",
       "moduleLabel": "Indic STT Models (22+ Languages)",
