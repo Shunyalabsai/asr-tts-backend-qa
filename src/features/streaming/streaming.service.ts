@@ -8,9 +8,13 @@ import type {
   StreamingErrorEvent,
 } from '../../types';
 import { AuthClient } from '../../services/AuthClient';
+import WS from 'ws';
+
+// Universal WebSocket implementation across Node / CI environments
+const WebSocketImpl: typeof WebSocket = (typeof WebSocket !== 'undefined' ? WebSocket : (WS as any));
 
 class StreamingSession {
-  public ws: WebSocket;
+  public ws: any;
   private eventHandlers: {
     ready: ((ev: StreamingReadyEvent) => void)[];
     partial: ((ev: StreamingPartialEvent) => void)[];
@@ -18,11 +22,13 @@ class StreamingSession {
     error: ((ev: StreamingErrorEvent) => void)[];
   } = { ready: [], partial: [], final: [], error: [] };
 
-  constructor(ws: WebSocket) {
+  constructor(ws: any) {
     this.ws = ws;
-    ws.addEventListener('message', (msg: MessageEvent) => {
+
+    const onMessage = (data: any) => {
       try {
-        const ev = JSON.parse(msg.data as string) as StreamEvent;
+        const rawStr = typeof data === 'string' ? data : (data.data !== undefined ? data.data.toString() : data.toString());
+        const ev = JSON.parse(rawStr) as StreamEvent;
         switch (ev.type) {
           case 'ready': this.eventHandlers.ready.forEach(h => h(ev)); break;
           case 'partial': this.eventHandlers.partial.forEach(h => h(ev)); break;
@@ -32,7 +38,13 @@ class StreamingSession {
       } catch {
         // ignore non-JSON messages
       }
-    });
+    };
+
+    if (typeof ws.addEventListener === 'function') {
+      ws.addEventListener('message', onMessage);
+    } else if (typeof ws.on === 'function') {
+      ws.on('message', onMessage);
+    }
   }
 
   onReady(handler: (ev: StreamingReadyEvent) => void): void {
@@ -86,17 +98,28 @@ export class StreamingClient {
     this.baseWsUrl = `wss://${host}`;
   }
 
+  private attachOpenHandlers(ws: any): Promise<void> {
+    return new Promise<void>((resolve, reject) => {
+      if (typeof ws.addEventListener === 'function') {
+        ws.addEventListener('open', () => resolve());
+        ws.addEventListener('error', () => reject(new Error('WebSocket connection failed')));
+      } else if (typeof ws.on === 'function') {
+        ws.on('open', () => resolve());
+        ws.on('error', (err: any) => reject(err || new Error('WebSocket connection failed')));
+      } else {
+        resolve();
+      }
+    });
+  }
+
   async createSession(
     params: StreamingSessionParams
   ): Promise<StreamingSession> {
-    const ws = new WebSocket(`${this.baseWsUrl}${ENDPOINTS.streaming}`);
+    const ws = new WebSocketImpl(`${this.baseWsUrl}${ENDPOINTS.streaming}`);
     const session = new StreamingSession(ws);
 
     // Wait for socket open
-    await new Promise<void>((resolve, reject) => {
-      ws.addEventListener('open', () => resolve());
-      ws.addEventListener('error', () => reject(new Error('WebSocket connection failed')));
-    });
+    await this.attachOpenHandlers(ws);
 
     // Send init message
     ws.send(JSON.stringify(params));
@@ -108,13 +131,10 @@ export class StreamingClient {
     token: string,
     params: Omit<StreamingSessionParams, 'token'>
   ): Promise<StreamingSession> {
-    const ws = new WebSocket(`${this.baseWsUrl}${ENDPOINTS.streaming}?token=${encodeURIComponent(token)}`);
+    const ws = new WebSocketImpl(`${this.baseWsUrl}${ENDPOINTS.streaming}?token=${encodeURIComponent(token)}`);
     const session = new StreamingSession(ws);
 
-    await new Promise<void>((resolve, reject) => {
-      ws.addEventListener('open', () => resolve());
-      ws.addEventListener('error', () => reject(new Error('WebSocket connection failed')));
-    });
+    await this.attachOpenHandlers(ws);
 
     // Send params without token (token is in query param)
     ws.send(JSON.stringify(params));
@@ -125,13 +145,10 @@ export class StreamingClient {
   async createSessionAtAliasEndpoint(
     params: StreamingSessionParams
   ): Promise<StreamingSession> {
-    const ws = new WebSocket(`${this.baseWsUrl}${ENDPOINTS.streamingAlias}`);
+    const ws = new WebSocketImpl(`${this.baseWsUrl}${ENDPOINTS.streamingAlias}`);
     const session = new StreamingSession(ws);
 
-    await new Promise<void>((resolve, reject) => {
-      ws.addEventListener('open', () => resolve());
-      ws.addEventListener('error', () => reject(new Error('WebSocket connection failed')));
-    });
+    await this.attachOpenHandlers(ws);
 
     ws.send(JSON.stringify(params));
 
