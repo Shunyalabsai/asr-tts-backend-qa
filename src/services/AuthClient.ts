@@ -77,34 +77,59 @@ export class AuthClient {
       body = JSON.stringify({ expires_in: 86400 });
     }
 
-    const response = await fetch(url, {
-      method: 'POST',
-      headers,
-      body,
-    });
+    const maxRetries = 3;
+    let lastError: Error | null = null;
 
-    if (!response.ok) {
-      let detail = `Token refresh failed: ${response.status}`;
+    for (let attempt = 1; attempt <= maxRetries; attempt++) {
       try {
-        const errorBody = (await response.json()) as ApiErrorResponse;
-        if (errorBody.detail) {
-          detail = errorBody.detail;
+        const response = await fetch(url, {
+          method: 'POST',
+          headers,
+          body,
+        });
+
+        // If rate-limited (HTTP 429), wait and retry with exponential backoff
+        if (response.status === 429 && attempt < maxRetries) {
+          console.warn(`[AuthClient] Rate limited (429). Retrying attempt ${attempt}/${maxRetries} in ${attempt * 1500}ms...`);
+          await new Promise(r => setTimeout(r, attempt * 1500));
+          continue;
         }
-      } catch {
-        // ignore parse failure
+
+        if (!response.ok) {
+          let detail = `Token refresh failed: ${response.status}`;
+          try {
+            const errorBody = (await response.json()) as ApiErrorResponse;
+            if (errorBody.detail) {
+              detail = errorBody.detail;
+            }
+          } catch {
+            // ignore parse failure
+          }
+          throw new AuthError(detail, response.status);
+        }
+
+        const data = (await response.json()) as TokenResponse;
+        const expiresAt = data.expires_at || Math.floor(Date.now() / 1000) + (data.expires_in || 3600);
+
+        AuthClient.tokenCache.set(this.cacheKey, {
+          token: data.token,
+          expiresAt,
+        });
+
+        return data.token;
+      } catch (err: any) {
+        lastError = err;
+        // Do not retry permanently invalid credentials (401/403)
+        if (err instanceof AuthError && (err.statusCode === 401 || err.statusCode === 403)) {
+          throw err;
+        }
+        if (attempt < maxRetries) {
+          await new Promise(r => setTimeout(r, 1000));
+        }
       }
-      throw new AuthError(detail, response.status);
     }
 
-    const data = (await response.json()) as TokenResponse;
-    const expiresAt = data.expires_at || Math.floor(Date.now() / 1000) + (data.expires_in || 3600);
-
-    AuthClient.tokenCache.set(this.cacheKey, {
-      token: data.token,
-      expiresAt,
-    });
-
-    return data.token;
+    throw lastError || new Error('Token refresh failed after retries');
   }
 
   private isTokenExpired(cached: CachedToken): boolean {

@@ -8,7 +8,7 @@ export default defineConfig({
   },
   fullyParallel: false,
   workers: 1, // Single worker for API tests (rate limiting)
-  retries: 0,
+  retries: process.env.CI ? 1 : 0,
   reporter: [
     ['list'],
     ['json', { outputFile: 'reports/test-results.json' }],
