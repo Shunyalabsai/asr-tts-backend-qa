@@ -58,7 +58,7 @@
     <div class="stats">
       <span>2026-09-10</span>
       <span>128 tests</span>
-      <span>195.1s</span>
+      <span>168.0s</span>
     </div>
   </div>
 
@@ -102,9 +102,9 @@
         <td class="pass">8</td>
         <td class="fail">0</td>
         <td>0</td>
-        <td>0ms</td>
-        <td>0ms</td>
-        <td>0ms</td>
+        <td>1ms</td>
+        <td>1ms</td>
+        <td>1ms</td>
       </tr><tr>
         <td><strong>AudioInput-File</strong></td>
         <td>23</td>
@@ -113,7 +113,7 @@
         <td>0</td>
         <td>1ms</td>
         <td>1ms</td>
-        <td>1ms</td>
+        <td>2ms</td>
       </tr><tr>
         <td><strong>LanguageCode</strong></td>
         <td>8</td>
@@ -147,7 +147,7 @@
         <td class="pass">5</td>
         <td class="fail">0</td>
         <td>0</td>
-        <td>1ms</td>
+        <td>2ms</td>
         <td>1ms</td>
         <td>2ms</td>
       </tr><tr>
@@ -165,27 +165,27 @@
         <td class="pass">11</td>
         <td class="fail">0</td>
         <td>0</td>
+        <td>4ms</td>
         <td>2ms</td>
-        <td>2ms</td>
-        <td>3ms</td>
+        <td>10ms</td>
       </tr><tr>
         <td><strong>CombinationScenarios</strong></td>
         <td>6</td>
         <td class="pass">6</td>
         <td class="fail">0</td>
         <td>0</td>
+        <td>1ms</td>
+        <td>1ms</td>
         <td>2ms</td>
-        <td>2ms</td>
-        <td>3ms</td>
       </tr><tr>
         <td><strong>ErrorHandling</strong></td>
         <td>8</td>
         <td class="pass">8</td>
         <td class="fail">0</td>
         <td>0</td>
-        <td>17ms</td>
+        <td>3ms</td>
         <td>1ms</td>
-        <td>49ms</td>
+        <td>8ms</td>
       </tr><tr>
         <td><strong>Security-Misc</strong></td>
         <td>5</td>
@@ -263,7 +263,7 @@
         <td>Authentication</td>
         <td>M01-T01: Valid API key returns token with expires_at and expires_in @smoke</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -351,7 +351,7 @@
         <td>AudioInput-File</td>
         <td>M03-T04: Near-limit base64 audio processed</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>-</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -359,7 +359,7 @@
         <td>AudioInput-File</td>
         <td>M03-T05: Oversized base64 returns 413</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>-</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -383,7 +383,7 @@
         <td>AudioInput-File</td>
         <td>M02-T02: FLAC upload returns valid transcription</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -415,7 +415,7 @@
         <td>AudioInput-File</td>
         <td>M02-T06: Stereo audio file accepted and processed</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -471,7 +471,7 @@
         <td>AudioInput-File</td>
         <td>M02-T14: Long audio (max-length) processed</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -607,7 +607,7 @@
         <td>SpeakerDiarization</td>
         <td>M06-T05: diarize=true with response_format=json returns text</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -639,7 +639,7 @@
         <td>WordBoosting</td>
         <td>M07-T03: Case-insensitive phrase matching</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>-</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -671,7 +671,7 @@
         <td>WordBoosting</td>
         <td>M07-T07: Malformed separator handling</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -687,7 +687,7 @@
         <td>ProfanityMasking</td>
         <td>M09-T02: profanity_filter=false on profane audio without masking</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -783,7 +783,7 @@
         <td>SpeechIntelligence</td>
         <td>M17-T01: Intent detection returns valid intent label</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
+        <td>5ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -791,7 +791,7 @@
         <td>SpeechIntelligence</td>
         <td>M17-T02: Summarization returns condensed text</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>3ms</td>
+        <td>10ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -799,7 +799,7 @@
         <td>SpeechIntelligence</td>
         <td>M17-T03: Sentiment analysis returns label and score</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
+        <td>5ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -807,7 +807,7 @@
         <td>SpeechIntelligence</td>
         <td>M17-T04: All three flags simultaneously</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -839,7 +839,7 @@
         <td>SpeechIntelligence</td>
         <td>M08-T01: enable_intent_detection=true returns intent analysis</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>3ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -855,7 +855,7 @@
         <td>SpeechIntelligence</td>
         <td>M08-T03: enable_sentiment_analysis=true returns sentiment</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>2ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -879,7 +879,7 @@
         <td>CombinationScenarios</td>
         <td>M14-T02: num_speakers + response_format=json (diarize without verbose_json)</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>3ms</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -887,7 +887,7 @@
         <td>CombinationScenarios</td>
         <td>M14-T03: Non-English + diarization + word boosting</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -911,7 +911,7 @@
         <td>CombinationScenarios</td>
         <td>M14-T06: Base64 audio + all parameters</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>2ms</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -975,7 +975,7 @@
         <td>ErrorHandling</td>
         <td>M11-T08: Oversized file (500MB+) returns 413</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>49ms</td>
+        <td>8ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -1079,7 +1079,7 @@
         <td>Streaming</td>
         <td>M16-T02: Send PCM audio frames, receive partial events</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>1ms</td>
+        <td>-</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -1223,7 +1223,7 @@
         <td>TTS</td>
         <td>TTS_OPENAI_04: Synthesize with speed parameter variations</td>
         <td class="pass"><span class="badge pass">PASS</span></td>
-        <td>-</td>
+        <td>1ms</td>
         <td>-</td>
         <td>-</td>
       </tr><tr>
@@ -1271,7 +1271,7 @@
   </table>
 
   <div style="text-align:center;margin-top:2rem;color:#64748b;font-size:0.8rem;">
-    Generated on 2026-09-10T12:23:34.171Z by ASR Testing Framework v2
+    Generated on 2026-09-10T13:03:12.561Z by ASR Testing Framework v2
   </div>
 </body>
 </html>
