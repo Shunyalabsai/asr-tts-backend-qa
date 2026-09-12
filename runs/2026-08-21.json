@@ -1,0 +1,172 @@
+{
+  "date": "2026-08-21",
+  "totalTests": 129,
+  "passed": 129,
+  "failed": 0,
+  "skipped": 0,
+  "passRate": "100.0",
+  "durationMs": 193184.466709,
+  "modules": [
+    {
+      "module": "Health",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 0,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 0
+    },
+    {
+      "module": "Authentication",
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 0,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 0
+    },
+    {
+      "module": "AudioInput-File",
+      "total": 24,
+      "passed": 24,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 1.8461538461538463,
+      "p50LatencyMs": 1,
+      "p95LatencyMs": 9
+    },
+    {
+      "module": "LanguageCode",
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 1.25,
+      "p50LatencyMs": 1,
+      "p95LatencyMs": 2
+    },
+    {
+      "module": "SpeakerDiarization",
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 1.25,
+      "p50LatencyMs": 1,
+      "p95LatencyMs": 2
+    },
+    {
+      "module": "WordBoosting",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 1,
+      "p50LatencyMs": 1,
+      "p95LatencyMs": 1
+    },
+    {
+      "module": "ProfanityMasking",
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 1.75,
+      "p50LatencyMs": 2,
+      "p95LatencyMs": 2
+    },
+    {
+      "module": "ResponseSchema",
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 1.1428571428571428,
+      "p50LatencyMs": 1,
+      "p95LatencyMs": 2
+    },
+    {
+      "module": "SpeechIntelligence",
+      "total": 11,
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 1.875,
+      "p50LatencyMs": 2,
+      "p95LatencyMs": 2
+    },
+    {
+      "module": "CombinationScenarios",
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 1,
+      "p50LatencyMs": 1,
+      "p95LatencyMs": 1
+    },
+    {
+      "module": "ErrorHandling",
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 9.666666666666666,
+      "p50LatencyMs": 1,
+      "p95LatencyMs": 27
+    },
+    {
+      "module": "Security-Misc",
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 1,
+      "p50LatencyMs": 1,
+      "p95LatencyMs": 1
+    },
+    {
+      "module": "SpeakerManagement",
+      "total": 6,
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 1,
+      "p50LatencyMs": 1,
+      "p95LatencyMs": 1
+    },
+    {
+      "module": "Streaming",
+      "total": 10,
+      "passed": 10,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 5.571428571428571,
+      "p50LatencyMs": 3,
+      "p95LatencyMs": 15
+    },
+    {
+      "module": "TTS",
+      "total": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 1.7,
+      "p50LatencyMs": 1,
+      "p95LatencyMs": 4
+    }
+  ],
+  "failures": [],
+  "datasets": [],
+  "datasetSummaries": [],
+  "datasetStats": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "passRate": "0%"
+  },
+  "datasetFailures": []
+}
