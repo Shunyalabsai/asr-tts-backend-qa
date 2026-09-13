@@ -1,14 +1,14 @@
 {
-  "id": "RUN-20260912-142335",
-  "date": "2026-09-12",
-  "startedAt": "2026-09-12T14:23:35.012Z",
-  "completedAt": "2026-09-12T14:26:20.717Z",
+  "id": "RUN-20260913-001151",
+  "date": "2026-09-13",
+  "startedAt": "2026-09-13T00:11:51.843Z",
+  "completedAt": "2026-09-13T00:14:32.562Z",
   "totalTests": 134,
   "passed": 134,
   "failed": 0,
   "skipped": 0,
   "passRate": "100.0",
-  "durationMs": 165705,
+  "durationMs": 160719,
   "modules": [
     {
       "module": "Authentication",
@@ -16,9 +16,9 @@
       "passed": 8,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 385.625,
-      "p50LatencyMs": 238,
-      "p95LatencyMs": 904
+      "avgLatencyMs": 350.5,
+      "p50LatencyMs": 217,
+      "p95LatencyMs": 792
     },
     {
       "module": "CombinationScenarios",
@@ -26,9 +26,9 @@
       "passed": 6,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1439,
-      "p50LatencyMs": 1173,
-      "p95LatencyMs": 2377
+      "avgLatencyMs": 1466.8333333333333,
+      "p50LatencyMs": 1321,
+      "p95LatencyMs": 2635
     },
     {
       "module": "ErrorHandling",
@@ -36,9 +36,9 @@
       "passed": 8,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1668.75,
-      "p50LatencyMs": 194,
-      "p95LatencyMs": 10582
+      "avgLatencyMs": 2078.5,
+      "p50LatencyMs": 171,
+      "p95LatencyMs": 14296
     },
     {
       "module": "Health",
@@ -46,9 +46,9 @@
       "passed": 2,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 197.5,
-      "p50LatencyMs": 197,
-      "p95LatencyMs": 198
+      "avgLatencyMs": 175,
+      "p50LatencyMs": 174,
+      "p95LatencyMs": 176
     },
     {
       "module": "LanguageCode",
@@ -56,9 +56,9 @@
       "passed": 8,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1693.5,
-      "p50LatencyMs": 930,
-      "p95LatencyMs": 6744
+      "avgLatencyMs": 1476.5,
+      "p50LatencyMs": 768,
+      "p95LatencyMs": 5640
     },
     {
       "module": "Security-Misc",
@@ -66,9 +66,9 @@
       "passed": 11,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1183.3636363636363,
-      "p50LatencyMs": 649,
-      "p95LatencyMs": 5889
+      "avgLatencyMs": 1003.1818181818181,
+      "p50LatencyMs": 504,
+      "p95LatencyMs": 4996
     },
     {
       "module": "ProfanityMasking",
@@ -76,9 +76,9 @@
       "passed": 5,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1321,
-      "p50LatencyMs": 1455,
-      "p95LatencyMs": 1640
+      "avgLatencyMs": 1369.2,
+      "p50LatencyMs": 1554,
+      "p95LatencyMs": 1580
     },
     {
       "module": "ResponseSchema",
@@ -86,9 +86,9 @@
       "passed": 8,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 876.375,
-      "p50LatencyMs": 531,
-      "p95LatencyMs": 2858
+      "avgLatencyMs": 785.875,
+      "p50LatencyMs": 610,
+      "p95LatencyMs": 2180
     },
     {
       "module": "SpeakerDiarization",
@@ -96,9 +96,9 @@
       "passed": 6,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 735.8333333333334,
-      "p50LatencyMs": 748,
-      "p95LatencyMs": 753
+      "avgLatencyMs": 688,
+      "p50LatencyMs": 702,
+      "p95LatencyMs": 707
     },
     {
       "module": "SpeakerManagement",
@@ -106,9 +106,9 @@
       "passed": 6,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 902.1666666666666,
-      "p50LatencyMs": 421,
-      "p95LatencyMs": 3399
+      "avgLatencyMs": 801.1666666666666,
+      "p50LatencyMs": 350,
+      "p95LatencyMs": 2838
     },
     {
       "module": "SpeechIntelligence",
@@ -116,9 +116,9 @@
       "passed": 11,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1250.4545454545455,
-      "p50LatencyMs": 1457,
-      "p95LatencyMs": 2142
+      "avgLatencyMs": 1232.909090909091,
+      "p50LatencyMs": 1404,
+      "p95LatencyMs": 2119
     },
     {
       "module": "Streaming",
@@ -126,9 +126,9 @@
       "passed": 10,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 2837.6,
-      "p50LatencyMs": 824,
-      "p95LatencyMs": 15587
+      "avgLatencyMs": 2728.9,
+      "p50LatencyMs": 688,
+      "p95LatencyMs": 15684
     },
     {
       "module": "AudioInput-File",
@@ -136,9 +136,9 @@
       "passed": 23,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 867.4347826086956,
-      "p50LatencyMs": 678,
-      "p95LatencyMs": 1666
+      "avgLatencyMs": 913.304347826087,
+      "p50LatencyMs": 606,
+      "p95LatencyMs": 2215
     },
     {
       "module": "TTS",
@@ -146,9 +146,9 @@
       "passed": 15,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 1281.1333333333334,
-      "p50LatencyMs": 597,
-      "p95LatencyMs": 3537
+      "avgLatencyMs": 1162.2666666666667,
+      "p50LatencyMs": 548,
+      "p95LatencyMs": 2933
     },
     {
       "module": "WordBoosting",
@@ -156,9 +156,9 @@
       "passed": 7,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 879.4285714285714,
-      "p50LatencyMs": 754,
-      "p95LatencyMs": 1903
+      "avgLatencyMs": 790.7142857142857,
+      "p50LatencyMs": 607,
+      "p95LatencyMs": 1737
     }
   ],
   "failures": [],
@@ -175,15 +175,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M01-T01: Valid API key returns token with expires_at and expires_in @smoke",
       "predictedText": "Execution passed",
-      "duration": "0.80s",
-      "durationMs": 804,
+      "duration": "0.76s",
+      "durationMs": 761,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M01-T02",
@@ -197,15 +197,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M01-T02: Missing Authorization header returns 400",
       "predictedText": "Execution passed",
-      "duration": "0.20s",
-      "durationMs": 195,
+      "duration": "0.17s",
+      "durationMs": 175,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M01-T03",
@@ -219,15 +219,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M01-T03: Invalid/random API key returns 401",
       "predictedText": "Execution passed",
-      "duration": "0.26s",
-      "durationMs": 255,
+      "duration": "0.23s",
+      "durationMs": 233,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M01-T04",
@@ -241,15 +241,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M01-T04: Empty Bearer value returns 401",
       "predictedText": "Execution passed",
-      "duration": "0.26s",
-      "durationMs": 255,
+      "duration": "0.23s",
+      "durationMs": 234,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M01-T05",
@@ -263,15 +263,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M01-T05: AuthClient caching and refresh works",
       "predictedText": "Execution passed",
-      "duration": "0.90s",
-      "durationMs": 904,
+      "duration": "0.79s",
+      "durationMs": 792,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M01-T06",
@@ -285,15 +285,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M01-T06: API key is not echoed in the response body",
       "predictedText": "Execution passed",
-      "duration": "0.24s",
-      "durationMs": 238,
+      "duration": "0.22s",
+      "durationMs": 217,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M01-T07",
@@ -307,15 +307,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M01-T07: Health endpoint works without auth @smoke",
       "predictedText": "Execution passed",
-      "duration": "0.20s",
-      "durationMs": 196,
+      "duration": "0.17s",
+      "durationMs": 175,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M01-T08",
@@ -329,15 +329,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M01-T08: Auth token expires_in is within expected range (~900s)",
       "predictedText": "Execution passed",
-      "duration": "0.24s",
-      "durationMs": 238,
+      "duration": "0.22s",
+      "durationMs": 217,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M14-T01",
@@ -351,15 +351,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M14-T01: All params simultaneously (diarize + num_speakers + verbose_json + language)",
       "predictedText": "Execution passed",
-      "duration": "2.38s",
-      "durationMs": 2377,
+      "duration": "2.63s",
+      "durationMs": 2635,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M14-T02",
@@ -373,15 +373,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M14-T02: num_speakers + response_format=json (diarize without verbose_json)",
       "predictedText": "Execution passed",
-      "duration": "1.16s",
-      "durationMs": 1159,
+      "duration": "1.22s",
+      "durationMs": 1221,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M14-T03",
@@ -395,15 +395,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M14-T03: Non-English + diarization + word boosting",
       "predictedText": "Execution passed",
-      "duration": "0.71s",
-      "durationMs": 708,
+      "duration": "0.61s",
+      "durationMs": 607,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M14-T04",
@@ -417,15 +417,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M14-T04: Profanity filter + verbose_json response",
       "predictedText": "Execution passed",
-      "duration": "1.56s",
-      "durationMs": 1560,
+      "duration": "1.42s",
+      "durationMs": 1423,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M14-T05",
@@ -439,15 +439,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M14-T05: Invalid param value among valid params",
       "predictedText": "Execution passed",
-      "duration": "1.17s",
-      "durationMs": 1173,
+      "duration": "1.32s",
+      "durationMs": 1321,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M14-T06",
@@ -461,15 +461,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M14-T06: Base64 audio + all parameters",
       "predictedText": "Execution passed",
-      "duration": "1.66s",
-      "durationMs": 1657,
+      "duration": "1.59s",
+      "durationMs": 1594,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M11-T01",
@@ -483,15 +483,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M11-T01: Malformed request (missing file) returns 400",
       "predictedText": "Execution passed",
-      "duration": "0.19s",
-      "durationMs": 192,
+      "duration": "0.17s",
+      "durationMs": 171,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M11-T02",
@@ -505,15 +505,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M11-T02: Invalid/expired token returns 401",
       "predictedText": "Execution passed",
-      "duration": "0.74s",
-      "durationMs": 737,
+      "duration": "0.67s",
+      "durationMs": 669,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M11-T03",
@@ -527,15 +527,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M11-T03: Unsupported audio format returns 415",
       "predictedText": "Execution passed",
-      "duration": "0.44s",
-      "durationMs": 442,
+      "duration": "0.31s",
+      "durationMs": 310,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M11-T04",
@@ -549,15 +549,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M11-T04: Consistent error shape: all errors have detail field",
       "predictedText": "Execution passed",
-      "duration": "0.19s",
-      "durationMs": 194,
+      "duration": "0.17s",
+      "durationMs": 171,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M11-T05",
@@ -571,15 +571,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M11-T05: Unknown route returns 404",
       "predictedText": "Execution passed",
-      "duration": "0.19s",
-      "durationMs": 192,
+      "duration": "0.17s",
+      "durationMs": 171,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M11-T06",
@@ -593,15 +593,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M11-T06: Wrong HTTP method returns 405",
       "predictedText": "Execution passed",
-      "duration": "0.19s",
-      "durationMs": 191,
+      "duration": "0.17s",
+      "durationMs": 170,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M11-T07",
@@ -615,15 +615,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M11-T07: Rate limiting: rapid requests eventually return 429",
       "predictedText": "Execution passed",
-      "duration": "0.82s",
-      "durationMs": 820,
+      "duration": "0.67s",
+      "durationMs": 670,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M11-T08",
@@ -637,15 +637,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M11-T08: Oversized file (500MB+) returns 413",
       "predictedText": "Execution passed",
-      "duration": "10.58s",
-      "durationMs": 10582,
+      "duration": "14.30s",
+      "durationMs": 14296,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M13-T01",
@@ -659,15 +659,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M13-T01: /health returns status ok @smoke",
       "predictedText": "Execution passed",
-      "duration": "0.20s",
-      "durationMs": 197,
+      "duration": "0.18s",
+      "durationMs": 176,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M13-T02",
@@ -681,15 +681,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M13-T02: /health responds in under 2 seconds @smoke",
       "predictedText": "Execution passed",
-      "duration": "0.20s",
-      "durationMs": 198,
+      "duration": "0.17s",
+      "durationMs": 174,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M04-T01",
@@ -703,15 +703,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T01: Default language_code (omitted) uses auto detection @smoke",
       "predictedText": "Execution passed",
-      "duration": "1.52s",
-      "durationMs": 1516,
+      "duration": "1.40s",
+      "durationMs": 1395,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M04-T02",
@@ -725,15 +725,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T02: Explicit language_code=en returns English text",
       "predictedText": "Execution passed",
-      "duration": "1.39s",
-      "durationMs": 1393,
+      "duration": "1.43s",
+      "durationMs": 1426,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M04-T03",
@@ -747,15 +747,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T03: Explicit language_code=hi returns Hindi text",
       "predictedText": "Execution passed",
-      "duration": "0.93s",
-      "durationMs": 930,
+      "duration": "0.67s",
+      "durationMs": 666,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M04-T04",
@@ -769,15 +769,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T04: Invalid language code returns 400",
       "predictedText": "Execution passed",
-      "duration": "0.36s",
-      "durationMs": 362,
+      "duration": "0.34s",
+      "durationMs": 340,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M04-T05",
@@ -791,15 +791,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T05: Non-English audio with auto-detect works",
       "predictedText": "Execution passed",
-      "duration": "0.58s",
-      "durationMs": 584,
+      "duration": "0.43s",
+      "durationMs": 433,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M04-T06",
@@ -813,15 +813,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T06: Case-insensitive language_code (EN vs en)",
       "predictedText": "Execution passed",
-      "duration": "1.18s",
-      "durationMs": 1179,
+      "duration": "1.14s",
+      "durationMs": 1144,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M04-T07",
@@ -835,15 +835,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T07: Empty language_code string returns 400",
       "predictedText": "Execution passed",
-      "duration": "0.84s",
-      "durationMs": 840,
+      "duration": "0.77s",
+      "durationMs": 768,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M04-T08",
@@ -857,15 +857,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T08: Multiple language codes each produce valid transcripts",
       "predictedText": "Execution passed",
-      "duration": "6.74s",
-      "durationMs": 6744,
+      "duration": "5.64s",
+      "durationMs": 5640,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M12-T01",
@@ -879,15 +879,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M12-T01: Short request latency is within threshold",
       "predictedText": "Execution passed",
-      "duration": "0.65s",
-      "durationMs": 649,
+      "duration": "0.43s",
+      "durationMs": 430,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M12-T02",
@@ -901,15 +901,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M12-T02: Diarization adds measurable latency",
       "predictedText": "Execution passed",
-      "duration": "0.77s",
-      "durationMs": 769,
+      "duration": "0.54s",
+      "durationMs": 543,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M12-T03",
@@ -923,15 +923,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M12-T03: Opt-in features latency measured",
       "predictedText": "Execution passed",
-      "duration": "0.66s",
-      "durationMs": 664,
+      "duration": "0.59s",
+      "durationMs": 594,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M12-T04",
@@ -945,15 +945,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M12-T04: NLP/speech intelligence latency measured",
       "predictedText": "Execution passed",
-      "duration": "1.44s",
-      "durationMs": 1439,
+      "duration": "1.42s",
+      "durationMs": 1417,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M12-T05",
@@ -967,15 +967,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M12-T05: Concurrent requests (5 simultaneous)",
       "predictedText": "Execution passed",
-      "duration": "2.15s",
-      "durationMs": 2149,
+      "duration": "1.81s",
+      "durationMs": 1808,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M12-T06",
@@ -989,15 +989,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M12-T06: Sequential requests (5 in sequence)",
       "predictedText": "Execution passed",
-      "duration": "5.89s",
-      "durationMs": 5889,
+      "duration": "5.00s",
+      "durationMs": 4996,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M09-T01",
@@ -1011,15 +1011,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M09-T01: Profanity filter on profane audio masks offensive words",
       "predictedText": "Execution passed",
-      "duration": "1.64s",
-      "durationMs": 1640,
+      "duration": "1.56s",
+      "durationMs": 1557,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M09-T02",
@@ -1033,15 +1033,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M09-T02: profanity_filter=false on profane audio without masking",
       "predictedText": "Execution passed",
-      "duration": "1.46s",
-      "durationMs": 1455,
+      "duration": "1.55s",
+      "durationMs": 1554,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M09-T03",
@@ -1055,15 +1055,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M09-T03: Profanity filter on clean audio (no change expected)",
       "predictedText": "Execution passed",
-      "duration": "0.46s",
-      "durationMs": 460,
+      "duration": "0.60s",
+      "durationMs": 604,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M09-T04",
@@ -1077,15 +1077,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M09-T04: Profanity filter with verbose_json response",
       "predictedText": "Execution passed",
-      "duration": "1.60s",
-      "durationMs": 1599,
+      "duration": "1.55s",
+      "durationMs": 1551,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M09-T05",
@@ -1099,15 +1099,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M09-T05: Multiple profane words in one utterance",
       "predictedText": "Execution passed",
-      "duration": "1.45s",
-      "durationMs": 1451,
+      "duration": "1.58s",
+      "durationMs": 1580,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M10-T01",
@@ -1121,15 +1121,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M10-T01: segments[].start and .end are numbers in ascending order",
       "predictedText": "Execution passed",
-      "duration": "0.47s",
-      "durationMs": 474,
+      "duration": "0.61s",
+      "durationMs": 610,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M10-T02",
@@ -1143,15 +1143,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M10-T02: words[] array present with word, start, end",
       "predictedText": "Execution passed",
-      "duration": "0.53s",
-      "durationMs": 531,
+      "duration": "0.63s",
+      "durationMs": 632,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M10-T03",
@@ -1165,15 +1165,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M10-T03: audio_duration is a positive float",
       "predictedText": "Execution passed",
-      "duration": "0.65s",
-      "durationMs": 650,
+      "duration": "0.61s",
+      "durationMs": 610,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M10-T04",
@@ -1187,15 +1187,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M10-T04: inference_time_ms is a positive number",
       "predictedText": "Execution passed",
-      "duration": "0.46s",
-      "durationMs": 461,
+      "duration": "0.60s",
+      "durationMs": 602,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M10-T05",
@@ -1209,15 +1209,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M10-T05: request_id is a non-empty string, unique per call",
       "predictedText": "Execution passed",
-      "duration": "2.86s",
-      "durationMs": 2858,
+      "duration": "2.18s",
+      "durationMs": 2180,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M10-T06",
@@ -1231,15 +1231,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M10-T06: No unexpected extra fields beyond the schema",
       "predictedText": "Execution passed",
-      "duration": "1.42s",
-      "durationMs": 1417,
+      "duration": "1.09s",
+      "durationMs": 1089,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M10-T07",
@@ -1253,15 +1253,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M10-T07: Response Content-Type is application/json",
       "predictedText": "Execution passed",
-      "duration": "0.05s",
-      "durationMs": 54,
+      "duration": "0.06s",
+      "durationMs": 61,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M10-T08",
@@ -1275,15 +1275,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M10-T08: Hindi transcription in verbose_json has correct structure",
       "predictedText": "Execution passed",
-      "duration": "0.57s",
-      "durationMs": 566,
+      "duration": "0.50s",
+      "durationMs": 503,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M15-T01",
@@ -1297,15 +1297,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M15-T01: HTTPS enforced (HTTP redirected or rejected)",
       "predictedText": "Execution passed",
-      "duration": "0.63s",
-      "durationMs": 630,
+      "duration": "0.50s",
+      "durationMs": 504,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M15-T02",
@@ -1319,15 +1319,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M15-T02: Wrong HTTP method (GET on POST endpoint) returns 405",
       "predictedText": "Execution passed",
-      "duration": "0.19s",
-      "durationMs": 191,
+      "duration": "0.17s",
+      "durationMs": 170,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M15-T03",
@@ -1341,15 +1341,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M15-T03: Unknown route returns 404",
       "predictedText": "Execution passed",
-      "duration": "0.19s",
-      "durationMs": 193,
+      "duration": "0.17s",
+      "durationMs": 171,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M15-T04",
@@ -1363,15 +1363,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M15-T04: Injection attempt (SQL injection in language_code)",
       "predictedText": "Execution passed",
-      "duration": "0.25s",
-      "durationMs": 253,
+      "duration": "0.23s",
+      "durationMs": 232,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M15-T05",
@@ -1385,15 +1385,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M15-T05: Swagger/docs endpoint accessible",
       "predictedText": "Execution passed",
-      "duration": "0.19s",
-      "durationMs": 191,
+      "duration": "0.17s",
+      "durationMs": 170,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M06-T01",
@@ -1407,15 +1407,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M06-T01: diarize=true with num_speakers=1 returns single speaker",
       "predictedText": "Execution passed",
-      "duration": "0.75s",
-      "durationMs": 748,
+      "duration": "0.71s",
+      "durationMs": 707,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M06-T02",
@@ -1429,15 +1429,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M06-T02: diarize=true with num_speakers=2 returns two speakers",
       "predictedText": "Execution passed",
-      "duration": "0.75s",
-      "durationMs": 753,
+      "duration": "0.70s",
+      "durationMs": 703,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M06-T03",
@@ -1451,15 +1451,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M06-T03: diarize=true with omitted num_speakers (auto-detect)",
       "predictedText": "Execution passed",
-      "duration": "0.75s",
-      "durationMs": 753,
+      "duration": "0.70s",
+      "durationMs": 702,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M06-T04",
@@ -1473,15 +1473,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M06-T04: num_speakers=0 or negative returns 400",
       "predictedText": "Execution passed",
-      "duration": "0.75s",
-      "durationMs": 746,
+      "duration": "0.70s",
+      "durationMs": 699,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M06-T05",
@@ -1495,15 +1495,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M06-T05: diarize=true with response_format=json returns text",
       "predictedText": "Execution passed",
-      "duration": "0.75s",
-      "durationMs": 749,
+      "duration": "0.70s",
+      "durationMs": 703,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M06-T06",
@@ -1517,15 +1517,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M06-T06: diarize=false (default) does not include speaker info",
       "predictedText": "Execution passed",
-      "duration": "0.67s",
-      "durationMs": 666,
+      "duration": "0.61s",
+      "durationMs": 614,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M18-T01",
@@ -1539,15 +1539,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M18-T01: Register speaker with name and audio file returns success",
       "predictedText": "Execution passed",
-      "duration": "0.42s",
-      "durationMs": 421,
+      "duration": "0.35s",
+      "durationMs": 350,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M18-T02",
@@ -1561,15 +1561,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M18-T02: Register with project parameter",
       "predictedText": "Execution passed",
-      "duration": "0.23s",
-      "durationMs": 226,
+      "duration": "0.19s",
+      "durationMs": 189,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M18-T03",
@@ -1583,15 +1583,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M18-T03: Delete existing speaker",
       "predictedText": "Execution passed",
-      "duration": "0.20s",
-      "durationMs": 198,
+      "duration": "0.18s",
+      "durationMs": 176,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M18-T04",
@@ -1605,15 +1605,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M18-T04: Delete non-existent speaker returns success or 404",
       "predictedText": "Execution passed",
-      "duration": "0.58s",
-      "durationMs": 585,
+      "duration": "0.51s",
+      "durationMs": 513,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M18-T05",
@@ -1627,15 +1627,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M18-T05: Register duplicate speaker name",
       "predictedText": "Execution passed",
-      "duration": "3.40s",
-      "durationMs": 3399,
+      "duration": "2.84s",
+      "durationMs": 2838,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M18-T06",
@@ -1649,15 +1649,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M18-T06: Missing name parameter returns 400",
       "predictedText": "Execution passed",
-      "duration": "0.58s",
-      "durationMs": 584,
+      "duration": "0.74s",
+      "durationMs": 741,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M17-T01",
@@ -1671,15 +1671,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M17-T01: Intent detection returns valid intent label",
       "predictedText": "Execution passed",
-      "duration": "1.35s",
-      "durationMs": 1350,
+      "duration": "1.40s",
+      "durationMs": 1404,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M17-T02",
@@ -1693,15 +1693,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M17-T02: Summarization returns condensed text",
       "predictedText": "Execution passed",
-      "duration": "2.10s",
-      "durationMs": 2104,
+      "duration": "2.12s",
+      "durationMs": 2119,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M17-T03",
@@ -1715,15 +1715,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M17-T03: Sentiment analysis returns label and score",
       "predictedText": "Execution passed",
-      "duration": "1.46s",
-      "durationMs": 1461,
+      "duration": "1.48s",
+      "durationMs": 1481,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M17-T04",
@@ -1737,15 +1737,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M17-T04: All three flags simultaneously",
       "predictedText": "Execution passed",
-      "duration": "1.68s",
-      "durationMs": 1681,
+      "duration": "1.67s",
+      "durationMs": 1669,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M17-T05",
@@ -1759,15 +1759,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M17-T05: Empty text returns 400",
       "predictedText": "Execution passed",
-      "duration": "0.19s",
-      "durationMs": 194,
+      "duration": "0.17s",
+      "durationMs": 168,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M17-T06",
@@ -1781,15 +1781,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M17-T06: Very long text with summarization",
       "predictedText": "Execution passed",
-      "duration": "1.66s",
-      "durationMs": 1659,
+      "duration": "1.81s",
+      "durationMs": 1812,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M17-T07",
@@ -1803,15 +1803,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M17-T07: Missing auth returns 401",
       "predictedText": "Execution passed",
-      "duration": "0.19s",
-      "durationMs": 194,
+      "duration": "0.17s",
+      "durationMs": 168,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M08-T01",
@@ -1825,15 +1825,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M08-T01: enable_intent_detection=true returns intent analysis",
       "predictedText": "Execution passed",
-      "duration": "1.32s",
-      "durationMs": 1319,
+      "duration": "1.24s",
+      "durationMs": 1239,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M08-T02",
@@ -1847,15 +1847,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M08-T02: All analysis flags omitted (default behavior)",
       "predictedText": "Execution passed",
-      "duration": "2.14s",
-      "durationMs": 2142,
+      "duration": "2.01s",
+      "durationMs": 2007,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M08-T03",
@@ -1869,15 +1869,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M08-T03: enable_sentiment_analysis=true returns sentiment",
       "predictedText": "Execution passed",
-      "duration": "1.46s",
-      "durationMs": 1457,
+      "duration": "1.33s",
+      "durationMs": 1326,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M08-T04",
@@ -1891,15 +1891,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M08-T04: Empty text returns 400",
       "predictedText": "Execution passed",
-      "duration": "0.19s",
-      "durationMs": 194,
+      "duration": "0.17s",
+      "durationMs": 169,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M16-T01",
@@ -1913,15 +1913,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T01: Connect with valid token, receive ready event",
       "predictedText": "Execution passed",
-      "duration": "0.78s",
-      "durationMs": 777,
+      "duration": "0.69s",
+      "durationMs": 688,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M16-T02",
@@ -1935,15 +1935,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T02: Send PCM audio frames, receive partial events",
       "predictedText": "Execution passed",
-      "duration": "1.19s",
-      "durationMs": 1193,
+      "duration": "1.06s",
+      "durationMs": 1064,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M16-T03",
@@ -1957,15 +1957,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T03: Send PCM, receive final event after end message",
       "predictedText": "Execution passed",
-      "duration": "3.01s",
-      "durationMs": 3014,
+      "duration": "2.91s",
+      "durationMs": 2909,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M16-T04",
@@ -1979,15 +1979,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T04: Verify speaker field on final when diarize=true",
       "predictedText": "Execution passed",
-      "duration": "3.02s",
-      "durationMs": 3015,
+      "duration": "2.89s",
+      "durationMs": 2889,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M16-T05",
@@ -2001,15 +2001,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T05: Wrong token returns error event and socket closes",
       "predictedText": "Execution passed",
-      "duration": "0.78s",
-      "durationMs": 781,
+      "duration": "0.68s",
+      "durationMs": 683,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M16-T06",
@@ -2023,15 +2023,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T06: Missing language field returns error",
       "predictedText": "Execution passed",
-      "duration": "15.59s",
-      "durationMs": 15587,
+      "duration": "15.68s",
+      "durationMs": 15684,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M16-T07",
@@ -2045,15 +2045,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T07: Connect to both /v1/realtime and /ws (same behavior)",
       "predictedText": "Execution passed",
-      "duration": "0.78s",
-      "durationMs": 776,
+      "duration": "0.67s",
+      "durationMs": 671,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M16-T08",
@@ -2067,15 +2067,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T08: Token in query parameter works",
       "predictedText": "Execution passed",
-      "duration": "0.82s",
-      "durationMs": 824,
+      "duration": "0.66s",
+      "durationMs": 664,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M16-T09",
@@ -2089,15 +2089,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T09: Token in first JSON message works",
       "predictedText": "Execution passed",
-      "duration": "0.77s",
-      "durationMs": 769,
+      "duration": "0.69s",
+      "durationMs": 687,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M16-T10",
@@ -2111,15 +2111,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T10: Sample rate 8kHz vs 16kHz produces good transcription",
       "predictedText": "Execution passed",
-      "duration": "1.64s",
-      "durationMs": 1640,
+      "duration": "1.35s",
+      "durationMs": 1350,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M03-T01",
@@ -2133,15 +2133,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M03-T01: Valid base64-encoded audio returns transcription",
       "predictedText": "Execution passed",
-      "duration": "1.93s",
-      "durationMs": 1926,
+      "duration": "1.77s",
+      "durationMs": 1775,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M03-T02",
@@ -2155,15 +2155,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M03-T02: data:audio/wav;base64 prefix handled correctly",
       "predictedText": "Execution passed",
-      "duration": "0.67s",
-      "durationMs": 665,
+      "duration": "0.61s",
+      "durationMs": 606,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M03-T03",
@@ -2177,15 +2177,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M03-T03: Malformed base64 returns 400",
       "predictedText": "Execution passed",
-      "duration": "0.19s",
-      "durationMs": 193,
+      "duration": "0.17s",
+      "durationMs": 171,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M03-T04",
@@ -2199,15 +2199,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M03-T04: Near-limit base64 audio processed",
       "predictedText": "Execution passed",
-      "duration": "0.69s",
-      "durationMs": 694,
+      "duration": "0.61s",
+      "durationMs": 607,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M03-T05",
@@ -2221,15 +2221,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M03-T05: Oversized base64 returns 413",
       "predictedText": "Execution passed",
-      "duration": "1.13s",
-      "durationMs": 1129,
+      "duration": "0.74s",
+      "durationMs": 736,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M03-T06",
@@ -2243,15 +2243,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M03-T06: Empty base64 string returns 400",
       "predictedText": "Execution passed",
-      "duration": "0.58s",
-      "durationMs": 579,
+      "duration": "0.51s",
+      "durationMs": 511,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M02-T01",
@@ -2265,15 +2265,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T01: WAV upload returns valid transcription @smoke",
       "predictedText": "Execution passed",
-      "duration": "1.51s",
-      "durationMs": 1514,
+      "duration": "1.28s",
+      "durationMs": 1276,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M02-T02",
@@ -2287,15 +2287,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T02: FLAC upload returns valid transcription",
       "predictedText": "Execution passed",
-      "duration": "0.71s",
-      "durationMs": 709,
+      "duration": "0.60s",
+      "durationMs": 603,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M02-T03",
@@ -2309,15 +2309,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T03: OGG/Opus upload returns valid transcription",
       "predictedText": "Execution passed",
-      "duration": "1.54s",
-      "durationMs": 1544,
+      "duration": "1.55s",
+      "durationMs": 1555,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M02-T04",
@@ -2331,15 +2331,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T04: MP3 at 8kHz sample rate",
       "predictedText": "Execution passed",
-      "duration": "0.57s",
-      "durationMs": 572,
+      "duration": "0.44s",
+      "durationMs": 439,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M02-T05",
@@ -2353,15 +2353,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T05: MP3 at 16kHz sample rate",
       "predictedText": "Execution passed",
-      "duration": "0.47s",
-      "durationMs": 472,
+      "duration": "0.44s",
+      "durationMs": 436,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M02-T06",
@@ -2375,15 +2375,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T06: Stereo audio file accepted and processed",
       "predictedText": "Execution passed",
-      "duration": "1.67s",
-      "durationMs": 1666,
+      "duration": "3.70s",
+      "durationMs": 3696,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M02-T07",
@@ -2397,15 +2397,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T07: File ~25MB (moderate size)",
       "predictedText": "Execution passed",
-      "duration": "1.38s",
-      "durationMs": 1375,
+      "duration": "2.21s",
+      "durationMs": 2215,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M02-T08",
@@ -2419,15 +2419,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T08: File ~70MB (near limit, expect 200 or 413)",
       "predictedText": "Execution passed",
-      "duration": "1.49s",
-      "durationMs": 1492,
+      "duration": "1.37s",
+      "durationMs": 1369,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M02-T09",
@@ -2441,15 +2441,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T09: Corrupted audio file returns 400",
       "predictedText": "Execution passed",
-      "duration": "0.35s",
-      "durationMs": 354,
+      "duration": "0.62s",
+      "durationMs": 617,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M02-T10",
@@ -2463,15 +2463,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T10: Empty audio file returns 400",
       "predictedText": "Execution passed",
-      "duration": "0.44s",
-      "durationMs": 436,
+      "duration": "0.31s",
+      "durationMs": 311,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M02-T11",
@@ -2485,15 +2485,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T11: Silent audio returns empty transcription",
       "predictedText": "Execution passed",
-      "duration": "0.78s",
-      "durationMs": 775,
+      "duration": "0.77s",
+      "durationMs": 767,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M02-T12",
@@ -2507,15 +2507,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T12: Very short audio (<1s) processed",
       "predictedText": "Execution passed",
-      "duration": "0.44s",
-      "durationMs": 439,
+      "duration": "0.31s",
+      "durationMs": 311,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M02-T14",
@@ -2529,15 +2529,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T14: Long audio (max-length) processed",
       "predictedText": "Execution passed",
-      "duration": "0.66s",
-      "durationMs": 663,
+      "duration": "0.60s",
+      "durationMs": 601,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M05-T01",
@@ -2551,15 +2551,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M05-T01: Default response_format returns json with only text field @smoke",
       "predictedText": "Execution passed",
-      "duration": "0.76s",
-      "durationMs": 757,
+      "duration": "0.60s",
+      "durationMs": 598,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M05-T02",
@@ -2573,15 +2573,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M05-T02: Explicit response_format=json returns only text",
       "predictedText": "Execution passed",
-      "duration": "0.67s",
-      "durationMs": 667,
+      "duration": "0.60s",
+      "durationMs": 601,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M05-T03",
@@ -2595,15 +2595,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M05-T03: response_format=verbose_json returns full schema",
       "predictedText": "Execution passed",
-      "duration": "0.68s",
-      "durationMs": 678,
+      "duration": "0.61s",
+      "durationMs": 612,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M05-T04",
@@ -2617,15 +2617,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M05-T04: Invalid response_format value returns 400",
       "predictedText": "Execution passed",
-      "duration": "0.65s",
-      "durationMs": 652,
+      "duration": "0.59s",
+      "durationMs": 593,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_LATEX_01",
@@ -2639,15 +2639,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_LATEX_01: Synthesize math problem with algebraic expression",
       "predictedText": "Execution passed",
-      "duration": "3.06s",
-      "durationMs": 3057,
+      "duration": "2.77s",
+      "durationMs": 2768,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_LATEX_02",
@@ -2661,15 +2661,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_LATEX_02: Synthesize fraction and quadratic equation with LaTeX",
       "predictedText": "Execution passed",
-      "duration": "1.84s",
-      "durationMs": 1844,
+      "duration": "1.92s",
+      "durationMs": 1915,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_LATEX_03",
@@ -2683,15 +2683,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_LATEX_03: Synthesize Hindi mathematics with LaTeX",
       "predictedText": "Execution passed",
-      "duration": "2.70s",
-      "durationMs": 2696,
+      "duration": "2.58s",
+      "durationMs": 2583,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_ERR_01",
@@ -2705,15 +2705,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_ERR_01: Request without authentication returns 401",
       "predictedText": "Execution passed",
-      "duration": "0.19s",
-      "durationMs": 193,
+      "duration": "0.17s",
+      "durationMs": 169,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_ERR_02",
@@ -2727,15 +2727,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_ERR_02: Empty text input returns 400 or 422 Bad Request",
       "predictedText": "Execution passed",
-      "duration": "0.19s",
-      "durationMs": 193,
+      "duration": "0.17s",
+      "durationMs": 169,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_ERR_03",
@@ -2749,15 +2749,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_ERR_03: OpenAI speech endpoint without input returns 400 or 422",
       "predictedText": "Execution passed",
-      "duration": "0.19s",
-      "durationMs": 192,
+      "duration": "0.17s",
+      "durationMs": 169,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_OPENAI_01",
@@ -2771,15 +2771,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_OPENAI_01: Synthesize with tts-1 model and Meera voice",
       "predictedText": "Execution passed",
-      "duration": "0.47s",
-      "durationMs": 468,
+      "duration": "0.44s",
+      "durationMs": 444,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_OPENAI_02",
@@ -2793,15 +2793,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_OPENAI_02: Synthesize raw PCM output for low-latency streaming pipeline",
       "predictedText": "Execution passed",
-      "duration": "0.60s",
-      "durationMs": 597,
+      "duration": "0.55s",
+      "durationMs": 548,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_OPENAI_03",
@@ -2815,15 +2815,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_OPENAI_03: Synthesize with OpenAI standard voice aliases (e.g. nova, alloy)",
       "predictedText": "Execution passed",
-      "duration": "0.44s",
-      "durationMs": 439,
+      "duration": "0.41s",
+      "durationMs": 414,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_OPENAI_04",
@@ -2837,15 +2837,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_OPENAI_04: Synthesize with speed parameter variations",
       "predictedText": "Execution passed",
-      "duration": "0.49s",
-      "durationMs": 490,
+      "duration": "0.47s",
+      "durationMs": 465,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_01",
@@ -2859,15 +2859,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_01: Synthesize English speech with default voice (Meera)",
       "predictedText": "Execution passed",
-      "duration": "0.78s",
-      "durationMs": 783,
+      "duration": "0.71s",
+      "durationMs": 712,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_02",
@@ -2881,15 +2881,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_02: Synthesize Hindi speech with named voice (Arjun)",
       "predictedText": "Execution passed",
-      "duration": "0.60s",
-      "durationMs": 596,
+      "duration": "0.54s",
+      "durationMs": 543,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_03",
@@ -2903,15 +2903,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_03: Synthesize with different supported voices",
       "predictedText": "Execution passed",
-      "duration": "3.54s",
-      "durationMs": 3537,
+      "duration": "2.93s",
+      "durationMs": 2933,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_04",
@@ -2925,15 +2925,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_04: Synthesize with different response formats (wav, mp3, flac, pcm)",
       "predictedText": "Execution passed",
-      "duration": "2.51s",
-      "durationMs": 2514,
+      "duration": "2.12s",
+      "durationMs": 2122,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "TTS_05",
@@ -2947,15 +2947,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_05: Synthesize with speed adjustment parameter",
       "predictedText": "Execution passed",
-      "duration": "1.62s",
-      "durationMs": 1618,
+      "duration": "1.48s",
+      "durationMs": 1480,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M07-T01",
@@ -2969,15 +2969,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M07-T01: Single phrase boosting affects output",
       "predictedText": "Execution passed",
-      "duration": "1.90s",
-      "durationMs": 1903,
+      "duration": "1.74s",
+      "durationMs": 1737,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M07-T02",
@@ -2991,15 +2991,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M07-T02: Multiple pipe-separated phrases",
       "predictedText": "Execution passed",
-      "duration": "0.76s",
-      "durationMs": 759,
+      "duration": "0.70s",
+      "durationMs": 702,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M07-T03",
@@ -3013,15 +3013,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M07-T03: Case-insensitive phrase matching",
       "predictedText": "Execution passed",
-      "duration": "0.67s",
-      "durationMs": 668,
+      "duration": "0.59s",
+      "durationMs": 594,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M07-T04",
@@ -3035,15 +3035,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M07-T04: Default weight behavior",
       "predictedText": "Execution passed",
-      "duration": "0.67s",
-      "durationMs": 667,
+      "duration": "0.60s",
+      "durationMs": 599,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M07-T05",
@@ -3057,15 +3057,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M07-T05: Higher weight vs default weight",
       "predictedText": "Execution passed",
-      "duration": "0.76s",
-      "durationMs": 757,
+      "duration": "0.69s",
+      "durationMs": 694,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M07-T06",
@@ -3079,15 +3079,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M07-T06: Weight parameter without phrases",
       "predictedText": "Execution passed",
-      "duration": "0.65s",
-      "durationMs": 648,
+      "duration": "0.61s",
+      "durationMs": 607,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     },
     {
       "id": "M07-T07",
@@ -3101,15 +3101,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M07-T07: Malformed separator handling",
       "predictedText": "Execution passed",
-      "duration": "0.75s",
-      "durationMs": 754,
+      "duration": "0.60s",
+      "durationMs": 602,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-09-12T14:23:35.012Z"
+      "timestamp": "2026-09-13T00:11:51.843Z"
     }
   ]
 }
