@@ -441,6 +441,28 @@ function normalizeRunJSON(jsonObj: any, fallbackDate: string): RunData {
   // Tests
   let tests: TestCaseRecord[] = Array.isArray(jsonObj.tests) ? jsonObj.tests : [];
 
+  // Merge failures array into tests if present to guarantee status and failureReason accuracy
+  if (Array.isArray(jsonObj.failures) && jsonObj.failures.length > 0 && tests.length > 0) {
+    const failMap = new Map<string, any>();
+    for (const f of jsonObj.failures) {
+      if (f.testId) failMap.set(f.testId, f);
+      if (f.description) failMap.set(f.description, f);
+    }
+    tests = tests.map(t => {
+      const f = failMap.get(t.id) || failMap.get(t.title) || failMap.get(t.description);
+      if (f) {
+        return {
+          ...t,
+          status: 'failed',
+          failureReason: f.failureReason || t.failureReason || 'Failed',
+          predictedText: t.predictedText && t.predictedText !== 'Execution passed' ? t.predictedText : (f.failureReason || 'Failed'),
+          accuracy: '0%',
+        };
+      }
+      return t;
+    });
+  }
+
   // If tests are empty, generate synthetic records from modules so modal inspection works perfectly
   if (tests.length === 0 && Object.keys(normalizedModules).length > 0) {
     let tCount = 1;
@@ -1600,11 +1622,15 @@ function filterTestCasesTable() {
    INSPECT SINGLE TEST MODAL
    ══════════════════════════════════════════════════════════ */
 function openTestModalByTest(testId, suite, moduleName, title) {
-  const testsPool = (currentSelectedMatrixRun && currentSelectedMatrixRun.tests && currentSelectedMatrixRun.tests.length > 0)
-    ? currentSelectedMatrixRun.tests
-    : ((currentModalRun && currentModalRun.tests && currentModalRun.tests.length > 0)
-      ? currentModalRun.tests
-      : latestData.tests);
+  // If a run modal is currently open, prioritize inspecting that run's test cases
+  const isRunModalOpen = document.getElementById('modalOverlay')?.classList.contains('open');
+  const testsPool = (isRunModalOpen && currentModalRun && currentModalRun.tests && currentModalRun.tests.length > 0)
+    ? currentModalRun.tests
+    : ((currentSelectedMatrixRun && currentSelectedMatrixRun.tests && currentSelectedMatrixRun.tests.length > 0)
+      ? currentSelectedMatrixRun.tests
+      : ((currentModalRun && currentModalRun.tests && currentModalRun.tests.length > 0)
+        ? currentModalRun.tests
+        : latestData.tests));
 
   // Match with highest precision: ID + title + module, falling back to ID + suite, then exact ID
   let t = testsPool.find(item => item.id === testId && item.title === title && (item.module === moduleName || item.suite === suite));
@@ -1756,7 +1782,7 @@ function renderModalTestsHTML(tests, filter) {
   return filtered.map(t => {
     const isSmoke = t.priority === 'P0' || t.suite === 'Core System' || t.module === 'Core-System-Tests';
     return \`
-    <div class="modal-test" onclick="openTestModalDirectly('\${t.id}')">
+    <div class="modal-test" onclick="openTestModalByTest(\${JSON.stringify(t.id)}, \${JSON.stringify(t.suite || '')}, \${JSON.stringify(t.module || '')}, \${JSON.stringify(t.title || '')})">
       <div class="mt-head">
         <div class="mt-title">\${esc(t.title)}</div>
         <span class="pill \${t.status === 'passed' ? 'pill-pass' : 'pill-fail'}">\${t.status.toUpperCase()}</span>

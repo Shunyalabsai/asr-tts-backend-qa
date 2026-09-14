@@ -873,11 +873,15 @@ function filterTestCasesTable() {
    INSPECT SINGLE TEST MODAL
    ══════════════════════════════════════════════════════════ */
 function openTestModalByTest(testId, suite, moduleName, title) {
-  const testsPool = (currentSelectedMatrixRun && currentSelectedMatrixRun.tests && currentSelectedMatrixRun.tests.length > 0)
-    ? currentSelectedMatrixRun.tests
-    : ((currentModalRun && currentModalRun.tests && currentModalRun.tests.length > 0)
-      ? currentModalRun.tests
-      : latestData.tests);
+  // If a run modal is currently open, prioritize inspecting that run's test cases
+  const isRunModalOpen = document.getElementById('modalOverlay')?.classList.contains('open');
+  const testsPool = (isRunModalOpen && currentModalRun && currentModalRun.tests && currentModalRun.tests.length > 0)
+    ? currentModalRun.tests
+    : ((currentSelectedMatrixRun && currentSelectedMatrixRun.tests && currentSelectedMatrixRun.tests.length > 0)
+      ? currentSelectedMatrixRun.tests
+      : ((currentModalRun && currentModalRun.tests && currentModalRun.tests.length > 0)
+        ? currentModalRun.tests
+        : latestData.tests));
 
   // Match with highest precision: ID + title + module, falling back to ID + suite, then exact ID
   let t = testsPool.find(item => item.id === testId && item.title === title && (item.module === moduleName || item.suite === suite));
@@ -1029,7 +1033,7 @@ function renderModalTestsHTML(tests, filter) {
   return filtered.map(t => {
     const isSmoke = t.priority === 'P0' || t.suite === 'Core System' || t.module === 'Core-System-Tests';
     return `
-    <div class="modal-test" onclick="openTestModalDirectly('${t.id}')">
+    <div class="modal-test" onclick="openTestModalByTest(${JSON.stringify(t.id)}, ${JSON.stringify(t.suite || '')}, ${JSON.stringify(t.module || '')}, ${JSON.stringify(t.title || '')})">
       <div class="mt-head">
         <div class="mt-title">${esc(t.title)}</div>
         <span class="pill ${t.status === 'passed' ? 'pill-pass' : 'pill-fail'}">${t.status.toUpperCase()}</span>
