@@ -1518,7 +1518,7 @@ function renderAllTestCasesTable(tests) {
       <td style="font-family:monospace;font-size:12px;color:var(--muted)">\${formatDuration(t.durationMs)}</td>
       <td><span class="pill \${t.status === 'passed' ? 'pill-pass' : (t.status === 'skipped' ? 'pill-skip' : 'pill-fail')}">\${t.status.toUpperCase()}</span></td>
       <td>
-        <button class="btn" onclick="openTestModalByTest(\${JSON.stringify(t.id)}, \${JSON.stringify(t.suite || '')}, \${JSON.stringify(t.module || '')}, \${JSON.stringify(t.title || '')})" style="padding:4px 10px;font-size:11px;font-weight:600">
+        <button class="btn" data-id="\${t.id}" data-suite="\${esc(t.suite || '')}" data-module="\${esc(t.module || '')}" data-title="\${esc(t.title || '')}" onclick="openTestModalByTest(this.getAttribute('data-id'), this.getAttribute('data-suite'), this.getAttribute('data-module'), this.getAttribute('data-title'))" style="padding:4px 10px;font-size:11px;font-weight:600">
           Inspect
         </button>
       </td>
@@ -1782,7 +1782,7 @@ function renderModalTestsHTML(tests, filter) {
   return filtered.map(t => {
     const isSmoke = t.priority === 'P0' || t.suite === 'Core System' || t.module === 'Core-System-Tests';
     return \`
-    <div class="modal-test" onclick="openTestModalByTest(\${JSON.stringify(t.id)}, \${JSON.stringify(t.suite || '')}, \${JSON.stringify(t.module || '')}, \${JSON.stringify(t.title || '')})">
+    <div class="modal-test" data-id="\${t.id}" data-suite="\${esc(t.suite || '')}" data-module="\${esc(t.module || '')}" data-title="\${esc(t.title || '')}" onclick="openTestModalByTest(this.getAttribute('data-id'), this.getAttribute('data-suite'), this.getAttribute('data-module'), this.getAttribute('data-title'))">
       <div class="mt-head">
         <div class="mt-title">\${esc(t.title)}</div>
         <span class="pill \${t.status === 'passed' ? 'pill-pass' : 'pill-fail'}">\${t.status.toUpperCase()}</span>
