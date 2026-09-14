@@ -750,7 +750,7 @@ function renderAllTestCasesTable(tests) {
   if (!tbody) return;
   tbody.innerHTML = '';
 
-  tests.forEach(t => {
+  tests.forEach((t, idx) => {
     const pClass = (t.priority || 'P1').toLowerCase();
     const isSmoke = t.priority === 'P0' || t.suite === 'Core System' || t.module === 'Core-System-Tests';
     const tr = document.createElement('tr');
@@ -769,7 +769,7 @@ function renderAllTestCasesTable(tests) {
       <td style="font-family:monospace;font-size:12px;color:var(--muted)">${formatDuration(t.durationMs)}</td>
       <td><span class="pill ${t.status === 'passed' ? 'pill-pass' : (t.status === 'skipped' ? 'pill-skip' : 'pill-fail')}">${t.status.toUpperCase()}</span></td>
       <td>
-        <button class="btn" onclick="openTestModalDirectly('${t.id}')" style="padding:4px 10px;font-size:11px;font-weight:600">
+        <button class="btn" onclick="openTestModalByTest(${JSON.stringify(t.id)}, ${JSON.stringify(t.suite || '')}, ${JSON.stringify(t.module || '')}, ${JSON.stringify(t.title || '')})" style="padding:4px 10px;font-size:11px;font-weight:600">
           Inspect
         </button>
       </td>
@@ -872,15 +872,34 @@ function filterTestCasesTable() {
 /* ══════════════════════════════════════════════════════════
    INSPECT SINGLE TEST MODAL
    ══════════════════════════════════════════════════════════ */
-function openTestModalDirectly(testId) {
+function openTestModalByTest(testId, suite, moduleName, title) {
   const testsPool = (currentSelectedMatrixRun && currentSelectedMatrixRun.tests && currentSelectedMatrixRun.tests.length > 0)
     ? currentSelectedMatrixRun.tests
     : ((currentModalRun && currentModalRun.tests && currentModalRun.tests.length > 0)
       ? currentModalRun.tests
       : latestData.tests);
-  const t = testsPool.find(item => item.id === testId || item.id.endsWith(':' + testId)) || latestData.tests.find(item => item.id === testId || item.id.endsWith(':' + testId));
+
+  // Match with highest precision: ID + title + module, falling back to ID + suite, then exact ID
+  let t = testsPool.find(item => item.id === testId && item.title === title && (item.module === moduleName || item.suite === suite));
+  if (!t) {
+    t = testsPool.find(item => item.id === testId && (item.module === moduleName || item.suite === suite));
+  }
+  if (!t) {
+    t = testsPool.find(item => item.id === testId || item.id.endsWith(':' + testId));
+  }
+  if (!t && latestData.tests) {
+    t = latestData.tests.find(item => item.id === testId && item.title === title) || latestData.tests.find(item => item.id === testId);
+  }
   if (!t) return;
 
+  renderModalContentForTest(t);
+}
+
+function openTestModalDirectly(testId) {
+  openTestModalByTest(testId, '', '', '');
+}
+
+function renderModalContentForTest(t) {
   const isSmoke = t.priority === 'P0' || t.suite === 'Core System' || t.module === 'Core-System-Tests';
   const body = `
     <div style="display:flex;flex-direction:column;gap:14px">
@@ -888,7 +907,7 @@ function openTestModalDirectly(testId) {
         <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Test Identifier & Subsystem</div>
         <span class="badge-id">${t.id}</span>
         ${isSmoke ? '<span class="badge-smoke" title="P0 Smoke Test" style="margin-left:4px">🔥 SMOKE</span>' : ''}
-        &middot; <strong style="color:#fff">${t.moduleLabel}</strong> &middot; <span style="color:#c4b5fd">${t.feature}</span>
+        &middot; <strong style="color:#fff">${t.moduleLabel || t.module}</strong> &middot; <span style="color:#c4b5fd">${t.feature}</span>
       </div>
       <div>
         <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Scenario & Objective</div>
