@@ -240,37 +240,115 @@ function findAudioForLanguage(language: string, expectedLangCode?: string, testI
 
 // ─── Tab Configuration & Mappings ──────────────────────────────────
 
-// ─── Dialect Root Language Mapping ─────────────────────────────────
+// ─── Supported Dialect Exact Language Mapping ────────────────────────
 
-const DIALECT_PARENT_LANGUAGES: Record<string, string> = {
-  ahr: 'hi', // Ahirani -> Hindi
-  awa: 'hi', // Awadhi -> Hindi
-  bfy: 'hi', // Bagheli -> Hindi
-  bgq: 'hi', // Bagri -> Hindi
-  bho: 'hi', // Bhojpuri -> Hindi
-  bra: 'hi', // Braj -> Hindi
-  bwq: 'hi', // Banjari -> Hindi
-  bhi: 'hi', // Bhili -> Hindi
-  chg: 'hi', // Chhattisgarhi -> Hindi
-  doi: 'hi', // Dogri -> Hindi
-  gbm: 'hi', // Garhwali -> Hindi
-  gon: 'hi', // Gondi -> Hindi
-  hne: 'hi', // Haryanvi -> Hindi
-  hoj: 'hi', // Harouti -> Hindi
-  kfy: 'hi', // Kumaoni -> Hindi
-  kfr: 'gu', // Kachchhi -> Gujarati
-  kru: 'hi', // Kurukh -> Hindi
-  mag: 'hi', // Magahi -> Hindi
-  mai: 'hi', // Maithili -> Hindi
-  mup: 'hi', // Malvi -> Hindi
-  mwr: 'hi', // Marwari -> Hindi
-  noe: 'hi', // Nimadi -> Hindi
-  raj: 'hi', // Rajasthani -> Hindi
-  xnr: 'hi', // Kangri -> Hindi
-  sck: 'hi', // Sadri -> Hindi
-  sgj: 'hi', // Surgujia -> Hindi
-  spv: 'or', // Sambalpuri -> Odia
-  tcy: 'kn', // Tulu -> Kannada
+const SUPPORTED_DIALECT_EXACT_MAP: Record<string, string> = {
+  'ahirani': 'ahirani',
+  'ahr': 'ahirani',
+  'assamese': 'as',
+  'as': 'as',
+  'awadhi': 'awadhi',
+  'awa': 'awadhi',
+  'bagheli': 'bagheli',
+  'bfy': 'bagheli',
+  'bagri': 'bagri',
+  'bgq': 'bagri',
+  'banjari': 'banjari',
+  'bwq': 'banjari',
+  'bengali': 'bn',
+  'bn': 'bn',
+  'bhili': 'bhili',
+  'bhb': 'bhili',
+  'bhojpuri': 'bhojpuri',
+  'bho': 'bhojpuri',
+  'bodo': 'brx',
+  'brx': 'brx',
+  'braj': 'braj',
+  'bra': 'braj',
+  'bundeli': 'bundeli',
+  'bns': 'bundeli',
+  'chhattisgarhi': 'chhattisgarhi',
+  'chg': 'chhattisgarhi',
+  'hne': 'chhattisgarhi',
+  'dogri': 'doi',
+  'doi': 'doi',
+  'garhwali': 'garhwali',
+  'gbm': 'garhwali',
+  'garo': 'garo',
+  'grt': 'garo',
+  'gujarati': 'gu',
+  'gu': 'gu',
+  'harouti': 'harouti',
+  'hoj': 'harouti',
+  'haryanvi': 'haryanvi',
+  'hindi': 'hi',
+  'hi': 'hi',
+  'kachchhi': 'kachchhi',
+  'kfr': 'kachchhi',
+  'kangri': 'kangri',
+  'xnr': 'kangri',
+  'kannada': 'kn',
+  'kn': 'kn',
+  'kashmiri': 'ks',
+  'ks': 'ks',
+  'khortha': 'khortha',
+  'ktk': 'khortha',
+  'kodava': 'kodava',
+  'kfa': 'kodava',
+  'konkani': 'kok',
+  'kok': 'kok',
+  'kumaoni': 'kumaoni',
+  'kfy': 'kumaoni',
+  'kurukh': 'kurukh',
+  'kru': 'kurukh',
+  'lambadi': 'lambadi',
+  'lmn': 'lambadi',
+  'magahi': 'magahi',
+  'mag': 'magahi',
+  'maithili': 'mai',
+  'mai': 'mai',
+  'malayalam': 'ml',
+  'ml': 'ml',
+  'manipuri': 'mni',
+  'mni': 'mni',
+  'marathi': 'mr',
+  'mr': 'mr',
+  'marwadi': 'marwadi',
+  'mwr': 'marwadi',
+  'mewari': 'mewari',
+  'mtr': 'mewari',
+  'nepali': 'ne',
+  'ne': 'ne',
+  'nimadi': 'nimadi',
+  'noe': 'nimadi',
+  'odia': 'or',
+  'or': 'or',
+  'pahari mahasui': 'pahari mahasui',
+  'him': 'pahari mahasui',
+  'punjabi': 'pa',
+  'pa': 'pa',
+  'rajasthani': 'rajasthani',
+  'raj': 'rajasthani',
+  'sambalpuri': 'sambalpuri',
+  'spv': 'sambalpuri',
+  'sanskrit': 'sa',
+  'sa': 'sa',
+  'santali': 'sat',
+  'sat': 'sat',
+  'sindhi': 'sd',
+  'sd': 'sd',
+  'surgujia': 'surgujia',
+  'sgj': 'surgujia',
+  'tamil': 'ta',
+  'ta': 'ta',
+  'telugu': 'te',
+  'te': 'te',
+  'tulu': 'tcy',
+  'tcy': 'tcy',
+  'urdu': 'ur',
+  'ur': 'ur',
+  'english': 'en',
+  'en': 'en'
 };
 
 export function resolveLanguageParam(langCode?: string, languageName?: string): string | undefined {
@@ -278,13 +356,13 @@ export function resolveLanguageParam(langCode?: string, languageName?: string): 
   const code = (langCode || '').toLowerCase().trim();
   const name = (languageName || '').toLowerCase().trim();
 
-  if (code && DIALECT_PARENT_LANGUAGES[code]) {
-    return DIALECT_PARENT_LANGUAGES[code];
+  if (name && SUPPORTED_DIALECT_EXACT_MAP[name]) {
+    return SUPPORTED_DIALECT_EXACT_MAP[name];
   }
-  if (name && DIALECT_PARENT_LANGUAGES[name]) {
-    return DIALECT_PARENT_LANGUAGES[name];
+  if (code && SUPPORTED_DIALECT_EXACT_MAP[code]) {
+    return SUPPORTED_DIALECT_EXACT_MAP[code];
   }
-  if (code && code !== 'auto') return code;
+  if (code && code !== 'auto' && code !== 'undefined') return code;
   return undefined;
 }
 
@@ -1086,6 +1164,7 @@ async function runModelTab(
 
   const idIdx = idx('test_case_id') >= 0 ? idx('test_case_id') : idx('test case id');
   const audioIdx = idx('audio url') >= 0 ? idx('audio url') : (idx('audio_url') >= 0 ? idx('audio_url') : idx('audio'));
+  const translitIdx = idx('english transliteration') >= 0 ? idx('english transliteration') : idx('transliteration');
   const gtIdx = idx('expected text') >= 0 ? idx('expected text') : (idx('reference') >= 0 ? idx('reference') : (idx('transcript') >= 0 ? idx('transcript') : (idx('ground_truth') >= 0 ? idx('ground_truth') : idx('ground truth'))));
   const langIdx = idx('language') >= 0 ? idx('language') : idx('lang');
   const expLangCodeIdx = idx('expected_language_code') >= 0 ? idx('expected_language_code') : idx('language_code');
@@ -1095,14 +1174,26 @@ async function runModelTab(
   let totalLatency = 0;
   const tabConcurrency = mapping.concurrency || CONCURRENCY;
 
-  const outputRows = await runWithPool(validRows, tabConcurrency, async (row, rIdx) => {
+    const rawResults = await runWithPool(validRows, tabConcurrency, async (row, rIdx) => {
     const testId = idIdx >= 0 && row[idIdx] ? String(row[idIdx]).trim() : `TC_${rIdx + 1}`;
     let rawAudio = audioIdx >= 0 ? String(row[audioIdx] || '').trim() : '';
-    const groundTruth = gtIdx >= 0 ? String(row[gtIdx] || '').trim() : '';
+    let groundTruth = gtIdx >= 0 ? String(row[gtIdx] || '').trim() : '';
+    const transliteration = translitIdx >= 0 ? String(row[translitIdx] || '').trim() : '';
     let language = langIdx >= 0 ? String(row[langIdx] || '').trim() : '';
     let expectedLangCode = expLangCodeIdx >= 0 ? String(row[expLangCodeIdx] || '').trim() : '';
     const detectLangCode = detLangCodeIdx >= 0 ? String(row[detLangCodeIdx] || '').trim() : '';
     const timestamp = getTimestamp();
+
+    const langLower = (language || '').toLowerCase().trim();
+    // Exclude ignored dialects: Ahirani, Banjari, Khortha, Sambalpuri
+    if (['ahirani', 'banjari', 'khortha', 'sambalpuri'].includes(langLower)) {
+      return null as any;
+    }
+
+    // For Garo, model outputs Latin script orthography -> evaluate against transliteration
+    if (langLower === 'garo' && transliteration) {
+      groundTruth = transliteration;
+    }
 
     if (testId && UNIVERSAL_TC_FALLBACKS[testId]) {
       if (!language) language = UNIVERSAL_TC_FALLBACKS[testId].language;
@@ -1205,6 +1296,8 @@ async function runModelTab(
       ];
     }
   });
+
+  const outputRows = rawResults.filter((r: any) => r !== null && Array.isArray(r));
 
   const passed = outputRows.filter(r => r[13] === 'PASS').length;
   const failed = outputRows.filter(r => r[13] === 'FAIL').length;

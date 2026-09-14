@@ -293,10 +293,15 @@ export class GoogleSheetsReporter {
   async writeEverything(summary: ExecutionSummary): Promise<void> {
     const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
+    // 1. Write active Dashboard summary
     await this.writeSummary(summary);
     await sleep(350);
 
-    // Write each module's sheet
+    // 2. Append to historical Run Audit Log tab (never overwriting historical runs)
+    await this.appendHistoryRun(summary);
+    await sleep(350);
+
+    // 3. Write each module's sheet
     const byModule = new Map<string, TestResult[]>();
     for (const r of summary.results) {
       const list = byModule.get(r.module) || [];
@@ -309,8 +314,65 @@ export class GoogleSheetsReporter {
       await sleep(350);
     }
 
-    // Write all-failures sheet
+    // 4. Write all-failures sheet
     await this.writeAllFailuresSheet(summary.results);
+  }
+
+  /**
+   * Appends execution summary to the immutable 'Run_History' audit tab
+   */
+  async appendHistoryRun(summary: ExecutionSummary): Promise<void> {
+    if (!this.spreadsheetId) return;
+    try {
+      const { google } = await import('googleapis');
+      const auth = await this.getAuth();
+      const sheets = google.sheets({ version: 'v4', auth });
+
+      const historyTab = 'Run_History';
+      await this.ensureSheetNamed(sheets, historyTab);
+
+      const passRate = summary.totalTests > 0
+        ? ((summary.passed / summary.totalTests) * 100).toFixed(1) + '%'
+        : '0.0%';
+
+      const row = [
+        new Date().toISOString(),
+        summary.date,
+        String(summary.totalTests),
+        String(summary.passed),
+        String(summary.failed),
+        String(summary.skipped),
+        passRate,
+        String(Math.round(summary.durationMs / 1000)) + 's',
+      ];
+
+      // Check if header exists
+      const existing = await sheets.spreadsheets.values.get({
+        spreadsheetId: this.spreadsheetId,
+        range: `${historyTab}!A1:H1`,
+      });
+
+      if (!existing.data.values || existing.data.values.length === 0) {
+        await sheets.spreadsheets.values.update({
+          spreadsheetId: this.spreadsheetId,
+          range: `${historyTab}!A1`,
+          valueInputOption: 'RAW',
+          requestBody: {
+            values: [['Timestamp (UTC)', 'Run Date', 'Total Tests', 'Passed', 'Failed', 'Skipped', 'Pass Rate', 'Duration']],
+          },
+        });
+      }
+
+      await sheets.spreadsheets.values.append({
+        spreadsheetId: this.spreadsheetId,
+        range: `${historyTab}!A:H`,
+        valueInputOption: 'USER_ENTERED',
+        requestBody: { values: [row] },
+      });
+      console.log(`GoogleSheets: Run history appended to "${historyTab}" tab.`);
+    } catch (err: any) {
+      console.warn(`GoogleSheetsReporter: Could not append run history: ${err.message}`);
+    }
   }
 
   // ─── Private Helpers ─────────────────────────────────────────────
