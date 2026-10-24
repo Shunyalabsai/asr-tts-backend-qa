@@ -1,0 +1,71 @@
+{
+  "id": "RUN-20260901-131953",
+  "date": "2026-09-01",
+  "startedAt": "2026-09-01T07:49:53.728Z",
+  "completedAt": "2026-09-01T07:49:54.571Z",
+  "totalTests": 2,
+  "passed": 2,
+  "failed": 0,
+  "skipped": 0,
+  "passRate": "100.0",
+  "durationMs": 843,
+  "modules": [
+    {
+      "module": "Health",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 213,
+      "p50LatencyMs": 88,
+      "p95LatencyMs": 338
+    }
+  ],
+  "failures": [],
+  "tests": [
+    {
+      "id": "M13-T01",
+      "suite": "Core System",
+      "module": "Health",
+      "moduleLabel": "Health",
+      "feature": "Health",
+      "title": "M13-T01: /health returns status ok @smoke",
+      "description": "M13-T01: /health returns status ok @smoke",
+      "audioPath": "Direct API Payload / Fixture",
+      "language": "Auto / Multilingual",
+      "groundTruth": "M13-T01: /health returns status ok @smoke",
+      "predictedText": "Execution passed",
+      "duration": "0.34s",
+      "durationMs": 338,
+      "wer": "N/A",
+      "cer": "N/A",
+      "accuracy": "100%",
+      "status": "passed",
+      "failureReason": "",
+      "priority": "P0",
+      "timestamp": "2026-09-01T07:49:53.728Z"
+    },
+    {
+      "id": "M13-T02",
+      "suite": "Core System",
+      "module": "Health",
+      "moduleLabel": "Health",
+      "feature": "Health",
+      "title": "M13-T02: /health responds in under 2 seconds @smoke",
+      "description": "M13-T02: /health responds in under 2 seconds @smoke",
+      "audioPath": "Direct API Payload / Fixture",
+      "language": "Auto / Multilingual",
+      "groundTruth": "M13-T02: /health responds in under 2 seconds @smoke",
+      "predictedText": "Execution passed",
+      "duration": "0.09s",
+      "durationMs": 88,
+      "wer": "N/A",
+      "cer": "N/A",
+      "accuracy": "100%",
+      "status": "passed",
+      "failureReason": "",
+      "priority": "P0",
+      "timestamp": "2026-09-01T07:49:53.728Z"
+    }
+  ]
+}
