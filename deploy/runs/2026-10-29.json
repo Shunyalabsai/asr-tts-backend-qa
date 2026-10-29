@@ -1,14 +1,14 @@
 {
-  "id": "RUN-20261029-044609",
+  "id": "RUN-20261029-191606",
   "date": "2026-10-29",
-  "startedAt": "2026-10-28T23:16:09.124Z",
-  "completedAt": "2026-10-28T23:48:03.351Z",
+  "startedAt": "2026-10-29T13:46:06.323Z",
+  "completedAt": "2026-10-29T16:02:03.031Z",
   "totalTests": 134,
-  "passed": 37,
-  "failed": 97,
+  "passed": 33,
+  "failed": 101,
   "skipped": 0,
-  "passRate": "27.6",
-  "durationMs": 1914227,
+  "passRate": "24.6",
+  "durationMs": 8156708,
   "modules": [
     {
       "module": "Authentication",
@@ -16,9 +16,9 @@
       "passed": 4,
       "failed": 4,
       "skipped": 0,
-      "avgLatencyMs": 290.5,
-      "p50LatencyMs": 160,
-      "p95LatencyMs": 845
+      "avgLatencyMs": 319,
+      "p50LatencyMs": 168,
+      "p95LatencyMs": 706
     },
     {
       "module": "CombinationScenarios",
@@ -26,9 +26,9 @@
       "passed": 0,
       "failed": 6,
       "skipped": 0,
-      "avgLatencyMs": 334,
-      "p50LatencyMs": 338,
-      "p95LatencyMs": 347
+      "avgLatencyMs": 327.6666666666667,
+      "p50LatencyMs": 327,
+      "p95LatencyMs": 337
     },
     {
       "module": "ErrorHandling",
@@ -36,9 +36,9 @@
       "passed": 4,
       "failed": 4,
       "skipped": 0,
-      "avgLatencyMs": 400.75,
-      "p50LatencyMs": 321,
-      "p95LatencyMs": 1594
+      "avgLatencyMs": 418.625,
+      "p50LatencyMs": 310,
+      "p95LatencyMs": 1666
     },
     {
       "module": "Health",
@@ -46,9 +46,9 @@
       "passed": 2,
       "failed": 0,
       "skipped": 0,
-      "avgLatencyMs": 101,
-      "p50LatencyMs": 101,
-      "p95LatencyMs": 101
+      "avgLatencyMs": 99.5,
+      "p50LatencyMs": 97,
+      "p95LatencyMs": 102
     },
     {
       "module": "LanguageCode",
@@ -56,9 +56,9 @@
       "passed": 0,
       "failed": 8,
       "skipped": 0,
-      "avgLatencyMs": 296.125,
-      "p50LatencyMs": 319,
-      "p95LatencyMs": 339
+      "avgLatencyMs": 394.75,
+      "p50LatencyMs": 339,
+      "p95LatencyMs": 653
     },
     {
       "module": "Security-Misc",
@@ -66,9 +66,9 @@
       "passed": 4,
       "failed": 7,
       "skipped": 0,
-      "avgLatencyMs": 366.09090909090907,
-      "p50LatencyMs": 371,
-      "p95LatencyMs": 673
+      "avgLatencyMs": 82343.72727272728,
+      "p50LatencyMs": 403,
+      "p95LatencyMs": 902077
     },
     {
       "module": "ProfanityMasking",
@@ -76,9 +76,9 @@
       "passed": 0,
       "failed": 5,
       "skipped": 0,
-      "avgLatencyMs": 323,
-      "p50LatencyMs": 327,
-      "p95LatencyMs": 330
+      "avgLatencyMs": 447.8,
+      "p50LatencyMs": 336,
+      "p95LatencyMs": 692
     },
     {
       "module": "ResponseSchema",
@@ -86,9 +86,9 @@
       "passed": 1,
       "failed": 7,
       "skipped": 0,
-      "avgLatencyMs": 295.75,
-      "p50LatencyMs": 315,
-      "p95LatencyMs": 339
+      "avgLatencyMs": 302,
+      "p50LatencyMs": 320,
+      "p95LatencyMs": 349
     },
     {
       "module": "SpeakerDiarization",
@@ -96,9 +96,9 @@
       "passed": 0,
       "failed": 6,
       "skipped": 0,
-      "avgLatencyMs": 288.1666666666667,
-      "p50LatencyMs": 312,
-      "p95LatencyMs": 339
+      "avgLatencyMs": 360.3333333333333,
+      "p50LatencyMs": 329,
+      "p95LatencyMs": 716
     },
     {
       "module": "SpeakerManagement",
@@ -106,9 +106,9 @@
       "passed": 2,
       "failed": 4,
       "skipped": 0,
-      "avgLatencyMs": 249.33333333333334,
-      "p50LatencyMs": 304,
-      "p95LatencyMs": 348
+      "avgLatencyMs": 252.16666666666666,
+      "p50LatencyMs": 313,
+      "p95LatencyMs": 336
     },
     {
       "module": "SpeechIntelligence",
@@ -116,9 +116,9 @@
       "passed": 1,
       "failed": 10,
       "skipped": 0,
-      "avgLatencyMs": 82540.63636363637,
-      "p50LatencyMs": 322,
-      "p95LatencyMs": 904709
+      "avgLatencyMs": 82539.45454545454,
+      "p50LatencyMs": 533,
+      "p95LatencyMs": 903442
     },
     {
       "module": "Streaming",
@@ -126,9 +126,9 @@
       "passed": 1,
       "failed": 9,
       "skipped": 0,
-      "avgLatencyMs": 1812.5,
-      "p50LatencyMs": 311,
-      "p95LatencyMs": 15313
+      "avgLatencyMs": 92183.8,
+      "p50LatencyMs": 339,
+      "p95LatencyMs": 918187
     },
     {
       "module": "AudioInput-File",
@@ -136,19 +136,19 @@
       "passed": 2,
       "failed": 21,
       "skipped": 0,
-      "avgLatencyMs": 502.4782608695652,
-      "p50LatencyMs": 308,
-      "p95LatencyMs": 346
+      "avgLatencyMs": 318.82608695652175,
+      "p50LatencyMs": 334,
+      "p95LatencyMs": 366
     },
     {
       "module": "TTS",
       "total": 15,
-      "passed": 14,
-      "failed": 1,
+      "passed": 10,
+      "failed": 5,
       "skipped": 0,
-      "avgLatencyMs": 61153,
-      "p50LatencyMs": 816,
-      "p95LatencyMs": 901017
+      "avgLatencyMs": 296303.13333333336,
+      "p50LatencyMs": 3467,
+      "p95LatencyMs": 907226
     },
     {
       "module": "WordBoosting",
@@ -156,9 +156,9 @@
       "passed": 2,
       "failed": 5,
       "skipped": 0,
-      "avgLatencyMs": 332.42857142857144,
-      "p50LatencyMs": 332,
-      "p95LatencyMs": 412
+      "avgLatencyMs": 129599.28571428571,
+      "p50LatencyMs": 539,
+      "p95LatencyMs": 902036
     }
   ],
   "failures": [
@@ -167,273 +167,273 @@
       "module": "Authentication",
       "description": "M01-T01: Valid API key returns token with expires_at and expires_in @smoke",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m200\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "latencyMs": 845
+      "latencyMs": 706
     },
     {
       "testId": "M01-T05",
       "module": "Authentication",
       "description": "M01-T05: AuthClient caching and refresh works",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 100
+      "latencyMs": 151
     },
     {
       "testId": "M01-T06",
       "module": "Authentication",
       "description": "M01-T06: API key is not echoed in the response body",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m200\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "latencyMs": 316
+      "latencyMs": 409
     },
     {
       "testId": "M01-T08",
       "module": "Authentication",
       "description": "M01-T08: Auth token expires_in is within expected range (~900s)",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m200\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "latencyMs": 95
+      "latencyMs": 102
     },
     {
       "testId": "M14-T01",
       "module": "CombinationScenarios",
       "description": "M14-T01: All params simultaneously (diarize + num_speakers + verbose_json + language)",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 341
+      "latencyMs": 327
     },
     {
       "testId": "M14-T02",
       "module": "CombinationScenarios",
       "description": "M14-T02: num_speakers + response_format=json (diarize without verbose_json)",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 318
+      "latencyMs": 328
     },
     {
       "testId": "M14-T03",
       "module": "CombinationScenarios",
       "description": "M14-T03: Non-English + diarization + word boosting",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 338
+      "latencyMs": 317
     },
     {
       "testId": "M14-T04",
       "module": "CombinationScenarios",
       "description": "M14-T04: Profanity filter + verbose_json response",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 347
+      "latencyMs": 337
     },
     {
       "testId": "M14-T05",
       "module": "CombinationScenarios",
       "description": "M14-T05: Invalid param value among valid params",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "latencyMs": 345
+      "latencyMs": 327
     },
     {
       "testId": "M14-T06",
       "module": "CombinationScenarios",
       "description": "M14-T06: Base64 audio + all parameters",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 315
+      "latencyMs": 330
     },
     {
       "testId": "M11-T01",
       "module": "ErrorHandling",
       "description": "M11-T01: Malformed request (missing file) returns 400",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 325
+      "latencyMs": 346
     },
     {
       "testId": "M11-T03",
       "module": "ErrorHandling",
       "description": "M11-T03: Unsupported audio format returns 415",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 98
+      "latencyMs": 105
     },
     {
       "testId": "M11-T05",
       "module": "ErrorHandling",
       "description": "M11-T05: Unknown route returns 404",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 111
+      "latencyMs": 112
     },
     {
       "testId": "M11-T06",
       "module": "ErrorHandling",
       "description": "M11-T06: Wrong HTTP method returns 405",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 323
+      "latencyMs": 353
     },
     {
       "testId": "M04-T01",
       "module": "LanguageCode",
       "description": "M04-T01: Default language_code (omitted) uses auto detection @smoke",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 117
+      "latencyMs": 116
     },
     {
       "testId": "M04-T02",
       "module": "LanguageCode",
       "description": "M04-T02: Explicit language_code=en returns English text",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 319
+      "latencyMs": 339
     },
     {
       "testId": "M04-T03",
       "module": "LanguageCode",
       "description": "M04-T03: Explicit language_code=hi returns Hindi text",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 324
+      "latencyMs": 328
     },
     {
       "testId": "M04-T04",
       "module": "LanguageCode",
       "description": "M04-T04: Invalid language code returns 400",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "latencyMs": 324
+      "latencyMs": 504
     },
     {
       "testId": "M04-T05",
       "module": "LanguageCode",
       "description": "M04-T05: Non-English audio with auto-detect works",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 307
+      "latencyMs": 653
     },
     {
       "testId": "M04-T06",
       "module": "LanguageCode",
       "description": "M04-T06: Case-insensitive language_code (EN vs en)",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 339
+      "latencyMs": 544
     },
     {
       "testId": "M04-T07",
       "module": "LanguageCode",
       "description": "M04-T07: Empty language_code string returns 400",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "latencyMs": 320
+      "latencyMs": 341
     },
     {
       "testId": "M04-T08",
       "module": "LanguageCode",
       "description": "M04-T08: Multiple language codes each produce valid transcripts",
       "failureReason": "Error: en: Auth error [401]: invalid api key",
-      "latencyMs": 319
+      "latencyMs": 333
     },
     {
       "testId": "M12-T01",
       "module": "Security-Misc",
       "description": "M12-T01: Short request latency is within threshold",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 351
+      "latencyMs": 398
     },
     {
       "testId": "M12-T02",
       "module": "Security-Misc",
       "description": "M12-T02: Diarization adds measurable latency",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 455
+      "latencyMs": 570
     },
     {
       "testId": "M12-T03",
       "module": "Security-Misc",
       "description": "M12-T03: Opt-in features latency measured",
-      "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 481
+      "failureReason": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
+      "latencyMs": 902077
     },
     {
       "testId": "M12-T04",
       "module": "Security-Misc",
       "description": "M12-T04: NLP/speech intelligence latency measured",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 673
+      "latencyMs": 603
     },
     {
       "testId": "M12-T06",
       "module": "Security-Misc",
       "description": "M12-T06: Sequential requests (5 in sequence)",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 108
+      "latencyMs": 169
     },
     {
       "testId": "M09-T01",
       "module": "ProfanityMasking",
       "description": "M09-T01: Profanity filter on profane audio masks offensive words",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 316
+      "latencyMs": 692
     },
     {
       "testId": "M09-T02",
       "module": "ProfanityMasking",
       "description": "M09-T02: profanity_filter=false on profane audio without masking",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 327
+      "latencyMs": 548
     },
     {
       "testId": "M09-T03",
       "module": "ProfanityMasking",
       "description": "M09-T03: Profanity filter on clean audio (no change expected)",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 314
+      "latencyMs": 333
     },
     {
       "testId": "M09-T04",
       "module": "ProfanityMasking",
       "description": "M09-T04: Profanity filter with verbose_json response",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 330
+      "latencyMs": 336
     },
     {
       "testId": "M09-T05",
       "module": "ProfanityMasking",
       "description": "M09-T05: Multiple profane words in one utterance",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 328
+      "latencyMs": 330
     },
     {
       "testId": "M10-T01",
       "module": "ResponseSchema",
       "description": "M10-T01: segments[].start and .end are numbers in ascending order",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 339
+      "latencyMs": 318
     },
     {
       "testId": "M10-T02",
       "module": "ResponseSchema",
       "description": "M10-T02: words[] array present with word, start, end",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 315
+      "latencyMs": 345
     },
     {
       "testId": "M10-T03",
       "module": "ResponseSchema",
       "description": "M10-T03: audio_duration is a positive float",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 328
+      "latencyMs": 315
     },
     {
       "testId": "M10-T04",
       "module": "ResponseSchema",
       "description": "M10-T04: inference_time_ms is a positive number",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 334
+      "latencyMs": 332
     },
     {
       "testId": "M10-T05",
       "module": "ResponseSchema",
       "description": "M10-T05: request_id is a non-empty string, unique per call",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 315
+      "latencyMs": 349
     },
     {
       "testId": "M10-T06",
       "module": "ResponseSchema",
       "description": "M10-T06: No unexpected extra fields beyond the schema",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 333
+      "latencyMs": 326
     },
     {
       "testId": "M10-T08",
       "module": "ResponseSchema",
       "description": "M10-T08: Hindi transcription in verbose_json has correct structure",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 109
+      "latencyMs": 111
     },
     {
       "testId": "M15-T02",
@@ -447,399 +447,427 @@
       "module": "Security-Misc",
       "description": "M15-T03: Unknown route returns 404",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 303
+      "latencyMs": 316
     },
     {
       "testId": "M06-T01",
       "module": "SpeakerDiarization",
       "description": "M06-T01: diarize=true with num_speakers=1 returns single speaker",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 102
+      "latencyMs": 113
     },
     {
       "testId": "M06-T02",
       "module": "SpeakerDiarization",
       "description": "M06-T02: diarize=true with num_speakers=2 returns two speakers",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 332
+      "latencyMs": 329
     },
     {
       "testId": "M06-T03",
       "module": "SpeakerDiarization",
       "description": "M06-T03: diarize=true with omitted num_speakers (auto-detect)",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 339
+      "latencyMs": 313
     },
     {
       "testId": "M06-T04",
       "module": "SpeakerDiarization",
       "description": "M06-T04: num_speakers=0 or negative returns 400",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "latencyMs": 312
+      "latencyMs": 353
     },
     {
       "testId": "M06-T05",
       "module": "SpeakerDiarization",
       "description": "M06-T05: diarize=true with response_format=json returns text",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 312
+      "latencyMs": 338
     },
     {
       "testId": "M06-T06",
       "module": "SpeakerDiarization",
       "description": "M06-T06: diarize=false (default) does not include speaker info",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 332
+      "latencyMs": 716
     },
     {
       "testId": "M18-T01",
       "module": "SpeakerManagement",
       "description": "M18-T01: Register speaker with name and audio file returns success",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 348
+      "latencyMs": 336
     },
     {
       "testId": "M18-T02",
       "module": "SpeakerManagement",
       "description": "M18-T02: Register with project parameter",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 315
+      "latencyMs": 318
     },
     {
       "testId": "M18-T03",
       "module": "SpeakerManagement",
       "description": "M18-T03: Delete existing speaker",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 343
+      "latencyMs": 331
     },
     {
       "testId": "M18-T06",
       "module": "SpeakerManagement",
       "description": "M18-T06: Missing name parameter returns 400",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 92
+      "latencyMs": 108
     },
     {
       "testId": "M17-T01",
       "module": "SpeechIntelligence",
       "description": "M17-T01: Intent detection returns valid intent label",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 322
+      "latencyMs": 472
     },
     {
       "testId": "M17-T02",
       "module": "SpeechIntelligence",
       "description": "M17-T02: Summarization returns condensed text",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 320
+      "latencyMs": 618
     },
     {
       "testId": "M17-T03",
       "module": "SpeechIntelligence",
       "description": "M17-T03: Sentiment analysis returns label and score",
-      "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 340
+      "failureReason": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
+      "latencyMs": 903442
     },
     {
       "testId": "M17-T04",
       "module": "SpeechIntelligence",
       "description": "M17-T04: All three flags simultaneously",
-      "failureReason": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
-      "latencyMs": 904709
+      "failureReason": "AuthError: Auth error [401]: invalid api key",
+      "latencyMs": 593
     },
     {
       "testId": "M17-T05",
       "module": "SpeechIntelligence",
       "description": "M17-T05: Empty text returns 400",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "latencyMs": 555
+      "latencyMs": 610
     },
     {
       "testId": "M17-T06",
       "module": "SpeechIntelligence",
       "description": "M17-T06: Very long text with summarization",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 323
+      "latencyMs": 542
     },
     {
       "testId": "M08-T01",
       "module": "SpeechIntelligence",
       "description": "M08-T01: enable_intent_detection=true returns intent analysis",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 114
+      "latencyMs": 154
     },
     {
       "testId": "M08-T02",
       "module": "SpeechIntelligence",
       "description": "M08-T02: All analysis flags omitted (default behavior)",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 318
+      "latencyMs": 320
     },
     {
       "testId": "M08-T03",
       "module": "SpeechIntelligence",
       "description": "M08-T03: enable_sentiment_analysis=true returns sentiment",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 311
+      "latencyMs": 324
     },
     {
       "testId": "M08-T04",
       "module": "SpeechIntelligence",
       "description": "M08-T04: Empty text returns 400",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "latencyMs": 300
+      "latencyMs": 326
     },
     {
       "testId": "M16-T01",
       "module": "Streaming",
       "description": "M16-T01: Connect with valid token, receive ready event",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 333
+      "latencyMs": 334
     },
     {
       "testId": "M16-T02",
       "module": "Streaming",
       "description": "M16-T02: Send PCM audio frames, receive partial events",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 316
+      "latencyMs": 351
     },
     {
       "testId": "M16-T03",
       "module": "Streaming",
       "description": "M16-T03: Send PCM, receive final event after end message",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 311
+      "latencyMs": 339
     },
     {
       "testId": "M16-T04",
       "module": "Streaming",
       "description": "M16-T04: Verify speaker field on final when diarize=true",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 332
+      "latencyMs": 304
     },
     {
       "testId": "M16-T06",
       "module": "Streaming",
       "description": "M16-T06: Missing language field returns error",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 289
+      "latencyMs": 624
     },
     {
       "testId": "M16-T07",
       "module": "Streaming",
       "description": "M16-T07: Connect to both /v1/realtime and /ws (same behavior)",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 328
+      "latencyMs": 529
     },
     {
       "testId": "M16-T08",
       "module": "Streaming",
       "description": "M16-T08: Token in query parameter works",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 306
+      "latencyMs": 537
     },
     {
       "testId": "M16-T09",
       "module": "Streaming",
       "description": "M16-T09: Token in first JSON message works",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 302
+      "latencyMs": 322
     },
     {
       "testId": "M16-T10",
       "module": "Streaming",
       "description": "M16-T10: Sample rate 8kHz vs 16kHz produces good transcription",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 295
+      "latencyMs": 311
     },
     {
       "testId": "M03-T01",
       "module": "AudioInput-File",
       "description": "M03-T01: Valid base64-encoded audio returns transcription",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 346
+      "latencyMs": 339
     },
     {
       "testId": "M03-T02",
       "module": "AudioInput-File",
       "description": "M03-T02: data:audio/wav;base64 prefix handled correctly",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m401\u001b[39m\nReceived array: \u001b[31m[400, 415, 422]\u001b[39m",
-      "latencyMs": 306
+      "latencyMs": 330
     },
     {
       "testId": "M03-T03",
       "module": "AudioInput-File",
       "description": "M03-T03: Malformed base64 returns 400",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "latencyMs": 310
+      "latencyMs": 334
     },
     {
       "testId": "M03-T04",
       "module": "AudioInput-File",
       "description": "M03-T04: Near-limit base64 audio processed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 312
+      "latencyMs": 330
     },
     {
       "testId": "M03-T05",
       "module": "AudioInput-File",
       "description": "M03-T05: Oversized base64 returns 413",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m401\u001b[39m\nReceived array: \u001b[31m[400, 413]\u001b[39m",
-      "latencyMs": 340
+      "latencyMs": 327
     },
     {
       "testId": "M03-T06",
       "module": "AudioInput-File",
       "description": "M03-T06: Empty base64 string returns 400",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "latencyMs": 305
+      "latencyMs": 328
     },
     {
       "testId": "M02-T01",
       "module": "AudioInput-File",
       "description": "M02-T01: WAV upload returns valid transcription @smoke",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 308
+      "latencyMs": 363
     },
     {
       "testId": "M02-T02",
       "module": "AudioInput-File",
       "description": "M02-T02: FLAC upload returns valid transcription",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 307
+      "latencyMs": 356
     },
     {
       "testId": "M02-T03",
       "module": "AudioInput-File",
       "description": "M02-T03: OGG/Opus upload returns valid transcription",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 340
+      "latencyMs": 346
     },
     {
       "testId": "M02-T04",
       "module": "AudioInput-File",
       "description": "M02-T04: MP3 at 8kHz sample rate",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 324
+      "latencyMs": 346
     },
     {
       "testId": "M02-T05",
       "module": "AudioInput-File",
       "description": "M02-T05: MP3 at 16kHz sample rate",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 330
+      "latencyMs": 380
     },
     {
       "testId": "M02-T06",
       "module": "AudioInput-File",
       "description": "M02-T06: Stereo audio file accepted and processed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 298
+      "latencyMs": 337
     },
     {
       "testId": "M02-T07",
       "module": "AudioInput-File",
       "description": "M02-T07: File ~25MB (moderate size)",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 339
+      "latencyMs": 329
     },
     {
       "testId": "M02-T09",
       "module": "AudioInput-File",
       "description": "M02-T09: Corrupted audio file returns 400",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m401\u001b[39m\nReceived array: \u001b[31m[400, 415]\u001b[39m",
-      "latencyMs": 100
+      "latencyMs": 102
     },
     {
       "testId": "M02-T10",
       "module": "AudioInput-File",
       "description": "M02-T10: Empty audio file returns 400",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "latencyMs": 328
+      "latencyMs": 314
     },
     {
       "testId": "M02-T11",
       "module": "AudioInput-File",
       "description": "M02-T11: Silent audio returns empty transcription",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 308
+      "latencyMs": 327
     },
     {
       "testId": "M02-T14",
       "module": "AudioInput-File",
       "description": "M02-T14: Long audio (max-length) processed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 107
+      "latencyMs": 122
     },
     {
       "testId": "M05-T01",
       "module": "AudioInput-File",
       "description": "M05-T01: Default response_format returns json with only text field @smoke",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 306
+      "latencyMs": 354
     },
     {
       "testId": "M05-T02",
       "module": "AudioInput-File",
       "description": "M05-T02: Explicit response_format=json returns only text",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 327
+      "latencyMs": 347
     },
     {
       "testId": "M05-T03",
       "module": "AudioInput-File",
       "description": "M05-T03: response_format=verbose_json returns full schema",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 306
+      "latencyMs": 321
     },
     {
       "testId": "M05-T04",
       "module": "AudioInput-File",
       "description": "M05-T04: Invalid response_format value returns 400",
-      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m429\u001b[39m",
-      "latencyMs": 5007
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
+      "latencyMs": 344
     },
     {
       "testId": "TTS_LATEX_01",
       "module": "TTS",
       "description": "TTS_LATEX_01: Synthesize math problem with algebraic expression",
+      "failureReason": "TtsError: TTS API error [408]: TTS request timed out",
+      "latencyMs": 903543
+    },
+    {
+      "testId": "TTS_OPENAI_02",
+      "module": "TTS",
+      "description": "TTS_OPENAI_02: Synthesize raw PCM output for low-latency streaming pipeline",
+      "failureReason": "TtsError: TTS API error [408]: TTS request timed out",
+      "latencyMs": 901088
+    },
+    {
+      "testId": "TTS_02",
+      "module": "TTS",
+      "description": "TTS_02: Synthesize Hindi speech with named voice (Arjun)",
+      "failureReason": "TtsError: TTS API error [408]: TTS request timed out",
+      "latencyMs": 811534
+    },
+    {
+      "testId": "TTS_03",
+      "module": "TTS",
+      "description": "TTS_03: Synthesize with different supported voices",
+      "failureReason": "TtsError: TTS API error [408]: TTS request timed out",
+      "latencyMs": 907226
+    },
+    {
+      "testId": "TTS_04",
+      "module": "TTS",
+      "description": "TTS_04: Synthesize with different response formats (wav, mp3, flac, pcm)",
       "failureReason": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
-      "latencyMs": 901017
+      "latencyMs": 902989
     },
     {
       "testId": "M07-T01",
       "module": "WordBoosting",
       "description": "M07-T01: Single phrase boosting affects output",
-      "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 412
+      "failureReason": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
+      "latencyMs": 902036
     },
     {
       "testId": "M07-T02",
       "module": "WordBoosting",
       "description": "M07-T02: Multiple pipe-separated phrases",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 352
+      "latencyMs": 2072
     },
     {
       "testId": "M07-T03",
       "module": "WordBoosting",
       "description": "M07-T03: Case-insensitive phrase matching",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 332
+      "latencyMs": 539
     },
     {
       "testId": "M07-T04",
       "module": "WordBoosting",
       "description": "M07-T04: Default weight behavior",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 323
+      "latencyMs": 377
     },
     {
       "testId": "M07-T05",
       "module": "WordBoosting",
       "description": "M07-T05: Higher weight vs default weight",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
-      "latencyMs": 320
+      "latencyMs": 1730
     }
   ],
   "tests": [
@@ -855,15 +883,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M01-T01: Valid API key returns token with expires_at and expires_in @smoke",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m200\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "duration": "0.84s",
-      "durationMs": 845,
+      "duration": "0.71s",
+      "durationMs": 706,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m200\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M01-T02",
@@ -877,15 +905,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M01-T02: Missing Authorization header returns 400",
       "predictedText": "Execution passed",
-      "duration": "0.34s",
-      "durationMs": 337,
+      "duration": "0.54s",
+      "durationMs": 538,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M01-T03",
@@ -899,15 +927,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M01-T03: Invalid/random API key returns 401",
       "predictedText": "Execution passed",
-      "duration": "0.16s",
-      "durationMs": 157,
+      "duration": "0.17s",
+      "durationMs": 168,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M01-T04",
@@ -922,14 +950,14 @@
       "groundTruth": "M01-T04: Empty Bearer value returns 401",
       "predictedText": "Execution passed",
       "duration": "0.16s",
-      "durationMs": 160,
+      "durationMs": 163,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M01-T05",
@@ -943,15 +971,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M01-T05: AuthClient caching and refresh works",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.10s",
-      "durationMs": 100,
+      "duration": "0.15s",
+      "durationMs": 151,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M01-T06",
@@ -965,15 +993,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M01-T06: API key is not echoed in the response body",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m200\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "duration": "0.32s",
-      "durationMs": 316,
+      "duration": "0.41s",
+      "durationMs": 409,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m200\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M01-T07",
@@ -987,15 +1015,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M01-T07: Health endpoint works without auth @smoke",
       "predictedText": "Execution passed",
-      "duration": "0.31s",
-      "durationMs": 314,
+      "duration": "0.32s",
+      "durationMs": 315,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M01-T08",
@@ -1010,14 +1038,14 @@
       "groundTruth": "M01-T08: Auth token expires_in is within expected range (~900s)",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m200\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
       "duration": "0.10s",
-      "durationMs": 95,
+      "durationMs": 102,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m200\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M14-T01",
@@ -1031,15 +1059,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M14-T01: All params simultaneously (diarize + num_speakers + verbose_json + language)",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.34s",
-      "durationMs": 341,
+      "duration": "0.33s",
+      "durationMs": 327,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M14-T02",
@@ -1053,15 +1081,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M14-T02: num_speakers + response_format=json (diarize without verbose_json)",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 318,
+      "duration": "0.33s",
+      "durationMs": 328,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M14-T03",
@@ -1075,15 +1103,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M14-T03: Non-English + diarization + word boosting",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.34s",
-      "durationMs": 338,
+      "duration": "0.32s",
+      "durationMs": 317,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M14-T04",
@@ -1097,15 +1125,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M14-T04: Profanity filter + verbose_json response",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.35s",
-      "durationMs": 347,
+      "duration": "0.34s",
+      "durationMs": 337,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M14-T05",
@@ -1119,15 +1147,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M14-T05: Invalid param value among valid params",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "duration": "0.34s",
-      "durationMs": 345,
+      "duration": "0.33s",
+      "durationMs": 327,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M14-T06",
@@ -1141,15 +1169,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M14-T06: Base64 audio + all parameters",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 315,
+      "duration": "0.33s",
+      "durationMs": 330,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M11-T01",
@@ -1163,15 +1191,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M11-T01: Malformed request (missing file) returns 400",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.33s",
-      "durationMs": 325,
+      "duration": "0.35s",
+      "durationMs": 346,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M11-T02",
@@ -1185,15 +1213,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M11-T02: Invalid/expired token returns 401",
       "predictedText": "Execution passed",
-      "duration": "1.59s",
-      "durationMs": 1594,
+      "duration": "1.67s",
+      "durationMs": 1666,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M11-T03",
@@ -1208,14 +1236,14 @@
       "groundTruth": "M11-T03: Unsupported audio format returns 415",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
       "duration": "0.10s",
-      "durationMs": 98,
+      "durationMs": 105,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M11-T04",
@@ -1229,15 +1257,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M11-T04: Consistent error shape: all errors have detail field",
       "predictedText": "Execution passed",
-      "duration": "0.32s",
-      "durationMs": 321,
+      "duration": "0.37s",
+      "durationMs": 368,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M11-T05",
@@ -1252,14 +1280,14 @@
       "groundTruth": "M11-T05: Unknown route returns 404",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
       "duration": "0.11s",
-      "durationMs": 111,
+      "durationMs": 112,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M11-T06",
@@ -1273,15 +1301,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M11-T06: Wrong HTTP method returns 405",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 323,
+      "duration": "0.35s",
+      "durationMs": 353,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M11-T07",
@@ -1295,15 +1323,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M11-T07: Rate limiting: rapid requests eventually return 429",
       "predictedText": "Execution passed",
-      "duration": "0.34s",
-      "durationMs": 338,
+      "duration": "0.31s",
+      "durationMs": 310,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M11-T08",
@@ -1317,15 +1345,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M11-T08: Oversized file (500MB+) returns 413",
       "predictedText": "Execution passed",
-      "duration": "0.10s",
-      "durationMs": 96,
+      "duration": "0.09s",
+      "durationMs": 89,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M13-T01",
@@ -1340,14 +1368,14 @@
       "groundTruth": "M13-T01: /health returns status ok @smoke",
       "predictedText": "Execution passed",
       "duration": "0.10s",
-      "durationMs": 101,
+      "durationMs": 102,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M13-T02",
@@ -1362,14 +1390,14 @@
       "groundTruth": "M13-T02: /health responds in under 2 seconds @smoke",
       "predictedText": "Execution passed",
       "duration": "0.10s",
-      "durationMs": 101,
+      "durationMs": 97,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M04-T01",
@@ -1384,14 +1412,14 @@
       "groundTruth": "M04-T01: Default language_code (omitted) uses auto detection @smoke",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
       "duration": "0.12s",
-      "durationMs": 117,
+      "durationMs": 116,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M04-T02",
@@ -1405,15 +1433,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T02: Explicit language_code=en returns English text",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 319,
+      "duration": "0.34s",
+      "durationMs": 339,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M04-T03",
@@ -1427,15 +1455,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T03: Explicit language_code=hi returns Hindi text",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 324,
+      "duration": "0.33s",
+      "durationMs": 328,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M04-T04",
@@ -1449,15 +1477,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T04: Invalid language code returns 400",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "duration": "0.32s",
-      "durationMs": 324,
+      "duration": "0.50s",
+      "durationMs": 504,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M04-T05",
@@ -1471,15 +1499,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T05: Non-English audio with auto-detect works",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.31s",
-      "durationMs": 307,
+      "duration": "0.65s",
+      "durationMs": 653,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M04-T06",
@@ -1493,15 +1521,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T06: Case-insensitive language_code (EN vs en)",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.34s",
-      "durationMs": 339,
+      "duration": "0.54s",
+      "durationMs": 544,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M04-T07",
@@ -1515,15 +1543,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T07: Empty language_code string returns 400",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "duration": "0.32s",
-      "durationMs": 320,
+      "duration": "0.34s",
+      "durationMs": 341,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M04-T08",
@@ -1537,15 +1565,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M04-T08: Multiple language codes each produce valid transcripts",
       "predictedText": "Error: en: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 319,
+      "duration": "0.33s",
+      "durationMs": 333,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: en: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M12-T01",
@@ -1559,15 +1587,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M12-T01: Short request latency is within threshold",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.35s",
-      "durationMs": 351,
+      "duration": "0.40s",
+      "durationMs": 398,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M12-T02",
@@ -1581,15 +1609,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M12-T02: Diarization adds measurable latency",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.46s",
-      "durationMs": 455,
+      "duration": "0.57s",
+      "durationMs": 570,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M12-T03",
@@ -1602,16 +1630,16 @@
       "audioPath": "Direct API Payload / Fixture",
       "language": "Auto / Multilingual",
       "groundTruth": "M12-T03: Opt-in features latency measured",
-      "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.48s",
-      "durationMs": 481,
+      "predictedText": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
+      "duration": "902.08s",
+      "durationMs": 902077,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
-      "failureReason": "AuthError: Auth error [401]: invalid api key",
+      "failureReason": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M12-T04",
@@ -1625,15 +1653,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M12-T04: NLP/speech intelligence latency measured",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.67s",
-      "durationMs": 673,
+      "duration": "0.60s",
+      "durationMs": 603,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M12-T05",
@@ -1647,15 +1675,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M12-T05: Concurrent requests (5 simultaneous)",
       "predictedText": "Execution passed",
-      "duration": "0.58s",
-      "durationMs": 580,
+      "duration": "0.51s",
+      "durationMs": 514,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M12-T06",
@@ -1669,15 +1697,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M12-T06: Sequential requests (5 in sequence)",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.11s",
-      "durationMs": 108,
+      "duration": "0.17s",
+      "durationMs": 169,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M09-T01",
@@ -1691,15 +1719,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M09-T01: Profanity filter on profane audio masks offensive words",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 316,
+      "duration": "0.69s",
+      "durationMs": 692,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M09-T02",
@@ -1713,15 +1741,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M09-T02: profanity_filter=false on profane audio without masking",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.33s",
-      "durationMs": 327,
+      "duration": "0.55s",
+      "durationMs": 548,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M09-T03",
@@ -1735,15 +1763,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M09-T03: Profanity filter on clean audio (no change expected)",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.31s",
-      "durationMs": 314,
+      "duration": "0.33s",
+      "durationMs": 333,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M09-T04",
@@ -1757,15 +1785,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M09-T04: Profanity filter with verbose_json response",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.33s",
-      "durationMs": 330,
+      "duration": "0.34s",
+      "durationMs": 336,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M09-T05",
@@ -1780,14 +1808,14 @@
       "groundTruth": "M09-T05: Multiple profane words in one utterance",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
       "duration": "0.33s",
-      "durationMs": 328,
+      "durationMs": 330,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M10-T01",
@@ -1801,15 +1829,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M10-T01: segments[].start and .end are numbers in ascending order",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.34s",
-      "durationMs": 339,
+      "duration": "0.32s",
+      "durationMs": 318,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M10-T02",
@@ -1823,15 +1851,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M10-T02: words[] array present with word, start, end",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 315,
+      "duration": "0.34s",
+      "durationMs": 345,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M10-T03",
@@ -1845,15 +1873,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M10-T03: audio_duration is a positive float",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.33s",
-      "durationMs": 328,
+      "duration": "0.32s",
+      "durationMs": 315,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M10-T04",
@@ -1868,14 +1896,14 @@
       "groundTruth": "M10-T04: inference_time_ms is a positive number",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
       "duration": "0.33s",
-      "durationMs": 334,
+      "durationMs": 332,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M10-T05",
@@ -1889,15 +1917,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M10-T05: request_id is a non-empty string, unique per call",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 315,
+      "duration": "0.35s",
+      "durationMs": 349,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M10-T06",
@@ -1912,14 +1940,14 @@
       "groundTruth": "M10-T06: No unexpected extra fields beyond the schema",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
       "duration": "0.33s",
-      "durationMs": 333,
+      "durationMs": 326,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M10-T07",
@@ -1933,15 +1961,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M10-T07: Response Content-Type is application/json",
       "predictedText": "Execution passed",
-      "duration": "0.29s",
-      "durationMs": 293,
+      "duration": "0.32s",
+      "durationMs": 320,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M10-T08",
@@ -1956,14 +1984,14 @@
       "groundTruth": "M10-T08: Hindi transcription in verbose_json has correct structure",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
       "duration": "0.11s",
-      "durationMs": 109,
+      "durationMs": 111,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M15-T01",
@@ -1977,15 +2005,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M15-T01: HTTPS enforced (HTTP redirected or rejected)",
       "predictedText": "Execution passed",
-      "duration": "0.50s",
-      "durationMs": 504,
+      "duration": "0.52s",
+      "durationMs": 521,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M15-T02",
@@ -2007,7 +2035,7 @@
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M15-T03",
@@ -2021,15 +2049,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M15-T03: Unknown route returns 404",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.30s",
-      "durationMs": 303,
+      "duration": "0.32s",
+      "durationMs": 316,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M15-T04",
@@ -2043,15 +2071,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M15-T04: Injection attempt (SQL injection in language_code)",
       "predictedText": "Execution passed",
-      "duration": "0.37s",
-      "durationMs": 371,
+      "duration": "0.40s",
+      "durationMs": 403,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M15-T05",
@@ -2065,15 +2093,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M15-T05: Swagger/docs endpoint accessible",
       "predictedText": "Execution passed",
-      "duration": "0.10s",
-      "durationMs": 97,
+      "duration": "0.11s",
+      "durationMs": 106,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M06-T01",
@@ -2087,15 +2115,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M06-T01: diarize=true with num_speakers=1 returns single speaker",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.10s",
-      "durationMs": 102,
+      "duration": "0.11s",
+      "durationMs": 113,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M06-T02",
@@ -2110,14 +2138,14 @@
       "groundTruth": "M06-T02: diarize=true with num_speakers=2 returns two speakers",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
       "duration": "0.33s",
-      "durationMs": 332,
+      "durationMs": 329,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M06-T03",
@@ -2131,15 +2159,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M06-T03: diarize=true with omitted num_speakers (auto-detect)",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.34s",
-      "durationMs": 339,
+      "duration": "0.31s",
+      "durationMs": 313,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M06-T04",
@@ -2153,15 +2181,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M06-T04: num_speakers=0 or negative returns 400",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "duration": "0.31s",
-      "durationMs": 312,
+      "duration": "0.35s",
+      "durationMs": 353,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M06-T05",
@@ -2175,15 +2203,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M06-T05: diarize=true with response_format=json returns text",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.31s",
-      "durationMs": 312,
+      "duration": "0.34s",
+      "durationMs": 338,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M06-T06",
@@ -2197,15 +2225,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M06-T06: diarize=false (default) does not include speaker info",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.33s",
-      "durationMs": 332,
+      "duration": "0.72s",
+      "durationMs": 716,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M18-T01",
@@ -2219,15 +2247,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M18-T01: Register speaker with name and audio file returns success",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.35s",
-      "durationMs": 348,
+      "duration": "0.34s",
+      "durationMs": 336,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M18-T02",
@@ -2242,14 +2270,14 @@
       "groundTruth": "M18-T02: Register with project parameter",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
       "duration": "0.32s",
-      "durationMs": 315,
+      "durationMs": 318,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M18-T03",
@@ -2263,15 +2291,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M18-T03: Delete existing speaker",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.34s",
-      "durationMs": 343,
+      "duration": "0.33s",
+      "durationMs": 331,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M18-T04",
@@ -2285,15 +2313,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M18-T04: Delete non-existent speaker returns success or 404",
       "predictedText": "Execution passed",
-      "duration": "0.30s",
-      "durationMs": 304,
+      "duration": "0.31s",
+      "durationMs": 313,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M18-T05",
@@ -2307,15 +2335,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M18-T05: Register duplicate speaker name",
       "predictedText": "Execution passed",
-      "duration": "0.09s",
-      "durationMs": 94,
+      "duration": "0.11s",
+      "durationMs": 107,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M18-T06",
@@ -2329,15 +2357,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M18-T06: Missing name parameter returns 400",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.09s",
-      "durationMs": 92,
+      "duration": "0.11s",
+      "durationMs": 108,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M17-T01",
@@ -2351,15 +2379,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M17-T01: Intent detection returns valid intent label",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 322,
+      "duration": "0.47s",
+      "durationMs": 472,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M17-T02",
@@ -2373,15 +2401,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M17-T02: Summarization returns condensed text",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 320,
+      "duration": "0.62s",
+      "durationMs": 618,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M17-T03",
@@ -2394,16 +2422,16 @@
       "audioPath": "Direct API Payload / Fixture",
       "language": "Auto / Multilingual",
       "groundTruth": "M17-T03: Sentiment analysis returns label and score",
-      "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.34s",
-      "durationMs": 340,
+      "predictedText": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
+      "duration": "903.44s",
+      "durationMs": 903442,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
-      "failureReason": "AuthError: Auth error [401]: invalid api key",
+      "failureReason": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M17-T04",
@@ -2416,16 +2444,16 @@
       "audioPath": "Direct API Payload / Fixture",
       "language": "Auto / Multilingual",
       "groundTruth": "M17-T04: All three flags simultaneously",
-      "predictedText": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
-      "duration": "904.71s",
-      "durationMs": 904709,
+      "predictedText": "AuthError: Auth error [401]: invalid api key",
+      "duration": "0.59s",
+      "durationMs": 593,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
-      "failureReason": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
+      "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M17-T05",
@@ -2439,15 +2467,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M17-T05: Empty text returns 400",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "duration": "0.56s",
-      "durationMs": 555,
+      "duration": "0.61s",
+      "durationMs": 610,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M17-T06",
@@ -2461,15 +2489,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M17-T06: Very long text with summarization",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 323,
+      "duration": "0.54s",
+      "durationMs": 542,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M17-T07",
@@ -2483,15 +2511,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M17-T07: Missing auth returns 401",
       "predictedText": "Execution passed",
-      "duration": "0.34s",
-      "durationMs": 335,
+      "duration": "0.53s",
+      "durationMs": 533,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M08-T01",
@@ -2505,15 +2533,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M08-T01: enable_intent_detection=true returns intent analysis",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.11s",
-      "durationMs": 114,
+      "duration": "0.15s",
+      "durationMs": 154,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M08-T02",
@@ -2528,14 +2556,14 @@
       "groundTruth": "M08-T02: All analysis flags omitted (default behavior)",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
       "duration": "0.32s",
-      "durationMs": 318,
+      "durationMs": 320,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M08-T03",
@@ -2549,15 +2577,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M08-T03: enable_sentiment_analysis=true returns sentiment",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.31s",
-      "durationMs": 311,
+      "duration": "0.32s",
+      "durationMs": 324,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M08-T04",
@@ -2571,15 +2599,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M08-T04: Empty text returns 400",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "duration": "0.30s",
-      "durationMs": 300,
+      "duration": "0.33s",
+      "durationMs": 326,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M16-T01",
@@ -2594,14 +2622,14 @@
       "groundTruth": "M16-T01: Connect with valid token, receive ready event",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
       "duration": "0.33s",
-      "durationMs": 333,
+      "durationMs": 334,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M16-T02",
@@ -2615,15 +2643,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T02: Send PCM audio frames, receive partial events",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 316,
+      "duration": "0.35s",
+      "durationMs": 351,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M16-T03",
@@ -2637,15 +2665,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T03: Send PCM, receive final event after end message",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.31s",
-      "durationMs": 311,
+      "duration": "0.34s",
+      "durationMs": 339,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M16-T04",
@@ -2659,15 +2687,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T04: Verify speaker field on final when diarize=true",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.33s",
-      "durationMs": 332,
+      "duration": "0.30s",
+      "durationMs": 304,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M16-T05",
@@ -2681,15 +2709,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T05: Wrong token returns error event and socket closes",
       "predictedText": "Execution passed",
-      "duration": "15.31s",
-      "durationMs": 15313,
+      "duration": "918.19s",
+      "durationMs": 918187,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M16-T06",
@@ -2703,15 +2731,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T06: Missing language field returns error",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.29s",
-      "durationMs": 289,
+      "duration": "0.62s",
+      "durationMs": 624,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M16-T07",
@@ -2725,15 +2753,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T07: Connect to both /v1/realtime and /ws (same behavior)",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.33s",
-      "durationMs": 328,
+      "duration": "0.53s",
+      "durationMs": 529,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M16-T08",
@@ -2747,15 +2775,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T08: Token in query parameter works",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.31s",
-      "durationMs": 306,
+      "duration": "0.54s",
+      "durationMs": 537,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M16-T09",
@@ -2769,15 +2797,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T09: Token in first JSON message works",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.30s",
-      "durationMs": 302,
+      "duration": "0.32s",
+      "durationMs": 322,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M16-T10",
@@ -2791,15 +2819,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M16-T10: Sample rate 8kHz vs 16kHz produces good transcription",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.29s",
-      "durationMs": 295,
+      "duration": "0.31s",
+      "durationMs": 311,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M03-T01",
@@ -2813,15 +2841,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M03-T01: Valid base64-encoded audio returns transcription",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.35s",
-      "durationMs": 346,
+      "duration": "0.34s",
+      "durationMs": 339,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M03-T02",
@@ -2835,15 +2863,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M03-T02: data:audio/wav;base64 prefix handled correctly",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m401\u001b[39m\nReceived array: \u001b[31m[400, 415, 422]\u001b[39m",
-      "duration": "0.31s",
-      "durationMs": 306,
+      "duration": "0.33s",
+      "durationMs": 330,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m401\u001b[39m\nReceived array: \u001b[31m[400, 415, 422]\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M03-T03",
@@ -2857,15 +2885,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M03-T03: Malformed base64 returns 400",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "duration": "0.31s",
-      "durationMs": 310,
+      "duration": "0.33s",
+      "durationMs": 334,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M03-T04",
@@ -2879,15 +2907,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M03-T04: Near-limit base64 audio processed",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.31s",
-      "durationMs": 312,
+      "duration": "0.33s",
+      "durationMs": 330,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M03-T05",
@@ -2901,15 +2929,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M03-T05: Oversized base64 returns 413",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m401\u001b[39m\nReceived array: \u001b[31m[400, 413]\u001b[39m",
-      "duration": "0.34s",
-      "durationMs": 340,
+      "duration": "0.33s",
+      "durationMs": 327,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m401\u001b[39m\nReceived array: \u001b[31m[400, 413]\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M03-T06",
@@ -2923,15 +2951,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M03-T06: Empty base64 string returns 400",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "duration": "0.30s",
-      "durationMs": 305,
+      "duration": "0.33s",
+      "durationMs": 328,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M02-T01",
@@ -2945,15 +2973,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T01: WAV upload returns valid transcription @smoke",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.31s",
-      "durationMs": 308,
+      "duration": "0.36s",
+      "durationMs": 363,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M02-T02",
@@ -2967,15 +2995,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T02: FLAC upload returns valid transcription",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.31s",
-      "durationMs": 307,
+      "duration": "0.36s",
+      "durationMs": 356,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M02-T03",
@@ -2989,15 +3017,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T03: OGG/Opus upload returns valid transcription",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.34s",
-      "durationMs": 340,
+      "duration": "0.35s",
+      "durationMs": 346,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M02-T04",
@@ -3011,15 +3039,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T04: MP3 at 8kHz sample rate",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 324,
+      "duration": "0.35s",
+      "durationMs": 346,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M02-T05",
@@ -3033,15 +3061,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T05: MP3 at 16kHz sample rate",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.33s",
-      "durationMs": 330,
+      "duration": "0.38s",
+      "durationMs": 380,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M02-T06",
@@ -3055,15 +3083,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T06: Stereo audio file accepted and processed",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.30s",
-      "durationMs": 298,
+      "duration": "0.34s",
+      "durationMs": 337,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M02-T07",
@@ -3077,15 +3105,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T07: File ~25MB (moderate size)",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.34s",
-      "durationMs": 339,
+      "duration": "0.33s",
+      "durationMs": 329,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M02-T08",
@@ -3099,15 +3127,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T08: File ~70MB (near limit, expect 200 or 413)",
       "predictedText": "Execution passed",
-      "duration": "0.30s",
-      "durationMs": 298,
+      "duration": "0.29s",
+      "durationMs": 291,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M02-T09",
@@ -3122,14 +3150,14 @@
       "groundTruth": "M02-T09: Corrupted audio file returns 400",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m401\u001b[39m\nReceived array: \u001b[31m[400, 415]\u001b[39m",
       "duration": "0.10s",
-      "durationMs": 100,
+      "durationMs": 102,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoContain\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // indexOf\u001b[22m\n\nExpected value: \u001b[32m401\u001b[39m\nReceived array: \u001b[31m[400, 415]\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M02-T10",
@@ -3143,15 +3171,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T10: Empty audio file returns 400",
       "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
-      "duration": "0.33s",
-      "durationMs": 328,
+      "duration": "0.31s",
+      "durationMs": 314,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M02-T11",
@@ -3165,15 +3193,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T11: Silent audio returns empty transcription",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.31s",
-      "durationMs": 308,
+      "duration": "0.33s",
+      "durationMs": 327,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M02-T12",
@@ -3187,15 +3215,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T12: Very short audio (<1s) processed",
       "predictedText": "Execution passed",
-      "duration": "0.30s",
-      "durationMs": 305,
+      "duration": "0.37s",
+      "durationMs": 366,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M02-T14",
@@ -3209,15 +3237,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M02-T14: Long audio (max-length) processed",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.11s",
-      "durationMs": 107,
+      "duration": "0.12s",
+      "durationMs": 122,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M05-T01",
@@ -3231,15 +3259,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M05-T01: Default response_format returns json with only text field @smoke",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.31s",
-      "durationMs": 306,
+      "duration": "0.35s",
+      "durationMs": 354,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M05-T02",
@@ -3253,15 +3281,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M05-T02: Explicit response_format=json returns only text",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.33s",
-      "durationMs": 327,
+      "duration": "0.35s",
+      "durationMs": 347,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M05-T03",
@@ -3275,15 +3303,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M05-T03: response_format=verbose_json returns full schema",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.31s",
-      "durationMs": 306,
+      "duration": "0.32s",
+      "durationMs": 321,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M05-T04",
@@ -3296,16 +3324,16 @@
       "audioPath": "Direct API Payload / Fixture",
       "language": "Auto / Multilingual",
       "groundTruth": "M05-T04: Invalid response_format value returns 400",
-      "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m429\u001b[39m",
-      "duration": "5.01s",
-      "durationMs": 5007,
+      "predictedText": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
+      "duration": "0.34s",
+      "durationMs": 344,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
-      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m429\u001b[39m",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m401\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_LATEX_01",
@@ -3318,16 +3346,16 @@
       "audioPath": "Direct API Payload / Fixture",
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_LATEX_01: Synthesize math problem with algebraic expression",
-      "predictedText": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
-      "duration": "901.02s",
-      "durationMs": 901017,
+      "predictedText": "TtsError: TTS API error [408]: TTS request timed out",
+      "duration": "903.54s",
+      "durationMs": 903543,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
-      "failureReason": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
+      "failureReason": "TtsError: TTS API error [408]: TTS request timed out",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_LATEX_02",
@@ -3341,15 +3369,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_LATEX_02: Synthesize fraction and quadratic equation with LaTeX",
       "predictedText": "Execution passed",
-      "duration": "4.40s",
-      "durationMs": 4397,
+      "duration": "3.47s",
+      "durationMs": 3467,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_LATEX_03",
@@ -3363,15 +3391,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_LATEX_03: Synthesize Hindi mathematics with LaTeX",
       "predictedText": "Execution passed",
-      "duration": "2.33s",
-      "durationMs": 2335,
+      "duration": "2.31s",
+      "durationMs": 2310,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_ERR_01",
@@ -3385,15 +3413,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_ERR_01: Request without authentication returns 401",
       "predictedText": "Execution passed",
-      "duration": "0.10s",
-      "durationMs": 99,
+      "duration": "0.12s",
+      "durationMs": 121,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_ERR_02",
@@ -3407,15 +3435,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_ERR_02: Empty text input returns 400 or 422 Bad Request",
       "predictedText": "Execution passed",
-      "duration": "0.10s",
-      "durationMs": 97,
+      "duration": "0.13s",
+      "durationMs": 127,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_ERR_03",
@@ -3430,14 +3458,14 @@
       "groundTruth": "TTS_ERR_03: OpenAI speech endpoint without input returns 400 or 422",
       "predictedText": "Execution passed",
       "duration": "0.10s",
-      "durationMs": 98,
+      "durationMs": 99,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_OPENAI_01",
@@ -3451,15 +3479,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_OPENAI_01: Synthesize with tts-1 model and Meera voice",
       "predictedText": "Execution passed",
-      "duration": "0.82s",
-      "durationMs": 816,
+      "duration": "0.49s",
+      "durationMs": 489,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_OPENAI_02",
@@ -3472,16 +3500,16 @@
       "audioPath": "Direct API Payload / Fixture",
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_OPENAI_02: Synthesize raw PCM output for low-latency streaming pipeline",
-      "predictedText": "Execution passed",
-      "duration": "0.53s",
-      "durationMs": 531,
+      "predictedText": "TtsError: TTS API error [408]: TTS request timed out",
+      "duration": "901.09s",
+      "durationMs": 901088,
       "wer": "N/A",
       "cer": "N/A",
-      "accuracy": "100%",
-      "status": "passed",
-      "failureReason": "",
+      "accuracy": "0%",
+      "status": "failed",
+      "failureReason": "TtsError: TTS API error [408]: TTS request timed out",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_OPENAI_03",
@@ -3495,15 +3523,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_OPENAI_03: Synthesize with OpenAI standard voice aliases (e.g. nova, alloy)",
       "predictedText": "Execution passed",
-      "duration": "0.83s",
-      "durationMs": 829,
+      "duration": "5.04s",
+      "durationMs": 5044,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_OPENAI_04",
@@ -3517,15 +3545,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_OPENAI_04: Synthesize with speed parameter variations",
       "predictedText": "Execution passed",
-      "duration": "0.43s",
-      "durationMs": 433,
+      "duration": "0.48s",
+      "durationMs": 483,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_01",
@@ -3539,15 +3567,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_01: Synthesize English speech with default voice (Meera)",
       "predictedText": "Execution passed",
-      "duration": "0.53s",
-      "durationMs": 530,
+      "duration": "0.59s",
+      "durationMs": 592,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_02",
@@ -3560,16 +3588,16 @@
       "audioPath": "Direct API Payload / Fixture",
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_02: Synthesize Hindi speech with named voice (Arjun)",
-      "predictedText": "Execution passed",
-      "duration": "0.44s",
-      "durationMs": 442,
+      "predictedText": "TtsError: TTS API error [408]: TTS request timed out",
+      "duration": "811.53s",
+      "durationMs": 811534,
       "wer": "N/A",
       "cer": "N/A",
-      "accuracy": "100%",
-      "status": "passed",
-      "failureReason": "",
+      "accuracy": "0%",
+      "status": "failed",
+      "failureReason": "TtsError: TTS API error [408]: TTS request timed out",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_03",
@@ -3582,16 +3610,16 @@
       "audioPath": "Direct API Payload / Fixture",
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_03: Synthesize with different supported voices",
-      "predictedText": "Execution passed",
-      "duration": "2.70s",
-      "durationMs": 2704,
+      "predictedText": "TtsError: TTS API error [408]: TTS request timed out",
+      "duration": "907.23s",
+      "durationMs": 907226,
       "wer": "N/A",
       "cer": "N/A",
-      "accuracy": "100%",
-      "status": "passed",
-      "failureReason": "",
+      "accuracy": "0%",
+      "status": "failed",
+      "failureReason": "TtsError: TTS API error [408]: TTS request timed out",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_04",
@@ -3604,16 +3632,16 @@
       "audioPath": "Direct API Payload / Fixture",
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_04: Synthesize with different response formats (wav, mp3, flac, pcm)",
-      "predictedText": "Execution passed",
-      "duration": "1.90s",
-      "durationMs": 1903,
+      "predictedText": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
+      "duration": "902.99s",
+      "durationMs": 902989,
       "wer": "N/A",
       "cer": "N/A",
-      "accuracy": "100%",
-      "status": "passed",
-      "failureReason": "",
+      "accuracy": "0%",
+      "status": "failed",
+      "failureReason": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "TTS_05",
@@ -3627,15 +3655,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "TTS_05: Synthesize with speed adjustment parameter",
       "predictedText": "Execution passed",
-      "duration": "1.06s",
-      "durationMs": 1064,
+      "duration": "5.43s",
+      "durationMs": 5435,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M07-T01",
@@ -3648,16 +3676,16 @@
       "audioPath": "Direct API Payload / Fixture",
       "language": "Auto / Multilingual",
       "groundTruth": "M07-T01: Single phrase boosting affects output",
-      "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.41s",
-      "durationMs": 412,
+      "predictedText": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
+      "duration": "902.04s",
+      "durationMs": 902036,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
-      "failureReason": "AuthError: Auth error [401]: invalid api key",
+      "failureReason": "\u001b[31mTest timeout of 600000ms exceeded.\u001b[39m",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M07-T02",
@@ -3671,15 +3699,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M07-T02: Multiple pipe-separated phrases",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.35s",
-      "durationMs": 352,
+      "duration": "2.07s",
+      "durationMs": 2072,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M07-T03",
@@ -3693,15 +3721,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M07-T03: Case-insensitive phrase matching",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.33s",
-      "durationMs": 332,
+      "duration": "0.54s",
+      "durationMs": 539,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M07-T04",
@@ -3715,15 +3743,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M07-T04: Default weight behavior",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 323,
+      "duration": "0.38s",
+      "durationMs": 377,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M07-T05",
@@ -3737,15 +3765,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M07-T05: Higher weight vs default weight",
       "predictedText": "AuthError: Auth error [401]: invalid api key",
-      "duration": "0.32s",
-      "durationMs": 320,
+      "duration": "1.73s",
+      "durationMs": 1730,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "0%",
       "status": "failed",
       "failureReason": "AuthError: Auth error [401]: invalid api key",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M07-T06",
@@ -3759,15 +3787,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M07-T06: Weight parameter without phrases",
       "predictedText": "Execution passed",
-      "duration": "0.41s",
-      "durationMs": 408,
+      "duration": "0.34s",
+      "durationMs": 343,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     },
     {
       "id": "M07-T07",
@@ -3781,15 +3809,15 @@
       "language": "Auto / Multilingual",
       "groundTruth": "M07-T07: Malformed separator handling",
       "predictedText": "Execution passed",
-      "duration": "0.18s",
-      "durationMs": 180,
+      "duration": "0.10s",
+      "durationMs": 98,
       "wer": "N/A",
       "cer": "N/A",
       "accuracy": "100%",
       "status": "passed",
       "failureReason": "",
       "priority": "P0",
-      "timestamp": "2026-10-28T23:16:09.124Z"
+      "timestamp": "2026-10-29T13:46:06.323Z"
     }
   ]
 }
