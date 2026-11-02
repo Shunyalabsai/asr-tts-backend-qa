@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shunya Labs STT & TTS Test Report — 2026-08-22</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f172a; color: #e2e8f0; padding: 2rem; }
+    h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    h2 { font-size: 1.2rem; margin: 2rem 0 1rem; color: #94a3b8; }
+    .banner { display: flex; align-items: center; gap: 1rem; padding: 1.5rem; border-radius: 0.75rem; margin-bottom: 2rem; }
+    .banner.pass { background: linear-gradient(135deg, #064e3b, #065f46); }
+    .banner.fail { background: linear-gradient(135deg, #7f1d1d, #991b1b); }
+    .banner h2 { margin: 0; color: white; font-size: 1.8rem; }
+    .banner .stats { margin-left: auto; text-align: right; }
+    .banner .stats span { display: inline-block; margin-left: 1.5rem; font-size: 0.9rem; }
+    .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+    .kpi { background: #1e293b; border-radius: 0.75rem; padding: 1.25rem; border: 1px solid #334155; }
+    .kpi .label { font-size: 0.8rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em; }
+    .kpi .value { font-size: 1.5rem; font-weight: 700; margin-top: 0.25rem; }
+    .kpi .value.green { color: #22c55e; }
+    .kpi .value.red { color: #ef4444; }
+    .kpi .value.yellow { color: #eab308; }
+    .kpi .value.cyan { color: #06b6d4; }
+    table { width: 100%; border-collapse: collapse; background: #1e293b; border-radius: 0.75rem; overflow: hidden; }
+    th, td { padding: 0.75rem 1rem; text-align: left; border-bottom: 1px solid #334155; font-size: 0.9rem; }
+    th { background: #334155; color: #94a3b8; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em; }
+    td.pass { color: #22c55e; }
+    td.fail { color: #ef4444; }
+    td.error { color: #f97316; }
+    tr:hover { background: #1e293b; }
+    .module-row { cursor: pointer; }
+    .module-row:hover { background: #334155; }
+    .detail-row { display: none; }
+    .detail-row.open { display: table-row; }
+    .detail-cell { padding: 0 !important; }
+    .detail-inner { padding: 0 1rem 1rem; }
+    .summary-row { font-weight: 600; background: #1e293b; }
+    .badge { display: inline-block; padding: 0.15rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; }
+    .badge.pass { background: #065f46; color: #22c55e; }
+    .badge.fail { background: #7f1d1d; color: #ef4444; }
+    .badge.skip { background: #713f12; color: #eab308; }
+    .badge.tts { background: #4338ca; color: #a5b4fc; }
+    .badge.stt { background: #0e7490; color: #67e8f9; }
+    .failed-tests { margin-top: 2rem; }
+    .failed-item { background: #1e293b; border-radius: 0.5rem; padding: 1rem; margin-bottom: 0.75rem; border: 1px solid #7f1d1d; }
+    .failed-item .test-id { font-weight: 600; color: #f87171; }
+    .failed-item .reason { margin-top: 0.5rem; color: #94a3b8; font-family: monospace; font-size: 0.85rem; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <div class="banner pass">
+    <div>
+      <h1 style="font-size: 1.8rem; margin:0;">🎙️ Shunya Labs STT & TTS Test Execution</h1>
+      <div style="font-size: 0.9rem; opacity: 0.9; margin-top: 0.25rem;">Overall Status: <strong>PASS</strong></div>
+    </div>
+    <div class="stats">
+      <span>2026-08-22</span>
+      <span>5 tests</span>
+      <span>2.3s</span>
+    </div>
+  </div>
+
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="label">Pass Rate</div>
+      <div class="value red">100.0%</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Passed / Total</div>
+      <div class="value">5 / 5</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Failed</div>
+      <div class="value red">0</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Skipped</div>
+      <div class="value yellow">0</div>
+    </div>
+  </div>
+
+  <h2>Per-Module Summary</h2>
+  <table>
+    <thead>
+      <tr><th>Module</th><th>Total</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Avg Latency</th><th>P50</th><th>P95</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Health</strong></td>
+        <td>2</td>
+        <td class="pass">2</td>
+        <td class="fail">0</td>
+        <td>0</td>
+        <td>220ms</td>
+        <td>94ms</td>
+        <td>346ms</td>
+      </tr><tr>
+        <td><strong>TTS</strong></td>
+        <td>3</td>
+        <td class="pass">3</td>
+        <td class="fail">0</td>
+        <td>0</td>
+        <td>438ms</td>
+        <td>294ms</td>
+        <td>931ms</td>
+      </tr>
+      <tr class="summary-row">
+        <td><strong>TOTAL</strong></td>
+        <td>5</td>
+        <td class="pass">5</td>
+        <td class="fail">0</td>
+        <td>0</td>
+        <td colspan="3"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+
+  <h2 style="margin-top: 2rem;">All Test Results</h2>
+  <table>
+    <thead>
+      <tr><th>ID</th><th>Module</th><th>Description</th><th>Status</th><th>Latency</th><th>WER</th><th>CER</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>M13-T01</td>
+        <td>Health</td>
+        <td>M13-T01: /health returns status ok @smoke</td>
+        <td class="pass"><span class="badge pass">PASS</span></td>
+        <td>346ms</td>
+        <td>-</td>
+        <td>-</td>
+      </tr><tr>
+        <td>M13-T02</td>
+        <td>Health</td>
+        <td>M13-T02: /health responds in under 2 seconds @smoke</td>
+        <td class="pass"><span class="badge pass">PASS</span></td>
+        <td>94ms</td>
+        <td>-</td>
+        <td>-</td>
+      </tr><tr>
+        <td>TTS_ERR_01</td>
+        <td>TTS</td>
+        <td>TTS_ERR_01: Request without authentication returns 401</td>
+        <td class="pass"><span class="badge pass">PASS</span></td>
+        <td>294ms</td>
+        <td>-</td>
+        <td>-</td>
+      </tr><tr>
+        <td>TTS_ERR_02</td>
+        <td>TTS</td>
+        <td>TTS_ERR_02: Empty text input returns 400 or 422 Bad Request</td>
+        <td class="pass"><span class="badge pass">PASS</span></td>
+        <td>931ms</td>
+        <td>-</td>
+        <td>-</td>
+      </tr><tr>
+        <td>TTS_ERR_03</td>
+        <td>TTS</td>
+        <td>TTS_ERR_03: OpenAI speech endpoint without input returns 400 or 422</td>
+        <td class="pass"><span class="badge pass">PASS</span></td>
+        <td>88ms</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="text-align:center;margin-top:2rem;color:#64748b;font-size:0.8rem;">
+    Generated on 2026-08-22T10:24:14.470Z by ASR Testing Framework v2
+  </div>
+</body>
+</html>

@@ -1,0 +1,352 @@
+{
+  "date": "2026-07-27",
+  "totalTests": 114,
+  "passed": 87,
+  "failed": 27,
+  "skipped": 0,
+  "passRate": "76.3",
+  "durationMs": 643038.6604589999,
+  "modules": [
+    {
+      "module": "Health",
+      "total": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 0,
+      "p50LatencyMs": 0,
+      "p95LatencyMs": 0
+    },
+    {
+      "module": "Authentication",
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 1,
+      "p50LatencyMs": 1,
+      "p95LatencyMs": 1
+    },
+    {
+      "module": "AudioInput-File",
+      "total": 24,
+      "passed": 18,
+      "failed": 6,
+      "skipped": 0,
+      "avgLatencyMs": 5.913043478260869,
+      "p50LatencyMs": 6,
+      "p95LatencyMs": 9
+    },
+    {
+      "module": "LanguageCode",
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 4.166666666666667,
+      "p50LatencyMs": 3,
+      "p95LatencyMs": 7
+    },
+    {
+      "module": "SpeakerDiarization",
+      "total": 6,
+      "passed": 5,
+      "failed": 1,
+      "skipped": 0,
+      "avgLatencyMs": 7.166666666666667,
+      "p50LatencyMs": 7,
+      "p95LatencyMs": 9
+    },
+    {
+      "module": "WordBoosting",
+      "total": 7,
+      "passed": 7,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 6.857142857142857,
+      "p50LatencyMs": 7,
+      "p95LatencyMs": 8
+    },
+    {
+      "module": "ProfanityMasking",
+      "total": 5,
+      "passed": 5,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 7.4,
+      "p50LatencyMs": 7,
+      "p95LatencyMs": 8
+    },
+    {
+      "module": "ResponseSchema",
+      "total": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 7,
+      "p50LatencyMs": 7,
+      "p95LatencyMs": 13
+    },
+    {
+      "module": "SpeechIntelligence",
+      "total": 11,
+      "passed": 11,
+      "failed": 0,
+      "skipped": 0,
+      "avgLatencyMs": 2.25,
+      "p50LatencyMs": 2,
+      "p95LatencyMs": 3
+    },
+    {
+      "module": "CombinationScenarios",
+      "total": 6,
+      "passed": 5,
+      "failed": 1,
+      "skipped": 0,
+      "avgLatencyMs": 3.6,
+      "p50LatencyMs": 1,
+      "p95LatencyMs": 8
+    },
+    {
+      "module": "ErrorHandling",
+      "total": 8,
+      "passed": 7,
+      "failed": 1,
+      "skipped": 0,
+      "avgLatencyMs": 5.75,
+      "p50LatencyMs": 1,
+      "p95LatencyMs": 11
+    },
+    {
+      "module": "Security-Misc",
+      "total": 5,
+      "passed": 1,
+      "failed": 4,
+      "skipped": 0,
+      "avgLatencyMs": 9.6,
+      "p50LatencyMs": 11,
+      "p95LatencyMs": 11
+    },
+    {
+      "module": "SpeakerManagement",
+      "total": 6,
+      "passed": 2,
+      "failed": 4,
+      "skipped": 0,
+      "avgLatencyMs": 10.833333333333334,
+      "p50LatencyMs": 11,
+      "p95LatencyMs": 11
+    },
+    {
+      "module": "Streaming",
+      "total": 10,
+      "passed": 0,
+      "failed": 10,
+      "skipped": 0,
+      "avgLatencyMs": 11,
+      "p50LatencyMs": 11,
+      "p95LatencyMs": 11
+    }
+  ],
+  "failures": [
+    {
+      "testId": "M03-T01",
+      "module": "AudioInput-File",
+      "description": "M03-T01: Valid base64-encoded audio returns transcription",
+      "failureReason": "ApiError: API error [400]: file is required",
+      "latencyMs": 1
+    },
+    {
+      "testId": "M03-T02",
+      "module": "AudioInput-File",
+      "description": "M03-T02: data:audio/wav;base64 prefix handled correctly",
+      "failureReason": "ApiError: API error [400]: file is required",
+      "latencyMs": 1
+    },
+    {
+      "testId": "M03-T04",
+      "module": "AudioInput-File",
+      "description": "M03-T04: Near-limit base64 audio processed",
+      "failureReason": "ApiError: API error [400]: file is required",
+      "latencyMs": 1
+    },
+    {
+      "testId": "M03-T05",
+      "module": "AudioInput-File",
+      "description": "M03-T05: Oversized base64 returns 413",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m413\u001b[39m\nReceived: \u001b[31m400\u001b[39m",
+      "latencyMs": 2
+    },
+    {
+      "testId": "M02-T09",
+      "module": "AudioInput-File",
+      "description": "M02-T09: Corrupted audio file returns 400",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m400\u001b[39m\nReceived: \u001b[31m415\u001b[39m",
+      "latencyMs": 1
+    },
+    {
+      "testId": "M02-T13",
+      "module": "AudioInput-File",
+      "description": "M02-T13: Audio URL input returns transcription",
+      "failureReason": "ApiError: API error [400]: file is required",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M06-T05",
+      "module": "SpeakerDiarization",
+      "description": "M06-T05: diarize=true with response_format=json returns text",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeUndefined\u001b[2m()\u001b[22m\n\nReceived: \u001b[31m[{\"confidence\": 0.9748, \"end\": 8.64, \"speaker\": \"SPEAKER_00\", \"start\": 0.238, \"text\": \"राजनीतिज्ञों ने कहा कि उन्होंने निर्णायक मत को अनावश्यक रूप से निर्धारित करने के लिए अफगान संविधान में काफी स्पष्टता पाई थी\"}]\u001b[39m",
+      "latencyMs": 7
+    },
+    {
+      "testId": "M14-T06",
+      "module": "CombinationScenarios",
+      "description": "M14-T06: Base64 audio + all parameters",
+      "failureReason": "ApiError: API error [400]: file is required",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M11-T02",
+      "module": "ErrorHandling",
+      "description": "M11-T02: Invalid/expired token returns 401",
+      "failureReason": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32m401\u001b[39m\nReceived: \u001b[31m400\u001b[39m",
+      "latencyMs": 0
+    },
+    {
+      "testId": "M15-T02",
+      "module": "Security-Misc",
+      "description": "M15-T02: Wrong HTTP method (GET on POST endpoint) returns 405",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 10
+    },
+    {
+      "testId": "M15-T03",
+      "module": "Security-Misc",
+      "description": "M15-T03: Unknown route returns 404",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M15-T04",
+      "module": "Security-Misc",
+      "description": "M15-T04: Injection attempt (SQL injection in language_code)",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M15-T05",
+      "module": "Security-Misc",
+      "description": "M15-T05: Swagger/docs endpoint accessible",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M18-T01",
+      "module": "SpeakerManagement",
+      "description": "M18-T01: Register speaker with name and audio file returns success",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M18-T02",
+      "module": "SpeakerManagement",
+      "description": "M18-T02: Register with project parameter",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M18-T03",
+      "module": "SpeakerManagement",
+      "description": "M18-T03: Delete existing speaker",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M18-T06",
+      "module": "SpeakerManagement",
+      "description": "M18-T06: Missing name parameter returns 400",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M16-T01",
+      "module": "Streaming",
+      "description": "M16-T01: Connect with valid token, receive ready event",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M16-T02",
+      "module": "Streaming",
+      "description": "M16-T02: Send PCM audio frames, receive partial events",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M16-T03",
+      "module": "Streaming",
+      "description": "M16-T03: Send PCM, receive final event after end message",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M16-T04",
+      "module": "Streaming",
+      "description": "M16-T04: Verify speaker field on final when diarize=true",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M16-T05",
+      "module": "Streaming",
+      "description": "M16-T05: Wrong token returns error event and socket closes",
+      "failureReason": "Error: WebSocket connection failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M16-T06",
+      "module": "Streaming",
+      "description": "M16-T06: Missing language field returns error",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M16-T07",
+      "module": "Streaming",
+      "description": "M16-T07: Connect to both /v1/realtime and /ws (same behavior)",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M16-T08",
+      "module": "Streaming",
+      "description": "M16-T08: Token in query parameter works",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M16-T09",
+      "module": "Streaming",
+      "description": "M16-T09: Token in first JSON message works",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    },
+    {
+      "testId": "M16-T10",
+      "module": "Streaming",
+      "description": "M16-T10: Sample rate 8kHz vs 16kHz produces good transcription",
+      "failureReason": "TypeError: fetch failed",
+      "latencyMs": 11
+    }
+  ],
+  "datasets": [],
+  "datasetSummaries": [],
+  "datasetStats": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "skipped": 0,
+    "passRate": "0%"
+  },
+  "datasetFailures": []
+}
